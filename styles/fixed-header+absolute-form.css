@@ -1,0 +1,181 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: #000;
+    background-color: #D2E1E6;
+    background-image: url(../images/bg_tile.jpg);
+    background-attachment:fixed;                    /* {LN_0} */
+}
+#wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+#header {
+    background-image: url(../images/yachts_banner.jpg);
+    background-repeat: no-repeat;
+    height: 127px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 1000px;
+    margin-top:-8px;               /* {LN_0} */
+}
+#header form {
+    position: absolute;
+    right: 5px;
+    bottom: 1px;
+}
+#header form {               /* {LN_0} */
+    font-weight: bold;
+}
+label {               /* {LN_0} */
+    color:green;
+    font-size:1.3em;
+    background-color:white;
+    background-color:rgba(255,255,255,0.8);
+    padding:0 5px;
+    letter-spacing:2px;
+    border-radius:5px;
+}
+input:focus {                           /* {LN_0} */
+    outline:2px solid dodgerblue;
+    outline-offset:-2px;                /* with a negative value in the "outline-offset" property the definition of the "outline" property will surround the form input on top of the default border */
+}
+#main {
+    width: 64%;
+    margin: 207px 1% 10px 35%;
+    background-color: #FFF;
+    padding: 18px 0;
+    /* overflow: hidden; */				/* fix the last image overflow in some browsers */
+}
+#aside {
+    float: left;
+    width: 31%;
+    display: inline;
+    background-color: #FFF;
+    margin-top: 0;               /* {LN_0} */
+    margin-bottom: 10px;
+    margin-left: 1%;
+}
+#nav {
+    list-style-type: none;
+    margin: 7px 0 0 0;        /* {LN_0} */
+    padding: 10px 0 ;               /* {LN_0} */
+    height: 40px;
+    position: fixed;
+    top: 112px;               /* {LN_0} */
+    width: 100%;
+    max-width: 1000px;
+    background-image: url(../images/bg_tile.jpg);                   /* {LN_0} */
+    box-shadow:0px 5px 10px gray;                   /* {LN_0} */
+    box-shadow:0px 5px 10px rgba(0,0,0,0.6  );                        /* {LN_0} */
+}
+
+#nav li {
+    width: 15.5%;
+    margin-left: 1%;
+    float: left;
+    text-align: center;
+    display: inline;
+}
+#nav li a {
+    display: block;
+    padding: 0.5em 5px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #F2F2F2;
+    border-radius: 8px;
+    -webkit-box-shadow: 3px 3px 3px rgba(51,51,51,0.3);
+    box-shadow: 3px 3px 3px rgba(51,51,51,0.3);
+}
+#nav a:link, #nav a:visited {
+    background-color: #071726;
+}
+#nav a:hover, #nav a:active, #nav a:focus {
+    background-color: #326773;
+}
+p {
+    margin-left: 40px;
+    margin-right: 10px;
+    margin-top: 0;
+}
+h1 {
+    text-align: center;
+    margin-top: -9px;               /* {LN_0} */
+    padding-top: 20px;
+    text-shadow:4px 0px 2px gray;                   /* {LN_0} */
+    letter-spacing:5px;               /* {LN_0} */
+}
+h2, h3 {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0.25em;
+}
+.floatleft {
+    float: left;
+    margin: 3px 10px 3px 0;
+}
+.floatright {
+    float: right;
+    margin: 3px 0 3px 10px;
+}
+.imgcentered {
+    margin: 10px auto;
+    display: block;
+}
+.figure.floatleft {
+    margin-left: 40px;
+    /* Fix IE 6 double-margin bug */
+    display: inline;
+}
+.figure.floatright {
+    margin-right: 10px;
+    /* Fix IE 6 double-margin bug */
+    display: inline;
+}
+.figcaption {
+    display: block;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+.figure {
+    width: 61.5%
+}
+.figure img {
+    max-width: 100%;
+}
+.portrait {
+    width: 40.9%;
+}
+.rounded {
+    border-radius: 15px;
+}
+.shadow {
+    -webkit-box-shadow: 3px 3px 3px rgba(51,51,51,0.3);
+    box-shadow: 3px 3px 3px rgba(51,51,51,0.3);
+}
+/* __________________________________________________________________________{LN_0}
+*/
+#nav ul li {
+    float:none;
+    padding:0;
+    margin:0;
+}
+#nav ul li a {
+    width:100%;
+    border-radius:0;
+    border-bottom-left-radius:8px;
+    border-bottom-right-radius:8px;
+    border-top:1px solid silver;
+}
+#nav ul {
+    margin-left:-25%;
+    margin-right:7%;
+    display:none;
+}
+#nav>li:hover>ul {
+    display:block;
+}

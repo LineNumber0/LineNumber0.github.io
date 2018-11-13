@@ -1,0 +1,42 @@
+﻿#home nav a.home, #about nav a.about, #products nav a.products { 	/* this is the CSS technique for Highlighting the current page */
+background: rgba(0,0,255,0.6);
+font-weight:bold;
+} 
+a.current { background: rgba(0,255,0,0.7); }  /* this style block will be used with JQuery to add the class name to the link when the address of this link is the same as the currently viewed page (see page 61 of "Pro CSS3 Animation" by Dudley Storey) */
+ul[role=navigation] li { 
+  display: inline;
+  font-family: Futura, Arial, sans-serif; 
+  /* text-transform: uppercase; */ 
+  font-variant:small-caps;
+  margin-left: -.5rem;
+} 
+ul[role=navigation] li a { 
+  text-decoration: none; 
+  color: #fff; 
+  padding: 0.8rem 1.2rem 2rem 1.2rem; 
+  border: 1px solid #777; 
+  border-radius: 5px 5px 0 0; 
+  background: #dfc891;
+  background: linear-gradient(to bottom, #dfc891, #776c51); 
+  box-shadow: 0 0 15px rgba(0,0,0,0.5); 
+  letter-spacing: 0.15rem; 
+  text-shadow: 1px 1px 0 #000; 
+  position: relative; 
+  top: 0; 
+  transition: 0.2s all linear; 
+} 
+ul[role=navigation] { 
+  background: #000;
+  padding-top: 3.2rem; 
+  padding-bottom: 1rem; 
+  overflow: hidden; 
+  margin-top: 0; 
+  
+} 
+ul[role=navigation] li a.forefront { 
+  top:-0.2rem; 
+  z-index: 2;
+}
+ul[role=navigation] li a:hover,  ul[role=navigation] li a:focus { 
+  top: -0.6rem; 
+}

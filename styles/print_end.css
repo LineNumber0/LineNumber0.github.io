@@ -1,0 +1,73 @@
+﻿@page {
+    margin: 1in;                    /* like Microsoft Word margin */
+}
+body {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    color: #000;
+    line-height:1.5;
+}
+p {
+    margin-top: 0;
+    font-size: 10pt;
+}
+h1 {
+    text-align: center;
+    margin-top: 0;
+    font-size: 18pt;
+}
+h2, h3 {
+    margin-bottom: 0.25em;
+    font-size: 14pt;
+    clear: both;                        /* "It’s also a good idea to add the clear property to the style rule for the subheadings because they frequently appear close to floated images"(D.P) */
+}
+h2 {
+    margin-top:1cm;
+}
+h3 {
+    font-size: 12pt;
+}
+.floatleft {
+    float: left;
+    margin: 3px 10px 3px 0;
+}
+.floatright {
+    float: right;
+    margin: 3px 0 3px 10px;
+}
+.figcaption {
+    display: block;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    font-size:8pt;
+}
+#nav {
+    display: none;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+a[href^="http://"]::after {
+    content: ' : ' attr(href);
+}
+#aside {
+    /* page-break-after: always;                /* "set page-break-before to always forces a break in some browsers, but not in IE 9. For this particular page, the least disruptive solution is to create a style rule for the aside <div> to force a page break after the sidebar content"(D.P) */
+}
+/* #main::before {                              /* "Forcing the page break after the sidebar moves the beginning of the main content to a page of its own. So, it would be a good idea to give it a heading. In modern browsers that support generated content, nothing could be easier. Use the ::before pseudo-element like this (notice that you need to set the display property to block to center the generated content)"(D.P) */ /*
+    content: 'Mediterranean Destinations';
+    font-weight: bold;
+    font-size: 18pt;
+    display: block;
+    margin-bottom: 12pt;
+    text-align: center;
+} */
+form {
+    display:none;
+}
+img {
+    height:5cm;
+}
+p {
+    page-break-inside:avoid;
+}
