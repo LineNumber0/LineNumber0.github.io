@@ -512,7 +512,7 @@
       transform:scale(1,1);
       transform-origin:bottom;
       transition:transform 3s;
-      animation:transimg 12s 3s;
+      animation:transimg 12s 3s, rot 5s 14s infinite;
       }
       #bioinfodiv * {
       opacity:0;
@@ -537,6 +537,14 @@
       #bioinfodiv:hover ul li:last-child {
       width: 18em;
       transition:width 3s 9s;
+      }
+	@keyframes rot {
+      from {
+      transform:perspective(1536px) rotateY(0);
+      }
+      to {
+      transform:perspective(1536px) rotateY(360deg);
+      }
       }
       @keyframes transimg {
       25% {transform:scale(0.5,1)}
