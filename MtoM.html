@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JavaScript rudimentary Chatbot</title>
+    <meta name="Description" content="Start up of a JavaScript Chatbot"/>
+    <meta name="Developer" content="LineNumber0"/>
+    <meta name="Date" content="Sunday 11-February-2018 01:31 WET"/>
+    <style type="text/css">
+      body * {
+      font-weight:bold;
+      }
+      body.chatbody p {
+      font-weight: bold;
+      padding: 4em 1em;
+      border: 1px solid dimgray;
+      background-color: #FFDFE4;
+      width: 32em;
+      margin: 5em;
+      border-radius: 6em;
+      text-align: center;
+      position:relative;
+      left:1em;
+      transition:left 0.5s;
+      filter: drop-shadow(-8px 12px 6px rgba(0,0,0,0.3));
+      }
+      .chatbody {
+      background-color:moccasin;
+      background-image:repeating-linear-gradient(-45deg, moccasin, peachpuff 5px);
+      }
+      .chatbody #P:before, .chatbody #P:after {
+      content:"";
+      position:absolute;
+      border-style: solid;
+      border-width: 15px 37px;
+      width:0;
+      height:0;
+      }
+      .chatbody #P:before {
+      border-color: transparent dimgray transparent transparent;
+      left: -70px;
+      }
+      .chatbody #P:after {
+      border-color: transparent #FFDFE4 transparent transparent;
+      left: -67px;
+      }
+      #P:empty {
+      left:-40em;
+      transition:left 0.5s;
+      }
+      .chatbody label {
+      display:none;
+      }
+    </style>
+</head>
+<body class="" >
+<label><b>Begin a Man-Machine dialog ! <button onclick="MtoM()">OK !</button></b></label>
+<p id="P" ></p>
+    <script type="text/javascript">
+        function MtoM() {
+	document.body.className = "chatbody";
+        var greetingString = "Hello";
+        var myName = prompt("What's your name ?");                                   // TODO replace prompt() function with "stylable" question and input.
+        if (myName == "" || myName == null) {
+        P.innerHTML = "You don't want to tell me your name, never mind !";
+        return;
+        }
+        var concatString;
+        document.write("<p>Your name is " + myName + " !</p>");
+        concatString = "<p> " + greetingString + " " + myName + " !</p>";
+        document.write(concatString);
+        var age = prompt("How old are you ?");
+	var numregex = /\b\W[0-9]{1,3}\b/;
+	if (numregex.test(age)) {							 // DONE : extract user age from the string using Regular Expression and assign it to the variable "age". NOTE If age.match(numregex) is used instead of numregex.test(age) in the evaluation condition and the variable "age" is null, the match() method outputs a TypeError message.
+	document.write("<p>Your age is " + age.match(numregex) + " !</p>");
+	age = age.match(numregex);
+	}
+        if (age >= 40 && age <= 90) {
+            document.write("<p>"+age+" ! You are a mature person !</p>");
+            } else if ((age <= 40) && (!(age == 0)) && (!(age == null)) && (!(age < 0))) {
+            document.write("<p>"+age+" ! You are still young !</p>");
+            } else if (age > 90) {
+                document.write("<p>"+age+" ! And you are still alive !!!</p>");
+		} else if (age == 0 && age != "") {
+                document.write("<p>"+age+" ! You don't even exist !!!<br/> OR maybe you have less than one year !?</p>");
+                } else if (age < 0 && age < -90) {
+                document.write("<p>"+age+"  ! That's before your parents was born !!!</p>");
+                } else if (age < 0 && age > -90) {
+                    document.write("<p>"+age+" ! That's before your parents think about you !!!</p>");
+                    }
+		    else if (isNaN(age) == true) {
+            document.write("<p>What do you mean by &ldquo;"+ age +"&rdquo; ? </p>");
+	    } else if (age == null || age == "" || age != 0) {
+        document.write("<p>You don't want to tell me your age, never mind !</p>");
+        return;
+        }
+	var maregex = /ma?o?r+oc+o*/i;
+        var place = prompt("Where are you from ?");
+	if (maregex.test(place)) {							 // DONE : add other string variants in the one condition, with a Regular Expression.
+        document.write("<p>There is a lot of corruption in "+place+" country !</p>");
+        document.write("<p><strong>I am not interested !</strong></p><p>Thank you !</p>");
+        } else if ((!(place == "")) && (!(place == null))) {
+        document.write("<p>You are from " + place + " ... OK !</p><p>See you next time !</p><p>Thanks !</p>");
+        } else if (place == null || place == "") {
+        document.write("<p>You don't want to tell me where you are, never mind !</p>");
+        return;
+         }
+        }                                                                                // TODO upgrading the dialog with more intelligent input control and more questions. display one line in a bubble and if possible style both the generated body and the prompt box. set a time interval between prompt() or alert() and document.write(). remove the markup from strings and restore them outside JavaScript.
+    </script>
+    <noscript>
+      <style type="text/css">
+	body {background-color:black}
+	label {display:none}
+	noscript p {
+	font-weight: bold;
+	padding: 4em 1em;
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 32em;
+	margin: 5em;
+	border-radius: 50%;
+	text-align: center;
+	position:relative;
+	left:1em;
+	transition:left 0.5s;
+	animation:think 3s 3s infinite alternate both;
+	}
+	noscript p:before, noscript p:after {
+	content:"";
+	border-color:transparent;
+	border-radius:50%;
+	position:absolute;
+	border-style: solid;
+	width:0;
+	height:0;
+	}
+	noscript p:before {
+	left: -1em;
+	top: 8em;
+	border-width: 20px;
+	animation:think 3s 2s infinite alternate both;
+	}
+	noscript p:after {
+	left: -4em;
+	top: 11em;
+	border-width: 10px;
+	animation:think 3s 1s infinite alternate both;
+	}
+	@keyframes think {
+	from {border-color:transparent;background-color:transparent}
+	25% {border-color:white;background-color:white}
+	50% {border-color:white;background-color:white}
+	75% {border-color:white;background-color:white}
+	to {border-color:white;background-color:white}
+	}
+	noscript:hover p, noscript:hover p:before, noscript:hover p:after {background-color:white}
+      </style>
+      <p>JavaScript is disabled in this Browser !</p>
+      </noscript>
+</body>
+</html>

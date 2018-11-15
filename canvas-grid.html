@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Canvas Grid</title>
+<meta charset="UTF-8"/>
+<meta name="description" content="HTML5 Canvas element with grid"/>
+<meta name="Web-Developer" content="LineNumber0"/>
+    <style type="text/css">
+    body {
+    margin:0;
+    padding:0;
+    }
+    canvas {
+    position:absolute;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    }
+    p {
+    background-color:#f00;
+    position:absolute;
+    left:0;
+    top:0;
+    width:10%;
+    height:10%;
+    margin:0;
+    }
+    p+p {
+    background-color:#0f0;
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:10%;
+    height:10%;
+    margin:0;
+    }
+    p+p+p {
+    background-color:#00f;
+    position:absolute;
+    left:90%;
+    top:90%;
+    width:10%;
+    height:10%;
+    margin:0;
+    }
+      </style>
+  </head>
+  <body>
+  <canvas id="idcanvas">Your browser doesn't support HTML5 canvas.</canvas>   <!-- "Each vertical and horizontal line represents 10%"(D.P) -->
+  <script type="text/javascript">
+var canvas = document.getElementById('idcanvas'),
+    c = canvas.getContext('2d'),
+	w = canvas.width,
+	h = canvas.height,
+	x, y;
+c.strokeStyle = '#000';
+c.lineWidth = 0.1;
+for (var i = 1; i < 10; i++) {
+	x = w/10*i;
+	y = h/10*i;
+	c.moveTo(x, 0);
+	c.lineTo(x, h);
+	c.moveTo(0, y);
+	c.lineTo(w, y);
+}
+c.stroke();
+</script>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+  </body>
+</html>

@@ -1,0 +1,382 @@
+﻿<html>
+  <head>
+    <title>CSS flower</title>
+    <meta name="Developer" content="LineNumber0"/>
+    <style>
+	body{
+	background-color:rosybrown;
+	background-image: linear-gradient(aliceblue 80%, #c7c7a1);
+	background-repeat:no-repeat;
+	height: 100%;
+	}
+	h1{text-shadow: 4px 4px 3px lightgray;}
+	.container{
+	height: 100px;
+	width: 100px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	}
+	.droplet{
+	border-radius: 5px 90%;
+	border:5px solid black;
+	height: 100px;
+	margin: auto;
+	width: 100px;
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	transform-origin: left top;
+	opacity: 0;
+	}
+	#no1{
+	background: purple;
+	animation: spin 5s ease-out infinite;
+	animation-fill-mode: forwards;
+	animation-delay: 0s;
+	}
+	#no2{
+	background: violet;
+	animation: spin2 5s ease-out infinite;
+	animation-fill-mode: forwards;
+	animation-delay: 0.05s;
+	}
+	#no3{
+	background: purple;
+	animation: spin3 5s ease-out infinite;
+	animation-fill-mode: forwards;
+	animation-delay: 0.1s;
+	}
+	#no4{
+	background: violet;
+	animation: spin4 5s ease-out infinite;
+	animation-fill-mode: forwards;
+	animation-delay: 0.15s;
+	}
+	#no5{
+	background: purple;
+	animation: spin5 5s ease-out infinite;
+	animation-fill-mode: forwards;
+	animation-delay: 0.2s;
+	}
+	#no6{
+	background: violet;
+	animation: spin6 5s ease-out infinite;
+	animation-fill-mode: forwards;
+	animation-delay: 0.25s;
+	}
+	#no7{
+	background: purple;
+	animation: spin7 5s ease-out infinite;
+	animation-fill-mode: forwards;
+	animation-delay: 0.30s;
+	}
+	#no8{
+	background: violet;
+	animation: spin8 5s ease-out infinite;
+	animation-fill-mode: forwards;
+	animation-delay: 0.35s;
+	}
+	#no9{
+	background: purple;
+	animation: spin9 5s ease-out infinite;
+	animation-fill-mode: forwards;
+	animation-delay: 0.40s;
+	}
+	#no10{
+	background: violet;
+	animation: spin10 5s ease-out infinite;
+	animation-fill-mode: forwards;
+	animation-delay: 0.45s;
+	}
+	@keyframes spin {
+	0%{
+	opacity: 0;
+	transform: rotate(0deg) scale(0.01);
+	}
+	20%{
+	opacity: 100;
+	transform: rotate(324deg) scale(1);
+	}
+	60%{
+	opacity: 100;
+	transform: rotate(324deg) scale(1);
+	}
+	80%{
+	opacity: 0;
+	transform: rotate(720deg) scale(0.01);
+	}
+	100%{
+	transform: rotate(720deg) scale(0.01);
+	}
+	}
+	@keyframes spin2 {
+	0%{
+	opacity: 0;
+	transform: rotate(0deg) scale(0.01);
+	}
+	20%{
+	opacity: 100;
+	transform: rotate(288deg) scale(1);
+	}
+	60%{
+	opacity: 100;
+	transform: rotate(288deg) scale(1);
+	}
+	80%{
+	opacity: 0;
+	transform: rotate(720deg) scale(0.01);
+	}
+	100%{
+	transform: rotate(720deg) scale(0.01);
+	}
+	}
+	@keyframes spin3 {
+	0%{
+	opacity: 0;
+	transform: rotate(0deg) scale(0.01);
+	}
+	20%{
+	opacity: 100;
+	transform: rotate(252deg) scale(1);
+	}
+	60%{
+	opacity: 100;
+	transform: rotate(252deg) scale(1);
+	}
+	80%{
+	opacity: 0;
+	transform: rotate(720deg) scale(0.01);
+	}
+	100%{
+	transform: rotate(720deg) scale(0.01);
+	}
+	}
+	@keyframes spin4 {
+	0%{
+	opacity: 0;
+	transform: rotate(0deg) scale(0.01);
+	}
+	20%{
+	opacity: 100;
+	transform: rotate(216deg) scale(1);
+	}
+	60%{
+	opacity: 100;
+	transform: rotate(216deg) scale(1);
+	}
+	80%{
+	opacity: 0;
+	transform: rotate(720deg) scale(0.01);
+	}
+	100%{
+	transform: rotate(720deg) scale(0.01);
+	}
+	}
+	@keyframes spin5 {
+	0%{
+	opacity: 0;
+	transform: rotate(0deg) scale(0.01);
+	}
+	20%{
+	opacity: 100;
+	transform: rotate(180deg) scale(1);
+	}
+	60%{
+	opacity: 100;
+	transform: rotate(180deg) scale(1);
+	}
+	80%{
+	opacity: 0;
+	transform: rotate(720deg) scale(0.01);
+	}
+	100%{
+	transform: rotate(720deg) scale(0.01);
+	}
+	}
+	@keyframes spin6 {
+	0%{
+	opacity: 0;
+	transform: rotate(0deg) scale(0.01);
+	}
+	20%{
+	opacity: 100;
+	transform: rotate(144deg) scale(1);
+	}
+	60%{
+	opacity: 100;
+	transform: rotate(144deg) scale(1);
+	}
+	80%{
+	opacity: 0;
+	transform: rotate(720deg) scale(0.01);
+	}
+	100%{
+	transform: rotate(720deg) scale(0.01);
+	}
+	}
+	@keyframes spin7 {
+	0%{
+	opacity: 0;
+	transform: rotate(0deg) scale(0.01);
+	}
+	20%{
+	opacity: 100;
+	transform: rotate(108deg) scale(1);
+	}
+	60%{
+	opacity: 100;
+	transform: rotate(108deg) scale(1);
+	}
+	80%{
+	opacity: 0;
+	transform: rotate(720deg) scale(0.01);
+	}
+	100%{
+	transform: rotate(720deg) scale(0.01);
+	}
+	}
+	@keyframes spin8 {
+	0%{
+	opacity: 0;
+	transform: rotate(0deg) scale(0.01);
+	}
+	20%{
+	opacity: 100;
+	transform: rotate(72deg) scale(1);
+	}
+	60%{
+	opacity: 100;
+	transform: rotate(72deg) scale(1);
+	}
+	80%{
+	opacity: 0;
+	transform: rotate(720deg) scale(0.01);
+	}
+	100%{
+	transform: rotate(720deg) scale(0.01);
+	}
+	}
+	@keyframes spin9 {
+	0%{
+	opacity: 0;
+	transform: rotate(0deg) scale(0.01);
+	}
+	20%{
+	opacity: 100;
+	transform: rotate(36deg) scale(1);
+	}
+	60%{
+	opacity: 100;
+	transform: rotate(36deg) scale(1);
+	}
+	80%{
+	opacity: 0;
+	transform: rotate(720deg) scale(0.01);
+	}
+	100%{
+	transform: rotate(720deg) scale(0.01);
+	}
+	}
+	@keyframes spin10 {
+	0%{
+	opacity: 0;
+	transform: rotate(0deg) scale(0.01);
+	}
+	20%{
+	opacity: 100;
+	transform: rotate(0deg) scale(1);
+	}
+	60%{
+	opacity: 100;
+	transform: rotate(0deg) scale(1);
+	}
+	80%{
+	opacity: 0;
+	transform: rotate(720deg) scale(0.01);
+	}
+	100%{
+	transform: rotate(720deg) scale(0.01);
+	}
+	}
+	span{
+	top: 7.2em;
+	left: 2.6087em;
+	background: #b4d28c;
+	box-shadow: 0 0 0 0.1em #80bd30 inset;
+	width: .5em;
+	height: 100em;
+	display: block;
+	position: absolute;
+	z-index: -1;
+	}
+	span:before{
+	content: '';
+	width: 6em;
+	height: 4em;
+	background: #a3c872;
+	border-radius: 0em 2em 0em 2em;
+	box-shadow: 0 0 0 0.2em #80bd30 inset;
+	z-index: 0;
+	position: absolute;
+	left: -6em;
+	top: 8em;
+	}
+	span:after{
+	content: '';
+	width: 6em;
+	height: 4em;
+	background: #a8cb7a;
+	border-radius: 2em 0em 2em 0em;
+	box-shadow: 0 0 0 0.2em #80bd30 inset;
+	top: 12em;
+	left: .5em;
+	position: absolute;
+	}
+      </style>
+  </head>
+  <body>
+  <center><h1 id="hline">A digital flower !</h1></center>
+  <div class="container">
+      <div class="droplet" id="no1"></div>
+      <div class="droplet" id="no2"></div>
+      <div class="droplet" id="no3"></div>
+      <div class="droplet" id="no4"></div>
+      <div class="droplet" id="no5"></div>
+      <div class="droplet" id="no6"></div>
+      <div class="droplet" id="no7"></div>
+      <div class="droplet" id="no8"></div>
+      <div class="droplet" id="no9"></div>
+      <div class="droplet" id="no10"></div>
+      <span></span>
+  </div>
+  <script>
+    var TimeNow = new Date();
+    var HourNow = TimeNow.getHours();
+    var Hline = document.getElementById("hline");
+    
+    if (HourNow < 12) {
+      Hline.innerHTML = "Good Morning !";
+      } else if (HourNow < 17) {
+	Hline.innerHTML = "Good Afternoon !";
+	document.body.style.backgroundImage = "linear-gradient(skyblue 80%, bisque)";
+	} else if (HourNow >= 22 ) {
+	Hline.innerHTML = "Good Night !";
+	document.body.style.backgroundImage = "linear-gradient(black 80%, sandybrown)";
+	document.fgColor = "white";
+	} else if ((HourNow < 22) && (HourNow >= 19)) {
+	  Hline.innerHTML = "Good rest from your day !";
+	  document.body.style.backgroundImage = "linear-gradient(darkblue 80%, rosybrown)";
+	  document.fgColor = "white";
+	  } else if ((HourNow > 17) && (HourNow < 19)) {
+	    Hline.innerHTML = "The sunset is a romantic time !";
+	    document.body.style.backgroundImage = "linear-gradient(#F98C5E 80%, rosybrown)";
+	  }
+	  
+	  setTimeout(function() {document.location.reload()}, 60000);
+    </script>
+  </body>
+</html>

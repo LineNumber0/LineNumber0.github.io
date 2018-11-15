@@ -1,0 +1,55 @@
+﻿<html>
+<head>
+  <meta name="developer" content="LineNumber0">
+    <style> 
+	body{
+	background-color:#ffb6c1;
+	background-image:repeating-radial-gradient(circle at 50% 160px,lightpink, pink 100px);
+	background-repeat:no-repeat;
+	}
+	@keyframes pulsate { 
+	from { transform: scale(1); } 
+	25% { transform: scale(1.2); } 
+	50% { transform: scale(1.1); } 
+	75% { transform: scale(1.2); } 
+	to { transform: scale(1); } 
+	} 
+	#heart { 
+	width: 100px; 
+	height: 100px; 
+	border-radius:50%; 
+	background-color: #900; 
+	margin:100px auto 100px 49%; 
+	animation: pulsate 1s ease-in-out infinite; 
+	} 
+	#heart:hover,#box:hover { 
+	animation-play-state: paused; 
+	} 
+	#heart:before { 
+	content: ""; 
+	background-color: #900; 
+	width: 100px; 
+	height: 100px; 
+	position: absolute; 
+	left: -56px; 
+	border-radius: 50%; 
+	} 
+	#heart:after { 
+	content: ""; 
+	background-color: #900; 
+	width: 96px; 
+	height: 96px; 
+	position: absolute; 
+	top: 33px; 
+	left: -26px; 
+	transform: rotate(45deg); 
+	border-radius: 5px; 
+	} 
+	h1 {white-space:nowrap}
+	</style>
+	</head>
+	<body>
+	<div id="heart"></div>
+	<center><h1>I LOVE YOU !<br>From the other side of the Planet !</h1></center>
+	</body>
+</html>

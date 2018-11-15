@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Combination of transition, transform and animation</title>
+    <meta charset="UTF-8"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="Date" content="Thursday 07-June-2018 23:04 WET"/>
+    <style type="text/css">
+      body {
+      background:black;
+      }
+      ul {
+      margin-top: 128px;
+      line-height: 2;
+      font-weight: bold;
+      }
+      li {
+      color:lime;
+      font-size:2em;
+      font-family:monospace;
+      overflow: hidden;
+      white-space:nowrap;
+      width:0;
+      }
+      img {
+      width:300px;
+      transform: scale(1,0.1);
+      transform-origin:bottom;
+      position: absolute;
+      top: 3em;
+      left: 22em;
+      transition:transform 3s;
+      }
+      body:hover img {
+      transform:scale(1,1);
+      transform-origin:bottom;
+      transition:transform 3s;
+      animation:transimg 12s 3s;
+      }
+      body * {
+      opacity:0;
+      transition: 1s;
+      }
+      body:hover * {
+      opacity:1;
+      transition: 1s;
+      }
+      body:hover ul li:first-child {
+      width: 18em;
+      transition:width 3s;
+      }
+      body:hover ul li:nth-child(2) {
+      width: 18em;
+      transition:width 3s 3s;
+      }
+      body:hover ul li:nth-child(3) {
+      width: 18em;
+      transition:width 3s 6s;
+      }
+      body:hover ul li:last-child {
+      width: 18em;
+      transition:width 3s 9s;
+      }
+      @keyframes transimg {
+      25% {transform:scale(0.5,1)}
+      50% {transform: scale(2,0.5);-webkit-filter: none;filter: none}
+      75% {-webkit-filter: drop-shadow(100px 0px red);filter: drop-shadow(100px 0px red)}
+      100% {transform:scale(1,1)}
+      }
+      </style>
+  </head>
+  <body>
+<ul>
+  <li> Height: 1.60m</li>
+  <li> Width: 45cm</li>
+  <li> Weight: 59kg-60kg</li>
+  <li> Blood type: ?</li>
+  </ul>
+  <img src="img/man-white.png" />
+  </body>
+</html>
