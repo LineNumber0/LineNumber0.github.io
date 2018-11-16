@@ -138,7 +138,7 @@ form {margin-top:10px}
         document.chronoForm.startstop.onclick = chronoContinue
         document.chronoForm.reset.onclick = chronoStopReset
         clearTimeout(timerID)
-	if (parseFloat(chronotime.innerHTML.substring(chronotime.innerHTML.length - 3)) > 0 ) {			// {LN0}
+	if (parseInt(chronotime.innerHTML.substring(chronotime.innerHTML.length - 3)) > 0 ) {			// {LN0}
 	document.chronoForm.startstop.value = "Resume!";
 	}
     }
