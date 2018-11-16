@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Javascript Form Object an form validation</title>
+    <meta charset="utf-8"/>
+    <meta name="Description" content="From &quot;Beginning Javascript&quot; book"/>
+    <meta name="Author" content="Jeremy McPeak"/>
+    <meta name="Web-Developer" content="RebMunEnil_0"/>
+    <meta name="Date" content="Friday 01-June-2018 01:26 WET"/>
+</head>
+<body>
+<form action="" name="form1">
+    Please enter the following details:
+    <p>
+        Name:
+        <input type="text" name="txtName" />
+    </p>
+    <p>
+        Age:
+        <input type="text" name="txtAge" size="3" maxlength="3" />
+    </p>
+    <p>
+        <input type="button" value="Check details" name="btnCheckForm">
+    </p>
+</form>
+
+<form action="" name="form3">
+  <p>
+    Tick all of the components you want included on your computer
+  </p>
+  <p>
+    <label for="chkDVD">DVD-ROM</label>
+    <input type="checkbox" id="chkDVD" name="chkDVD" value="DVD-ROM" />
+  </p>
+  <p>
+    <label for="chkBluRay">Blu-ray</label>
+    <input type="checkbox" id="chkBluRay" name="chkBluRay" value="Blu-ray" />
+  </p>
+  
+  <p>
+    Select the processor speed you require
+  </p>
+  <p>
+    <input type="radio" name="radCpuSpeed" checked="checked" value="3.2 ghz" />
+    <label>3.2 GHz</label>
+    
+    <input type="radio" name="radCpuSpeed" value="3.7 ghz" />
+    <label>3.7 GHz</label>
+    
+    <input type="radio" name="radCpuSpeed" value="4.0 ghz" />
+    <label>4.0 GHz</label>
+  </p>
+  
+  <p>
+    <input type="button" value="Check form" name="btnCheck" />
+    </p>
+</form>
+
+<form action="" name="form2">
+  <textarea rows="15" cols="40" name="textarea1" placeholder="Type some text here !"></textarea>
+  
+  <textarea rows="15" cols="40" name="textarea2" placeholder="Event Log" style="color:dimgray;font-family:monospace"></textarea>
+  <br />
+  <input type="button" value="Clear event log" name="button1" />
+</form>
+
+<br/>
+<form action="" name="theForm">
+  <select name="theDay" size="5">
+    <option value="0" selected="selected">Monday</option>
+    <option value="1">Tuesday</option>
+    <option value="2">Wednesday</option>
+    <option value="3">Thursday</option>
+    <option value="4">Friday</option>
+    <option value="5">Saturday</option>
+    <option value="6">Sunday</option>
+  </select>
+  <br />
+  <input type="button" value="Remove Wednesday" name="btnRemoveWed" />
+  <input type="button" value="Add Wednesday" name="btnAddWed" />
+  <br />
+</form>
+
+<br/>
+<div>Local Time is <span id="spanLocalTime"></span></div>
+<div id="divCityTime"></div>
+<br/>
+    <form name="wcform">
+        <select size="5" name="lstCity">
+	  <option value="60" selected>Berlin</option>										<!-- ``Each of the options displays the city’s name in the list box and has its value set to the difference in minutes between that city’s time zone (in winter) and UTC``(J.M) -->
+	  <option value="330">Bombay</option>
+	  <option value="0">London</option>
+	  <option value="180">Moscow</option>
+	  <option value="-300">New York</option>
+	  <option value="60">Paris</option>
+	  <option value="-480">San Francisco</option>
+	  <option value="600">Sydney</option>
+        </select>
+        <p>
+            <input type="checkbox" id="chkDst" name="chkDst" />
+
+            <label for="chkDst">Adjust city time for Daylight Savings</label>
+        </p>
+    </form>
+
+    <script>
+        var myForm = document.form1;
+
+        function btnCheckFormClick(e) {
+            var txtName = myForm.txtName;
+            var txtAge = myForm.txtAge;
+
+	    if (txtAge.value == "" || txtName.value == "" || isFinite(txtName.value) || isNaN(txtAge.value) || Symbols.test(txtName.value)) {			// is a Finite Number
+                alert("Please complete all of the form !");
+
+                if (txtName.value == "") {
+                    txtName.focus();
+                } else {
+                    txtAge.focus();
+                }
+            } else {
+                alert("Thanks for completing the form " + txtName.value + " !");
+            }
+        }
+
+        function txtAgeBlur(e) {
+            var target = e.target;
+
+            if (isNaN(target.value)) {
+                alert("Please enter a valid age !");
+                target.focus();
+                target.select();
+            }
+        }
+	
+	var Symbols = /\W/;													// Regular Expression characters that represent Symbols.
+
+        function txtNameChange(e) {
+	if (e.target.value == "") {
+	return;
+	} else if (!isNaN(e.target.value) || Symbols.test(e.target.value)) {							// the opposite of "is Not a Number" OR a symbol.
+	alert("Please enter a valid name !");
+	e.target.focus();
+	e.target.select();
+	} else {
+            alert("Hi " + e.target.value + " !");
+	    }
+        } 
+
+        myForm.txtName.addEventListener("change", txtNameChange);
+        myForm.txtAge.addEventListener("blur", txtAgeBlur);
+        myForm.btnCheckForm.addEventListener("click", btnCheckFormClick);
+	
+	//_________________________________________________________________________________________________________________________________
+	
+	var myForm2 = document.form2;
+	var textArea1 = myForm2.textarea1;
+	var textArea2 = myForm2.textarea2;
+	var btnClear = myForm2.button1;
+	
+	function displayEvent(e) {
+	var message = textArea2.value;												// `` first retrieve the textarea element’s value and store it in the message variable.``(J.M)
+	message = message + e.type + "\n\n";											// ``then append the name of the event as well as a new line to the message.``(J.M)
+	textArea2.value = message;												// ``finally, you assign the new message to the text area’s value property``(J.M)
+	autoScroll(textArea2);
+	}
+	
+	function clearEventLog(e) {
+	textArea2.value = "";
+	}
+	
+	function autoScroll(textarea) {												// keep scrolling to display the current event.
+	if (typeof(textarea.scrollByLines) == "function") {
+	textarea.scrollByLines(textarea.value.length);
+	} else if (typeof(scrollByLines) == "function") {
+	textarea.scrollTo(0,textarea.scrollHeight);
+	} else {
+	return;															// TODO some Webkit browsers don't support scrollTo() method on an element.
+	 }
+	}
+	
+	textArea1.addEventListener("change", displayEvent);
+	textArea1.addEventListener("keydown", displayEvent);
+	textArea1.addEventListener("keypress", displayEvent);
+	textArea1.addEventListener("keyup", displayEvent);
+	textArea1.addEventListener("mouseup", displayEvent);
+	textArea1.addEventListener("mousedown", displayEvent);
+	//textArea1.addEventListener("mousemove", displayEvent);
+	textArea1.addEventListener("mouseout", displayEvent);
+	textArea1.addEventListener("mouseover", displayEvent);
+	textArea1.addEventListener("focus", displayEvent);
+	textArea1.addEventListener("blur", displayEvent);
+	btnClear.addEventListener("click", clearEventLog);
+	
+	//_________________________________________________________________________________________________________________________________
+	
+	var myForm3 = document.form3;
+	
+	function getSelectedSpeedValue() {
+	var radios = myForm3.radCpuSpeed;
+	
+	for (var index = 0; index < radios.length; index++) {									// ``Loop through the radios collection and check each Radio object’s checked property. If it’s true, return the value of that Radio object, but if the loop exits without finding a checked Radio object, you return an empty string.``(J.M)
+	  if (radios[index].checked) {
+	  return radios[index].value;
+	  }
+	  }
+	  
+	  return "";
+	  }
+	  
+	  function findIndexOfSpeed(radio) {
+	  var radios = myForm3.radCpuSpeed;
+	  
+	  for (var index = 0; index < radios.length; index++) {
+	    if (radios[index] == radio) {											// ``If you find a match, you return the value of the index variable. If the loop exits without finding a match, you return -1.``(J.M)
+	    return index;
+	    }
+	    }
+	    
+	    return -1;
+	    }
+	    
+	    function radCpuSpeedClick(e) {
+	    var radIndex = findIndexOfSpeed(e.target);
+	    
+	    if (radIndex == 1) {
+	    e.preventDefault();
+	    alert("Sorry that processor speed is currently unavailable !");
+	    
+	    // to fix an issue with IE (J.M)
+	    myForm3.radCpuSpeed[0].checked = true;										// ``canceling the clicking action results in the radio button not being checked. In such a situation, all browsers (except for IE) recheck the previously checked radio button. IE, however, removes all checks from the radio group. To rectify this, you reset the radio group``(J.M)
+	    }
+	    }
+	    
+	    function btnCheckClick() {
+	    var numberOfControls = myForm3.length;
+	    var compSpec = "Your chosen processor speed is ";
+	    var compAdd = "\nWith the following additional components:\n";							// TODO	replace this message with the next one when no component is selected.
+	    var noComp = "\nNo additional components !\n";
+	    compSpec = compSpec + getSelectedSpeedValue();
+	    compSpec = compSpec + compAdd;
+	    for (var index = 0; index < numberOfControls; index++) {
+	      var element = myForm3[index];
+	      if (element.type == "checkbox") {
+	      if (element.checked) {
+	      compSpec = compSpec + element.value + "\n";
+	      } 
+	       }
+	      }
+	      
+	      alert(compSpec);
+	      }
+	      
+	      for (var index = 0; index < myForm3.radCpuSpeed.length; index++) {
+		myForm3.radCpuSpeed[index].addEventListener("click", radCpuSpeedClick);
+		}
+		
+		myForm3.btnCheck.addEventListener("click", btnCheckClick);
+		
+	//_________________________________________________________________________________________________________________________________
+		
+		var theForm = document.theForm;
+		var options = theForm.theDay.options;
+		
+		function btnRemoveWedClick() {
+		if (options[2].text == "Wednesday") {										// by using the "text" property to check the text in the option element ``remove the Wednesday option only if it’s there in the first place!``(J.M)
+		options[2] = null;												// `` remove the Wednesday option by setting that particular option to null``(J.M)
+		} else {
+		alert("There is no Wednesday here !");
+		}
+		}
+		
+		function btnAddWedClick() {
+		if (options[2].text != "Wednesday") {										// ``If there is no Wednesday option, you then need to make space for the new Wednesday option to be inserted.``(J.M)
+		var lastOption = new Option();											// ``create a new option with the variable name lastOption ``(J.M) and the Option() object constructor.
+		options[options.length] = lastOption;										// ``assign it to the element at the end of the collection. which previously had no contents``(J.M)
+		for (var wedindex = options.length - 1; wedindex > 2; wedindex--) {							// ``assign the text and value properties of each of the Option objects from Thursday to Sunday to the Option at an index value higher by one in the options array, leaving a space in the options array at position 2 to put Wednesday in``(J.M)
+		var currentOption = options[wedindex];
+		var previousOption = options[wedindex - 1];
+		currentOption.text = previousOption.text;
+		currentOption.value = previousOption.value;
+		}
+		var addOption = new Option("Wednesday", 2);									// ``create a new Option object by passing the text "Wednesday" and the value 2 to the Option() constructor.``(J.M)
+		options[2] = addOption;												// ``The Option object is then inserted into the options collection at position 2``(J.M)
+		} else {
+		alert("Do you want to have TWO Wednesdays !?");
+		}
+		}
+		
+		theForm.btnRemoveWed.addEventListener("click", btnRemoveWedClick);
+		theForm.btnAddWed.addEventListener("click", btnAddWedClick);
+	//_________________________________________________________________________________________________________________________________
+		
+		var mywcForm = document.wcform;
+		
+		function updateTimeZone() {											// ``The function updateTimeZone() doesn’t really update anything, but it does gather information``(J.M)
+		var lstCity = mywcForm.lstCity;
+		var selectedOption = lstCity.options[lstCity.selectedIndex];
+		var offset = selectedOption.value;
+		var selectedCity = selectedOption.text;
+		var dstAdjust = 0;
+		if (mywcForm.chkDst.checked) {											// ``You initialize the dstAdjust variable with 0. If the check box is checked, you modify dstAdjust to contain the value of 60. The value of 60 is for 60 minutes.``(J.M)
+		dstAdjust = 60;
+		}
+		updateOutput(selectedCity, offset, dstAdjust);									// ``call the updateOutput() function, passing the values contained within the selectedCity, offset, and dstAdjust variables``(J.M)
+		}
+		
+		function updateOutput(selectedCity, offset, dstAdjust) {
+		var now = new Date();												// ``creating a new Date object, which is stored in the variable now.``(J.M)
+		document.getElementById("spanLocalTime").innerHTML = now.toLocaleString();					// with the toLocaleString() method format the Date Object to the user region's format.
+		now.setMinutes(now.getMinutes() + now.getTimezoneOffset() + parseInt(offset, 10) + dstAdjust);			// to set minutes in the parameter of the setMinutes() method on the "now" variable ``First, get the minutes of the current local time (..) Then you get the difference, in minutes, between the user’s local time and UTC using now.getTimezoneOffset(). Then you get the integer value of the time difference between the standard winter time in the selected city and UTC time, which is stored in offset. parseInt() here because it’s one of the few situations where JavaScript gets confused and assumes you want to join two strings together rather than treat the values as numbers and add them together. Remember that you got offset from an HTML element’s value, and that an HTML element’s values are strings, even when they hold characters that are digits. Finally, you add the value of dstAdjust.``(J.M) The result will be an integer and JavaScript will convert it to hours and minutes.
+		var resultsText = selectedCity + " time is " + now.toLocaleString();						// ``Finally, the updateOutput() function creates the resultsText variable and then writes the results to the divCityTime``(J.M)
+		document.getElementById("divCityTime").innerHTML = resultsText;
+		}
+		
+		mywcForm.lstCity.addEventListener("change", updateTimeZone);
+		mywcForm.chkDst.addEventListener("click", updateTimeZone);
+		
+		updateTimeZone();
+    </script>
+</body>
+</html>

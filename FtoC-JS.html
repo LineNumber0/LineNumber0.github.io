@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Fahrenheit to Celsius JavaScript program</title>
+    <meta charset="UTF-8"/>
+    <meta name="Description" content="From &quot;Beginning Javascript&quot; book"/>
+    <meta name="Author" content="Jeremy McPeak"/>
+    <meta name="Web-Developer" content="RebMunEnil_0"/>
+    <meta name="Date" content="Friday 09-February-2018 03:05 WET"/>
+    <style type="text/css">
+        label {font-weight:bold;font-size:2em;font-family:monospace;margin:15% 25%;display:block;white-space:nowrap}
+        button {font-size:inherit;font-family:inherit}
+      </style>
+  </head>
+  <body bgcolor="#000" text="#fff">
+  	<h1>Fahrenheit to Celsius</h1>
+  <script type="text/javascript">
+      function FtoC() {
+    // Equation is °C = 5/9 (°F - 32).
+      var degFahren = prompt("Enter the degrees in Fahrenheit");                         // DONE : add an alert() for NaN and Cancel input and OK output.
+      if (isNaN(degFahren) == true) {                                                    // alert for NaN input with the isNaN() function which check if the string entered has a "Not a Number" value or a valid number.
+      alert("Your entry is Not a Number !");
+      return FtoC();                                                                     // restart the main function FtoC().
+      } else if (degFahren == null) {                                                    // in Javascript the Cancel button generate "null" if clicked exit the main function FtoC() with the reserved word "return".
+      return;
+      } else if (degFahren == "") {                                                      // control flow of empty input.
+      alert("Your entry means 0 !");
+      }
+      var degCent;
+      degCent = 5/9 * (degFahren - 32);
+      alert("Centigrade is : "+degCent);
+            if (degCent == 0) {                                                          // one equal sign is for variables, two are for evaluating.
+            alert("That's the freezing point of water");
+        }
+            if (degCent < 0) {
+            alert("That's below the freezing point of water");
+        }
+
+        if (degCent == 100) {
+            alert("That's the boiling point of water");
+            }
+        if (degCent > 100) {
+            alert("That's above the boiling point of water");
+        }
+      }
+  </script>
+  <label>Run the converter <button onclick="FtoC()">OK !</button></label>
+  </body>
+</html>

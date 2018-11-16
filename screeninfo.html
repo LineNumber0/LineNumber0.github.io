@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The colorDepth property of the screen Object property in the window BOM Javascript Object</title>
+    <meta name="Description" content="From &quot;Beginning Javascript&quot; book"/>
+    <meta name="Author" content="Jeremy McPeak"/>
+    <meta name="Web-Developer" content="RebMunEnil_0"/>
+    <meta name="Date" content="Friday 11-May-2018 23:29 WEST"/>
+</head>
+    <body>
+        <script>
+            var colorDepth = window.screen.colorDepth;
+	    var PixelRatio = devicePixelRatio;
+
+            switch (colorDepth) {
+                case 1:
+                case 4:
+                    document.bgColor = "white";
+                    break;
+                case 8:
+                case 15:
+                case 16:
+                    document.bgColor = "blue";
+                    break;
+                case 24:
+                case 32:
+                    document.bgColor = "skyblue";
+                    break;
+                default:
+                    document.bgColor = "white";
+            }
+
+	    document.write("<center><h1>Your screen supports " + colorDepth + "bit color</h1></center>");
+	    document.write("<center><h2>The pixel ratio is : " + PixelRatio + " </h2></center>");
+        </script>
+    </body>
+</html>

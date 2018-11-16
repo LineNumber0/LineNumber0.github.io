@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Full Drag and Drop with HTML5 Javascript API</title>
+    <meta charset="utf-8"/>
+    <meta name="Description" content="From &quot;Beginning Javascript&quot; book"/>
+    <meta name="Author" content="Jeremy McPeak"/>
+    <meta name="Web-Developer" content="RebMunEnil_0"/>
+    <meta name="Date" content="Wednesday 30-May-2018 00:36 WET"/>
+    <style>
+        [data-drop-target] {
+            height: 220px;
+            width: 220px;
+            background-color: gainsboro;
+            float: left;
+	    margin:10px;
+	    outline:3px ridge black;
+        }
+
+        .drag-enter {
+            outline: 2px dashed #000;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+	    margin:10px;
+	    outline:1px solid dimgray;
+	    box-shadow:3px 3px 3px black;
+	    cursor:move;
+        }
+
+        .navy {
+            background-color: navy;
+	    background-image:repeating-linear-gradient(-45deg, darkblue, mediumblue 10px);
+        }
+
+        .red {
+            background-color: red;
+	    background-image:repeating-linear-gradient(45deg, brown, rosybrown 10px);
+        }
+	
+	[data-drop-target] div {								/* forget about Javascript and use CSS to stack the boxes on each other =>GTR */
+	position:absolute;
+	}
+    </style>
+</head>
+<body>
+    <div data-drop-target="true">
+        <div id="box1" draggable="true" class="box navy"></div>
+      </div>
+      <div data-drop-target="true">
+        <div id="box2" draggable="true" class="box red"></div>
+    </div>
+    <br clear="left"/>
+    <div data-drop-target="true"></div>
+    <div data-drop-target="true"></div>
+
+    <script>
+      
+function handleDragStart(e) {
+e.dataTransfer.setData("text", this.id);								// ``store the id of the draggable element.(..) the handler function executes within the context of the element object the event fired on. In this case, the dragstart event fired on one of the draggable elements; so, this refers to that element. In other words, this is the same as e.target. ``(J.M)
+}
+
+function handleDragEnterLeave(e) {
+if (e.type == "dragenter") {										// ``Checks the type of event that occurred. If the event is dragenter, the CSS class of the drop target element is set to drag-enter ("this" is used instead of "e.target") If the event isn’t dragenter, the element’s CSS class is set to an empty string, thus removing the drag-enter class.``(J.M)
+        this.className = "drag-enter";
+    } else {
+        this.className = "";
+    }
+}
+
+function handleOverDrop(e) {
+    e.preventDefault();											// the handleOverDrop() ``function handles both the dragover and drop events and should therefore prevent the default action from occurring.``(J.M)
+
+    if (e.type != "drop") {
+    return;												// ``if the event isn’t a drop event, the function simply exits``(J.M)
+    }
+
+    var draggedId = e.dataTransfer.getData("text");							// ``retrieves the draggable element’s id from the DataTransfer object (..) and store it in the draggedEl variable``(J.M)
+    var draggedEl = document.getElementById(draggedId);
+
+    if (draggedEl.parentNode == this) {									// ``If dropped in its current location, (..) reset the target’s CSS class (..) and exit the function using the return statement.``(J.M)
+        this.className = "";
+        return;
+    }
+    
+    draggedEl.parentNode.removeChild(draggedEl);							// ``move the dragged element node from its old parent/drop target to its new parent/drop target. To remove the draggable element from its current parent, retrieve its parentNode and call the removeChild() method. The removeChild() method doesn’t delete the node; it simply removes it so that you can append it to another node in the DOM``(J.M)
+
+    this.appendChild(draggedEl);
+    this.className = "";										// ``With the dragged element moved from one drop target to another, the drag-and-drop operation is complete, (..) set the drop target element’s CSS class to an empty string. This visually resets the drop target, giving users a visual cue that the drag-and-drop operation is complete.``(J.M)
+}
+
+var draggable = document.querySelectorAll("[draggable]");						// ``two groups of elements those that are draggable and those that are drop targets. using the document.querySelectorAll() method, you retrieve both groups of elements with their respective [draggable] and [data-drop-target] CSS selectors and assign them to the draggable and targets variables.``(J.M)
+var targets = document.querySelectorAll("[data-drop-target]");
+
+for (var i = 0; i < draggable.length; i++) {
+    draggable[i].addEventListener("dragstart", handleDragStart);
+    
+}
+
+for (i = 0; i < targets.length; i++) {
+    targets[i].addEventListener("dragover", handleOverDrop);
+    targets[i].addEventListener("drop", handleOverDrop);
+    targets[i].addEventListener("dragenter", handleDragEnterLeave);
+    targets[i].addEventListener("dragleave", handleDragEnterLeave);
+    
+}
+
+    </script>
+</body>
+</html>

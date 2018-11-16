@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Using JSON in drag and drop API</title>
+    <meta charset="utf-8"/>
+    <meta name="Description" content="From &quot;Beginning Javascript&quot; book"/>
+    <meta name="Author" content="Jeremy McPeak"/>
+    <meta name="Web-Developer" content="RebMunEnil_0"/>
+    <meta name="Date" content="Monday 11-June-2018 03:56 WET"/>					<!-- bXkgbW90aGVyIGhhcyBkaWVkIHRoaXMgZGF5Cg== -->
+    <style>
+        [data-drop-target] {
+            height: 200px;
+            width: 200px;
+            margin: 10px;
+            background-color: gainsboro;
+            float: left;
+	    outline:3px ridge black;
+	    padding:15px;
+        }
+
+        .drag-enter {
+            outline: 2px dashed #000;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+	    border-radius:50%;
+	    border:1px solid dimgray;
+	    box-shadow:3px 3px 3px black;
+	    cursor:move;
+        }
+
+        .navy {
+            background-color: navy;
+	    background-image:radial-gradient(at 50px 50px,blue,darkblue)
+        }
+
+        .red {
+            background-color: red;
+	    background-image:radial-gradient(at 50px 50px,tomato,darkred);
+        }
+	[data-drop-target] div {
+	position:absolute;
+	}
+    </style>
+</head>
+<body>
+<div data-drop-target="true">
+  <div id="box1" draggable="true" class="box navy"></div>
+</div>
+<div data-drop-target="true">
+  <div id="box2" draggable="true" class="box red"></div>
+</div>
+<br clear="left"/>
+<div data-drop-target="true"></div>
+<div data-drop-target="true"></div>
+
+    <script>
+        function handleDragStart(e) {
+            var JsonData = {
+                elementId: this.id,
+                message: "You moved an element !"
+            };
+
+	    e.dataTransfer.setData("text", JSON.stringify(JsonData));					// ``to use this object as the drag and drop’s transfer data; so, you have to serialize it. call the JSON.stringify() method to do just that, and the resulting JSON text is set as the transfer’s data.``(J.M)
+        }
+
+        function handleDragEnterLeave(e) {
+            if (e.type == "dragenter") {
+                this.className = "drag-enter";
+            } else {
+                this.className = "";
+            }
+        }
+
+        function handleOverDrop(e) {
+            e.preventDefault();
+
+            if (e.type != "drop") {
+                return;
+            }
+
+	    var JsonStringfied = e.dataTransfer.getData("text");					// ``retrieve the transferred data with the getData() method and store it in the "JsonStringfied" variable. You then parse the JSON into a JavaScript object that you store in the "DataParsed" variable.``(J.M)
+            var DataParsed = JSON.parse(JsonStringfied);
+
+	    var draggedEl = document.getElementById(DataParsed.elementId);				// ``retrieve the dragged element object from the document. use DataParsed.elementId and pass it to document.getElementById()``(J.M)
+
+            if (draggedEl.parentNode == this) {
+                this.className = "";
+                return;
+            }
+
+            draggedEl.parentNode.removeChild(draggedEl);
+
+            this.appendChild(draggedEl);
+            this.className = "";
+
+            alert(DataParsed.message);
+        }
+
+        var draggable = document.querySelectorAll("[draggable]");
+        var targets = document.querySelectorAll("[data-drop-target]");
+
+        for (var i = 0; i < draggable.length; i++) {
+            draggable[i].addEventListener("dragstart", handleDragStart);
+        }
+
+        for (i = 0; i < targets.length; i++) {
+            targets[i].addEventListener("dragover", handleOverDrop);
+            targets[i].addEventListener("drop", handleOverDrop);
+            targets[i].addEventListener("dragenter", handleDragEnterLeave);
+            targets[i].addEventListener("dragleave", handleDragEnterLeave);
+        }
+    </script>
+</body>
+</html>

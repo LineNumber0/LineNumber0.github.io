@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Animating Content</title>
+    <meta charset="UTF-8"/>
+    <meta name="Description" content="From &quot;Beginning Javascript&quot; book"/>
+    <meta name="Author" content="Jeremy McPeak"/>
+    <meta name="Web-Developer" content="RebMunEnil_0"/>
+    <meta name="Date" content="Friday 18-May-2018 21:51 WET"/>
+    <style>
+        #divAdvert {
+            position: absolute;
+            font: 12px Arial;
+            top: 4px;
+            left: 0px;
+	    font-size: 2em;
+	    border: 1px solid dimgray;
+	    padding: 1em;
+	    border-radius: 50%;
+	    background-color: aliceblue;
+	    color: white;
+	    text-shadow: 1px 1px 1px black;
+	    font-weight: bold;
+	    white-space:nowrap;
+        }
+	#divBall {
+	width:100px;
+	height:100px;
+	background-color:skyblue;
+	background-image:radial-gradient(azure, skyblue);
+	position: absolute;
+	top: 10em;
+	left:0;
+	border-radius: 50%;
+	border: 1px solid lightgray;
+	}
+    </style>
+</head>
+<body>
+    <div id="divAdvert">
+        Here is an advertisement.
+    </div>
+    
+    <div id="divBall"></div>
+
+    <script>
+      var switchDirection = false;							// ``This variable keeps track of the direction in which the content is currently going. If switchDirection is false, the content is moving from left to right, which is the default. If switchDirection is true, the content is moving from right to left.``(J.M)
+      var TimerID = setInterval(redoAnimation, 5);					// assign a variable to the "setInterval" function to control it later
+      var sndTimerID = setInterval(doAnimation, 10);					// ``To run the animation, use setInterval() to continuously execute doAnimation() every 10 milliseconds``(J.M)
+      var viewPortWidth = document.documentElement.offsetWidth;				// obtain the viewport width from the "offsetWidth" property of the html element. =>GTR
+
+      var divAdvert = document.getElementById("divAdvert");
+      var divBall = document.getElementById("divBall");
+      
+        function doAnimation() {
+	    var currentLeft = divAdvert.offsetLeft;					// ``this variable checks the content’s current position``(J.M), with the "offsetLeft" property.
+	    var newLocation;								// ``create a variable called newLocation that will contain the new left position``(J.M)
+	    var divWidth = divAdvert.offsetWidth;					// obtain the div element width from the "offsetWidth" property. =>GTR
+
+            if (!switchDirection) {
+	    newLocation = currentLeft + 2;						// ``check the direction by checking the switchDirection variable. if it is false, the animation is moving from left to right; so assign newLocation to contain the content’s current position and add 2, thus moving the content two pixels to the right.``(J.M)
+
+	    if (currentLeft >= viewPortWidth - divWidth) {				// check if the content has reached the right position. ``If it has, you need to switch the direction of the animation, and you do this by changing switchDirection to true . So the next time doAnimation() runs, it will begin to move the content from right to left.``(J.M)
+                    switchDirection = true;
+                }
+            } else {
+	    newLocation = currentLeft - 2;						// ``instead of adding 2 to the current location, subtract 2, thus moving the content two pixels to the left``(J.M)
+
+	    if (currentLeft <= 0) {							// check if currentLeft is less than or equal to 0 . If it is, the ending point is reached of the right-to-left movement and need to switch directions again by assigning switchDirection to be false .(f J.M)
+                    switchDirection = false;
+                }
+            }
+
+	    divAdvert.style.left = newLocation + "px";					// ``sets the element’s left property to the value stored in the newLocation variable plus the string "px".``(J.M)
+        }
+
+	sndTimerID;
+	
+	
+	var direction = 2;								// this ``variable is responsible for the amount of pixels moved and the direction the element is moved``(J.M)
+	
+	function redoAnimation() {
+	var BallLeft = divBall.offsetLeft;
+	var BallWidth = divBall.offsetWidth;
+	
+	if (BallLeft > viewPortWidth - BallWidth || BallLeft < 0) {			// ``make direction negative. So if direction is positive, it becomes negative. If direction is negative, it becomes positive``(J.M)
+	    direction = -direction;
+	    }
+	    var NewLocation = BallLeft + direction;					// ``calculate the new left position and change the element’s style``(J.M)
+	    divBall.style.left = NewLocation + "px";
+	}
+	TimerID;
+	
+	if ('ontouchstart' in window) {							// if the "touchstart" event is available stop all timers.
+	divAdvert.addEventListener("touchstart",stopAdvert);
+	divBall.addEventListener("touchstart",stopBall);
+	function stopBall() {
+	clearInterval(TimerID);
+	 }
+	 function stopAdvert() {
+	 clearInterval(sndTimerID);
+	 }
+	}
+    </script>
+
+</body>
+</html>

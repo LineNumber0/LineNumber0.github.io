@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Manipulating string with the String Object Methods</title>
+    <meta charset="UTF-8"/>
+    <meta name="Description" content="From &quot;Beginning Javascript&quot; book"/>
+    <meta name="Author" content="Jeremy McPeak"/>
+    <meta name="Web-Developer" content="RebMunEnil_0"/>
+    <meta name="Date" content="Sunday 11-March-2018 22:00 WET"/>
+</head>
+<body style="margin:20px">
+    <script>
+        document.write("<h4>Counting Occurrences of Substrings, and extracting Substrings :</h4> <p>Welcome to Wrox books. The Wrox website is www.wrox.com. Visit the Wrox website. Thanks for visiting Wrox</p>");
+        var myString = "Welcome to Wrox books. " + "The Wrox website is www.wrox.com. " + "Visit the Wrox website. Thanks for visiting Wrox";
+
+        var foundAtPosition = 0;                                                // ``foundAtPosition will contain the position in the string of the current occurrence of the substring Wrox.``(J.M)
+        var wroxCount = 0;                                                      // ``wroxCount will contain the number of times Wrox is found in the string``(J.M)
+
+        while (foundAtPosition != -1) {                                         // the "indexOf()" method of the Object "String" returns -1 if the string is not found. While it's not the case execute the next block of code.
+            foundAtPosition = myString.indexOf("Wrox", foundAtPosition);        // search for the next occurrence of the substring "Wrox" in the variable myString with indexOf() method.
+
+            if (foundAtPosition != -1) {                                        // ``Each time "Wrox" is found (that is, each time foundAtPosition is not -1 ) you increase the variable wroxCount, which counts how many times you have found the substring, and you increase foundAtPosition so that you continue the search at the next position in the string``(J.M)
+                wroxCount++;
+                foundAtPosition++;                                              // ``If foundAtPosition++ were removed, you’d keep searching from the same starting point and never move to find the next occurrence of the word Wrox .``(J.M)
+            }
+        }
+
+        document.write("There are " + wroxCount + " occurrences of the word &ldquo;Wrox&rdquo;");
+        
+        var fileName = window.location.href;                                                        // TODO
+        fileName = fileName.substr(fileName.lastIndexOf("/") + 1);                                  // the same as using the "substring()" method. | ``find the position of the final forward slash (/), which will be the last character before the name of the file. You add one to this value, because you don’t want to include that character, and then pass this new value to the substr() method. There’s no second parameter here (the length), because you don’t know it. As a result, substr() will return all the characters right to the end of the string, which is what you want.``(J.M) | the indexOf() and lastIndexOf() Methods can be used with variables Array.
+        document.write("<p>The file name of this page is " + fileName +"</p>");
+        
+        document.write("<h4>lowercase or uppercase :</h4>");
+        var mystring = "I Don't Care About Case";
+        if (mystring.toLowerCase() == "i don't care about case") {                                  // transform string to uppercase or lowercase with toUpperCase() or toLowerCase() Methods.
+        document.write("<p>Who cares about case ?</p>");
+        }
+        var mystringtoUC = "<p>but i do care about case !</p>";
+        document.write(mystringtoUC.toUpperCase());
+        
+         document.write("<h4>One character from the String :</h4>");
+        var MyString = "Hello World!";
+        var theLastChar = MyString.charAt(MyString.length - 1);                                                         // the charAt() method to extract a single character from the String.
+        document.write("The last character in &ldquo;Hello World!&rdquo; is " + "&ldquo;" + theLastChar + "&rdquo;");
+        
+        document.write("<h4>Checking a Character’s Case : <button onclick=CheckChar()>run</button></h4>");
+        function CheckChar() {
+            function checkCharType(charToCheck) {
+            var returnValue = "O";                                                                  // ``you define a function checkCharType() . You start this function by declaring the variable returnValue and initializing it to the character "O" to indicate it’s some other character than a lowercase letter, uppercase letter, or numerical character. You use this variable as the value to be returned at the end of the function, indicating the type of character. It will take the values U for uppercase, L for lowercase, N for number, and O for other.``(J.M)
+            var charCode = charToCheck.charCodeAt(0);                                               // ``The next line in the function uses the charCodeAt() method to get the character code of the first character in the string stored in charToCheck, which is the function’s only parameter. The character code is stored in the variable charCode``(J.M)
+
+            if (charCode >= "A".charCodeAt(0) && charCode <= "Z".charCodeAt(0)) {                   // ``you have a series of if statements, which check within what range of values the character code falls. (..) it appears that you are trying to use a method of the String object on a string literal, which is the same as a primitive string in that it’s just characters and not an object. However, JavaScript realizes what you are doing and does the necessary conversion of literal character "A" into a temporary String object containing "A" . Then, and only then, does JavaScript perform the charCodeAt() method on the String object it has created in the background. When it has finished, the String object is disposed of.``(J.M)
+                returnValue = "U";                                                                  // ``You know that if it falls between the character codes for A and Z, it’s uppercase, and so you assign the variable returnValue the value U.``(J.M)
+            } else if (charCode >= "a".charCodeAt(0) && charCode <= "z".charCodeAt(0)) {
+                returnValue = "L";                                                                  // ``If the character code falls between the character codes for a and z, it’s lowercase, and so you assign the value L to the variable returnValue .``(J.M)
+            } else if (charCode >= "0".charCodeAt(0) && charCode <= "9".charCodeAt(0)) {            // ``In practice, it would be much easier to just write     if (char >= "A" && char <= "Z")``(J.M)
+                returnValue = "N";                                                                  // ``If the character code falls between the character codes for 0 and 9, it’s a number, and you assign the value N to the variable returnValue .``(J.M)
+            }
+        
+            return returnValue;                                                                     // ``If the value falls into none of these ranges, the variable retains its initialization value of O for other, and you don’t have to do anything.``(J.M)
+        }
+
+        var Mystring = prompt("Enter some text", "Hello World!");
+
+        switch (checkCharType(Mystring)) {                                                          // ``Next, the switch statement uses the checkCharType() function that you defined earlier in its comparison expression. Depending on what is returned by the function, one of the case statements will execute and let the user know what the character type was``(J.M)
+            case "U":
+                alert("The first character was upper case ");
+                break;
+            case "L":
+                alert("The first character was lower case ");
+                break;
+            case "N":
+                alert("The first character was a number ");
+                break;
+            default:
+                alert("The first character was not a letter or a number !");
+        }
+        }
+        
+        document.write("<h4><code>fromCharCode()</code> Method :</h4>");
+        var my_string = "";
+        var charCode;
+        for (charCode = 65; charCode <= 90; charCode++) {                           // ``You use the for loop to select each character from A to Z in turn and concatenate this to myString .``(J.M)
+        my_string = my_string + String.fromCharCode(charCode);                      // ``build up a string consisting of all the uppercase letters of the alphabet``(J.M) | to use the fromCharCode() Method the String Object is specified before the Method. TODO
+        }
+        document.write(my_string);                                                  // ``it is more efficient and less memory-hungry to simply write this instead: var myString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";``(J.M)
+        
+        document.write("<h4><code>trim()</code> Method : <button onclick=toTrim()>run</button></h4>");
+        function toTrim() {
+        var name = prompt("Please enter your name");
+        name = name.trim();                                                         // the trim() Method : ``trim the whitespace from the start and end of the string. (..) It returns a new string with all leading and trailing whitespace removed. ``(J.M) | useful to correct the users input.
+        alert("Hello, " + name);
+        }
+	
+	document.write("<h4>Some style Methods :</h4>");			// in the "inspect the element" all these strings are in their respective elements inserted with JavaScript.
+	var bigstring = "Display text as if in a &lt;big&gt; element.<br/>";
+	document.write(bigstring.big());
+	var bldstring = "Display text as if in a  &lt;bold&gt; element.<br/>";
+	document.write(bldstring.bold());
+	var fxstring = "Display text as if in a &lt;tt&gt; element.<br/>";
+	document.write(fxstring.fixed());
+	var clrstring = "Displays text as if in a &lt;font&gt; element with a color attribute.<br/>";
+	document.write(clrstring.fontcolor("green"));
+	var fszstring = "Display text as if in a &lt;font&gt; element with a size attribute.<br/>";
+	document.write(fszstring.fontsize(10));
+	var itlstring = "Display text as if in an &lt;i&gt; element.<br/>";
+	document.write(itlstring.italics());
+	var smlstring = "Display text as if in a &lt;small&gt; element.<br/>"
+	document.write(smlstring.small());
+	var strkstring = "Display text as if in a &lt;strike&gt; element.<br/>";
+	document.write(strkstring.strike());
+	var sbstring = "Display text as if in a &lt;sub&gt; element.<br/>";
+	document.write(sbstring.sub());
+	var supstring = "Display text as if in a &lt;sup&gt; element.<br/>";
+	document.write(supstring.sup());
+	var lnkstring = "Create a link in the document.";
+	document.write(lnkstring.link("./"));					// link(targetURL)
+	
+	document.write("<h4>Additional String Methods :</h4><h5><tt>split()</tt> and <tt>reverse()</tt> : <button onclick=SplitAndReverseMethods()>run</button></h5>");
+	function SplitAndReverseMethods() {
+	var values = prompt("Please enter a set of comma separated values.", "Apples,Oranges,Bananas,Tomato");
+	
+	function splitAndReverseText(csv) {
+	var parts = csv.split(",");						// ``split() method splits a single string into an array of substrings. Where the string is split is determined by the separation parameter that you pass to the method. This parameter is simply a character or text string.``(J.M)
+	parts.reverse();
+	
+	var reversedString = parts.join(",");
+	
+	alert(reversedString);
+	}
+	
+	splitAndReverseText(values);						// replace the parameter "csv" with the variable "values".
+	}
+	
+	document.write("<h5><tt>replace()</tt> and <tt>search</tt> Methods : <button onclick=searchAndreplace()>run</button></h5>");
+	document.write("<div id=box>&nbsp;</div>");
+	var styleValue = "border:1px solid black;height:100px;width:100px;background-color:gray";
+	var box = document.getElementById("box");
+	box.setAttribute("style",styleValue);								// setAttribute() method the first parameter is the HTML attribute and the second is the value of this attribute
+	function searchAndreplace() {
+	setColor = prompt("Type a color of your choice to replace the current color in the box");
+	var oldColor = styleValue.search("gray");							// search the string "gray"
+	if (oldColor != -1) {
+	styleValue += styleValue.replace("gray",setColor);						// replace the first parameter with second one
+	box.setAttribute("style",styleValue);
+	 }
+	changeColor();
+	}
+	
+	function changeColor() {
+	color = prompt("Type a color of your choice to replace the "+setColor+" in the box");
+	styleValue = "border:1px solid black;height:100px;width:100px;background-color:"+color;
+	box.setAttribute("style",styleValue);
+	}
+	
+	document.write("<h2>The <tt>RegExp</tt> Object : </h2>");
+	document.write("<h5>Simple example with <tt>replace()</tt> : <button onclick=simpleRE()>run</button></h5> ");
+	function simpleRE() {
+	var myStringRE = "Paul, Paula, Pauline, paul, Paul";
+	var myStringGI = "Paul, Paula, Pauline, paul, Paul";
+	var myStringWGI = "Paul, Paula, Pauline, paul, Paul";
+	var myStringbGI = "Paul, Paula, Pauline, paul, Paul, JeanPaul";
+	var myRegExp = /Paul/;						// declaring a regular expression in a variable. ``The / and / characters mark the start and end of the regular expression whose RegExp object is stored as a reference in the variable``(J.M)
+	var myRegExpGI = /Paul/gi;					// RE with "Global case-Insensitive"
+	var myRegExpWGI = /Paul\W/gi;					// includes a non-word character like space. ``you’re still not replacing Paul at the very end of the string. That’s because there is no character after the letter l in the last Paul.``(J.M)
+	var myRegExpbGI = /\bPaul\b/gi;					// instead of non-word character specify the word boundary in the start and the end of the string "Paul", to replace every instance of this string, as a whole word.
+	myStringRE = myStringRE.replace(myRegExp, "Ringo");		// only the first string "Paul" will be replaced. ``By default, the RegExp object looks only for the first matching pattern, in this case the first Paul, and then stops. This is a common and important behavior for RegExp objects. Regular expressions tend to start at one end of a string and look through the characters until the first complete match is found, then stop.``(J.M)
+	myStringGI = myStringGI.replace(myRegExpGI, "Ringo");
+	myStringWGI = myStringWGI.replace(myRegExpWGI, "Ringo");
+	myStringbGI = myStringbGI.replace(myRegExpbGI, "Ringo");
+        alert(myStringRE);
+	alert(myStringGI);
+	alert(myStringWGI);
+	alert(myStringbGI);
+	}
+	
+	document.write("<h5>Regular Expression characters class &ldquo;pattern internal operators&rdquo; : <button onclick=CharClass()>run</button></h5> ");
+	function CharClass() {
+	var input = prompt("Please enter a pass phrase.", "");
+	function isValid(text) {						// ``The function takes just one parameter: the text you want to validate.``(J.M)
+	var myRegExp = /[^a-z\d ]/i;						// ``You then declare a variable, myRegExp, and set it to a new regular expression, which implicitly creates a new RegExp object. What you want to find out is whether your passphrase string contains any characters that are not letters between A and Z or between a and z, numbers between 0 and 9, or spaces. You use square brackets with the ^ symbol: This means you want to match any character that is not one of the characters specified inside the square brackets. You add a-z, which specifies any character in the range a through z. You add \d to indicate any digit character, or any character between 0 and 9 (..) because you added the i to the end of the expression definition, you’ve made the pattern case-insensitive. So your regular expression actually matches any character not between A and Z or a and z.``(J.M)
+	return !(myRegExp.test(text));						// `` final line of the function, you use the RegExp object’s test() method to return a value. The test() method of the RegExp object checks the string passed as its parameter to see if the characters specified by the regular expression syntax match anything inside the string.  If they do, true is returned; if not, false is returned. Your regular expression matches the first invalid character found, so if you get a result of true, you have an invalid passphrase. However, it’s a bit illogical for an isvalid function to return true when it’s invalid, so you reverse the result returned by adding the NOT operator ( ! ).``(J.M)
+	}
+	if (isValid(input)) {							// if true is returned ...
+	alert("Your passphrase contains only valid characters");
+	} else {
+	alert("Your passphrase contains one or more invalid characters");
+	}
+	}
+	
+	document.write("<h5><tt>split()</tt> Method with RE as parameter : <button onclick=splitRE()>run</button></h5> ");
+	function splitRE() {
+	var myListString = "Apple, 0.99, banana, 0.50, peach, 0.25, orange, 0.75";
+	var theRegExp = /[^a-z]+/i;							// `` + special repetition character, which says “Match one or more of the preceding character or group specified”``(J.M)
+	var myFruitArray = myListString.split(theRegExp);				// `` “Split the string at the point where there is a group of characters that are not between a and z”. (..) After the split, the variable myFruitArray will contain an Array with each element containing the fruit name`` (J.M)
+	alert(myFruitArray.join("\n"));							// ``You then join the string together again using the Array object’s join() method``(J.M)
+	}
+	
+	document.write("<h5><tt>split()</tt> Method with RE : <button onclick=replaceRE()>run</button></h5> ");
+	function replaceRE() {
+	var text = "He then said 'My Name is O'Connerly, yes " + "that's right, O'Connerly'";
+	alert("Original (with single quotes) : " + text + "\n");
+	var myRegExp = /\B'|'\B/g;							// matches a single quote before it a non-word boundary OR a single quote after it a non-word boundary. : ``Looking at the text, you should also notice that quotes are always at the start or end of a word that is, at a boundary. On first glance it might be easy to assume that it would be a word boundary. However, don’t forget that the single quote is a non-word character, so the boundary will be between it and another non-word character, such as a space. So the boundary will be a non-word boundary or, in other words, \B . Therefore, the character pattern you are looking for is either a non-word boundary followed by a single quote or a single quote followed by a non-word boundary. The key is the “or,” for which you use “|” in regular expressions. (..) a word boundary is the position between the start or end of a word and a non-word character, such as a space or punctuation mark.``(J.M)
+	text = text.replace(myRegExp, '"');
+	alert("Corrected (with double quotes) : " + text);
+	}
+	
+	document.write("<h5>RE and <tt>match()</tt> Method : <button onclick=REmatch()>run</button></h5><div id=output></div> ");
+	function REmatch() {
+	var html = "<h2>Hello World !</h2>" + "<p>We love JavaScript !</p>";
+	var regex = /<[^>\r\n]+>|[^<>\r\n]+/g;						// ``the pattern is broken up by an alternation symbol: “|” This means that you want the pattern on the left or the right of this symbol. In [^>\r\n]+ , you specify that you want one or more of any character except the > or a \r (carriage return) or a \n (linefeed). +>  specifies that the pattern must end with a >. On the right [^<>\r\n]+ specifies that the pattern is one or more of any character, so long as that character is not a < , > , \r , or \n . This will match plaintext. ``(J.M)
+	var results = html.match(regex);						// ``you assign the results variable to the Array object returned by the match() method``(J.M)
+	var div = document.getElementById("output");
+	div.style.fontFamily = "monospace";
+	div.style.float = "right";
+	div.style.marginTop = "-100px";
+	div.innerText = results.join("\r\n");						// ``You then use the Array object’s join() method to join all the array’s elements into one string with each element separated by a \r\n character, so that each tag or piece of text goes on a separate line.``(J.M)
+	}
+	
+	
+	document.write("<h5>Input validation with RE : <button onclick=REvalid()>run</button></h5>");
+	function isValidTelephoneNumber(telephoneNumber) {
+	var telRegExp = /^(\+\d{1,3} ?)?(\(\d{1,5}\)|\d{1,5}) ?\d{3}?\d{0,7}( (x|xtn|ext|extn|pax|pbx|extension)?\.? ?\d{2-5})?$/i;			// ``an international dialing code: you’re matching a plus sign (\+) followed by one to three digits (\d{1,3}) and an optional space ( ? ). Remember that because the + character is a special character, you add a \ character in front of it to specify that you mean an actual + character. The characters are wrapped inside parentheses to specify a group of characters. You allow an optional space and match this entire group of characters zero or one time, as indicated by the ? character after the closing parenthesis of the group. Next is the pattern to match an area code: (\(\d{1,5}\)|\d{1,5}) This pattern is contained in parentheses, which designate it as a group of characters, and matches either one to five digits in parentheses ( (\d{1,5}) ) or just one to five digits ( \d{1,5} ). Again, because the parenthesis characters are special characters in regular expression syntax and you want to match actual parentheses, you need the \ character in front of them. Also note the use of the pipe symbol (|), which means “OR” or “match either of these two patterns.”. Next, the subscriber number: ?\d{3,4} ?\d{0,7} : The initial space and ? mean “match zero or one space.” This is followed by three or four digits ( \d{3,4} ) although U.S. numbers always have three digits, UK numbers often have four. Then there’s another “zero or one space,” and, finally, between zero and seven digits (\d{0,7}) . Finally, add the part to cope with an optional extension number: ( (x|xtn|ext|extn|extension)?\.? ?\d{2-5})? : This group is optional because its parentheses are followed by a question mark. The group itself checks for a space, optionally followed by x , ext , xtn , extn , or extension , followed by zero or one period (note the \ character, because . is a special character in regular expression syntax), followed by zero or one space, followed by between two and five digits. Putting these four patterns together, you can construct the entire regular expression, apart from the surrounding syntax. The regular expression starts with ^ and ends with $ . The ^ character specifies that the pattern must be matched at the beginning of the string, and the $ character specifies that the pattern must be matched at the end of the string. This means that the string must match the pattern completely; it cannot contain any other characters before or after the pattern that is matched.``(J.M)
+	return telRegExp.test( telephoneNumber );
+	}
+	
+	function isValidPostalCode(postalCode) {
+	var pcodeRegExp = /^(\d{5}(-\d{4})?|([a-z][a-z]?\d\d?|[a-z{2}\d[a-z])?\d[a-z][a-z])$/i;					// ``This is actually in two parts. The first part checks for ZIP codes, and the second part checks for UK postcodes. Start by looking at the ZIP code part. \d{5}(-\d{4})? This matches five digits, followed by an optional non-capturing group that matches a dash, followed by four digits. ([a-z][a-z]?\d\d?|[a-z]{2}\d[a-z]) ?\d[a-z][a-z] : UK postcode formats are one or two letters followed by either one or two digits, followed by an optional space, followed by a digit, and then two letters.``(J.M)
+	return pcodeRegExp.test( postalCode );
+	}
+	
+	function isValidEmail(emailAddress) {
+	var emailRegExp = /^(([^<>()\[\]\\.,;:@"\x00-\x20\x7F]|\\.)+|("""([^\x0A\x0D"\\]|\\\\)+"""))@(([a-z]|#\d+?)([a-z0-9-]|#\d+?)*([a-z0-9]|#\d+?)\.)+([a-z]{2,4})$/i;			// see page 230
+	  return emailRegExp.test( emailAddress );
+	  }
+	  
+	function REvalid() {
+	var phoneNumber = prompt("Please enter a phone number.", "");
+	if (isValidTelephoneNumber(phoneNumber)) {
+	alert("Valid Phone Number");
+	} else {
+	alert("Invalid Phone Number");
+	}
+	var postalCode = prompt("Please enter a postal code.", "");
+	if (isValidPostalCode(postalCode)) {
+	alert("Valid Postal Code");
+	} else {
+	alert("Invalid Postal Code");
+	}
+	var email = prompt("Please enter an email address.", "");
+	if (isValidEmail(email)) {
+	alert("Valid Email Address");
+	} else {
+	alert("Invalid Email Address");
+	}
+	}
+    </script>
+</body>
+</html>

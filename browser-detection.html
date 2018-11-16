@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Browser detection</title>
+    <meta name="Description" content="From &quot;Beginning Javascript&quot; book"/>
+    <meta name="Author" content="Jeremy McPeak"/>
+    <meta name="Web-Developer" content="RebMunEnil_0"/>
+    <meta name="Date" content="Saturday 12-May-2018 22:58 WEST"/>
+</head>
+<body>
+<center><h1 id="head"></h1></center>
+<p id="para" style="font-family:monospace;font-size:2em"></p>
+    <script>
+      var header = document.getElementById("head");
+      var pelem = document.getElementById("para");
+      
+        function getBrowserName() {
+	var lsBrowser = navigator.userAgent;					// ``get the name of the browser, as found in navigator . userAgent, and store it in the variable lsBrowser``(J.M)
+
+	if (lsBrowser.indexOf("MSIE") >= 0) {					// ``The string returned by this property (userAgent) tends to be quite long and does vary. However, by checking for the existence of certain keywords, such as MSIE or Firefox, you can usually determine the browser name``(J.M)
+	    return "MSIE";							// ``If the indexOf value of this substring is 0 or greater, you know you have found it, and so you set the return value to MSIE .``(J.M)
+            } else if (lsBrowser.indexOf("Firefox") >= 0) {
+                return "Firefox";
+            } else if (lsBrowser.indexOf("Chrome") >= 0) {
+                return "Chrome";
+            } else if (lsBrowser.indexOf("Safari") >= 0) {
+                return "Safari";
+            } else if (lsBrowser.indexOf("Opera") >= 0) {
+                return "Opera";
+            } else {
+                return "UNKNOWN";
+            }
+        }
+
+	function getBrowserVersion() {									// ``The browser version details often appear in the userAgent string right after the name of the browser. For these reasons, your first task in the function is to find out which browser you are dealing with. You declare and initialize the browser variable to the name of the browser, using the getBrowserName() function``(J.M)
+            var ua = navigator.userAgent;
+            var browser = getBrowserName();
+	    var findIndex = ua.indexOf(browser) + browser.length + 1;					// ``set findIndex to the character position of the browser name plus the length of the name, plus one. Doing this ensures you to get the character after the name and just before the version number. ``(J.M)
+	    var browserVersion = parseFloat(ua.substring(findIndex, findIndex + 3));			// ``browserVersion is set to the floating-point value of that number, which you obtain using the substring() method. This selects the characters starting at findIndex and ending with the one before findIndex, plus three. This ensures that you just select three characters for the version number``(J.M)
+
+	    return browserVersion;									// ``At the end of the function, return browserVersion to the calling code``(J.M)
+        }
+
+        var browserName = getBrowserName();								// calling the two functions into two variables "browserName" and "browserVersion", to evaluate their return values in the next if statements.
+        var browserVersion = getBrowserVersion();
+
+        if (browserName == "MSIE") {
+            if (browserVersion < 9) {
+	      header.innerHTML = "Your version of Internet Explorer is too old !";
+            } else {
+                header.innerHTML = "Your version of Internet Explorer is fully supported !";
+            }
+        } else if (browserName == "Firefox") {
+            header.innerHTML = "Firefox is fully supported !";
+        } else if (browserName == "Safari") {
+            header.innerHTML = "Safari is fully supported !";
+        } else if (browserName == "Chrome") {
+            header.innerHTML = "Chrome is fully supported !";
+        } else if (browserName == "Opera") {
+            header.innerHTML = "Opera is fully supported !";
+        } else {
+            header.innerHTML = "Sorry this browser version is not supported !";
+	    }												// `` You cannot rely on browser sniffing beyond targeting a single browser.``(J.M)
+	    
+	    var UserAgentString = navigator.userAgent;
+	   //var internalName = UserAgentString.substring(UserAgentString.lastIndexOf(" ") + 1);
+	   //var internalName2 = UserAgentString.substring(UserAgentString.lastIndexOf(")") + 1,UserAgentString.lastIndexOf(" "));
+	    pelem.innerHTML = "User Agent : " + UserAgentString + "<br/><br/>" + "Browser Model : " +  navigator.appName + "<br/><br/>" + "Platform : " + navigator.platform;
+	    //+ "<br/><br/>" + "Browser internal names : " + internalName + " and " + internalName2;
+    </script>
+</body>
+</html>

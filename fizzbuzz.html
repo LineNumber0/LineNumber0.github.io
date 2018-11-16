@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Some examples of "for" statement</title>
+    <meta name="Description" content="From &quot;Eloquent JavaScript&quot; book"/>
+    <meta name="Author" content="Marijn Haverbeke"/>
+    <meta name="Web-Developer" content="RebMunEnil_0"/>
+    <meta name="Date" content="Wed Feb 28 2018 00:58 GMT+0 (WET)"/>
+    <style type="text/css">
+      </style>
+  </head>
+  <body>
+  <script type="text/javascript">
+      for (var hash = "#"; hash.length < 8; hash += "#") {
+      document.write(hash.length+" "+hash+"<br/>");
+          }
+  </script>
+  <p>&nbsp;</p>
+  <script type="text/javascript">
+    var size = 8;
+    var board = "";
+    for (var y = 0; y < size; y++) {
+    for (var x = 0; x < size; x++) {
+        if ((x + y) % 2 == 0)
+        board += "&#x25A0;";
+        else
+        board += "&emsp;";
+    }
+        //board += "\n";
+        board += "<br/>";
+    }
+//console.log(board);
+document.write(board);
+  </script>
+    <p>&nbsp;</p>
+    <script type="text/javascript">                             // {LN_0}
+    for (var num=1;num<101;num++) {
+          document.write("<br/>"+num+" ");
+          if (num % 5 == 0 && num % 3 == 0) {                   // ``The % symbol is used to represent the remainder operation. X % Y is the remainder of dividing X by Y.``(M.H) | if the remainder of the variable divided by 3 and 5, equals 0.
+      document.write(" FizzBuzz");
+      }
+      else if ((num % 3 == 0) && (!(num % 5 == 0))) {
+      document.write("Fizz");
+      } else if (num % 5 == 0 && (!(num % 3 == 0))) {
+      document.write("Buzz");
+      } 
+          }
+    </script>
+      <p>&nbsp;</p>
+    <script type="text/javascript">                             // {LN_0} + (M.H)
+    for (var n = 1; n <= 100; n++) {
+    var output = "";
+    if (n % 3 == 0)
+        output += "'Fizz";
+    if (n % 5 == 0)
+        output += "Buzz'";
+    console.log(output || n);
+    document.write(output || "&emsp;"+n+"&emsp;");
+    }
+    </script>
+    <p>&nbsp;</p>
+    <script type="text/javascript">
+        function calcpwr() {
+        var base = prompt("Enter the base number !");                       // the "base" and "exponent" variables, outside the "power" function, here are called "Global variables", inside the "power" function are "Local variables"
+        var exponent = prompt("Enter the exponent number of the base !");
+        var power = function(base, exponent) {                              // the same as writing : function power(base, exponent)
+        var result = 1;
+        for (var count = 0; count < exponent; count++)
+        result *= base;                                                     // ??? TODO | ``An important property of functions is that the variables created inside of them, including their parameters, are local to the function. This means, for example, that the result variable in the power example will be newly created every time the function is called, and these separate incarnations do not interfere with each other. This “localness” of variables applies only to the parameters and to variables declared with the var keyword inside the function body. Variables declared outside of any function are called global, because they are visible throughout the program. It is possible to access such variables from inside a function, as long as you haven’t declared a local variable with the same name.``(M.H)
+        return result;                                                      // ``So when you read return function(...) {...} , think of it as returning a handle to a piece of computation, frozen for later use.``(M.H)
+        };                                                                  // semicolon to end the value (a function) of the variable "power".
+        console.log(power(base, exponent));                                 // ``The parameters to a function behave like regular variables, but their initial values are given by the caller of the function, not the code in the function itself.``(M.H)
+        document.write("<h1>"+ power(base, exponent) +"</h1>");
+        }
+    </script>
+    <button onclick="calcpwr()">calculate the power of a base</button>
+  </body>
+</html>
