@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HTML5 Media events</title>
+    <meta charset="utf-8"/>
+    <meta name="Description" content="From &quot;Beginning Javascript&quot; book"/>
+    <meta name="Author" content="Jeremy McPeak"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="Date" content="Saturday 23-June-2018 23:13 WEST"/>
+</head>
+    <style>
+        output:not(:empty) {
+            border:1px solid dimgray;
+            padding:3px;
+        }
+	#seekController {
+	width:600px;
+	}
+    </style>
+<body>
+    <div>
+        <button id="playbackController">Play</button>
+        <button id="muteController">Mute</button>
+	<label>Volume :
+	  <input type="range" id="volumeController" min="0" max="1" step="0.1" value="1"/>
+	  <output id="output"></output>
+	  </label>
+    </div>
+    <video id="bbbVideo">
+        <source src="vid/VfE.mp4" />
+        <source src="vid/VfE.webm" />
+    </video>
+    <div>
+      <input type="range" id="seekController" min="0" step="1" value="0" />
+      <output id="duroutput"></output>
+    </div>
+
+    <script>
+        function pauseHandler(e) {
+            playButton.innerHTML = "Resume";
+        }
+
+        function playingHandler(e) {
+            playButton.innerHTML = "Pause";
+        }
+
+        function volumechangeHandler(e) {
+	muteButton.innerHTML = video.muted ? "Unmute" : "Mute";						// ``use the ternary operator here to reduce the code to a single line.``(J.M) if the video has the "muted" property the string is "Unmute" otherwise "Mute".
+	volumeSlider.value = video.volume;
+	output.innerHTML = volumeSlider.value;
+        }
+
+        function playbackClick(e) {
+            video.paused ? video.play() : video.pause();
+        }
+
+        function muteClick(e) {
+            video.muted = !video.muted;
+        }
+
+        var video = document.getElementById("bbbVideo");
+        var playButton = document.getElementById("playbackController");
+        var muteButton = document.getElementById("muteController");
+
+        video.addEventListener("pause", pauseHandler);							// those Media events will synchronize the context menu of the Browser with the two buttons.
+        video.addEventListener("playing", playingHandler);
+        video.addEventListener("volumechange", volumechangeHandler);
+
+        playButton.addEventListener("click", playbackClick);
+
+        muteButton.addEventListener("click", muteClick);
+	
+	
+	var volumeSlider = document.getElementById("volumeController");
+	function volumeInput(e) {
+	video.volume = volumeSlider.value;
+	output.innerHTML = volumeSlider.value;
+	}
+	volumeSlider.addEventListener("input", volumeInput);
+	
+	var seekSlider = document.getElementById("seekController");
+	function durationchangeHandler(e) {
+	seekSlider.max = video.duration;
+	}
+	function timeupdateHandler(e) {
+	seekSlider.value = video.currentTime;
+	duroutput.innerHTML = parseInt(video.currentTime);						// convert the float number to integer before displaying it =>GTR
+	}
+	function seekInput(e) {
+	video.currentTime = seekSlider.value;
+	}
+	video.addEventListener("durationchange", durationchangeHandler);
+	video.addEventListener("timeupdate", timeupdateHandler);
+	seekSlider.addEventListener("input", seekInput);
+    </script>
+</body>
+</html>

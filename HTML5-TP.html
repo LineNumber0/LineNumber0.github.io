@@ -1,0 +1,904 @@
+﻿<!DOCTYPE html>         <!-- just "DOCTYPE HTML" for HTML5 file -->
+<html lang="en">  <!-- the language attribute in the "html" element for HTML5 -->
+  <head>
+    <title>HTML5 Practice Web Page</title>
+    <meta charset="UTF-8"/>   					<!-- the character set in "meta" element for HTML5 -->
+    <meta name="Web-Developer" content="LineNumber0"/>
+    <style type="text/css">            				/* in HTML5 the "type" attribute is optional */
+	img#htlg {
+         height:25%;
+         width:25%;
+         float:right;
+        }
+    /*  article, aside, figure, footer, header, nav, section {       adding this style for old browsers to recognize new HTML5 elements 
+        display: block;
+        margin: 0;
+        padding: 0;
+        }                   */
+        h1 {text-align:center}
+	figure#fig2 {
+	float:left;
+	/* margin:inherit; */
+	}
+	#fig2 figcaption {
+	text-align:center;
+	font-style:italic;
+	font-weight:bold;
+	}
+    footer+h3,#packt2+h4 {clear:left}
+    #Microdata code {font-weight:bold}
+    #packt1, #packt2 {
+    float:left; 
+    width:243px; 
+    height:163px; 
+    margin:10px; 
+    padding:10px; 
+    border:3px solid navy;
+    }
+    canvas {
+    border:1px dashed lightgray;            	/* show the canvas element boundaries */
+    margin:10px;
+    }
+    #ballcanvas {border:1px solid dimgray;margin:1%}
+    /*
+    ---(from "Pro CSS3 Animation" by Dudley Storey)--- 
+    */
+    #pattfrm { 
+    font-size: 1.2rem; 
+    font-family: "Gill Sans", Arial, sans-serif; 
+    } 
+    #pattfrm label,#pattfrm input[type="submit"] {
+    display: block; 
+    } 
+    #pattfrm label:first-letter { 
+    border-bottom: 2px solid #bbb;  			/* ``underlines the first letter of each form label to show the appropriate accesskey for the associated field``(D.S) */
+    } 
+    #pattfrm input { 
+    border: 1px solid #bbb;
+    padding: .4rem; 
+    border-radius: .2rem; 
+    margin: .5rem 0; 
+    } 
+    #pattfrm input:valid,#pattfrm input:invalid {box-shadow: none; } 		/* ``the first CSS declaration, turns off the current default Firefox User Agent styles for valid and invalid inputs``(D.S) */
+    #pattfrm input:valid  { border: 2px solid lightgreen; } 
+    #pattfrm input:invalid:focus { border: 2px solid orangered; } 
+    #pattfrm input[type="submit"] { 
+    border: none; 
+    text-transform: uppercase; 
+    box-shadow:1px 1px 1px 1px lightgray;
+    } 
+    #pattfrm input + span:after { 
+    content: attr(title); 
+    font-size:1rem;
+    font-weight:bold;
+    color: red; 
+    margin-left: 0.6rem; 
+    opacity: 0; 
+    transition-property: opacity;
+    transition-duration: 1s; 
+    transition-delay: 1s;						/* ``Note that I’ve added a delay to the transition: without this, the error message would show immediately on entering the first character in a field. You want a reasonable amount of time to pass before you start telling the user that their information is wrong.``(D.S) */
+    } 
+    #pattfrm input:focus + span:after { opacity: 1; }			/* ``There’s an immediate problem: the browser continues to show the inputs as wrong by making the span title attribute visible the moment the page loads. The reason? : An input with a required attribute is evaluated by its pattern or input type before the user focuses or enters any information into the field.``(D.S) */
+    /* {LN_0} */
+    #pattfrm input:valid + span:after {
+    content:"√";
+    font-weight:bold;
+    font-size:1.5rem;
+    color:lightgreen;
+    transition-duration: 3s;
+    }									/* my solution is to restore the "required" attribute and assigning the "focus" pseudo-class to the invalid inputs : on page load the form will be displayed with "normal style", and the "invalid style" when only the input gains focus. */
+    /*
+    -------------------------------------------------- 
+    */
+    progress,meter {margin:10px}
+    #prog4 {
+    height: 10px;
+    border-radius: 5px;
+    }
+    #prog3,#prog4 {						/* before styling the "progress" element remove the default style with "appearance" property */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    }
+    /* Chrome and Safari */
+    #prog4::-webkit-progress-bar {				/* ``Different browsers style the progress bar in different ways. And even if you like the thin, rounded, blue bars that most browsers use, it might clash with your design. So, it is possible to adjust how the progress bar looks using "progress-bar" pseudo-class.``(L.L,R.C,J.K) */
+    height: 10px;
+    background-color: lightblue;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+    border-radius: 5px;
+    }
+    #prog4::-webkit-progress-bar::after {content:"WEBKIT"}
+    /* Mozilla Firefox */
+    #prog4::-moz-progress-bar {
+    height: 10px;
+    background-color: lightgreen;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+    border-radius: 5px;
+    }
+    #prog4::-moz-progress-bar::after {content:"MOZ"}
+    /* standard syntax */
+    #prog4::progress-bar {
+    background-color: lightpink;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+    }
+    #prog4::progress-bar::after {content:"STANDARD"}
+    /*_____________________________________________________ 
+    */
+    #geoinfo:empty {
+    background-color: transparent;
+    transform: scaleY(0.1);
+    transition: 0.5s;
+    }
+    #geoinfo {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    padding: 1em;
+    display: inline-block;
+    transform: scaleY(1);
+    transition: 0.5s;
+    }
+    h4 { border-top:1px dashed darkgray } h3 {border-top:1px solid gray} h3,h4 {padding-top:10px}
+    .drop-zone {
+    width: 510px;
+    height:250px;
+    padding: 20px;
+    margin:15px;
+    border: 2px dashed #000;
+    white-space: nowrap;
+    }
+    #dropStatus:not(:empty) {
+    padding:10px;
+    border:1px solid lightgray;
+    border-radius:5px;
+    background-color:lightyellow;
+    position:fixed;
+    top:1%;
+    right:1%;
+    opacity:1;
+    transition:opacity 1s;
+    }
+    #dropStatus:empty {
+    opacity:0;
+    transition:opacity 1s;
+    }
+    .testbox {
+    width: 240px;
+    height: 160px;
+    border:3px solid dimgray;
+    background-color:darkred;
+    background-image:repeating-linear-gradient(45deg, darkred, brown 10px);
+    float:right;
+    margin-top: -250px;
+    color:white;
+    }
+    output {
+    border: 1px solid gray;
+    padding: 5px;
+    width:30px;
+    height:20px;
+    display:inline-block;
+    margin-left:10px;
+    }
+    .aboveMax::-moz-meter-bar {							/* changing the meter bar color with the Mozilla pseudo-element -moz-meter-bar  */
+    background-image:linear-gradient(#f77, #f77, #fcc 20%, #d44 45%, #d44 55%);
+    }
+  </style>
+  <!-- <script src="from-WebDev-books/JS/modernizr-custom.js"></script> -->
+  </head>
+  <body onload="drawRectangle();drawArc();drawShape();drawGrad();drawGradColors();demoTranslation();demoRotation();demoScale();draw();draw2();demoAnimation();demoAnimation2();canvasimg()">			<!-- JavaScript functions for the "canvas" element as a value for "onload" attribute in the "body" element, to initiate the function when the page loads -->
+  <header>                     <!-- `` Hence, the header element is very important as it provides more accessibility than other elements, like the footer. The search engine finds the content in the header tag quite easily. Moreover, using the header element accounts for an appropriate way of web designing. The header can be used to denote the heading of a blog, a web page, or an article. `` (from "HTML5 and CSS3 Transition, Transformation, and Animation" by Aravind Shenoy and Gianluca Guarini) -->
+      <h1>HTML5 Practice page</h1>
+      </header>
+  <img src="img/html5.png" id="htlg" />
+   <h2>New HTML5 elements </h2>
+  <header>The "<code>header</code>" element</header>
+  <hgroup>The "<code>hgroup</code>" element</hgroup>
+  <footer>The "<code>footer</code>" element</footer>
+  <nav>The "<code>nav</code>" element</nav>
+  <section>The "<code>section</code>" element</section>
+  <aside>The "<code>aside</code>" element</aside>
+  <article>The "<code>article</code>" element</article>
+  <figure>The "<code>figure</code>" element</figure>
+  <h3>Grouping headers with <code>&lt;hgroup&gt;</code> :</h3>
+  <blockquote><q>The <code>&lt;hgroup&gt;</code> element acts as a wrapper for two or more related heading elements. What does “related” mean? It means that, taken together, they only create a single node in the document outline.</q></blockquote>
+  <footer>(From "<u><i>Dive into HTML5</i></u>" by Mark Pilgrim)</footer>
+  <h3>The <code>&lt;footer&gt;</code> element :</h3>
+  <p>&ldquo; The <code>footer</code> element is used to denote things like the author's name, contact information, and copyright patent to mention a few. A <code>footer</code> allows the programmer to give a general idea about the website. However, footers can be used more than once in a document. An article can have its own independent <code>footer</code> in addition to another <code>footer</code> element in the source code for a specific web page. It completes the information in the document and makes it more meaningful. &rdquo;</p>
+  <footer>from "<u><i>HTML5 and CSS3 Transition, Transformation, and Animation</i></u>" by Aravind Shenoy and Gianluca Guarini</footer>     <!-- the "footer" element after a paragraph -->
+  <h3>The Navigation element <code>&lt;nav&gt;</code> :</h3>
+  <p>&ldquo; The nav element is used when there is a group of navigation links contained in a specific section of the page. It is also used extensively where there are links to other pages or a part of the same page. &rdquo;</p>
+  <nav>
+      <ul>
+          <li><a href="file:///" target="_blank">link 1</a></li>
+          <li><a href="file:///home/" target="_blank">link 2</a></li>
+          <li><a href="file:///media/" target="_blank">link 3</a></li>
+        </ul>
+    </nav>
+      <footer>from "<u><i>HTML5 and CSS3 Transition, Transformation, and Animation</i></u>" by Aravind Shenoy and Gianluca Guarini</footer>
+      <h3><code>&lt;article&gt;</code> and <code>&lt;section&gt;</code> :</h3>
+      <article>
+          <h4>Article</h4>
+          <section>
+                        <h5>Grouping sections inside an article</h5>
+          <p>&ldquo; We often come across standalone content on a web page. There are blog entries, forum posts, and user comments to mention a few. The article element is used for this kind of data where the content is independent of its surroundings. It is a good practice to include header, footer, and headings within the article tags. We can also use the section element between the article tags. &rdquo;</p>
+              </section>
+              <section>
+                  <h5>Second section</h5>
+		  <p>&ldquo; The article element may be standalone content and the section tag is used between the article tags as it is a generic content. Hence, the article element is used for independent content like RSS feeds and news articles whereas the section element is used to denote data of a generic nature. &rdquo;</p>
+                  </section>
+                  <section>
+                      <h5>Aside</h5>
+		      <p>&ldquo; Content in an aside element is slightly related to the content outside it. It can be used within an article element in cases where the content is relevant to the content in the article element. Though the content in the aside element is standalone by nature, it can provide additional information about the content around it. &rdquo;</p>
+                      <aside><em>All three paragraphs are from the same book</em></aside>
+		      <br/>
+		      <footer>"<u><i>HTML5 and CSS3 Transition, Transformation, and Animation</i></u>" by Aravind Shenoy and Gianluca Guarini</footer>
+		      <p>&ldquo; ...you can use the new HTML5 elements, such as <code>&lt;aside&gt;</code> for the sidebar, and <code>&lt;section&gt;</code> or <code>&lt;article&gt;</code> for the main content. You give the main content a wide margin to make room for the sidebar, and then float the sidebar into the space created by the margin. (...) This technique relies on the sidebar coming before the main content in the HTML markup &rdquo;</p>
+			    <footer>From "<u><i>Beginning CSS3</i></u>" by David Powers </footer>
+                      </section>
+          </article>
+	  <h3>The <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> elements :</h3>
+	  <figure id="fig2"><img src="img/e-learning.jpg" /><figcaption>Electronic Learning</figcaption></figure><p>&ldquo; HTML5 introduces two new tags, <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code>, specifically designed to handle images with captions. You wrap the image inside a <code>&lt;figure&gt;</code> element together with its caption in a <code>&lt;figcaption&gt;</code> element. Instead of floating the image, you float the <code>&lt;figure&gt;</code> element. &rdquo;</p>			<!-- "figure" and "figcaption" are block-level elements -->
+	  <footer>"<i><u>Beginning CSS3</u></i>" by David Powers</footer>
+      <h3>HTML5 Microdata :</h3>
+      <section id="Microdata" itemid="Microdata" itemscope itemtype="./HTML5-TP.html#Microdata">       <!-- the address of the website in the "itemtype" attribute value | `` The first thing you always do is declare which microdata vocabulary you’re using, by adding an itemtype attribute. The second thing you always do is declare the scope of the vocabulary, using an itemscope attribute. (...) You can add microdata properties and values to any HTML markup ``(from "Dive into HTML5" by Mark Pilgrim) -->
+          <p>These attributes are used as name-value pairs to define custom properties in HTML5 Microdata :</p>
+          <ul itemref="./HTML5-TP.html#Microdata">              <!-- TODO an example value for "itemid" and "itemref" attributes -->
+              <li><code itemprop="attribute-name">itemscope</code>: <span itemprop="attribute-usage">This attribute is used to notify that Microdata is being used in the web page. We create an item by using itemscope.</span></li>
+              <li><code itemprop="attribute-name">itemtype</code>: <span itemprop="attribute-usage">This attribute is a URL to define the item.</span></li>
+              <li><code itemprop="attribute-name">itemid</code>: <span itemprop="attribute-usage">This attribute is used to identify an item.</span></li>
+              <li><code itemprop="attribute-name">itemprop</code>: <span itemprop="attribute-usage">This attribute is used to define a property of an item. Microdata consists of name-value pairs and the value of the properties is defined here.</span></li>
+              <li><code itemprop="attribute-name">itemref</code>: <span itemprop="attribute-usage">This attribute is used to define the context of a web page.</span></li>
+              </ul>
+              <p itemref="./HTML5-TP.html#Microdata">&ldquo; <acronym title="Search Engine Optimisation">SEO</acronym> plays an essential role when searching for terms on the internet. Search engines like Google have bots and crawlers, which access specific information on the web page and it is because of this particular reason that some websites are displayed on the first page. (...) Hence, Microdata is imperative as the SEO can easily indentify the contents of the web page and read it much more easily &rdquo;</p>
+              <footer>from "<u><i>HTML5 and CSS3 Transition, Transformation, and Animation</i></u>" by Aravind Shenoy and Gianluca Guarini (page 21 PACKT Publishing)</footer>
+          </section>
+    <h3>HTML5 Web forms :</h3>
+    <h4>The " <code>placeholder</code> " attribute :</h4>
+    <p><q>A placeholder attribute tells the user what data needs to be entered in the form of text in a lighter shade. After the user enters characters in the text field, the text in the lighter shade disappears.</q></p><br/>
+    <label for="animal">Animal Name :</label>
+    <input id="animal" placeholder="Enter the animal name here" size="30">
+    <input type="submit" value="Go">
+    <h4>The " <code>autofocus</code> " attribute :</h4>
+    <p><q>With this attribute, the browser sets the focus on the field where autofocus is defined when the page is being loaded.</q><br/><q>the user doesn't have to click on a field when the page loads up as it is set to autofocus .</q></p>
+    <label for="name">Login Name :</label>
+    <input id="name" type="text">
+    <input type="submit" value="Go">
+    <br>
+    or
+    <br>
+    <label for="loginid">Login Id :</label>
+    <input id="loginid" type="text" autofocus="true">
+    <input type="submit" value="Go">
+        <h4>The " <code>required</code> " attribute :</h4>
+        <p><q>The required attribute makes it mandatory for the user to enter a value in the field. If the user doesn't enter any data in the field with the required attribute, then it will prompt the user accordingly.</q></p>
+<form>
+<label for="loginid"><em>Login name</em> : </label>
+<input name="loginid" type="text" required="yes">
+<input type="submit" value="Submit">
+</form>
+    <h4>The <code>&lt;datalist&gt;</code> element :</h4>
+    <p><q>The datalist is used to create a list of pre-defined items as a drop-down menu. On using this tag, the pre-defined menu items get displayed when we click on the textbox.<br/>the drop-down menu displays all the genres of music when we click in the textbox. However, we are not just limited to the menu items declared in the code. We can enter any data that is not a part of the list declared in the code.</q></p>
+    <label for="packt"> Music : </label>
+    <input id="packt" name="packt" type="text" list="music">							<!-- ``This list attribute and the associated datalist element allow a number of selections to be presented to a user once they start entering a value in the field. The value given in the list attribute refers to the ID of the datalist. Doing this associates the datalist with the input field. Although wrapping the options with a "select" element isn't strictly necessary, it helps when applying polyfills for browsers that haven't implemented the feature.``(From "Responsive Web Design with HTML5 and CSS3" by Ben Frain) -->
+<input type="submit" value ="Go">
+<datalist id="music">
+<option value="Pop">
+<option value="Rock">
+<option value="Jazz">
+<option value="Blues">
+<option value="Classical">
+</datalist>
+<h4>The "<code>search</code>" value of <code>type</code> attribute :</h4>
+<label for="searchid"><em>Search</em> :</label>
+<input id="searchid" type="search" placeholder="Enter search item here" />
+<input type="submit" value="Go" />
+<h4>The "<code>email</code>" and "<code>url</code>" values of <code>type</code> attribute :</h4>
+<form>
+<p>Enter your email address in the textbox below and click <strong>Go</strong></p>
+<input type="email" placeholder="abc@email.com" />
+<input type="tel" placeholder="telephone" />
+<input type="submit" value="Go" />
+<br/>
+<hr align="left" size="3" noshade width="25%" />
+<p>Enter the Web address (URL) of the Website in the textbox below and click <strong>Go</strong></p>
+<input id="website" type="url" />
+<input type="text" autocomplete="true" spellcheck="true" placeholder="spellcheck and autocomplete attributes" size="35" />				<!-- OR autocomplete="on" -->
+<input type="submit" value="Go" />
+</form>
+<h4>The "<code>range</code>" value of <code>type</code> attribute and the &lt;output&gt; element :</h4>
+  <label> A range between 0 and 5 :<br/>
+    Zero <input type="range" min="0" max="5" step="0.1" value="2" id="range" /> Five</label>
+  <output id="rangeOutput" for="range" >2</output>							<!-- ``At the heart of the "output" element is its value property. Like a typical form control, the value property lets you get and set the value of the control, and setting the value visually updates the control to display whatever value you assigned to the property. But unlike typical form controls, the "output" element does not have a value attribute. The value of the element is instead represented by a text node between the opening and closing "ouput" tags``(J.M) | the "for" attribute is used in the output element to associate it to the input element | without "2" in the output element, the "2" in the "value" attribute will be ignored because of JavaScript -->
+    <p><q>The <code>range</code> type is a little more confusing. It allows you to request a number when you don’t care what the actual value is. This is perfect for customer surveys in which you want to know how people feel on a sliding scale. Rather than forcing them to choose a specific number</q> ( from "<u><i>Sams Teach Yourself HTML, CSS &amp; JavaScript Web Publishing in One Hour a Day, Seventh Edition</i></u>" by Laura Lemay, Rafe Coburn &amp; Jennifer Kyrnin )</p>
+<form name="formrangejs">										<!-- from "Beginning javascript" by Jeremy McPeak -->
+  <p>
+    <label for="minValue">Min: </label>
+    <input type="number" id="minValue" name="minValue" />
+  </p>
+  <p>
+    <label for="maxValue">Max: </label>
+    <input type="number" id="maxValue" name="maxValue" />
+  </p>
+  <p>
+    <label for="stepValue">Step: </label>
+    <input type="number" id="stepValue" name="stepValue" />
+  </p>
+  <p>
+    <input type="range" id="slider" name="slider" />
+    <span id="output"></span>
+  </p>
+</form>
+<script type="text/javascript">
+  var myForm = document.formrangejs;
+  var output = document.getElementById("output");
+  
+  function formInputChange() {
+  var slider = myForm.slider;
+  slider.min = parseFloat(myForm.minValue.value);							// ``input element’s value is string data even if that string contains a number. Therefore, you need to convert the string into a numeric value. The parseFloat() function should be used here because floating-point numbers are valid values for a range’s min, max, and step properties.``(J.M)
+  slider.max = parseFloat(myForm.maxValue.value);
+  slider.step = parseFloat(myForm.stepValue.value);							// the min, max, and step properties correspond to min, max, and step attributes.
+  output.innerHTML = slider.value;
+  }
+  
+  myForm.addEventListener("input", formInputChange);							// using the "input" event to call formInputChange() function.
+  
+  function outputElementValue() {
+  rangeOutput.value = range.value;									// without using a variable with document.getElementById(), the value property is changed using only the id attribute in the element.
+  }
+  range.addEventListener("input",outputElementValue);
+</script>
+<input id="howYouRateIt" name="howYouRateIt" type="range" min="1" max="10" value="5" onchange="showValue(this.value)"><span id="rangeSpan">5</span>							<!-- another way to display the range value with the "change" event -->
+  <script>
+    function showValue(newValue) {
+    document.getElementById("rangeSpan").innerHTML=newValue;
+    }
+  </script>
+    <h4>The <code>&lt;progress&gt;</code> tag :</h4>
+    <progress id="prog1" value="25" max="100">25%</progress><br/>			<!-- the content in the "progress" and "meter" elements will be shown in browsers without support for these elements. -->
+    <progress id="prog2" value="50" max="100">50%</progress><br/>
+    <progress id="prog3" value="75" max="100">75%</progress><br/>
+    <progress id="prog4" value="90" max="100">90%</progress>
+    <p><q>The progress tag is used to view the completion progress of a task. It is usually displayed as a progress bar. It can define either indeterminate progress or a specific amount of progress including a number from zero to a maximum with a fraction of that amount that has been completed.</q> ( from "<u><i>Sams Teach Yourself HTML, CSS &amp; JavaScript Web Publishing in One Hour a Day, Seventh Edition</i></u>" by Laura Lemay, Rafe Coburn &amp; Jennifer Kyrnin )</p>
+    <h4>The <code>&lt;meter&gt;</code> tag :</h4>
+    <meter min="0" max="14.2" high="13.5" low="3" optimum="14" value="2.5">2.5</meter><br/>
+    <meter min="0" max="22" high="20" low="5" optimum="21" value="14">14</meter><br/>
+    <meter min="0" max="5" high="4.5" low="1" optimum="4.6" value="4.7">4.7</meter><br/><br/>
+    <q>Like progress, you can set the value of the measurement with the <code>value</code> attribute. You can also set the maximum value with the <code>max</code> attribute. But you can set several other values as well : </q>
+    <dl>
+	<dt><code>min</code></dt>
+	<dd><q>Defines the minimum or lower boundary of the range. Unlike the <code>progress</code> tag, this can be a number other than zero, including negative numbers.</q></dd>
+	<dt><code>low</code></dt>
+	<dd><q>Defines the part of the meter that is in the low range. This is not the minimum, but rather a point where the value is considered low.</q></dd>
+	<dt><code>high</code></dt>
+	<dd><q>Like the low value, this defines the part of the meter that is in the high range. This is not the maximum, but rather a point where the value is considered high.</q></dd>
+	<dt><code>optimum</code></dt>
+	<dd><q>This gives the position on the meter that is considered the best. If this is higher than the high point, this indicates that the higher the value the better. If it is lower than the low point, this indicates that the lower values are better. And if it’s in between this indicates that neither high nor low values are good.</q></dd>
+	</dl>
+	<footer> ( from "<u><i>Sams Teach Yourself HTML, CSS &amp; JavaScript Web Publishing in One Hour a Day, Seventh Edition</i></u>" by Laura Lemay, Rafe Coburn &amp; Jennifer Kyrnin )</footer>
+	<h5>Highway Speed Tracker</h5>
+	<form id="formbarm" name="formbarm">										<!-- from "Beginning javascript" by Jeremy McPeak -->
+	  <p>
+	    <label for="driverName">Driver Name: </label>
+	    <input type="text" id="driverName" name="driverName" />
+	  </p>
+	  <p>
+	    <label for="speed">Speed (Miles/Hour): </label>
+	    <input type="number" id="speed" name="speed" />
+	    <meter id="speedMeter" value="0" low="55" optimum="75" high="90" max="120"></meter>
+	  </p>
+	  <p>
+	    <label for="vehicle">Vehicle Type: </label>
+	    <input type="text" id="vehicle" name="vehicle" />
+	  </p>
+	</form>
+	<p>
+	  Form Completion Progress:
+	  <progress id="completionProgress" max="3" value="0"></progress>
+	</p>
+	<script type="text/javascript">
+	  var myFormbarm = document.formbarm;
+	  var completionProgress = document.getElementById("completionProgress");
+	  var speedMeter = document.getElementById("speedMeter");
+	  
+	  function countFieldData() {											// ``Examine the elements within the form and determine if they have a value.``(J.M)
+	  var count = 0;
+	  for (var index = 0; index < myFormbarm.length; index++) {
+	    var element = myFormbarm[index];
+	    if (element.value) {											// ``if the element has a value, increment the count variable.``(J.M)
+	    count++;
+	      }
+	     }
+	     return count;												// ``After the loop exits, return the value of the count variable``(J.M)
+	    }
+	    
+	    function formInputChange() {
+	    completionProgress.value = countFieldData();
+	    speedMeter.value = myFormbarm.speed.value;
+	    if (myFormbarm.speed.value > 120) {
+	    speedMeter.className = "aboveMax";
+	    } else {
+	    speedMeter.className = "";
+	     }
+	    }
+	    
+	    myFormbarm.addEventListener("input", formInputChange);
+	</script>
+	<h4>HTML5 datepicker :<br/><br/>
+The "<code>date</code>" value of the <code>type</code> attribute : </h4>
+<p><q> Prior to the date feature in HTML5, we had to use JavaScript to develop a datepicker. However, with the advent of HTML5, it is much easier to create one.</q></p>
+<p>Select an appropriate date from the datepicker below</p>
+<label for="pickdate" >Select Date</label>
+<input id="pickdate" type="date" value="2018-01-07" />
+<h4>The "<code>week</code>" value in the <code>type</code> attribute for the datepicker form : </h4>
+<label for="pickweek" >Select Week</label>
+<input id="pickweek" type="week" />
+<h4>The "<code>month</code>" value in the <code>type</code> attribute for the datepicker form : </h4>
+<label for="pickmonth" >Select Month</label>
+<input id="pickmonth" type="month" />
+<h4>The "<code>datetime</code>", or "<code>time</code>" values in the <code>type</code> attribute for selecting date and time : </h4>
+<label for="pickdatetime" >Select Date and Time</label>
+<input id="pickdatetime" type="datetime" />
+<input id="pickdatetime" type="datetime-local" />								<!-- the value "datetime-local" is newer than "datetime" -->
+<input id="pickdatetime" type="time" />										<!-- for only time the "time" value -->
+<h4>HTML5 colorpicker with "<code>color</code>" value for the <code>type</code> attribute :</h4>
+<label for="coloref">Select a color of your choice :</label>
+<input id="coloref" type="color" />
+<input type="submit" value="Go" />
+<br/><br/>
+<footer>from "<u><i>HTML5 and CSS3 Transition, Transformation, and Animation</i></u>" by Aravind Shenoy and Gianluca Guarini</footer>
+<h4>The " <code>pattern</code> " attribute :</h4>
+<form id="pattfrm" action="about:blank" target="_blank"> 		<!-- TODO onsubmit="IfOldValidate(this)" -->
+    <label for=age accesskey=a>Age</label> 
+    <input type=number name=age id=age size=3 maxlength=2 min=1 max=99 pattern="^([1-9]|[1-9][0-9]){1,2}$" required >			<!-- the "pattern" attribute value contains a regular expression from JavaScript syntax, that test the validity of the input | by removing the required attribute the Browser will stop displaying the form elements as invalid when the page load  --> <span title="Must be between 1 and 99 !"></span> 
+	<label for=uname accesskey=u>User Name</label> 		<!-- if the accesskey is pressed (Shift+Alt+a.k) and two "label" element have the same value in the "for" attribute the Browser will go to the first label. so every element in the form should have a unique value in the "for" and "name" attributes. -->
+	<input type=text name=uname id=uname size=25 maxlength=20 pattern="^[a-zA-Z]'?[- 'a-zA-Z]+$" placeholder="Your full name" required ><span title="Letters, spaces, apostrophes and hyphens only !"></span> 
+	    <label for=email accesskey=e>eMail address</label> 
+	    <input type=email name=email id=email size=30 maxlength=25 placeholder="Your contact eMail" required > <span title="Must be a complete valid eMail address !"></span> 		<!-- ``Because each span only contains information in its title attribute and has no visible content, older browsers that don’t fully support CSS3 are disabled from showing any confusing messages to the user.``(D.S) -->
+		<input type=submit value=submit> 
+		</form>
+<h3>HTML5 Advanced Features :</h3>
+<h4>Drag and Drop :</h4>
+<p><q>The ability to drag-and-drop elements; thereby, aiding in transfer of data, was done by complex JavaScript code prior to HTML5. However, with the advent of the drag-and-drop in HTML5, it has become much easier for the browsers to adopt this new feature.</q></p>
+<script type="application/javascript">
+    function dropItem(ev) {
+    ev.preventDefault();
+    }
+    function drag(ev) {
+    ev.dataTransfer.setData("Text",ev.target.id);            // ``The value and type of the data to be dragged is set by the dataTransfer.setData method.`` (A.S & G.G)
+    }
+    function drop(ev) {
+    ev.preventDefault();                                    // ``By default, the dragged item cannot be dropped elsewhere. Hence, we use the event.preventDefault() feature, as it allows the item to be dropped into another element.`` (A.S & G.G)
+    var abc = ev.dataTransfer.getData("Text");              // ``The dataTransfer.getData method will enable us to return any data that was defined in the dataTransfer.setData method. Then, we append the dragged item to its destination.`` (A.S & G.G)
+    ev.target.appendChild(document.getElementById(abc));
+    }
+</script>
+<div id="packt1" ondrop="drop(event)" ondragover="dropItem(event)">
+<img src="img/e-learning.jpg" draggable="true" ondragstart="drag(event)" id="drag1" border="1" />	<!-- The "draggable" attribute when set to "true" enables the item to be dragged from its current state. -->
+</div>
+<div id="packt2" ondrop="drop(event)" ondragover="dropItem(event)"></div>
+<br clear="left" />
+<div id="dropZone" class="drop-zone">Drop Zone !<br/></div>						<!-- (from "Beginning JavaScript" by Jeremy McPeak) | put any dropped element under the text with "break" tag -->
+<div id="test" draggable="true" class="testbox" title="Drag me !"></div>
+<span id="dropStatus"></span>
+<script>
+  var dropZone = document.getElementById("dropZone");
+  var dropStatus = document.getElementById("dropStatus");
+  var dragBox = document.querySelector("div[draggable]");
+  
+  function handleDragEnter(e) {
+  dropStatus.innerHTML = "You're dragging something !";
+  setTimeout(removeMsg,3000);
+  }
+  
+  function removeMsg() {									// removing the message with removeMsg() function
+  if (dropStatus.innerHTML != "") {
+  dropStatus.innerHTML = "";
+   }
+  }
+  
+  function dragDropHandler(e) {
+  e.preventDefault();										// ``This is crucial for two reasons. First, the dragover’s default behavior must be prevented in order for the drop event to fire. Second, the browser will do something when you drop an object. In other words, the drop event has a default behavior, but the exact behavior depends on the browser and the object that you drop. Some examples are: For a file or image, most browsers will attempt to open it. Dropping a URL may cause the browser to navigate to the URL. In Firefox, dropping an element will cause the browser to navigate to the value in the element’s id attribute. Therefore, you want to prevent the drop event’s default behavior in most cases.``(J.M)
+  if (e.type == "dragover") {									// ``changes the content of the dropStatus element based on the type of event``(J.M)
+  dropStatus.innerHTML = "You're dragging over the drop zone !";
+  } else {
+  dropStatus.innerHTML = "You dropped something !";
+  setTimeout(removeMsg,3000);
+  }
+  }
+  
+  function dragStartHandler(e) {
+  e.dataTransfer.setData("text",e.target.id);							// ``drag-and-drop operation is the transference of data (..) When starting a drag, you need to tell the browser what you plan to transfer, and when you drop the object, you need to specify how that data transfers from the source to the target. The drag-and-drop specification defines a DataTransfer object that is used to hold the data that is being dragged during a drag-and-drop operation. You access this object with the Event object’s dataTransfer property. You set data with the DataTransfer object’s setData() method in the dragstart event handler, and you read that data in the drop event handler with the getData() method. (..) The setData() function accepts two arguments: the type of data to store and the actual data. The only data types supported by all browsers are "text" and "url"; therefore, this function stores the textual data of Drag and Drop! ``(J.M)
+  }
+  
+  function handleDrop(e) {
+  e.preventDefault();
+  var dragData = e.dataTransfer.getData("text");						// ``The getData() method accepts only one argument: the data type you used when calling setData(). Therefore, this code retrieves the value``(J.M)
+  dragBox.style.float = "none";									// remove float and margin from the dragged element when dropped.
+  dragBox.style.margin = "0";
+  e.target.appendChild(document.getElementById(dragData));
+  }
+  
+  document.addEventListener("dragenter", handleDragEnter);
+  dropZone.addEventListener("dragover", dragDropHandler);
+  document.addEventListener("drop", dragDropHandler);
+  dragBox.addEventListener("dragstart", dragStartHandler);
+  dropZone.addEventListener("drop", handleDrop);
+</script>
+<h4>Geolocation :</h4>
+<p>Your physical location : <tt id="geoinfo"></tt></p>
+<button onclick="getLocation()">Geolocation information</button>
+<button onclick="GeoInfo()">Latitude and Longitude</button>
+<script type="application/javascript">
+    var tt = document.getElementById("geoinfo");
+    function getLocation() {
+    if (navigator.geolocation)								// ``The navigator.geolocation function will help us determine whether the browser supports this feature.`` (A.S & G.G)
+    {
+    navigator.geolocation.getCurrentPosition(showLocation,displayError);		// ``When you call getCurrentPosition() method (on the geolocation property of the navigator object), you must pass it a callback function , which is a function that executes when getCurrentPosition() successfully completes its work. and a second parameter, another callback function that executes when an error occurs``(from "Beginning JavaScript" by Jeremy McPeak)
+    }
+    else {tt.innerHTML = "Your browser does not support the Geolocation feature";}
+    }
+    function showLocation(position) {
+    var timeStamp = new Date(position.timestamp);					// get the Timestamp in a readable format
+    tt.innerHTML = "Latitude: " + position.coords.latitude + "; Longitude: " + position.coords.longitude + "; Altitude : " + position.coords.altitude + "; Accuracy : " + position.coords.accuracy + "; Altitude accuracy : " + position.coords.altitudeAccuracy + "; Velocity : " + position.coords.speed + "; Timestamp : " + timeStamp;				// the position.coords.latitude and the position.coords.longitude help us in retrieving information about the coordinates of our physical location with respect to the latitude and longitude of that place. (A.S & G.G) | ``The speed property retrieves the speed, or rather the velocity, of the device/computer in meters per second.``(from Beginning JavaScript by Jeremy McPeak)
+    }
+    function displayError(error) {							// ``The error callback function has a single parameter that represents the reason for getCurrentPosition()’s failure. It is an object containing two properties. The first, code, is a numeric value indicating the reason of failure``(J.M)
+    switch(error.code) {								// ``The second property is called message; it’s a human-readable message that describes the error.``(J.M)
+    case error.PERMISSION_DENIED:							// error code number 1
+    tt.innerHTML = "Permission issues, Access Denied."
+    break;
+    case error.POSITION_UNAVAILABLE:							// error code number 2
+    tt.innerHTML = "As of now, Location info is not available."
+    break;
+    case error.TIMEOUT:									// error code number 3
+    tt.innerHTML = "There seems to be a timeout issue, Please try later."
+    break;
+    case error.UNKNOWN_ERROR:
+    tt.innerHTML = "Error ! cause not found."
+    break;
+    }
+    }
+    
+    function GeoInfo() {
+    if (typeof navigator.geolocation != "undefined") {					// this if statement uses "feature detection" with a syntax more clear than the first geolocation function : if the JavaScript keyword "typeof" returns another value than "undefined" the geolocation function will be executed. if the geolocation feature is present "typeof" will return "object".
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+    } else {
+    tt.innerHTML = "This page uses geolocation, and your browser doesn't support it.";
+    }
+    function geoSuccess(position) {							// (from Beginning JavaScript by Jeremy McPeak)
+    var coords = position.coords;
+    var latitude = coords.latitude;
+    var longitude = coords.longitude;
+    var message = "You're at Latitude : " + latitude + ", Longitude : " + longitude;
+    tt.innerHTML = message;
+    }
+    function geoError(errorObj) {
+    tt.innerHTML = errorObj.message;
+     }
+    }
+</script>
+<h4>HTML5 Web storage :</h4>
+<h5>Session storage :</h5>
+<script type="text/javascript">
+    if(sessionStorage.visitWebsite) { 
+      sessionStorage.visitWebsite = Number(sessionStorage.visitWebsite) +1;
+    }
+    else {
+    sessionStorage.visitWebsite = 1;
+    }
+    document.write("<em style='color:green'>The user has visited this web page</em> : " + sessionStorage.visitWebsite +"<b style='color:red'> times</b>");
+</script>
+<p> Click on F5 or Right click and click on Reload for information on the number of times this page has been visited.</p>
+<h5>Local storage :</h5>
+<script type="text/javascript">
+    if(localStorage.visitWebsite) {
+    localStorage.visitWebsite = Number(localStorage.visitWebsite) +1;
+    }
+    else {
+    localStorage.visitWebsite = 1;
+    }
+    document.write("<em style='color:green'>The web page has been visited</em> : " + localStorage.visitWebsite + "<b style='color:red'> times</b>");
+</script>
+<p>Refresh the page to increase number of hits.</p>
+<p>Close the window and open it again and check the result.</p>
+<h4>The <code>&lt;canvas&gt;</code> element :</h4>
+<p><q>The <code>canvas</code> element is one of the awesome features of HTML5. It enables us to draw graphics within the defined boundaries. (..) it works in tandem with the JavaScript API.</q></p>
+<script type="application/javascript">
+    function drawRectangle() {
+    var canvas = document.getElementById('canvasid');			// obtain a reference to the canvas element.(A.S)
+    var context = canvas.getContext("2d");				// obtain a reference to the 2d context in the canvas element.(A.S)
+    context.fillStyle = "rgb(200,0,0)";					// fill the rectangle with red color.(A.S)
+    context.fillRect (50, 50, 190, 190);				// draw a rectangle.(A.S)
+    context.clearRect(90,90,110,110);					// clear the defined rectangular space respective to the dimensions mentioned for clearing.(A.S)
+    context.strokeStyle = "rgb(0,200,0)";               		// define outline color before coordinates and dimensions.{LN_0}
+    context.strokeRect(110,110,70,70);					// draw an outline in a rectangular shape.(A.S)
+    context.clearRect(120,120,35,35);					// clearRect(x, y, width, height)
+    context.fillStyle = "rgb(0,0,200)";
+    context.fillRect(130,130,30,30);                    		// The stroke function is used to draw the outline of any shape, whereas the fill function is used to fill color into a shape.(A.S)
+    context.clearRect(137,138,15,15)
+    }									// ``all these properties have four parameters mentioned. The parameters can be defined as (x, y, width, height). (x, y) are the coordinates along the x axis and y axis respectively. The origin of these coordinates is at the top-left corner of the web page at (0, 0).``(A.S & G.G)
+</script>
+<canvas id="canvasid" width="300" height="300">Your browser doesn't support HTML5 canvas or JavaScript is disabled.</canvas>		<!-- ``it is a good practice to define the height and width attributes in a canvas element.`` (A.S & G.G) -->
+<script type="application/javascript">
+    function drawArc() {
+    var canvas = document.getElementById('idcanvas');
+    var context = canvas.getContext('2d');
+    context.arc(150, 150, 50, 0, Math.PI*2, true);        // The arc() method is used to draw an arc on the canvas, and there are five parameters defined in the arc() method : arc(x, y, radius, startAngle, endAngle, anticlockwise). (A.S)
+    context.arc(150, 150, 35, 0, Math.PI*2, false);       // The Math function in the code is a part of the JavaScript library. (A.S)
+    context.fill();                                     // We have not used the closePath function here, as we have used the fill function at the end of the JavaScript code. (A.S)
+    }
+</script>
+<canvas id="idcanvas" width="300" height="300">Your browser doesn't support HTML5 canvas or JavaScript is disabled.</canvas>
+<script type="application/javascript">
+    function drawShape() {
+    var canvas = document.getElementById('mycanvas');
+    var context = canvas.getContext('2d');
+        context.beginPath();                                // We start the path using the beginPath() method. If we call this method, the list of items that form a shape is reset, and as a result of that we can draw new shapes.(A.S)
+        context.strokeStyle = "#000";
+        context.fillStyle='#ccc';
+        context.strokeRect(95,60,50,0);
+        context.strokeRect(95,60,0,50);
+	context.fillRect(95,60,50,50);				// fillRect(x, y, width, height)
+	context.strokeRect(50,110,45,0);
+	context.strokeRect(50,110,0,50);			// strokeRect(x, y, width, height)
+        context.fillRect(50,110,45,50);
+        context.strokeRect(50,160,50,0);
+        context.strokeRect(100,160,0,50);
+        context.fillRect(100,160,50,50);
+        context.strokeRect(100,210,50,0);
+        context.strokeRect(150,160,0,50);
+        context.fillRect(95,110,50,50);
+        context.arc(200,160,50,0,Math.PI,true);             // the X and Y coordinates is for the center of the circle.{LN_0}
+        context.closePath();                                // Using the closePath() method, we can close the shape. For example, if the pointer is at a point distant from the starting point, this method will close the shape by drawing a straight line to the start point.(A.S)
+        context.moveTo(145,60);                             // We know that the x axis and y axis coordinates originate at the top-left corner of the canvas at (0,0) by default. If we want the coordinates to start from a different point on the screen, we will move the virtual pointer to that specific path using the moveTo() method. This method will take two coordinates (x, y), which will define the new starting point on the screen.(A.S)
+        context.lineTo(250,160);                            // The lineTo() method will draw a line from the starting point of the virtual pointer to the parameters defined in the function. For example, suppose we have moveTo(10,20) and lineTo(50,70) defined in the code, a line will be drawn from (10,20) to (50,70).(A.S)
+        context.stroke();
+        context.fillStyle='#eee';
+        context.fill();
+    }                                                       // Took me a lot of time to draw a simple shape with JavaScript hand-coding !
+    </script>
+    <canvas id="mycanvas" width="300" height="300">Your browser doesn't support HTML5 canvas or JavaScript is disabled.</canvas>
+    <script type="application/javascript">
+    function drawGrad () {
+    var canvas = document.getElementById("gradcanvas");
+    var context = canvas.getContext("2d");
+    var linGrad = context.createLinearGradient(50, 50, 150, 50);                // declare a linGrad variable and assign it a gradient. To start with, we have createLinearGradient(x1, y1, x2, y2) . The gradient starts from the point (x1, y1) and extends to (x2, y2). We can create a horizontal or vertical gradient by changing the x axis and y axis parameters.(A.S)
+    linGrad.addColorStop(0, "green");                                            // In order to define a color to the gradient, we will use the addColorStop.there are two parameters in the addColorStop property. The first parameter is to be defined from 0 to 1 to indicate the extent to which the gradient color has to be applied. The second parameter is the color which is to be used.(A.S)
+    linGrad.addColorStop(0.5, "navy");
+    linGrad.addColorStop(1, "purple");
+    context.fillStyle = linGrad;                                                // We have defined a fillStyle property and assigned it to the linGrad variable.(A.S)
+    context.fillRect(60, 60, 160, 200);
+}
+</script>
+<canvas id="gradcanvas" width="300" height="300">Your browser doesn't support HTML5 canvas or JavaScript is disabled.</canvas>
+      <script type="application/javascript">
+      function drawGradColors () {
+      var canvas = document.getElementById("canvasgrad");
+      var context = canvas.getContext("2d");
+      var GradColors = context.createLinearGradient(50, 50, 50, 210);              /* moving in the Y axis to get an horizontal gradient */
+      GradColors.addColorStop(0.1, "#f00");
+      GradColors.addColorStop(0.5, "#0f0");
+      GradColors.addColorStop(0.9, "#00f");
+      GradColors.addColorStop(1, "yellow");
+      context.fillStyle = GradColors;
+      context.fillRect(60, 60, 160, 200);
+  }
+  </script>
+  <canvas id="canvasgrad" width="300" height="300">Your browser doesn't support HTML5 canvas or JavaScript is disabled.</canvas>
+  <script type="text/javascript">
+    function demoTranslation() {
+    var canvas = document.getElementById('transcanvas');
+    var context = canvas.getContext('2d');
+    context.fillStyle = "blue";
+    context.fillRect(30, 60, 150, 100);
+    context.translate(50, 25);                                  // By using the translate property, we can relocate the drawn shape to a different location. We have used the translate function after we defined the (blue) rectangle.(A.S)
+    context.fillStyle = "navy";
+    context.fillRect(30, 60, 200, 100);
+    }
+</script>
+  <canvas id="transcanvas" width="300" height="300">Your browser doesn't support HTML5 canvas or JavaScript is disabled.</canvas>
+  <script type="text/javascript">
+    function demoRotation() {
+    var canvas = document.getElementById('rotcanvas');
+    var xyz = canvas.getContext('2d');
+    xyz.strokeRect(100, 60, 120, 120);
+    xyz.fillStyle = "#eee";
+    xyz.fillRect(100, 60, 120, 120);
+    xyz.rotate((Math.PI / 180) * 25);                   // rotate 25 degrees.(A.S)
+    xyz.fillStyle = "rgba(0,0,255,0.5)";
+    xyz.fillRect(100, 60, 120, 120);                    // Two squares in the same coordinates, the second is rotated.
+    }
+    function NotRotated() {                             // creating another function to simulate the opposite of the demoRotation() function.
+    var ncanvas = document.getElementById('rotcanvas');
+    var notrot = ncanvas.getContext('2d');
+    notrot.clearRect(100, 60, 120, 120);
+    notrot.fillStyle = "#fff";
+    notrot.clearRect(100, 60, 120, 120);
+    notrot.rotate((Math.PI / -180) * 25);               // dividing by the negative of 180 to get the inverted rotation.
+    notrot.fillStyle = "rgba(0,0,255,0.5)";
+    notrot.fillRect(100, 60, 120, 120);
+    }
+</script>
+  <canvas id="rotcanvas" width="300" height="300" onmouseover="NotRotated()" onmouseout="demoRotation()">Your browser doesn't support HTML5 canvas or JavaScript is disabled.</canvas>            <!-- using "onmouseover" and "onmouseout" JavaScript DOM functions for mouse hover on and out from the element -->
+  <script type="text/javascript">
+    function demoScale() {
+    var canvas = document.getElementById('canvascale');
+    var context = canvas.getContext('2d');
+    context.fillStyle = "navy";
+    context.fillRect(30, 10, 50, 80);
+    context.scale(2, 3);                                    // scaling on the X and Y axis.
+    context.fillStyle = "blue";
+    context.fillRect(30, 10, 50, 80);
+    }
+</script>
+  <canvas id="canvascale" width="300" height="300">Your browser doesn't support HTML5 canvas or JavaScript is disabled.</canvas>
+  <script type="text/javascript">
+    var a = 0;							// changing x,y,z to a,b,c
+    var b = 125;
+    var c = 5;
+    function demoAnimation() {
+    animationMethod = window.requestAnimationFrame ||           // the standard callback function "window.requestAnimationFrame".
+    window.mozRequestAnimationFrame ||                          // we invoked the callback function, window.RequestAnimationFrame , and assigned it to the animationMethod function.(A.S) with Browser-specific prefixe.
+    window.webkitRequestAnimationFrame ||
+    window.msRequestAnimationFrame ||
+    window.oRequestAnimationFrame;
+    animationMethod(demoAnimation);                             // we passed the demoAnimation function inside the animationMethod.By doing this, we have made sure that the browser will call the demoAnimation function when the next frame is ready to be drawn for animation purposes. .(A.S)
+    a = (a + c);
+    if(a <= 0 || a >= 270) {
+    c = -c;
+    }
+    draw();                                                     // The canvas has to demoAnimationbe cleared for the next frame to be drawn. Hence, we use the draw function.(A.S)
+    }
+    function draw() {
+    var canvas = document.getElementById("anicanvas");
+    var context = canvas.getContext("2d");
+    context.clearRect(0, 0, 500, 170);
+    context.strokeStyle = "black";
+    context.fillRect(a, b, 25, 25);
+    }
+    demoAnimation();                                            // the demoAnimation function is called at the end. This is to get window.RequestAnimationFrame into action so that we can begin the animation process.(A.S)
+</script>
+  <canvas id="anicanvas" width="300" height="300">Your browser doesn't support HTML5 canvas or JavaScript is disabled.</canvas>
+      <script type="text/javascript">
+    var X = 0;
+    var Y = 0;
+    var Z = 5;
+    function demoAnimation2() {
+    animationMethod = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame;
+    animationMethod(demoAnimation2);
+    X = (X + Z);
+    if(X <= 0 || X >= 270) {
+    Z = -Z;
+    }
+    Y = (Y + Z);
+    if(Y <= -270 || Y >= 270) {
+    Z = -Z;
+    }
+    draw2();
+    }
+    function draw2() {
+    var canvas2 = document.getElementById("canvasani");
+    var context2 = canvas2.getContext("2d");
+    context2.clearRect(0, 0, 300, 300);
+    context2.strokeStyle = "black";
+    context2.fillRect(X, Y, 25, 25);
+    }
+    demoAnimation2();
+</script>
+  <canvas id="canvasani" width="300" height="300">Your browser doesn't support HTML5 canvas or JavaScript is disabled.</canvas>
+  <footer>from "<u><i>HTML5 and CSS3 Transition, Transformation, and Animation</i></u>" by Aravind Shenoy and Gianluca Guarini</footer><br/>
+  <canvas id="ballcanvas" width="400" height="300">HTML5 canvas Bouncing Ball Animation</canvas>            <!-- HTML5 Bouncing Ball Animation example from techfunda.com -->
+    <script>
+        var canvas = document.getElementById('ballcanvas');
+        var ctx = canvas.getContext('2d');
+
+        var p = { x: 25, y: 25 };
+        var velo = 6,
+            corner = 50,
+            rad = 20;
+        var ball = { x: p.x, y: p.y };
+        var moveX = Math.cos(Math.PI / 180 * corner) * velo;
+        var moveY = Math.sin(Math.PI / 180 * corner) * velo;
+
+        function DrawMe() {
+            ctx.clearRect(0, 0, 400, 300);
+
+            if (ball.x > canvas.width - rad || ball.x < rad) moveX = -moveX;
+            if (ball.y > canvas.height - rad || ball.y < rad) moveY = -moveY;
+
+            ball.x += moveX;
+            ball.y += moveY;
+
+            ctx.beginPath();
+            ctx.fillStyle = 'black';
+            ctx.arc(ball.x, ball.y, rad, 0, Math.PI * 2, false);
+            ctx.fill();
+            ctx.closePath();
+        }
+        setInterval(DrawMe, 10);
+
+    </script>
+    <canvas id="pcanvas" width="500" height="375">Canvas coordinates diagram</canvas>			<!-- From 'Dive into HTML5' by Mark Pilgrim -->
+    <script type="text/javascript">
+	var cdcanvas = document.getElementById("pcanvas");
+	var pcontext = cdcanvas.getContext("2d");
+	for (var x = 0.5; x < 500; x += 10) {			// Draw vertical lines. 0.5 instead of 0 : ``Imagine each pixel as a large square. The whole-number coordinates (0, 1, 2...) are the edges of the squares. If you draw a one-unit-wide line between whole-number coordinates, it will overlap opposite sides of the pixel square, and the resulting line will be drawn two pixels wide. To draw a line that is only one pixel wide, you need to shift the coordinates by 0.5 perpendicular to the line's direction.``(M.P)
+	    pcontext.moveTo(x, 0);
+	    pcontext.lineTo(x, 375);
+	    }
+	for (var y = 0.5; y < 375; y += 10) {			// Draw horizontal lines
+	    pcontext.moveTo(0, y);
+	    pcontext.lineTo(500, y);
+	    }							// ``Those were all “pencil” methods. Nothing has actually been drawn on the canvas yet.``(M.P)
+	    pcontext.strokeStyle = "#eee";			// ``We need an “ink” method to make it permanent.``(M.P)
+	    pcontext.stroke();
+	    pcontext.beginPath();				// start a new path.
+	    pcontext.moveTo(0, 40);
+	    pcontext.lineTo(240, 40);
+	    pcontext.moveTo(260, 40);
+	    pcontext.lineTo(500, 40);
+	    pcontext.moveTo(495, 35);
+	    pcontext.lineTo(500, 40);
+	    pcontext.lineTo(495, 45);
+	    pcontext.moveTo(60, 0);				// ``Since the vertical arrow is the same color as the horizontal arrow, we do not need to start another new path.``(M.P)
+	    pcontext.lineTo(60, 153);
+	    pcontext.moveTo(60, 173);
+	    pcontext.lineTo(60, 375);
+	    pcontext.moveTo(65, 370);
+	    pcontext.lineTo(60, 375);
+	    pcontext.lineTo(55, 370);
+	    pcontext.strokeStyle = "#000";			// reset stroke() method to black
+	    pcontext.stroke();
+	    pcontext.font = "bold 12px sans-serif";		// ``Change the font style``(M.P)
+	    pcontext.fillText("x", 248, 43);			// ``Draw the text. The fillText() method draws the actual text.``(M.P)
+	    pcontext.fillText("y", 58, 165);
+	    pcontext.textBaseline = "top";			// setting the text baseline to the top and then passing the text coordinates to the fillText() method.
+	    pcontext.fillText("( 0 , 0 )", 8, 5);
+	    pcontext.textAlign = "right";			// aligning the text to the right before calling the fillText() method.
+	    pcontext.textBaseline = "bottom";
+	    pcontext.fillText("( 500 , 375 )", 492, 370);
+	    pcontext.fillRect(0, 0, 3, 3);
+	    pcontext.fillRect(497, 372, 3, 3);
+    </script>
+    <canvas id="Gradcanvas" width="300" height="225" >Color gradient canvas example</canvas>			<!-- From 'Dive into HTML5' by Mark Pilgrim -->
+    <script type="text/javascript">
+      var GradCanvas = document.getElementById("Gradcanvas");
+      var GradContext = GradCanvas.getContext("2d");
+      var mygradient = GradContext.createLinearGradient(0, 0, 300, 255);				// ``The canvas drawing context supports two types of gradients: 1. createLinearGradient(x0, y0, x1, y1) paints along a line from (x0, y0) to (x1, y1). 2. createRadialGradient(x0, y0, r0, x1, y1, r1) paints along a cone between two circles. The first three parameters represent the start circle, with origin (x0, y0) and radius r0. The last three parameters represent the end circle, with origin (x1, y1) and radius r1.``(M.P)
+      mygradient.addColorStop(0, "black");								// ``Once we have a gradient object, we can define the gradient’s colors. A gradient has two or more color stops. Color stops can be anywhere along the gradient. To add a color stop, you need to specify its position along the gradient. Gradient positions can be anywhere between 0 to 1.``(M.P)
+      mygradient.addColorStop(1, "white");
+      GradContext.fillStyle = mygradient;								// ``Defining a gradient doesn’t draw anything on the canvas. It’s just an object tucked away in memory somewhere. To draw a gradient, you set your fillStyle to the gradient and draw a shape``(M.P)
+      GradContext.fillRect(0, 0, 300, 225);
+    </script>
+    <canvas id="imgcanvas" width="300" height="225" >Draw an image on the canvas from img element</canvas>
+    <script type="text/javascript">
+      function canvasimg() {
+      var imgcanvas = document.getElementById("imgcanvas");
+      var imgcontext = imgcanvas.getContext("2d");
+      var img = document.images[1];
+      imgcontext.drawImage(img, 30, 30);								// ``The canvas drawing context defines a drawImage() method for drawing an image on a canvas. The method can take three, five, or nine arguments. drawImage(image, dx, dy) takes an image and draws it on the canvas. The given coordinates (dx, dy) will be the upper-left corner of the image. Coordinates (0, 0) would draw the image at the upper-left corner of the canvas. drawImage(image, dx, dy, dw, dh) takes an image, scales it to a width of dw and a height of dh, and draws it on the canvas at coordinates (dx, dy). drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh) takes an image, clips it to the rectangle (sx, sy, sw, sh), scales it to dimensions (dw, dh), and draws it on the canvas at coordinates (dx, dy).``(M.P)
+      };
+    </script>
+    <canvas id="imgobjcanvas" width="430" height="430" >Draw an image on the canvas with JavaScript Image() object</canvas>
+    <script type="text/javascript">
+      var imgobjcanvas = document.getElementById("imgobjcanvas");
+      var objcontext = imgobjcanvas.getContext("2d");
+      var objimg = new Image();										// create an Image() object
+      objimg.src = "img/Screenshot-05142018-06-45-33_PM.png";
+      objimg.onload = function() {									// ``If you’re creating the image object entirely in JavaScript, you can safely draw the image on the canvas during the Image.onload event.``(M.P)
+      objcontext.drawImage(objimg, 50, 50);
+      };
+    </script>
+    <canvas id="canvasrepimg" width="430" height="430" >Repeat an image on the canvas</canvas>
+    <script type="text/javascript">
+      var repimgcanvas = document.getElementById("canvasrepimg");
+      var repimgcontext = repimgcanvas.getContext("2d");
+      var imgrep = document.getElementById("drag1");
+      imgrep.onload = function() {
+      for (var x = 0, y = 0; x < 430 && y < 430; x += 50, y += 50) {
+	  repimgcontext.drawImage(imgrep, x, y, 90, 60);
+	  }
+	  };
+    </script>
+</body>
+</html>

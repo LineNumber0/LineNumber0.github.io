@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>transition-timing-function Ver4</title>
+<meta charset="UTF-8"/>
+<meta name="Web-Developer" content="LineNumber0"/>
+<meta name="Date" content="Saturday 20-January-2018 21:17 WET"/>
+<link rel="stylesheet" type="text/css" href="styles/browser-specific(t-t-f).css" />
+    <style type="text/css">
+    body {
+    background-image:linear-gradient(to right, #A2CF72,#E4E19C);
+    background-color:#E4E19C;
+    }
+    img {width:155px;height:111px;margin-bottom:10%;margin-left:1px}
+    img[id^="trn"] {
+    box-shadow: 1px 10px 50px 1px black;
+    border-right: 1px solid rgba(0,0,0,0.85);
+    transition-property:box-shadow,border-right;
+    transition-duration:2.5s;
+    }
+    .cntrease {float:right}
+    img[id^="trn"]:hover {
+    cursor:none;
+    box-shadow: 20px 20px 500px 20px black;
+    border-right: 44.8em solid rgba(0,0,0,0.85);
+    transition-property:box-shadow,border-right;
+    transition-duration:6.5s;
+    transition-delay:1.6s;
+    }
+    #wrp {
+    margin:auto;
+    background-image:url(img/bgkague2.png);
+    background-size:cover;
+    background-repeat:repeat-y;
+    background-position:center;
+    background-attachment:fixed;
+    height: 350em;
+    }
+    #distance {
+    width:1024px;
+    margin:auto;
+    }
+    br,h2 {clear:left}
+    #trnsease,#ease {
+    transition-timing-function:ease;
+    }
+    #trnsease-in,#easein {
+    transition-timing-function:ease-in;
+    }
+    #trnsease-out,#easeout {
+    transition-timing-function:ease-out;
+    }
+    #trnsease-in-out,#easeinout {
+    transition-timing-function:ease-in-out;
+    }
+    #trnslinear,#linear {
+    transition-timing-function:linear;
+    }
+    #trnsine,#sine {
+    transition-timing-function:cubic-bezier(.45,.05,.55,.95);
+    }
+    #trnsquad,#quadratic {
+    transition-timing-function:cubic-bezier(.46,.03,.52,.96);
+    }
+    #trnscub,#cubic {
+    transition-timing-function:cubic-bezier(.65,.05,.36,1);
+    }
+    #trnsquar,#quartic {
+    transition-timing-function:cubic-bezier(.77,0,.18,1);
+    }
+    #trnsquin,#quintic {
+    transition-timing-function:cubic-bezier(.86,0,.07,1);
+    }
+    #trnsexp,#exponential {
+    transition-timing-function:cubic-bezier(1,0,0,1);
+    }
+    #trnscir,#circular {
+    transition-timing-function:cubic-bezier(.79,.14,.15,.86);
+    }
+    #trnsback,#backward {
+    transition-timing-function:cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    #trnsfst,#notpreset {
+    transition-timing-function:cubic-bezier(.12,-0.07,1,-0.3);
+    }
+    #trnsreg,#nopreg {
+    transition-timing-function:cubic-bezier(.98,.99,1,-0.66);
+    }
+    #trnsmid,#nopmid {
+    transition-timing-function:cubic-bezier(0,.98,.99,.03);
+    }
+    audio {display:none}
+    p {font-weight:bold}
+    .frontimg {
+    position:absolute;
+    opacity:0;
+    box-shadow: 1px 10px 50px 1px black;
+    border-right: 1px solid rgba(0,0,0,0.85);
+    transition-property:box-shadow,border-right,opacity;
+    transition-duration:2.5s;
+    }
+    .frontimg:hover {
+    opacity:1;
+    cursor:none;
+    box-shadow: 20px 20px 500px 20px black;
+    border-right: 44.8em solid rgba(0,0,0,0.85);
+    transition-property:box-shadow,border-right,opacity;
+    transition-duration:6.5s,6.5s,0.5s;
+    transition-delay:0s,1.6s; 
+    }
+      </style>
+  </head>
+  <body>
+<center><h1><code>transition-timing-function</code> property with <span title="Naruto anime character &copy; Studio Pierrot &amp; TV Tokyo" style="cursor:help">Shikamaru</span></h1></center>
+<div id="wrp">
+    <div id="distance">
+<h2><code>transition-timing-function:ease</code></h2>
+<p>Starts slow, speeds up, and slows toward the end.</p>
+<br/>
+  <img id="ease" class="frontimg" src="img/kague2.jpg" />
+  <img id="trnsease" src="img/kague1.jpg" />
+    <img class="cntrease" src="img/evil.jpg" />
+  <h2><code>transition-timing-function:ease-in</code></h2>
+  <p>Starts slow and speeds up.</p>
+  <br/>
+    <img id="easein" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnsease-in" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+    <h2><code>transition-timing-function:ease-out</code></h2>
+    <p>Starts fast and slows toward the end.</p>
+    <br/>
+      <img id="easeout" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnsease-out" src="img/kague1.jpg"    />
+  <img class="cntrease" src="img/evil.jpg" />
+    <h2><code>transition-timing-function:ease-in-out</code></h2>
+    <p>Similar to ease, but slower at each end.</p>
+    <br/>
+      <img id="easeinout" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnsease-in-out" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+      <h2><code>transition-timing-function:linear</code></h2>
+      <p>Transitions at an even pace throughout.</p>
+    <br/>
+      <img id="linear" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnslinear" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+        <h2><code>transition-timing-function:cubic-bezier(.45,.05,.55,.95)</code></h2>
+        <p>(ease-in-out Sine)</p>
+    <br/>
+      <img id="sine" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnsine" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+        <h2><code>transition-timing-function:cubic-bezier(.46,.03,.52,.96)</code></h2>
+      <p>(ease-in-out Quadratic)</p>
+    <br/>
+      <img id="quadratic" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnsquad" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+    <h2><code>transition-timing-function:cubic-bezier(.65,.05,.36,1)</code></h2>
+      <p>(ease-in-out Cubic)</p>
+    <br/>
+      <img id="cubic" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnscub" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+      <h2><code>transition-timing-function:cubic-bezier(.77,0,.18,1)</code></h2>
+      <p>(ease-in-out Quartic)</p>
+    <br/>
+      <img id="quartic" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnsquar" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+    <h2><code>transition-timing-function:cubic-bezier(.86,0,.07,1)</code></h2>
+      <p>(ease-in-out Quintic)</p>
+    <br/>
+      <img id="quintic" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnsquin" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+        <h2><code>transition-timing-function:cubic-bezier(1,0,0,1)</code></h2>
+      <p>(ease-in-out Exponential)</p>
+    <br/>
+      <img id="exponential" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnsexp" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+        <h2><code>transition-timing-function:cubic-bezier(.79,.14,.15,.86)</code></h2>
+      <p>(ease-in-out Circular)</p>
+    <br/>
+      <img id="circular" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnscir" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+        <h2><code>transition-timing-function:cubic-bezier(.68,-0.55,.27,1.55)</code></h2>
+      <p>(ease-in-out Backward)</p>
+    <br/>
+      <img id="backward" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnsback" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+    <h2><code>transition-timing-function:cubic-bezier(.12,-0.07,1,-0.3)</code></h2>
+      <p>(Not a named preset)</p>
+    <br/>
+      <img id="notpreset" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnsfst" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+    <h2><code>transition-timing-function:cubic-bezier(.98,.99,1,-0.66)</code></h2>
+      <p>(Not a named preset)</p>
+    <br/>
+      <img id="nopreg" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnsreg" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+    <h2><code>transition-timing-function:cubic-bezier(0,.98,.99,.03)</code></h2>
+      <p>(Not a named preset)</p>
+    <br/>
+      <img id="nopmid" class="frontimg" src="img/kague2.jpg" /> 
+    <img id="trnsmid" src="img/kague1.jpg" />
+  <img class="cntrease" src="img/evil.jpg" />
+    </div>
+    <audio controls="yes" id="bgaudio">
+        <source src="aud/shadow-jutsu1.mp3" type="audio/mp3" />
+        <source src="aud/shadow-jutsu1.ogg" type="audio/ogg" />
+    </audio>
+        <audio controls="yes" id="bgaudio2">
+        <source src="aud/jutsu-off.mp3" type="audio/mp3" />
+        <source src="aud/jutsu-off.ogg" type="audio/ogg" />
+    </audio>
+    </div>
+    <script type="text/javascript">
+	var fimages = document.images;
+	var regexpsrc = /(evil\.jpg)$/i;
+        function ply() {
+        document.getElementById('bgaudio').play();
+        }
+        function stply() {
+        document.getElementById('bgaudio').load();
+        document.getElementById('bgaudio2').play();
+        }
+        for (var i = 0; i < fimages.length;i++) {
+	  if (!regexpsrc.test(fimages[i].src)) {
+            fimages[i].addEventListener("mouseover",ply);
+            fimages[i].addEventListener("mouseout",stply);
+	     }
+            }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Navigation bar</title>
+    <meta charset="UTF-8"/>
+      <meta name="Web-Developer" content="RebMunEnil_0"/>
+      <meta name="Date" content="Thu Nov 02 2017 22:20"/>
+    <meta name="Note" content="Adding &ldquo;INSERT DATE&rdquo; to Kate 16.08.3 text editor Snippet"/>
+    <base href="img/"/>           <!-- inserting "base" here (before "style") apply also to CSS url() function -->
+    <style type="text/css">
+        nav ul a {
+        text-decoration:none;
+        display:block;                  /* Setting a link’s display property to block makes the entire width of the link clickable */
+        padding: 10px;
+        font-weight:bold;
+        color:white;
+        width:510px;
+        }
+        nav ul a:hover,a:active {
+        background-color:#CDB187;
+        color:white;
+        font-weight:bold;
+        font-size:1.2em;
+        background-image: url('icons.png');
+        background-repeat: no-repeat;
+        background-position: right -160px;
+        box-shadow:5px 5px 10px black;
+        }
+        nav ul a:focus,a:active {
+        box-shadow:inset 5px 5px 10px black;
+        outline:none;
+        }
+        nav ul a:visited {color:black}
+        nav ul {
+        list-style-type:none;
+        padding:15px;
+        background-color:#B59C77;
+        }
+        code {font-size-adjust:0.7}
+        nav {
+        width:700px;
+        border-right:10px solid gray;
+        border-left:10px solid gray;
+        float:left;
+        margin-left:2%;
+        }
+        #nav2 {
+        width:600px;
+        border-right:10px double black;
+        border-left:10px double black;
+        float:right;
+        margin-right:2%;
+        }
+        #nav2 ul,#nav3 ul {background-color:gray;text-align:center}
+        #nav2 ul a:hover,#nav2 ul a:active,#nav3 ul a:hover,#nav3 ul a:active {background-color:lightgray}
+        #nav2 ul a,#nav2 ul a:hover,#nav3 ul a,#nav3 ul a:hover {border:5px outset silver;margin:15px auto;padding:15px;font-size:inherit}
+        #nav2 ul a:active,#nav2 ul a:focus,#nav3 ul a:active,#nav3 ul a:focus {border:5px inset silver}      /* Selector references to the element must be repeated after the comma */
+        #nav2 a:hover,#nav3 a:hover {text-shadow:1px 1px #616161}
+        #nav3 {
+        float:left;
+        clear:both;
+        width:auto;                         /* override width in previous styles and restore default width with "auto" */
+        background-color:gray;
+        font-size:inherit;
+        }
+        #nav3 ul li {float:left}
+        #nav3 ul li a {margin:15px;width:auto;padding:15px;white-space:nowrap}
+        #nav3 ul li a:hover {font-size:inherit;margin:15px}
+        /* 
+        Grouping the above styles into one navigation bar for better CSS code readability 
+        */
+        #nafour {
+        margin-top:5%;
+        margin-bottom:5%;
+        width:auto;
+        border:8px ridge deepskyblue;
+        padding:8px;
+        border-radius:8px;
+        box-shadow:8px 8px 8px gray;
+        }
+        #nafour,#nafour ul {
+        background-color:skyblue;
+        }
+        #nafour ul {
+        margin:0;
+        padding:0;
+        }
+        #nafour li {
+        float:left;
+        font-size:1.2em;
+        }
+        #nafour a {
+        text-decoration:none;
+        display:block;
+        font-weight:bold;
+        color:white;
+        width:auto;
+        }
+        #nafour a:hover {
+        background-color:lightblue;
+        }
+        #nafour a,#nafour a:hover {
+        border:5px outset lightcyan;
+        margin:8px;
+        padding: 15px;
+        text-shadow:1px 1px black;
+        }
+        #nafour a:hover,#nafour a:active {
+        font-size:inherit;
+        background-image: url('icons.png');
+        background-repeat: no-repeat;
+        background-position: right -160px;
+        box-shadow:5px 5px 10px black;
+        }
+        #nafour a:active,#nafour a:focus {
+        border:5px inset lightcyan;
+        box-shadow:inset 5px 5px 10px black;
+        }
+        #nafour a:visited {
+        color:black;
+        }
+      </style>
+  </head>
+  <body>
+<nav>           <!-- HTML5 element "nav" for navigation -->
+      <ul>
+        <li><a href="text-decoration_css3.html"  target="_blank">CSS3 values of "<code>text-decoration</code>" property</a></li>
+        <li><a href="text-shadow.html" target="_blank">"<code>text-shadow</code>" property example</a></li>
+        <li><a href="Outlining-Text.html" target="_blank">Outlining text with "<code>text-shadow</code>" property</a></li>
+        <li><a href="text-shadow_multi.html"  target="_blank">Different techniques using "<code>text-shadow</code>" property</a></li>
+        <li><a href="cursors.html"  target="_blank">"<code>cursor</code>" property</a></li>
+        <li><a href="basic_colors.html" target="_blank">CSS basic color names</a></li>
+        <li><a href="extended_colors.html" target="_blank">CSS extended color keywords</a></li>
+        <li><a href="CSS-sprites.html" target="_blank">"CSS sprite" technique</a></li>
+        <li><a href="box-shadow.html" target="_blank">"<code>box-shadow</code>" property</a></li>
+        <li><a href="border-radius.html" target="_blank">"<code>border-radius</code>" property</a></li>
+        <li><a href="border-image.html" target="_blank">"<code>border-image</code>" property</a></li>
+      </ul>
+</nav>
+<nav id="nav2">
+    <ul>
+        <li><a href="background-origin.html" target="_blank">"<code>background-origin</code>" property</a></li>
+        <li><a href="background-clip.html" target="_blank">"<code>background-clip</code>" + "<code>background-origin</code>"</a></li>
+        <li><a href="bg-size_keywords.html" target="_blank">Keywords values of "<code>background-size</code>" property</a></li>
+        <li><a href="css3_bg-position-4vals.html" target="_blank">CSS3 Syntax for <code>background-position</code></a></li>
+        <li><a href="multiple_bg-images.html" target="_blank">Multiple background images for one element</a></li>
+        <li><a href="css3_bg-shorthand.html" target="_blank">CSS3 "<code>background</code>" property shorthand syntax</a></li>
+        <li><a href="space_round.html" target="_blank">"<code>space</code>" and "<code>round</code>" keyword values<br/>of "<code>background-repeat</code>" property</a></li>
+        <li><a href="space_round-bg_repeat_2vals.html" target="_blank">"<code>background-repeat</code>" property with keywords value</a></li>
+        <li><a href="background_alpha.html" target="_blank">Background with alpha transparency</a></li>
+        <li><a href="border_styles.html" target="_blank">Border styles</a></li>
+        <li><a href="border_alpha.html" target="_blank">Border with alpha transparency</a></li>
+    </ul>
+</nav>
+<nav id="nav3">
+      <ul>
+        <li><a href="text-decoration_css3.html"  target="_blank">CSS3 values of "<code>text-decoration</code>" property</a></li>
+        <li><a href="text-shadow.html" target="_blank">"<code>text-shadow</code>" property example</a></li>
+        <li><a href="Outlining-Text.html" target="_blank">Outlining text with "<code>text-shadow</code>" property</a></li>
+        <li><a href="text-shadow_multi.html"  target="_blank">Different techniques using "<code>text-shadow</code>" property</a></li>
+        <li><a href="cursors.html"  target="_blank">"<code>cursor</code>" property</a></li>
+        <li><a href="basic_colors.html" target="_blank">CSS basic color names</a></li>
+        <li><a href="extended_colors.html" target="_blank">CSS extended color keywords</a></li>
+        <li><a href="CSS-sprites.html" target="_blank">"CSS sprite" technique</a></li>
+        <li><a href="box-shadow.html" target="_blank">"<code>box-shadow</code>" property</a></li>
+        <li><a href="border-radius.html" target="_blank">"<code>border-radius</code>" property</a></li>
+        <li><a href="border-image.html" target="_blank">"<code>border-image</code>" property</a></li>
+      </ul>
+</nav>
+<nav id="nafour">
+    <ul>
+       <li><a href="cursors.html"  target="_blank" title="Cursors types in the value of &quot;cursor&quot; CSS property">Cursors</a></li>
+       <li><a href="basic_colors.html" target="_blank">Basic colors</a></li>
+       <li><a href="extended_colors.html" target="_blank">Extended colors</a></li>
+       <li><a href="CSS-sprites.html" target="_blank" title="&ldquo;CSS sprite&rdquo; technique">"CSS sprite"</a></li>          <!-- for navigation bars it is preferable to add a short text and compensate with the "title" attribute -->
+        <li><a href="CSS-sprites+navbar.html" target="_blank" title="Navigation bar with CSS Sprites technique">Sprites+Nav</a></li>
+    </ul>
+</nav>
+  </body>
+</html>

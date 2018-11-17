@@ -1,0 +1,54 @@
+﻿@charset "UTF-8";
+body {
+background-color:#4149ab;
+background-image:url(../img/ranpatsu-grayscale.png);
+background-attachment:fixed;
+background-position:top center;
+background-size:cover;
+font-family:DroidSans,sans-serif;
+text-shadow:black 2px 1px;
+font-size:70%;
+margin:0;
+letter-spacing:1px;
+}
+ h1 { 
+ text-align:center;
+ text-shadow:white 0px 0px 8px, white 0px 0px 8px, white 0px 0px 8px, white 0px 0px 8px;
+ font-family:sans-serif;
+ }
+  h2 { 
+  color:yellow; 
+  display:inline;
+  }
+   table {
+   color:white; 
+   font-weight:bold; 
+   width:99%; 
+   margin:0;
+   padding:3px;
+   border-spacing:0;
+   border-width:3px !important;
+   } 
+   i { 
+   color:lightgreen; 
+   margin:5px; 
+   font-style:normal;
+   } 
+   td {
+   padding:5px 0;
+   font-size:73%;
+   vertical-align:top;
+   }
+   audio {
+     background-color:white;
+     margin:15px auto;
+     border:3px inset silver;
+     max-width:100%;
+   }
+   table,audio,video {
+     box-shadow:black 7px 7px 7px;
+   }
+   video {
+  border:1px solid black;
+  width:100%;
+  }

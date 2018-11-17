@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+  <meta name="Description" content="From &quot;Beginning CSS3&quot; book"/>
+  <meta name="Author" content="David Powers"/>
+  <meta name="Web-Developer" content="LineNumber0"/>
+<title>CSS Tooltips</title>
+<style type="text/css">
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: #000;
+}
+#wrapper {
+    width: 600px;
+    margin: 0 auto;
+}
+#casino {
+    position: relative;
+}
+#casino p {
+    position: absolute;
+    top: 60px;
+    left: -9999px;
+    font-size: 14px;
+    width: 100px;
+    padding: 10px;
+    background-color: #FFF;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px rgba(51,51,51,0.3);
+    border: 1px solid lightgrey;
+    opacity:0;
+    transition:opacity 1s, left 0s 1s;
+}
+#casino:hover p {
+    left: 140px;
+    opacity:1;
+    transition:opacity 1s;
+}
+a[href$="formula1.com/"] {
+    position: relative;
+}
+a[href$="formula1.com/"] span {
+    position: absolute;
+    top: -9000px;
+    left: 20px;
+    text-decoration: none;
+    display: block;
+    width: 250px;
+    background-color: #006;
+    color: #FFF;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 1px 8px 24px black;
+    transform: translateY(-16px);
+    opacity: 0;
+    transition:transform 1s, opacity 1s, top 0s 0.5s;
+}
+a[href$="formula1.com/"]:hover span, a[href$="formula1.com/"]:focus span {
+    left: 20px;
+    top: -160px;
+    transform: translateY(16px);
+    opacity: 1;
+    transition:transform 1s, opacity 1s;
+}
+.floatleft {
+    float: left;
+    margin: 3px 10px 3px 0;
+}
+.figcaption {
+    display: block;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+.shadow {
+    -webkit-box-shadow: 3px 3px 3px rgba(51,51,51,0.3);
+    box-shadow: 3px 3px 3px rgba(51,51,51,0.3);
+}
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+    <h1>Monaco and Monte Carlo</h1>
+    <div class="floatleft" id="casino"><img src="img/casino.jpg" alt="Casino at Monte Carlo" width="266" height="400" class="shadow">
+        <p id="tooltip1">The casino also houses a theater suitable for opera and ballet.</p>
+    <div class="figcaption">Monte Carlo casino</div></div>
+    <p>Close to the Italian border lies the tiny city state of  Monaco, home to the rich and famous. Surrounded on three sides by France and by  the Mediterranean on the fourth, it&rsquo;s the world&rsquo;s second smallest country by  size. Monaco is a constitutional monarchy that has been ruled by the House of  Grimaldi with only brief interruptions since the thirteenth century.</p>
+    <p>Monaco is perhaps best known for the <a href="http://www.formula1.com/">Formula 1 Grand Prix<span id="f1"> Most F1 races are held on specially constructed circuits. But Monaco is one of a handful of F1 street circuits that also include Valencia, Melbourne, and Singapore.</span></a>. The race, normally held in May, roars through the narrow streets and tight corners. Monaco is also renowned for the Monte  Carlo Casino. The casino was established by the House of Grimaldi in the  mid-nineteenth century as a means of saving the ruling household from  bankruptcy. It wasn&rsquo;t immediately successful, but gained great publicity in  1873 when Joseph Jagger became the man who &ldquo;broke the bank at Monte Carlo.&rdquo; The  bank was the amount of money kept on the roulette table by the croupier. Jagger  was the first to discover a bias in one of the roulette wheels and capitalize  on it.</p>
+</div>
+<script type="text/javascript">
+var tip1 = document.getElementById('tooltip1');
+tip1.addEventListener('touchstart', closeTooltip, false);
+function closeTooltip(e) {
+	var target = e.target.id;
+	alert (target);
+}
+</script>
+<script type="text/javascript">
+  //      ``The styled tooltips (..) works well on desktop computers, but are less satisfactory on touch screen devices. If you use the :hover pseudo-class on an element, smartphones and tablets usually display the appropriate styles when the element is tapped. So, tapping the image of the casino causes the tooltip to appear over the image. But the tooltip doesn’t go away unless you tap another element that uses the :hover pseudo-class. In some circumstances, this might not matter. It could even be treated as a feature in a children’s site, where the user is encouraged to reveal hidden information. However, in most cases, it’s likely to be annoying. The link tooltip presents a slightly different problem. On Android, the link works as normal, and the tooltip is never displayed. But on iOS, tapping the link once displays the tooltip. You need to tap it twice to go to the link’s destination. The script binds a function called closeTooltip to the touchstart JavaScript event on both tooltips. The function identifies which tooltip has been tapped, and sets its left offset to -9999px, effectively hiding it. This neatly solves the problem on iOS. Unfortunately, it doesn’t work on Android, even though Android supports the touchstart event. ``(D.P)
+var tip1 = document.getElementById('tooltip1'),
+    f1 = document.getElementById('f1');;
+tip1.addEventListener('touchstart', closeTooltip, false);
+f1.addEventListener('touchstart', closeTooltip, false);
+function closeTooltip(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	var target = e.target.id;
+	target.style.left = "-9999px";
+}
+</script>
+</body>
+</html>

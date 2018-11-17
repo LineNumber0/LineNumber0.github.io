@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>HTML page for testing</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta charset="utf-8"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
+  <style type="text/css">
+      body {
+      background-color:skyblue;
+      }
+      textarea {
+      width:70%;
+      height:500px;
+      margin:15%;
+      opacity:0.5;
+      border-top: #5C9D9D solid 6px;
+      border-right: #003636 solid 6px;
+      border-bottom: #003636 solid 6px;
+      border-left: #5C9D9D solid 6px;
+      }
+      /* ___________________________________________________________________________
+      */
+      #fstimg {
+      float:left;
+      margin-right:8px;
+      margin-bottom:8px;
+      }
+      dfn {
+      margin:20px;
+      }
+      br {
+      clear:left;                   /* instead of <br clear="left"/> */
+      }
+      /* 
+      First method of floating an image with its caption inside a paragraph. (a bad method)
+      _____________________________________________________________________________________________________________________________________
+      */
+      #sndimg {
+      margin:auto;
+      display:block;
+      border:#5C9D9D outset 6px;
+      /* border-color: #003636 #5C9D9D #5C9D9D #003636; */
+      }
+      /* ___________________________________________________________________________
+      */
+      #trdimgp {
+      margin-top:5%;
+      }
+      #trdimg {
+      margin-right:8px;
+      margin-bottom:8px;
+      }
+      #trdimgtb {
+      caption-side:bottom;
+      float:left;
+      }
+      /*
+      The second method of floating an image with its caption inside a paragraph, is more stable than the first method.
+      _____________________________________________________________________________________________________________________________________
+      */
+      #bgp {
+      margin-top:10%;
+      background-image:url("img/Re Zero Anime.jpg");        /* URL that contains spaces should be inserted between double quotes */
+      background-size:contain;                      /* contain the the whole image in the background */
+      background-repeat:repeat-x;
+      padding:100px;
+      font-weight:bold;
+      color:gray;
+      text-shadow:2px 2px white;
+      font-size:2em;
+      }
+      #bgp+p {
+      font-size:xx-small;
+      }
+      #dxlrg {
+      font-size:xx-large;
+      -moz-text-align-last:right;
+      -ms-text-align-last:right;
+      -o-text-align-last:right;
+      -webkit-text-align-last:right;
+      text-align-last:right;                /* CSS3 property for aligning the last line */
+      }
+      #dxlrg+p {
+      max-width:200px;
+      max-height:100px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      }
+      #dxlrg+p+p {
+      max-width:300px;
+      max-height:100px;
+      float:right;
+      overflow-x:scroll;     /* CSS3 "overflow-x" and "overflow-y" properties like CSS2.1 "overflow" property but to specify only X or Y */
+      overflow-y:scroll;
+      }
+      #dxlrg+p+p+br {                      /*  the "br" empty element that is directly after the second "p" element starting from the "p" element with "dxlrg" id */
+      clear:right;
+      }
+      h1 {
+      color:#7bbdd6;
+      text-align:center;
+      text-shadow: -1px -1px #6da6bd, 2px 2px #5a8a9d;
+      font-size:14ex;
+      }
+      h1+h1 {
+      color:#7bbdd6;
+      text-align:center;
+      text-shadow: -2px -2px #5a8a9d, 1px 1px #6da6bd;
+      }
+      .ppadmar {
+      background-color:white;
+      border:2px dashed black;
+      padding:5% 10%;		/* "Two values The first one applies to the top and bottom, and the second one to the left and right."(D.P) */
+      margin:5% 10%;
+      }
+      #ibdiv tt,samp {
+      display:inline-block;             /* "display" property with "inline-block" value.  " Treats the element as a block, but displays it inline. The block’s height and vertical padding and margins affect the height of the line in which it is displayed...An important aspect of the box model as it applies to inline text elements is that margins and padding do not affect the line height of the surrounding text unless you set the display property to inline-block...In other words, setting the display property to inline-block gives the element all the characteristics of a block-level element, but displays it inline "("Beginning CSS3" by David Powers) */
+      margin:8px;
+      padding:8px;
+      background-color:lightgray;
+      }
+      #itdiv em,var {
+      display:inline-table;             /* "display" property with "inline-table" value. combine the two values "table" and "inline-block" */
+      margin:8px;
+      padding:8px;
+      background-color:silver;
+      }
+      /*___________________________________________________________________________________________________________________ 
+      */
+      #tbcss {
+      display:table;
+      float:left;
+      }
+      #tbcss em {
+      display:table-caption;
+      caption-side:bottom;
+      text-align:center;
+      }
+      #tbcss img {
+      display:table-cell;
+      margin-right:10px;
+      margin-bottom:11px;
+      margin-left:5px;
+      }
+      /*
+      A third method of floating an image with its caption inside a paragraph, using CSS to simulate the "table" element layout.
+      It's stable like the second method but needs more CSS coding.
+      This method is important when it is necessary to separate more, the style from the markup.
+      _____________________________________________________________________________________________________________________________________ 
+      */
+      #shpp {
+      margin:2% auto 5% auto;
+      width:390px;
+      }
+      #shpimg {
+      float:left;
+      -moz-shape-outside:circle();
+      -ms-shape-outside:circle();
+      -o-shape-outside:circle();
+      -webkit-shape-outside:circle();
+      shape-outside:circle();           /* "shape-outside" property supported only by Chrome and Opera browsers */
+      height:128px;
+      }
+      /* ___________________________________________________________________________
+      */
+      figure#fig2 {
+      float:left;
+      margin:inherit;			/* because "figure" is a block-level element its default wide margin is reduced by assigning to it, with "inherit" value, the margin (8px) of its parent element which is "body" */
+      }
+      #fig2 figcaption {
+      text-align:center;
+      font-style:italic;
+      margin-top:4px;	/* increasing margin between the caption and the image (not necessary) */ 
+      }
+      #fig2 img {	/* this CSS declaration block is just for aligning the top of the image with the first line of the paragraph (not necessary)  */
+      margin-top:-5px;
+      }
+      /*
+      One more method of floating an image with its caption inside a paragraph, with HTML5 elements.
+      Stable, less coding on both CSS and HTML, but not supported by old browsers. 
+      _____________________________________________________________________________________________________________________________________
+      */
+      #pborad,#pborad2,#pborad3,#pborad4,#pborad5,#pborad6,.pradln,.plnoff {
+      clear:left;
+      margin:15%;
+      padding:5%;
+      border:15px solid blue;
+      background-color:white;
+      font-weight:bold;
+      }
+      #pborad {
+      border-radius:15% 25px;           /* "Two values: The first applies to the top-left and bottom-right corners. The second applies to the top-right and bottom-left corners. With two percentage values, the first sets the horizontal radius of a quarter ellipse and the second sets the vertical radius."(D.P) */
+      }
+      #pborad2 {
+      border-radius:10% 30px 25% 10px;      /* "Four values: The values are applied to each corner in a clockwise direction starting from the top left."(D.P) */
+      }
+      #pborad3 {
+      border-radius:30%;
+      }
+      #pborad4 {
+      border-radius:20px;
+      }
+      #pborad5 {
+      border-radius:5% 50% 40px;           /* "Three values: The first applies to the top-left corner. The second applies to the top-right and bottom-left corners. The third applies to bottom-right corner."(D.P) */
+      padding:7%;
+      }
+      #pborad6,.pradln {
+      border-radius:50%;
+      border:none;
+      padding:7%;
+      }
+      #pborad6 + .ppadmar,.pradln,.plnoff {
+      border:none;
+      outline:8px dashed green;
+      }
+      .pradln,.plnoff {
+      outline-offset:20px;
+      }
+      .pnost,#pnost2 {
+      font-weight:bold;
+      margin:5%;
+      }
+      .pnost {
+      outline:8px dashed yellow;
+      }
+      #pnost2 {
+      outline-color:invert;         /* "outline-color" property with "invert" value to use the inverted color of the background */
+      }
+      newtag, blockquote {
+      background-color:black;
+      color:white;
+      font-weight:bold;
+      }
+      blockquote {quotes: '\201C' '\201D'}
+      blockquote:before {content:open-quote}
+      blockquote:after {content:close-quote}
+      #pwrap {
+      margin:5% auto;
+      line-height:2;
+      width:960px;
+      }
+      #pwrap span {
+      border:2px solid white;
+      border-radius:8px;
+      padding:0 20px;
+      -webkit-box-decoration-break:clone;
+      box-decoration-break:clone;              /* "box-decoration-break" property prevents the borders from breaking at the end and the beginning of lines, the other value is "slice". This property can be used for print style sheet to avoid borders break, between printed pages */
+      }
+      #pwrap i {                               /* a line without "box-decoration-break" property */
+      border:2px solid white;
+      border-radius:8px;
+      padding:0 20px;
+      }
+      #tstsel {
+      max-width:960px;
+      margin:5% auto;
+      background-color:white;
+      font-style:italic;
+      }
+      #tstsel::selection {			/* the CSS3 pseudo-element "::selection" : apply style to element when selected */
+      background-color:fuchsia;
+      color:white;
+      font-weight:bold;
+      font-style:normal;
+      }
+  </style>
+</head>
+
+<body>
+<p><img src="img/e-learning.jpg" id="fstimg"/>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br/><dfn>Electronic Learning</dfn>
+
+<textarea>
+Enter your text here to test the Check Spelling feature of your browser 
+</textarea>
+
+<p>&#x00ab; Images are inline elements, so setting the left and right margins to auto has no effect on its own. You need to use the CSS display property to get the browser to treat it as a block-level element by setting its value to block. &#x00bb;<br/>From (<u><i>GETTING STARTED WITH CSS</i></u>) by David Powers</p>      <!-- Left double-angle quotation mark and right double-angle quotation mark entities -->
+
+<img src="img/e-learning.jpg" id="sndimg" draggable="false"/>
+
+<div id="trdimgp"><table id="trdimgtb"><caption><em>Electronic Learning</em></caption><tr><td><img src="img/e-learning.jpg" id="trdimg"/></td></tr></table>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>			<!-- changing "p" element to "div" to avoid an "anonymous content", the same issue of nesting the "figure" element inside "p" element : When a block-level element with the same default user agent stylesheet as "p" element (like "figure" element) or as "table" element, is nested inside "p" element, the Browser will make the content of the nested element (in the source code), "anonymous", between two opened and closed "p" tags =>GTR -->
+<br/>
+<p id="bgp">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p id="dxlrg">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<br/>
+<h1>Lorem ipsum</h1>
+<h1>Lorem ipsum</h1>
+<p class="ppadmar">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div id="ibdiv"><tt>Lorem ipsum dolor sit amet</tt><tt>Lorem ipsum dolor sit amet</tt><tt>Lorem ipsum dolor sit amet</tt><samp>Lorem ipsum dolor sit amet</samp><samp>Lorem ipsum dolor sit amet</samp><samp>Lorem ipsum dolor sit amet</samp><samp>Lorem ipsum dolor sit amet</samp></div>
+<br/>
+<div id="itdiv"><em>Lorem ipsum dolor sit amet</em><em>Lorem ipsum dolor sit amet</em><em>Lorem ipsum dolor sit amet</em><var>Lorem ipsum dolor sit amet</var><var>Lorem ipsum dolor sit amet</var><var>Lorem ipsum dolor sit amet</var><var>Lorem ipsum dolor sit amet</var></div>
+
+<p id="tbcssp"><span id="tbcss"><em>Electronic Learning</em><img src="img/e-learning.jpg" id="tbcssimg"/></span>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<br/>
+<p id="shpp"><img src="img/smiley.png" id="shpimg"/>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<figure id="fig2"><img src="img/e-learning.jpg" /><figcaption>Electronic Learning</figcaption></figure><p>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>		<!-- if the "figure" element is nested inside "p" element the browser will generate two empty paragraphs (two opened and closed "p") between them the content left without markup : " When you inspect the HTML in a browser’s developer tools, you’re not looking at the page’s source code, but at the markup generated by the browser .. Because <figure> is flow content in other words, a block-level element — Safari has automatically closed the opening <p> tag ... The <figure> and the following text are then rendered outside the paragraph. Finally, an opening <p> tag is inserted to match the closing one .. All modern browsers render the HTML the same way. As a result, when the <figure> element is floated to the left, its parent element is the <body>, not the paragraph that it was incorrectly nested inside. " (from "Beginning CSS3" by David Powers) -->
+<p id="pborad">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p id="pborad2">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p id="pborad3">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p id="pborad4">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p id="pborad5">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p id="pborad6">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p class="ppadmar">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p class="plnoff">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p class="pradln">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p class="pnost">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p id="pnost2">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<newtag>
+    <q>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</q>
+    </newtag>
+    <blockquote>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</blockquote>
+    <p id="pwrap">Lorem ipsum dolor sit amet, <span>consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <i>Excepteur sint occaecat cupidatat non proident,<br/> sunt in culpa qui officia deserunt mollit anim id est laborum.</i></p>
+    <p id="tstsel">Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</body>
+</html>

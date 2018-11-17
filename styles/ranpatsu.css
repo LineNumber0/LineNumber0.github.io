@@ -1,0 +1,53 @@
+﻿@charset "UTF-8";                           /* the "@charset" rule to specify the character set used in the style sheet  */
+body {
+background-color:#4149ab;
+background-image:url(../img/ranpatsu.jpg);
+background-attachment:fixed;
+/* background-repeat:repeat-y; */
+background-position:top center;             /* placing the background image with two values "top" and "center" */
+background-size:cover;                 /* "background-size" with "cover" keyword, makes the image covers the background with one instance */
+font-family:Terminus,Consolas,Roboto,monospace;
+text-shadow:black 2px 1px;
+font-size:150%;
+}
+ h1 { 
+ text-align:center;
+ text-shadow:white 0px 0px 8px, white 0px 0px 8px, white 0px 0px 8px, white 0px 0px 8px;        /* intensifying the blur radius (the fourth value "8px") by repeating the same definition (white 0px 0px 8px), four times (for top, right, bottom, and left) with comma separating each one, because only blur radius is needed, X and Y are given "0px". */
+ font-family:sans-serif;
+ }
+  h2 { 
+  color:yellow; 
+  }
+   table {
+   color:white; 
+   font-weight:bold; 
+   font-size:150%;
+   /* box-shadow:gray 7px 7px 7px; */
+   width:90%; 
+   margin:5%;
+   padding:3%;
+   } 
+   i { 
+   color:#01FF09; 
+   margin:15px; 
+   } 
+   td {
+   white-space:nowrap;
+   padding:1%;
+   }
+   audio {
+     width:90%;
+     zoom:220%;
+     /* box-shadow:gray 7px 7px 7px; */
+     background-color:white;
+     margin:5%;
+     border:3px inset silver;                    /* the "inset" value of the "border-style" property */
+   }
+   table,audio,video {
+     box-shadow:black 7px 7px 7px;		/* instead of repeating the same declaration/property on every selector, combining selectors in one declaration block */
+   }
+   video {
+  border:1px solid white;
+  margin:auto;
+  display:block;
+  }

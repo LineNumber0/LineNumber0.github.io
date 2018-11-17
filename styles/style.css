@@ -1,0 +1,40 @@
+﻿body{text-align:center;}
+table,th,td {border:1px solid lightgray;}
+table {border-collapse:collapse; width:100%;}
+td {padding:5px; text-align:center;}
+tr.c {background-color:#F5F5F5;}
+td.c {background-color:#AABBFF;}
+td.ab {background-color:#DFF7FF;}
+td.av {background-color:#F7E7FF;}
+td.ag {background-color:#E7FFE7;}
+td.ar {background-color:#FFEFDF;}
+td.ay {background-color:#FFEFAF;}
+td.an {background-color:#DFDFE7;}
+span.mon {font-size: large; font-family: monospace}
+
+img {border:0px}
+img.rd {position:relative; left:28px;}
+img.rs {position:relative; left:-27px;}
+
+table.padleft td {padding-right:10px; padding-left:10px; text-align:left;}
+table.nopad td {padding:1px;}
+
+font.imgdescr {font-size:80%;}
+font.axs{font-family:Arial; font-size:xx-small;}
+td.small {font-size:80%;}
+div.ls{text-align:left;font-size:80%;}
+
+ul {margin: 0 0 0 20px; padding: 0;}
+ul li {margin:0; padding: 0;}
+
+h3 {text-align:left;}
+
+/* a:link {text-decoration:none; font-weight:bold; color:#222222;} */
+/* a:active {text-decoration:none; font-weight:bold; color:#222222;} */
+/* a:visited {text-decoration:none; font-weight:bold; color:#222222;} */
+/* a:hover {text-decoration:none; font-weight:bold; background-color:#33B5E5;} */
+
+/* {LN_0} */
+th {background-color:silver;}
+tr:nth-of-type(even) {background-color:whitesmoke}
+tr:nth-of-type(odd) {background-color:ghostwhite}
