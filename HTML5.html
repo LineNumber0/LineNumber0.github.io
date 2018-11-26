@@ -186,7 +186,7 @@
   </style>
   <!-- <script src="from-WebDev-books/JS/modernizr-custom.js"></script> -->
   </head>
-  <body onload="drawRectangle();drawArc();drawShape();drawGrad();drawGradColors();demoTranslation();demoRotation();demoScale();draw();draw2();demoAnimation();demoAnimation2();canvasimg()">			<!-- JavaScript functions for the "canvas" element as a value for "onload" attribute in the "body" element, to initiate the function when the page loads -->
+  <body onload="drawRectangle();drawArc();drawShape();drawGrad();drawGradColors();demoTranslation();demoRotation();demoScale();draw();draw2();demoAnimation();demoAnimation2();canvasimg();backTop()">			<!-- JavaScript functions for the "canvas" element as a value for "onload" attribute in the "body" element, to initiate the function when the page loads -->
   <header>                     <!-- `` Hence, the header element is very important as it provides more accessibility than other elements, like the footer. The search engine finds the content in the header tag quite easily. Moreover, using the header element accounts for an appropriate way of web designing. The header can be used to denote the heading of a blog, a web page, or an article. `` (from "HTML5 and CSS3 Transition, Transformation, and Animation" by Aravind Shenoy and Gianluca Guarini) -->
       <h1>HTML5 Practice page</h1>
       </header>
@@ -347,6 +347,10 @@
   rangeOutput.value = range.value;									// without using a variable with document.getElementById(), the value property is changed using only the id attribute in the element.
   }
   range.addEventListener("input",outputElementValue);
+  
+  function backTop() {
+  setTimeout(function(){scrollTo(0,0)},5000);
+  }
 </script>
 <input id="howYouRateIt" name="howYouRateIt" type="range" min="1" max="10" value="5" onchange="showValue(this.value)"><span id="rangeSpan">5</span>							<!-- another way to display the range value with the "change" event -->
   <script>
