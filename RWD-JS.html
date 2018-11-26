@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <title>Linking RWD CSS breakpoints to JavaScript, An example from http://rwd.education</title>
+	<meta charset="utf-8">
+	<meta name="description" content="An example from the book, 'Responsive Web Design with HTML5 and CSS3' by Ben Frain">
+	  <meta name="Web-Developer" content="LineNumber0"/>									<!-- Benlamine Abdelmourhit -->
+	  <meta name="Date" content="Sunday 01-July-2018 18:54 WEST"/>
+	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#ff9900">
+	  <style type="text/css">
+	    @media (min-width: 20rem) {
+	    body::after {
+	    content: "Small Viewport";
+	    font-size: 0;
+	    }
+	    }
+	    @media (min-width: 47.5rem) {
+	    body::after {
+	    content: "Medium Viewport";
+	    font-size: 0;
+	    }
+	    }
+	    @media (min-width: 62.5rem) {
+	    body::after {
+	    content: "Large Viewport";
+	    font-size: 0;
+	    }
+	    }
+	  </style>
+</head>
+<body>
+<center><h1>Linking <acronym title="Responsive Web Design" >RWD</acronym> CSS breakpoints to JavaScript</h1></center>
+	<script>
+	  var size = window.getComputedStyle(document.body,':after').getPropertyValue('content');
+	  
+	  window.addEventListener("resize",function () {
+	  setTimeout(function() {document.location.reload()},500);
+	  });
+	  ;(function alertSize() {
+	  if (size.indexOf("Small Viewport") !=-1) {
+	  alert('I will run functions for small screens !');
+	  }
+	  if (size.indexOf("Medium Viewport") !=-1) {
+	  alert('At medium sizes, a different function could run.');
+	  }
+	  if (size.indexOf("Large Viewport") !=-1) {
+	  alert('Large screen here, different functions if needed.');
+	  }
+	  })();
+	  </script>
+</body>
+</html>

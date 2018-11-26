@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
   <meta name="Description" content="From &quot;Beginning CSS3&quot; book"/>
   <meta name="Author" content="David Powers"/>
-  <meta name="Web-Developer" content="LineNumber0"/>
+  <meta name="Web-Developer" content="LineNumber0"/>				<!-- Benlamine Abdelmourhit -->
   <meta name="Date" content="Sun Jan 14 2018 00:17:17 GMT+0 (WET)"/>
 <style type="text/css">
 /* Browser-specific properties (D.P) */
@@ -71,11 +71,30 @@ background-color: #333;
    src:url(ext/Digital.ttf) format('truetype');
    }
 #wrpchrn,input {float:right}
-#chronotime {font-family:'Digital', monospace;font-size:4em}
-input {font-weight:bold;color:white;padding:8px;border-radius:8px;text-shadow:1px 1px black;box-shadow:3px 3px 3px dimgray;outline:none;font-size:1.5em;width:6em;margin-right:1em}
+#chronotime {
+font-family:'Digital', monospace;
+font-size:4em;
+}
+input {
+font-weight:bold;
+color:white;
+padding:8px;
+border-radius:8px;
+text-shadow:1px 1px black;
+box-shadow:3px 3px 3px dimgray;
+outline:none;font-size:1.5em;
+width:6em;
+margin-right:1em;
+}
 input[value="Start!"] {background-color:#5CB85C}
-input[value="Stop!"] {background-color:#D9534F;color:white;/* width:6.1875rem */}     /* trying to reduce the displacement of this floated button with 6.1875 "root em" width ( the width of "Start" button 75px divided by 16 ), is not professional, but rather specify the same width and right margin to all buttons to fixate them */
-input[value="Reset!"] {background-color:#F0AD4E;color:white}
+input[value="Stop!"] {
+background-color:#D9534F;
+color:white;/* width:6.1875rem */
+}     /* trying to reduce the displacement of this floated button with 6.1875 "root em" width ( the width of "Start" button 75px divided by 16 ), is not professional, but rather specify the same width and right margin to all buttons to fixate them */
+input[value="Reset!"] {
+background-color:#F0AD4E;
+color:white;
+}
 input[value="Resume!"] {background-color:yellowgreen}
 input:active {box-shadow:inset 3px 3px 3px dimgray}                     /* increasing the button effect by using the same "box-shadow" definition, starting with the keyword "inset" */
 form {margin-top:10px}
@@ -94,7 +113,10 @@ form {margin-top:10px}
         var msec = diff.getMilliseconds()                       // Those are the "get" methods of the "Date" object in JavaScript, like functions, they return a value. {LN0}
         var sec = diff.getSeconds()
         var min = diff.getMinutes()
-        var hr = diff.getHours()-1
+        var hr = diff.getHours()
+	if (navigator.userAgent.indexOf("WebKit") != -1) {						// {LN0}
+	hr = diff.getHours() - 1
+	}
         if (min < 10){
             min = "0" + min
         }
@@ -139,7 +161,7 @@ form {margin-top:10px}
         document.chronoForm.startstop.onclick = chronoContinue
         document.chronoForm.reset.onclick = chronoStopReset
         clearTimeout(timerID)
-	if (parseInt(chronotime.innerHTML.substring(chronotime.innerHTML.length - 3)) > 0 ) {			// {LN0}
+	if (parseInt(chronotime.innerHTML.substring(chronotime.innerHTML.length - 3)) > 0 ) {		// {LN0}
 	document.chronoForm.startstop.value = "Resume!";
 	}
     }
@@ -147,6 +169,7 @@ form {margin-top:10px}
 </head>
 
 <body>
+<center><h1>Stepping Function of <code>transition-timing-function</code> CSS property</h1></center>
 <div id="wrpchrn">
     <span id="chronotime">0:00:00:00</span>
 <form name="chronoForm">
@@ -154,10 +177,10 @@ form {margin-top:10px}
     <input type="button" name="reset" value="Reset!" onClick="chronoReset()" />
 </form>
     </div>
-    <div class="steps1 clr" onmouseover="chronoStart()" onmouseout="chronoStop()" ontransitionend="chronoStop()" onwebkittransitionend="chronoStop()" ></div>             <!-- adding the "ontransitionend" JavaScript attribute to trigger the "chronoStop()" function when the CSS3 transition ends -->
-    <div class="steps2 clr" onmouseover="chronoStart()" onmouseout="chronoStop()" ontransitionend="chronoStop()" onwebkittransitionend="chronoStop()" ></div>
-<div class="steps3 clr"></div>
-<div class="steps4 clr" onmouseover="chronoStart()" onmouseout="chronoStop()" ontransitionend="chronoStop()" onwebkittransitionend="chronoStop()" ></div>
+    <div class="steps1 clr" onmouseover="chronoStart()" onmouseout="chronoStop()" ontransitionend="chronoStop()" onwebkittransitionend="chronoStop()" title="steps(5, start)" ></div>             <!-- adding the "ontransitionend" JavaScript attribute to trigger the "chronoStop()" function when the CSS3 transition ends -->
+    <div class="steps2 clr" onmouseover="chronoStart()" onmouseout="chronoStop()" ontransitionend="chronoStop()" onwebkittransitionend="chronoStop()" title="steps(5, end)" ></div>
+<div class="steps3 clr" title="step-start" ></div>
+<div class="steps4 clr" onmouseover="chronoStart()" onmouseout="chronoStop()" ontransitionend="chronoStop()" onwebkittransitionend="chronoStop()" title="step-end" ></div>
 <br clear="left"/>
 <div id="hwwrp">
   <div class="steps1 hw" onmouseover="chronoStart()" onmouseout="chronoStop()" ontransitionend="chronoStop()" onwebkittransitionend="chronoStop()" ></div>

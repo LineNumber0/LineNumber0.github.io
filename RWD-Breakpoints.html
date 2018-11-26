@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Responsive Web Design Breakpoints</title>
+    <meta charset="UTF-8"/>
+    <meta name="Description" content="From &quot;Pro CSS3 Animation&quot; book"/>
+    <meta name="Author" content="Dudley Storey"/>
+    <meta name="Web-Developer" content="LineNumber0"/>				<!-- Benlamine Abdelmourhit -->
+    <meta name="Date" content="Tuesday 03-July-2018 21:48 WEST"/>
+    <style type="text/css">
+      * { box-sizing: border-box; }
+      body { 
+      font-family: Avenir, sans-serif; 
+      margin: 100px 0; 
+      }
+      #viewingmode {											/* ``120em wide and above will be considered "widescreen".``(D.S) */
+      width: 150px; 
+      height: 150px; 
+      background: rgba(0,0,0,0.2);
+      position: absolute; 
+      top: 0; 
+      right: 0; 
+      text-align: center;
+      }
+      /* screen, in default widescreen presentation */
+      #display {
+      width: 80%; 
+      height: 50%; 
+      border: 12px solid #585858;
+      border-radius: 5px; 
+      margin-top: 20px; 
+      background-color: #eee;
+      }
+      /* base, in default monitor stand - keyboard configuration */
+      #buttonbase {
+      width: 90px; 
+      border: 12px solid #585858; 
+      border-radius: 5px;
+      position: absolute; 
+      top: 100px; 
+      left: 30px; 
+      transform-origin: 25px 5px;
+      }
+      #display, #buttonbase { 
+      display: inline-block; 
+      transition: .5s all linear; 
+      }
+      @media screen and (max-width: 80em) {								/* ``At 80em wide you can assume the user is viewing the site with a tablet.``(D.S) */
+      #display { 
+      width: 50%; 
+      height: 60%; 
+      border: 10px solid #585858; 
+      }
+      #buttonbase { 
+      width: 8px; 
+      height: 8px; 
+      border: none;
+      border-radius: 50%; 
+      background: #fff; 
+      top: 101px; 
+      left: 70px; 
+      }
+      }
+      @media screen and (max-width: 40em) {								/* ``At 40em and below you should assume the user is using a smartphone.``(D.S) */
+      #display { 
+      border-width: 23px 5px; 
+      width: 45%; 
+      height: 73%; 
+      }
+      #buttonbase { top: 110px; }
+      h1 {font-size:100%}
+      }
+      @media screen and (orientation: landscape) and (max-width: 80em) {
+      #display { transform: rotate(90deg);    }
+      #buttonbase {
+      transform: translate(0,-40px);
+      left:30px;
+      }
+      }
+      h1 {
+      position:absolute;
+      bottom:0;
+      left:5%;
+      }
+      </style>
+  </head>
+  <body>
+  <div id="viewingmode">
+    <span id="display"></span>
+    <span id="buttonbase"></span>
+  </div>
+  <h1 id="screeninfo" >Responsive Web Design Breakpoints</h1>
+  <script type="text/javascript">
+    window.addEventListener("resize",function(){screeninfo.innerHTML = "Viewport width : " + document.documentElement.offsetWidth + "px"});
+  </script>
+  </body>
+</html>

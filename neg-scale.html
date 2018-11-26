@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Negative Scale</title>
+    <meta charset="utf-8"/>
+  <meta name="Description" content="From &quot;Pro CSS3 Animation&quot; book"/>
+  <meta name="Author" content="Dudley Storey"/>
+  <meta name="Web-Developer" content="LineNumber0"/>							<!--Benlamine Abdelmourhit-->
+    <meta name="Date" content="Fri Mar 09 2018 00:44 GMT+0 (WET)"/>
+    <link rel="stylesheet" type="text/css" href="styles/mirror-scale+prefix.css" />         		<!-- browser-specific properties in an external style sheet -->
+    <style type="text/css">
+        img[alt^="left"] {
+        animation:scaleto 5s infinite alternate;
+        position:absolute;
+        top:42px;
+        left:16px;
+        z-index:1;
+        }
+        @keyframes scaleto {
+        from {
+        transform: translateX(0) scale(1);
+        }
+        25% {
+        transform: translateX(200px) scale(0.5);
+        }
+        50% {
+        transform:translateX(400px) scale(0);
+        }
+        75% {
+        transform: translateX(600px) scale(-0.5,0.5);               /* Negative in the X axis but not Y */
+        }
+        to {
+        transform: translateX(800px) scale(-1,1);
+        }
+        }
+        img[alt^="Abraham"] {
+        margin:25% 10px 10px 10px;
+        float:left;
+        }
+        canvas {
+        position:absolute;
+        left:16px;
+        z-index:-1;
+        }
+        b {
+        position: absolute;
+        left:16px;
+        top: 130px;
+        }
+        b span:first-of-type {padding-right:100px}
+        b tt:first-of-type {padding-right:150px}
+        b tt:nth-of-type(2) {padding-right:100px}
+        b tt:nth-of-type(3) {padding-right:150px}
+        b span:last-of-type {float:right}
+      </style>
+  </head>
+  <body onload="diago()">
+  <img src="img/linc.png" alt="left hand index finger, pointing" /><br/>
+        <b><span><tt>scale(1)</tt><br/>(original)</span><tt>scale(0.5)</tt><tt>scale(0)</tt><tt>scale(-0.5,0.5)</tt><span><tt>scale(-1,1)</tt><br/>(flipped)</span></b>
+<canvas id="forbg" width="900" height="100">Your browser doesn't support HTML5 canvas.</canvas>
+<script type="text/javascript">
+     function diago() {
+ var canvas = document.getElementById('forbg');
+ var context = canvas.getContext('2d');
+     context.strokeStyle = "gray";
+     context.moveTo(0,0); 
+     context.lineTo(900,100);
+     context.moveTo(900,0); 
+     context.lineTo(0,100);
+     context.stroke();
+     }
+</script>
+<img src="img/lincoln.png" alt="Abraham Lincoln, 1863" width="389px" height="480px" />
+<img src="img/lincoln.png" alt="Abraham Lincoln, 1863" style="width:389px; height:480px; -moz-transform:scaleX(-1); -o-transform:scaleX(-1);  -ms-transform:scaleX(-1); -webkit-transform:scaleX(-1); transform:scaleX(-1);" /> <br clear="left"/>        <!-- ``Flipping an Image with an Inline Transform Style``(D.S) -->
+  <q><i>Original photograph of Abraham Lincoln (left) flipped using CSS3 scale transform (right)</i></q><!-- (D.S) -->
+  </body>
+</html>

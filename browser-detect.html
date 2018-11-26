@@ -4,29 +4,41 @@
     <title>Browser detection</title>
     <meta name="Description" content="From &quot;Beginning Javascript&quot; book"/>
     <meta name="Author" content="Jeremy McPeak"/>
-    <meta name="Web-Developer" content="RebMunEnil_0"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
     <meta name="Date" content="Saturday 12-May-2018 22:58 WEST"/>
+    <style type="text/css">
+      img {
+      opacity:0.5;
+      position:absolute;
+      right:10px;
+      bottom:10px;
+      }
+    </style>
 </head>
 <body>
 <center><h1 id="head"></h1></center>
 <p id="para" style="font-family:monospace;font-size:2em"></p>
+<img id="brimg" src="" />
     <script>
       var header = document.getElementById("head");
       var pelem = document.getElementById("para");
+      var bgimg = document.getElementById("brimg");
       
         function getBrowserName() {
 	var lsBrowser = navigator.userAgent;					// ``get the name of the browser, as found in navigator . userAgent, and store it in the variable lsBrowser``(J.M)
 
 	if (lsBrowser.indexOf("MSIE") >= 0) {					// ``The string returned by this property (userAgent) tends to be quite long and does vary. However, by checking for the existence of certain keywords, such as MSIE or Firefox, you can usually determine the browser name``(J.M)
 	    return "MSIE";							// ``If the indexOf value of this substring is 0 or greater, you know you have found it, and so you set the return value to MSIE .``(J.M)
+	    } else if (lsBrowser.indexOf("OPR") >= 0 || lsBrowser.indexOf("Opera") >= 0) {
+	    return "Opera";
+	    } else if (lsBrowser.indexOf("SeaMonkey") >= 0) {
+		return "SeaMonkey";
             } else if (lsBrowser.indexOf("Firefox") >= 0) {
                 return "Firefox";
             } else if (lsBrowser.indexOf("Chrome") >= 0) {
                 return "Chrome";
             } else if (lsBrowser.indexOf("Safari") >= 0) {
                 return "Safari";
-            } else if (lsBrowser.indexOf("Opera") >= 0) {
-                return "Opera";
             } else {
                 return "UNKNOWN";
             }
@@ -47,19 +59,29 @@
         if (browserName == "MSIE") {
             if (browserVersion < 9) {
 	      header.innerHTML = "Your version of Internet Explorer is too old !";
+	      bgimg.style.display = "none";
             } else {
                 header.innerHTML = "Your version of Internet Explorer is fully supported !";
+		bgimg.style.display = "none";
             }
         } else if (browserName == "Firefox") {
             header.innerHTML = "Firefox is fully supported !";
+	    bgimg.src = "ext/firefox.png";
         } else if (browserName == "Safari") {
             header.innerHTML = "Safari is fully supported !";
+	    bgimg.style.display = "none";
         } else if (browserName == "Chrome") {
             header.innerHTML = "Chrome is fully supported !";
+	    bgimg.src = "ext/chrome.png";
         } else if (browserName == "Opera") {
             header.innerHTML = "Opera is fully supported !";
+	    bgimg.src = "ext/opera.png";
+	    } else if (browserName == "SeaMonkey") {
+	    header.innerHTML = "SeaMonkey is fully supported !";
+	    bgimg.src =  "ext/seamonkey.png";
         } else {
             header.innerHTML = "Sorry this browser version is not supported !";
+	    bgimg.style.display = "none";
 	    }												// `` You cannot rely on browser sniffing beyond targeting a single browser.``(J.M)
 	    
 	    var UserAgentString = navigator.userAgent;

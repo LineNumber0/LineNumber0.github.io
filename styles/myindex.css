@@ -1,0 +1,26 @@
+﻿@charset "UTF-8";
+body {
+  background-image:repeating-linear-gradient(-45deg, aliceblue, ghostwhite 10px) !important;
+}
+h1 {
+  text-align:center;
+}
+a {
+  text-decoration:none;
+  outline:none;
+  font-weight:bold;
+  font-size:2em;
+}
+a:hover,a:focus {
+  text-decoration:underline
+  
+} a:visited {
+  color:darkred;
+  
+}
+li {
+  margin-bottom:32px;
+}
+acronym {
+  cursor:help;
+}

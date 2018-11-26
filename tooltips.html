@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>CSS Tooltips</title>
 <meta charset="utf-8"/>
   <meta name="Description" content="From &quot;Beginning CSS3&quot; book"/>
   <meta name="Author" content="David Powers"/>
   <meta name="Web-Developer" content="LineNumber0"/>
-<title>CSS Tooltips</title>
 <style type="text/css">
 body {
     margin: 0;
@@ -41,12 +41,14 @@ body {
 }
 a[href$="formula1.com/"] {
     position: relative;
+    white-space: nowrap;
 }
 a[href$="formula1.com/"] span {
     position: absolute;
     top: -9000px;
     left: 20px;
     text-decoration: none;
+    white-space: normal;
     display: block;
     width: 250px;
     background-color: #006;
@@ -60,7 +62,7 @@ a[href$="formula1.com/"] span {
 }
 a[href$="formula1.com/"]:hover span, a[href$="formula1.com/"]:focus span {
     left: 20px;
-    top: -160px;
+    top: -168px;
     transform: translateY(16px);
     opacity: 1;
     transition:transform 1s, opacity 1s;
