@@ -1,15 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>LineNumber0 briefcase</title>
+    <title>LineNumber0 WebDev briefcase</title>
     <meta charset="utf-8"/>
     <meta name="Web-Developer" content="LineNumber0"/>						<!-- linenumber0 at gee mail dot com -->
     <meta name="Date" content="Monday 26-November-2018 00:12 +01"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
       <link rel="stylesheet" href="styles/myindex.css">
   </head>
   <body>
-  <h1>LineNumber0 WebDev practices</h1>
+  <h1>LineNumber0 <abbr title="Front-end Web Developement" >WebDev</abbr> practices</h1>
+  <span id="tinfo" ></span>
 <ul>
   <li><a href="HTML5.html" >Some HTML5 features</a></li>
   <li><a href="mevents.html" >HTML5 JavaScript Media events</a></li>
@@ -29,6 +30,22 @@
       document.links[i].setAttribute("target","_blank");
       document.links[i].setAttribute("title",document.links[i].href);
     }
+    
+    var ttip = document.getElementById("tinfo"), elements = document.body.querySelectorAll("*");
+    for (var j = 0; j < elements.length; j++) {
+      elements[j].addEventListener("mouseover",function(e){
+      var elevents = e.target;
+      if (elevents.title.indexOf("/") == -1) {								// ((mabghinach elliyanat !))
+      ttip.innerHTML = elevents.getAttribute("title");
+      }
+      })
+    }
+
+    var hline = document.querySelector("h1");
+    window.oncontextmenu = function(){
+    hline.innerHTML = hline.innerHTML.replace("LineNumber0","\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74");
+    }
+
   </script>
   </body>
 </html>
