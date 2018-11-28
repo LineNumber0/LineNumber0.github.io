@@ -52,10 +52,10 @@
     for (var l = 0; l < 30; l++) {
       var randomX = Math.round(Math.random() * (100 - 1) + 1);
       var randomY = Math.round(Math.random() * (1200 - 1) + 1);
-      var randomZ = Math.round(Math.random() * (100 - 1) + 1);
+      var randomZ = Math.round(Math.random() * 40);
       var srcs = ['ext/CSS3.png','ext/HTML5.png','ext/javascript.png'];
       var rsrcs = srcs[Math.round(Math.random() * 2)];
-      var nbdy = bdy.push('<img src='+rsrcs+' style="left:'+randomX+'%;top:'+randomY+'px;width:'+randomZ+'px;height: '+randomZ+'/>');
+      var nbdy = bdy.push('<img src='+rsrcs+' style="left:'+randomX+'%;top:'+randomY+'px;width:'+randomX+'px;animation-delay:'+randomZ+'s"/>');
       }
       // using jquery ...
       $("body").append( bdy.join('') );
