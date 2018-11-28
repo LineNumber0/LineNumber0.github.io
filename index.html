@@ -25,6 +25,7 @@
 <li><a href="steps.html" ><code>steps()</code> Function of <code>transition-timing-function</code> CSS3 property</a></li>
 <li><a href="ttf.html" ><code>cubic-bezier()</code> values of <code>transition-timing-function</code></a></li>
 </ul>
+<script src="JS/jquery-2.1.3.min.js" ></script>
   <script type="text/javascript">
     for (var i = 0; i < document.links.length; i++) {
       document.links[i].setAttribute("target","_blank");
@@ -35,10 +36,10 @@
     for (var j = 0; j < elements.length; j++) {
       elements[j].addEventListener("mouseover",function(e){
       var elevents = e.target;
-      if (elevents.title.indexOf("/") == -1) {								// ((mabghinach elliyanat !))
+      if (elevents.title.indexOf("/") == -1) {								// (( mabghinach elliyanat ! ))
       ttip.innerHTML = elevents.getAttribute("title");
       }
-      })
+      });
     }
 
     var hline = document.querySelector("h1");
@@ -46,6 +47,24 @@
     hline.innerHTML = hline.innerHTML.replace("LineNumber0","\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74");
     }
 
+    if ("animation" in document.body.style) {
+    var bdy = [];
+    for (var l = 0; l < 30; l++) {
+      var randomX = Math.round(Math.random() * (100 - 1) + 1);
+      var randomY = Math.round(Math.random() * (1200 - 1) + 1);
+      var randomZ = Math.round(Math.random() * (100 - 1) + 1);
+      var srcs = ['ext/CSS3.png','ext/HTML5.png','ext/javascript.png'];
+      var rsrcs = srcs[Math.round(Math.random() * 2)];
+      var nbdy = bdy.push('<img src='+rsrcs+' style="left:'+randomX+'%;top:'+randomY+'px;width:'+randomZ+'px;height: '+randomZ+'/>');
+      }
+      // using jquery ...
+      $("body").append( bdy.join('') );
+      }
   </script>
+  <noscript>
+    <link rel="stylesheet" href="styles/noscript.css">
+      JavaScript is disabled on you Browser !<br/>
+      Some links in this page need JavaScript to work ...
+    </noscript>
   </body>
 </html>

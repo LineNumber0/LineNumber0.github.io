@@ -1,0 +1,30 @@
+﻿@charset "UTF-8";
+body *[title]:not(a)::after {
+  content:'';
+  right:-999px;
+  transition:right 1s;
+}
+body *[title]:not(a):hover::after {
+  content:attr(title);
+  position:fixed;
+  bottom:5%;
+  right:32px;
+  transition:right 1s;
+}
+body *[title]:not(a):hover::after, noscript {
+  font-weight:bold;
+  font-size:x-large;
+  padding:1em;
+  border:1px solid dimgray;
+  border-radius:16px;
+  background-color:lightyellow;
+}
+noscript {
+  position:fixed;
+  right:-999px;
+  top:5%;
+  transition:right 1s;
+}
+ul:hover ~ noscript {
+  right:32px;
+}

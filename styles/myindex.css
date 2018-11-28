@@ -55,3 +55,13 @@
   right:-500px;
   transition:right 1s;
   }
+ /* for logo animation */
+ @keyframes snowflake {
+   100% { transform: translateY(1800px) rotate(1200deg);  }
+ }
+ img { 
+   opacity:0.5;
+   position: absolute;
+   z-index:-1;
+   animation: snowflake 40s linear infinite;  
+ }
