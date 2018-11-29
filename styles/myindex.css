@@ -1,4 +1,8 @@
 ﻿  @charset "UTF-8";
+  @font-face {
+    font-family:'song';
+    src:url(../ext/song.ttf)
+  }
   body {
     background-image:url(../img/bg_tile.jpg);
     background-image:repeating-linear-gradient(-45deg, aliceblue, ghostwhite 10px);
@@ -14,7 +18,9 @@
     text-decoration:none;
     outline:none;
     font-weight:bold;
-    font-size:2em;
+    font-size:3em;
+    font-family:'song';
+    line-height: 1.5;
   }
   a:hover,a:focus {
     text-decoration:underline
@@ -26,8 +32,9 @@
   }
   li {
     margin-bottom:64px;
+    list-style-image: url(../ext/chk.png);
   }
-  acronym, abbr {
+  *[title] {
     cursor:help;
   }
   h1 abbr {
@@ -37,10 +44,17 @@
   }
   ul {
     margin: auto;
+    padding: 100px;
+    padding-left:150px;
     width: 60em;
+    background-image:url(../ext/paper.svg);
+    background-size: 170%;
+    background-position: -156px -40px;
+    background-repeat: repeat-y;
   }
   #tinfo:not(:empty) {
   padding:1em;
+  max-width:660px;
   border:1px solid lightgray;
   border-radius:16px;
   background-color:lightyellow;
@@ -52,7 +66,7 @@
   transition:right 1s;
   }
   #tinfo:empty {
-  right:-500px;
+  right:-999px;
   transition:right 1s;
   }
  /* for logo animation */
@@ -64,4 +78,9 @@
    position: absolute;
    z-index:-1;
    animation: snowflake 40s linear infinite;  
+ }
+ @media (min-width:80em) {
+   ul {
+     padding-left:300px;
+   }
  }
