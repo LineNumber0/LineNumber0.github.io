@@ -34,7 +34,7 @@
     margin-bottom:64px;
     list-style-image: url(../ext/chk.png);
   }
-  *[title] {
+  *:not(a)[title] {
     cursor:help;
   }
   h1 abbr {
