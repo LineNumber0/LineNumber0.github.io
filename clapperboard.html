@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Clapperboard Image Caption</title>
+    <meta charset="utf-8"/>
+    <meta name="Description" content="From &quot;Pro CSS3 Animation&quot; book"/>
+    <meta name="Author" content="Dudley Storey"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="Date" content="Sunday 25-March-2018 17:36 WEST"/>
+    <style type="text/css">
+        figure.clapperboard { 
+        position: relative; 
+        margin:10%;
+        } 
+        figure.clapperboard figcaption { 
+        position: absolute; 
+        top: 0; 
+        left: 0;
+        font-family: Futura, Arial, sans-serif;
+        font-weight: bold; 
+        font-style: italic; 
+        color: transparent;                                                    /* set "transparent" for all colors to hide the caption in all browsers */
+        text-shadow:0 0 0 transparent;
+        background: transparent;
+        -o-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;                                                /* ``box-sizing property to ensure that the figcaption remains the right width and height after padding is added.``(D.S) */
+        font-size: 1rem; 
+        padding: 1rem; 
+        padding-top: 3rem;
+        -o-transform-origin: bottom right;
+        -moz-transform-origin: bottom right;
+        -webkit-transform-origin: bottom right; 
+        -ms-transform-origin: bottom right;
+        transform-origin: bottom right;
+        -o-transform: rotateZ(90deg);                                          /* the "rotateZ()" function was implemented in old browsers before "rotate()" */
+        -moz-transform: rotateZ(90deg);
+        -webkit-transform: rotateZ(90deg);
+        -ms-transform: rotateZ(90deg);
+        transform: rotate(90deg);                                              /* ``rotate the figcaption element 90 degrees, so that its bottom right corner matches the corner of the image``(D.S) */
+        -o-transition: -o-transform 3s cubic-bezier(.12,.49,.17,.87), color 3s cubic-bezier(.12,.49,.17,.87);
+        -moz-transition: -moz-transform 3s cubic-bezier(.12,.49,.17,.87), color 3s cubic-bezier(.12,.49,.17,.87);
+        -webkit-transition: -webkit-transform 3s cubic-bezier(.12,.49,.17,.87), color 3s cubic-bezier(.12,.49,.17,.87);
+        -ms-transition: -ms-transform 3s cubic-bezier(.12,.49,.17,.87), color 3s cubic-bezier(.12,.49,.17,.87);
+        transition: transform 3s cubic-bezier(.12,.49,.17,.87), color 3s cubic-bezier(.12,.49,.17,.87);                     /* transition for just two properties "transform" and "color" */
+        }
+        figure.clapperboard, figure.clapperboard figcaption { 
+        width:355px;                                                           /* width and height of the image */
+        height:296px; 
+        } 
+        figure.clapperboard figcaption q { 
+        font-size: 1.5rem; 
+        display: block; 
+        margin-bottom: 2rem; 
+        } 
+        figure.clapperboard:hover figcaption {                                 /* the "hover" state should be applied to the containing element (figure here) to make the transition more stable, better than limiting the state to the image only */
+        -o-transform: rotateZ(0);
+        -moz-transform: rotateZ(0);
+        -webkit-transform: rotateZ(0);
+        -ms-transform: rotateZ(0);
+        transform: rotate(0);
+        color: white;
+        text-shadow: 3px 3px 1px rgba(0,0,0,0.6); 
+        -o-transition: 1s,text-shadow 0.5s 0.5s;
+        -moz-transition: 1s,text-shadow 0.5s 0.5s;
+        -webkit-transition: 1s,text-shadow 0.5s 0.5s;
+        -ms-transition: 1s,text-shadow 0.5s 0.5s;
+        transition: 1s,text-shadow 0.5s 0.5s;                          /* add a separate rule for the "text-shadow" property in the transition definition to add the text shadow when the caption is above the image */ 
+        } 
+      </style>
+  </head>
+  <body>
+  <figure class=clapperboard> 
+<img src=img/apollo-17.png alt="Photograph of astronaut on the Moon"> 
+<figcaption> 
+<q> We leave as we came and, God willing, as we shall return, with peace and hope...</q> 
+– Eugene Cernan, commander of Apollo 18, the last man on the moon. 
+</figcaption> 
+</figure>
+  </body>
+</html>

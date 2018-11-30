@@ -1,7 +1,7 @@
 ﻿  @charset "UTF-8";
   @font-face {
     font-family:'song';
-    src:url(../ext/song.ttf)
+    src:url(../ext/song.ttf) format('truetype');
   }
   body {
     background-image:url(../img/bg_tile.jpg);
@@ -79,8 +79,19 @@
    z-index:-1;
    animation: snowflake 40s linear infinite;  
  }
+/*_______________________________________________________________________
+ */
  @media (min-width:80em) {
    ul {
      padding-left:300px;
    }
+ }
+ @media (max-width:40em) {
+  body,ul {
+    max-width:100%;
+    padding:0;
+  }
+  #tinfo:not(:empty) {
+  max-width:20em;
+  }
  }

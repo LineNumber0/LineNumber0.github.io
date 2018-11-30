@@ -17,10 +17,14 @@
   <li><a href="soc.html" >Responsive Web Design Page</a></li>
   <li><a href="RWD-FORM.html" >Responsive Web Design Form</a></li>
   <li><a href="RWD-Breakpoints.html" ><acronym title="Responsive Web Design" >RWD</acronym> CSS <span title="&ldquo;Breakpoint&rdquo; is the term used to define the point in which a responsive design should change significantly.&#x0A;(from &quot;Responsive Web Design with HTML5 and CSS3&quot; by Ben Frain)" >Breakpoints</span></a></li>
-  <li><a href="RWD-JS.html" >Linking <acronym title="Responsive Web Design" >RWD</acronym> CSS Breakpoints to JavaScript</a></li>
+  <li><a href="RWD-JS.html" >Linking RWD CSS Breakpoints to JavaScript</a></li>
   <li><a href="browser-detect.html" >JavaScript Browser detection</a></li>
   <li><a href="tooltips.html" >CSS tooltips</a></li>
-  <li><a href="rotate.html" >Rotation functions of <tt>transform</tt> CSS property</a></li>
+  <li><a href="clapperboard.html" >Clapperboard Image Caption</a></li>
+  <li><a href="mars.html" >Drop-down content</a></li>
+  <li><a href="context.html" >Off-canvas menu (Layout example)</a></li>
+  <li><a href="gradient.html" ><acronym title="Cascading Style Sheet level 3" >CSS3</acronym> gradient colors</a></li>
+  <li><a href="rotate.html" >Rotation functions of <tt>transform</tt> CSS3 property</a></li>
 <li><a href="neg-scale.html">Flipping images with <code>scale()</code> function of <code>transform</code> CSS3 property</a></li>
 <li><a href="steps.html" ><code>steps()</code> Function of <code>transition-timing-function</code> CSS3 property</a></li>
 <li><a href="ttf.html" ><code>cubic-bezier()</code> values of <code>transition-timing-function</code></a></li>
@@ -34,12 +38,16 @@
     
     var ttip = document.getElementById("tinfo"), elements = document.body.querySelectorAll("*");
     for (var j = 0; j < elements.length; j++) {
-      elements[j].addEventListener("mouseover",function(e){
+      elements[j].addEventListener("mouseover",shwtitle);
+      function shwtitle(e){
       var elevents = e.target;
       if (elevents.title.indexOf("/") == -1) {								// (( mabghinach elliyanat ! ))
-      ttip.innerHTML = elevents.getAttribute("title");
+      ttip.innerHTML = elevents.title;
       }
-      });
+      }
+      if ("ontouchstart" in window) {
+      elements[j].removeEventListener("mouseover",shwtitle);
+      }
     }
 
     var hline = document.querySelector("h1");

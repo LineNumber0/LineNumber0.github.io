@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Initiating CSS3 Transition Effects After a Button Click</title>
+    <meta charset="utf-8"/>
+    <meta name="Description" content="From &quot;Pro CSS3 Animation&quot; book"/>
+    <meta name="Author" content="Dudley Storey"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="Date" content="Thursday 19-April-2018 00:51 WEST"/>
+    <style type="text/css">
+      div#mars { 
+      background: #000; 
+      color: #fff; 
+      font-family: Futura, Arial, sans-serif; 
+      width: 400px; 
+      padding: 1.6rem; 
+      padding-bottom:0;
+      line-height: 175%; 
+      border-radius: 6px; 
+      font-weight:bold;
+      } 
+      img { 
+      display: block; 
+      margin: 0 auto; 
+      } 
+      /* div#mars p { 
+      margin: 1rem; 
+      }  */
+      input ~ div.toggle { 							/* ``You want to hide the inner div by using a sibling selector to set its height to 0 and by hiding anything that falls outside it. At the same time you’ll also set the transition using the principles of push-pull animation``(D.S) */
+      overflow: hidden; 
+      height: 0; 
+      transition: .6s all cubic-bezier(0.735, -0.485, 0.145, 1.625);
+      } 
+      input:checked ~ div.toggle { height: 500px; } 				/* ``expand the inner div if the checkbox is turned on.``(D.S) */
+      label { 
+      display: block; 
+      text-align: center; 
+      font-size: x-large; 
+      background: red; 
+      border-radius: 6px; 
+      padding: .2rem; 
+      } 
+      label:hover { 
+      background: yellow; 
+      color: #000; 
+      cursor: pointer; 
+      } 
+      input { display: none; }
+      /* {LN_0} */
+      input + span,input + span+span {
+      opacity:0;
+      position: relative;
+      color: black;
+      font-weight: normal;
+      top: -30px;
+      border: 1px solid lightgray;
+      padding: 10px;
+      background-color: lightyellow;
+      border-radius: 10px;
+      white-space: nowrap;			/* setting "white-space" property to "nowrap" removes an extra space below the label */
+      transition:1s;
+      }
+      input + span {left: 430px}
+      input + span+span {left: 120px}
+      label:hover + input:checked + span, label:hover + input + span+span { opacity:0;transition:1s; }
+      label:hover + input + span { opacity:1;transition:1s; }							/* the first tooltip needs to be displayed after a short time */
+      label:hover + input:checked + span+span { opacity:1;transition:1s 1s; }
+      </style>
+  </head>
+  <body>
+  <div id=mars> 
+    <label for=marstoggle title="" id="lbl" >Mars</label>				<!-- ``hiding and showing page content with a radio button will probably not work well for most designs. To get around this, you can associate a label with the input, “linking” the text of the label to the checkbox by using the for attribute. As a result, clicking the label will turn on the form element and cause your CSS to continue to respond, even if the checkbox itself is hidden``(D.S) -->
+    <input type=checkbox id=marstoggle class=toggle/> <span>Click to show some informations about Mars !</span><span>Click to hide !</span>
+      <div class=toggle> 
+	<img src=img/mars.png alt=Mars/> 
+	<p>Trace amounts of methane were discovered in the atmosphere of Mars in 2003... As methane is unstable, its presence indicates an active source on the planet that is continually replenishing the gas, at the rate of approximately 270 tons per year. </p>
+	  </div> 
+	</div>
+	
+	<script type="text/javascript">
+	  var chkbtn = document.getElementById("marstoggle");
+	  var lbl = document.getElementById("lbl");
+	  lbl.addEventListener("click",chk);
+	  function chk() {
+	  if (chkbtn.checked == true) {
+	  lbl.title = "Click to show !";
+	  } else {
+	  lbl.title = "Click to hide the image and the text !";
+	  }
+	  }
+	</script>
+  </body>
+</html>

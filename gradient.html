@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSS3 gradient colors</title>
+<meta charset="utf-8">
+  <meta name="Description" content="From &quot;Beginning CSS3&quot; book"/>
+  <meta name="Author" content="David Powers"/>
+  <meta name="Web-Developer" content="LineNumber0"/>
+  <meta name="Date" content="Sun Dec 24 2017 00:41:53 GMT+0 (WET)"/>
+<style type="text/css">
+div {
+    width: 300px;
+    height: 100px;
+    margin: 20px;
+    background-color: #FFEB79;
+    }
+#defaultgradient {
+    background-image: -moz-linear-gradient(#C24704, #FFEB79);
+    background-image: -o-linear-gradient(#C24704, #FFEB79);
+    background-image: -webkit-linear-gradient(#C24704, #FFEB79);
+    background-image: linear-gradient(#C24704, #FFEB79);                /* " By default, the gradient line runs from the top to the bottom of the element "(D.P) */
+}
+    #gradientbox {
+    background-image: -moz-linear-gradient(to right, #C24704, #FFEB79);
+    background-image: -o-linear-gradient(to right, #C24704, #FFEB79);
+    /* WebKit uses keywords (without "to") to indicate the origin of the gradient line.(D.P) */
+    background-image: -webkit-linear-gradient(left, #C24704, #FFEB79);
+    background-image: linear-gradient(to right, #C24704, #FFEB79);                                    /* the CSS3 color gradient is achieved by the two functions : "linear-gradient" for linear color gradient or "radial-gradient" for radial color gradient, as a value of the "background-image" property, with a combination of keywords, colors and percentage for color stop position */
+}
+#gradientbox2 {
+    background-image: -moz-radial-gradient(farthest-side, #FFEB79, #C24704);
+    background-image: -o-radial-gradient(farthest-side, #FFEB79, #C24704);
+    background-image: -webkit-radial-gradient(farthest-side, #FFEB79, #C24704);
+    background-image: radial-gradient(farthest-side, #FFEB79, #C24704);
+}
+#colorout {
+    background-image: -moz-linear-gradient(to right, #C24704, #D9CC3C 35%, #00ADA7 25%, #FFEB79);
+    background-image: -o-linear-gradient(to right, #C24704, #D9CC3C 35%, #00ADA7 25%, #FFEB79);
+    /* WebKit uses keywords (without "to") to indicate the origin of the gradient line.(D.P) */
+    background-image: -webkit-linear-gradient(left, #C24704, #D9CC3C 35%, #00ADA7 25%, #FFEB79);
+    background-image: linear-gradient(to right, #C24704, #D9CC3C 35%, #00ADA7 25%, #FFEB79);
+}
+#colorstop {
+    background-image: -moz-linear-gradient(to right, #C24704 -40%, #FFEB79);
+    background-image: -o-linear-gradient(to right, #C24704 -40%, #FFEB79);
+    /* WebKit uses keywords (without "to") to indicate the origin of the gradient line.(D.P) */
+    background-image: -webkit-linear-gradient(left, #C24704 -40%, #FFEB79);
+    background-image: linear-gradient(to right, #C24704 -40%, #FFEB79);
+}
+#colorafter {
+    background-image: -moz-linear-gradient(to right, #C24704 35%, #FFEB79);
+    background-image: -o-linear-gradient(to right, #C24704 35%, #FFEB79);
+    /* WebKit uses keywords (without "to") to indicate the origin of the gradient line.(D.P) */
+    background-image: -webkit-linear-gradient(left, #C24704 35%, #FFEB79);
+    background-image: linear-gradient(to right, #C24704 35%, #FFEB79);
+}
+#moregradient {
+    height: 200px;
+    background-image: -moz-linear-gradient(#C24704, #FFEB79);
+    background-image: -o-linear-gradient(#C24704, #FFEB79);
+    background-image: -webkit-linear-gradient(#C24704, #FFEB79);
+    background-image: linear-gradient(#C24704, #FFEB79);
+}
+#gradientto {
+    background-image: -moz-linear-gradient(to top left, #C24704, #FFEB79);
+    background-image: -o-linear-gradient(to top left, #C24704, #FFEB79);
+    /* WebKit uses keywords (without "to") to indicate the origin of the gradient line.(D.P) */
+    background-image: -webkit-linear-gradient(bottom right, #C24704, #FFEB79);
+    background-image: linear-gradient(to top left, #C24704, #FFEB79);             /* gradual color transition toward the top-left corner */
+}
+#autocolorstop {
+    background-image: -moz-linear-gradient(to top left, #C24704, #FFEB79, #00ADA7);
+    background-image: -o-linear-gradient(to top left, #C24704, #FFEB79, #00ADA7);
+    /* WebKit uses keywords (without "to") to indicate the origin of the gradient line.(D.P) */
+    background-image: -webkit-linear-gradient(bottom right, #C24704, #FFEB79, #00ADA7);
+    background-image: linear-gradient(to top left, #C24704, #FFEB79, #00ADA7);
+}
+#gradientangle {
+    background-image: -moz-linear-gradient(315deg, #C24704, #FFEB79);
+    background-image: -o-linear-gradient(315deg, #C24704, #FFEB79);
+    background-image: -webkit-linear-gradient(315deg, #C24704, #FFEB79);
+    background-image: linear-gradient(135deg, #C24704, #FFEB79);                /* the number with the "deg" (degree) unit sets the direction of the color transition, not the position of the color intersection */
+}
+#circle,#circle2,#circle3,#circle4,#circle5,#ellipse,#ellipse2,#ellipse3,#ellipse4,#ellipse5,#repdiag,#smthrep,#reprad {height:150px}
+    /* 
+    TODO add CSS3 animation from 25% to 99% 
+    */
+#ellipse {
+    background-image: -moz-radial-gradient(ellipse, #C24704, #FFEB79 25%, #00ADA7);
+    background-image: -o-radial-gradient(ellipse, #C24704, #FFEB79 25%, #00ADA7);
+    background-image: -webkit-radial-gradient(ellipse, #C24704, #FFEB79 25%, #00ADA7);
+    background-image: radial-gradient(#C24704, #FFEB79 25%, #00ADA7);                       /* the 25% here represents a percentage of distance between the center of the ellipse/circle and the edges of the box */
+}
+#circle {
+    background-image: -moz-radial-gradient(70px 50px, circle closest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -o-radial-gradient(70px 50px, circle closest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -webkit-radial-gradient(70px 50px, circle closest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: radial-gradient(circle closest-corner at 70px 50px  , #C24704, #FFEB79 35%, #00ADA7);         /* `` You can set the shape of the gradient explicitly by using the keyword circle or ellipse. If you omit the shape, it defaults to circle if the size is a single length. In all other cases, it defaults to ellipse. ``(D.P) */
+}
+#ellipse2 {
+    background-image: -moz-radial-gradient(100px 50px, closest-side, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -o-radial-gradient(100px 50px, closest-side, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -webkit-radial-gradient(100px 50px, closest-side, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: radial-gradient(closest-side at 100px 50px, #C24704, #FFEB79 35%, #00ADA7);               /* the "closest-side" keyword determine that the end of color gradient meet the edges of the box with "at" keyword, at the Specified X and Y coordinates for the center (100px from the left and 50px from the top) */
+}
+#circle2 {
+    background-image: -moz-radial-gradient(100px 50px, circle closest-side, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -o-radial-gradient(100px 50px, circle closest-side, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -webkit-radial-gradient(100px 50px, circle closest-side, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: radial-gradient(circle closest-side at 100px 50px  , #C24704, #FFEB79 35%, #00ADA7);
+}
+#ellipse3 {
+    background-image: -moz-radial-gradient(100px 50px, farthest-side, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -o-radial-gradient(100px 50px, farthest-side, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -webkit-radial-gradient(100px 50px, farthest-side, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: radial-gradient(farthest-side at 100px 50px, #C24704, #FFEB79 35%, #00ADA7);              /* the "farthest-side" keyword is the opposite of "closest-side" : the end of color gradient meet the farthest edges of the box */
+}
+#circle3 {
+    background-image: -moz-radial-gradient(100px 50px, circle farthest-side, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -o-radial-gradient(100px 50px, circle farthest-side, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -webkit-radial-gradient(100px 50px, circle farthest-side, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: radial-gradient(circle farthest-side at 100px 50px  , #C24704, #FFEB79 35%, #00ADA7);
+}
+#ellipse4 {
+    background-image: -moz-radial-gradient(100px 50px, closest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -o-radial-gradient(100px 50px, closest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -webkit-radial-gradient(100px 50px, closest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: radial-gradient(closest-corner at 100px 50px, #C24704, #FFEB79 35%, #00ADA7);                 /* with the "closest-corner" keyword `` The outer edge of the gradient passes through the corner of the gradient box closest to the shape’s center.``(D.P) */
+}
+#circle4 {
+    background-image: -moz-radial-gradient(100px 50px, circle closest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -o-radial-gradient(100px 50px, circle closest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -webkit-radial-gradient(100px 50px, circle closest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: radial-gradient(circle closest-corner at 100px 50px  , #C24704, #FFEB79 35%, #00ADA7);
+}
+#ellipse5 {
+    background-image: -moz-radial-gradient(100px 50px, farthest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -o-radial-gradient(100px 50px, farthest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -webkit-radial-gradient(100px 50px, farthest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: radial-gradient(farthest-corner at 100px 50px, #C24704, #FFEB79 35%, #00ADA7);                /* with the "farthest-corner" `` The outer edge of each gradient passes through the farthest corner of the gradient box ``(D.P) */
+}
+#circle5 {
+    background-image: -moz-radial-gradient(100px 50px, circle farthest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -o-radial-gradient(100px 50px, circle farthest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: -webkit-radial-gradient(100px 50px, circle farthest-corner, #C24704, #FFEB79 35%, #00ADA7);
+    background-image: radial-gradient(circle farthest-corner at 100px 50px  , #C24704, #FFEB79 35%, #00ADA7);
+}
+video {margin:5% auto;display:block;border:8px solid black}
+#repdiag {
+    background-color: #426A77;
+    background-image: -moz-repeating-linear-gradient(135deg, #426A77, #FFF 6px);
+    background-image: -o-repeating-linear-gradient(135deg, #426A77, #FFF 6px);
+    background-image: -webkit-repeating-linear-gradient(135deg, #426A77, #FFF 6px);
+    background-image: repeating-linear-gradient(-45deg, #426A77, white 6px);                /* `` The functions for repeating gradients, repeating-linear-gradient() and repeating-radial-gradient(), take the same arguments as their nonrepeating equivalents. However, it’s important to position the last color stop before the ending point. If you don’t, it defaults to 100%, preventing the pattern from being repeated. (..) This sets the angle of the gradient line to -45°, and creates two color stops. The first one is dark blue. No position is declared, so it defaults to 0%. The second color stop is white, and it’s positioned at 6px along the gradient line. So, the gradient transitions from dark blue to white in a very short space. The function then repeats the same pattern infinitely ``(D.P). -45deg "compass-bearing" is the same as 315deg "polar-coordinate" */
+}
+#smthrep {
+    background-image: -moz-repeating-linear-gradient(to right, #D9CC3C, #FFEB79 5%, #D9CC3C 10%);
+    background-image: -o-repeating-linear-gradient(to right, #D9CC3C, #FFEB79 5%, #D9CC3C 10%);
+    /* WebKit uses keywords (without "to") to indicate the origin of the gradient line. */
+    background-image: -webkit-repeating-linear-gradient(left, #D9CC3C, #FFEB79 5%, #D9CC3C 10%);
+    background-image: repeating-linear-gradient(to right, #D9CC3C, #FFEB79 5%, #D9CC3C 10%);            /* `` To create a more fluid repeating gradient, the first and last color stops need to be the same color. (..) The darker yellow is used as the first color stop. It has no declared position, so it defaults to the starting point of the gradient line. The lighter yellow is the second color stop at 5%, and the first color is repeated at 10%. This produces the ridge effect ``(D.P) */
+}
+#reprad {
+    background-image: -moz-repeating-radial-gradient(50% 100%, circle, #FFEB79, #D9CC3C 5%);
+    background-image: -o-repeating-radial-gradient(50% 100%, circle, #FFEB79, #D9CC3C 5%);
+    background-image: -webkit-repeating-radial-gradient(50% 100%, circle, #FFEB79, #D9CC3C 5%);
+    background-image: repeating-radial-gradient(circle at 50% 100%, #FFEB79, #D9CC3C 5%);               /* `` This creates a circular gradient anchored at the center bottom with two color stops. The first color stop (light yellow) is anchored at the starting point—in other words, the center of the circle—and the second one (darker yellow) is positioned at 5% along the gradient ray. The size isn’t specified, so it defaults to farthest-corner ``(D.P) */
+}
+#ball {
+    width: 100px;
+    background-color: #C51D31;
+    border-radius: 50%;
+    background-image: -moz-radial-gradient(30% 30%, circle, #C51D31, #921524, #450A11);
+    background-image: -o-radial-gradient(25px 30px, 12px 12px, rgba(255,255,255,0.8), transparent),
+                      -o-radial-gradient(30% 30%, circle, #C51D31, #921524, #450A11);
+    background-image: -webkit-radial-gradient(25px 30px, 12px 12px, rgba(255,255,255,0.8), rgba(255,255,255,0.2)),
+                      -webkit-radial-gradient(30% 30%, circle, #C51D31, #921524, #450A11);
+    background-image: radial-gradient(circle 12px at 25px 30px, rgba(255,255,255,0.8), transparent), radial-gradient(circle at 30% 30%, #C51D31, #921524, #450A11);                                                  /* `` The ball <div> is a 100px square with its border-radius set to 50%, which converts it to a circle. The first radial gradient is a 12px circle positioned 25px from the left and 30px from the top. Its first color stop is white with 80% alpha transparency, and its final color stop is transparent. The second gradient appears behind the first one. It’s also a circle, positioned at 30% both horizontally and vertically, offsetting it to the upper left. No size has been declared, so it fills the background to farthest-corner. The three color stops are increasingly deeper shades of red. ``(D.P)  */
+}
+</style>
+</head>
+
+<body>
+<center><h1>Gradient colors with CSS3</h1></center>
+<b>Basic Linear Gradient with two colors and without keywords :</b>
+<div id="defaultgradient"></div>
+<b>Linear Gradient To Side :</b>
+<div id="gradientbox"></div>
+<b>Radial Gradient :</b>
+<div  id="gradientbox2"></div>
+<b>Color Stop Out of Sequence :</b>
+<div id="colorout"></div>
+<b>Color Stop Before Starting Point (<tt>-40%</tt>) :</b>
+<div id="colorstop"></div>
+<b>Color Stop After Starting Point (<tt>35%</tt>) :</b>
+<div id="colorafter"></div>
+<b>More gradual color transition with the box height doubled :</b>
+<div id="moregradient"></div>
+<b>Linear Gradient Using Keywords (<tt>to top left</tt>) :</b>
+<div id="gradientto"></div>
+<b>Automatic Positioning of Color Stops :</b>
+<div id="autocolorstop"></div>
+<b>Linear Gradient at Specified Angle (<tt>135deg</tt>) :</b>
+<div id="gradientangle"></div>
+<b>Radial Gradient ellipse with three colors and the second (yellow) at <tt>25%</tt> color stop :</b>
+<div id="ellipse"></div>
+<b>Radial Gradient circle with three colors and the second (yellow) at <tt>35%</tt> color stop, with combination of Keywords and two X-Y values (<tt>circle closest-corner at 70px 50px</tt>) :</b>
+<div id="circle"></div>
+<b>Radial Gradient ellipse with three colors and the second (yellow) at <tt>35%</tt> color stop, with combination of Keywords and two X-Y values (<tt>closest-side at 100px 50px</tt>) :</b>
+<div id="ellipse2"></div>
+<b>Radial Gradient circle with three colors and the second (yellow) at <tt>35%</tt> color stop, with combination of Keywords and two X-Y values (<tt>circle closest-side at 100px 50px</tt>) :</b>
+<div id="circle2"></div>
+<b>Radial Gradient ellipse with three colors and the second (yellow) at <tt>35%</tt> color stop, with combination of Keywords and two X-Y values (<tt>farthest-side at 100px 50px</tt>) :</b>
+<div id="ellipse3"></div>
+<b>Radial Gradient circle with three colors and the second (yellow) at <tt>35%</tt> color stop, with combination of Keywords and two X-Y values (<tt>circle farthest-side at 100px 50px </tt>) :</b>
+<div id="circle3"></div>
+<b>Radial Gradient ellipse with three colors and the second (yellow) at <tt>35%</tt> color stop, with combination of Keywords and two X-Y values (<tt>closest-corner at 100px 50px</tt>)</b>
+<div id="ellipse4"></div>
+<b>Radial Gradient circle with three colors and the second (yellow) at <tt>35%</tt> color stop, with combination of Keywords and two X-Y values (<tt>circle closest-corner at 100px 50px</tt>)</b>
+<div id="circle4"></div>
+<b>Radial Gradient ellipse with three colors and the second (yellow) at <tt>35%</tt> color stop, with combination of Keywords and two X-Y values (<tt>farthest-corner at 100px 50px</tt>)</b>
+<div id="ellipse5"></div>
+<b>Radial Gradient circle with three colors and the second (yellow) at <tt>35%</tt> color stop, with combination of Keywords and two X-Y values (<tt>circle farthest-corner at 100px 50px</tt>)</b>
+<div id="circle5"></div>
+<video controls="yes" loop="yes" title="The gradient box inspected" >
+    <source src="vid/vid.ogv" type="video/ogg"/>
+</video>
+<center><h2>Repeating gradient</h2></center>
+<b>Diagonal Stripes</b>
+<div id="repdiag"></div>
+<b>Smooth Repeating Gradient</b>
+<div id="smthrep"></div>
+<b>Repeating Radial Gradients</b>
+<div id="reprad"></div>
+<b>Multiple Gradients</b>
+<div id="ball"></div>
+</body>
+</html>

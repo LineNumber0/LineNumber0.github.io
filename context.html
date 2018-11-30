@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    	<title>target / context = result (Layout example)</title>
+	<meta charset="utf-8">
+    <meta name="Description" content="From &quot;Responsive Web Design with HTML5 and CSS3&quot;, Second Edition"/>
+    <meta name="Author" content="Ben Frain"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="Date" content="Thu Jan 11 2018 20:20:49 GMT+0 (WET)"/>
+	<meta name="viewport" content="width=device-width">
+        <style type="text/css">
+            html,body {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                overflow-x: hidden;
+                overflow-y: scroll;
+                color:white;
+                font-weight:bold;
+            }
+
+            .Wrap {
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+
+            .Header {
+                width: 100%;
+                height: 130px;
+                background-color: #830000;
+            }
+
+            .WrapMiddle {
+                width: 100%;
+                font-size: 0;                                       /* this 0 in the font-size property is used to eliminate white-spaces between inline-block elements */
+                position: relative;
+            }
+            @media (max-width: 40rem) {                            /* using media query to disable this CSS block applied with JavaScript on wide resolution {LN0}. | `` unless you want to target styles to particular media types, just leave the screen and part out. ``(B.F). If "@media" rule is already used for a media type, example "print" another "@media" rule in the same source document must include "only screen and" (example: @media only screen and (max-width:60rem) */
+            .OffCanvas-Active .Left,
+            .OffCanvas-Active .Middle {
+                transform: translate(200px,0);
+                transition: transform .3s;
+            }
+        }
+            .Left {
+                height: 625px;
+                background-color: #03A66A;
+                display: inline-block;
+                position: absolute;
+                left: -200px;
+                width: 200px;
+                font-size: .9rem;
+                transition: transform .3s;
+            }
+
+            @media (min-width: 40rem) {
+                .Left {
+                    width: 20.8333333%;                             /* `` While the widths themselves will ultimately be converted to pixels by the browser, their values are retained for future calculations (for example, more accurately computing the width of nested elements). Subsequently, I always recommend leaving the numbers after the decimals in. ``(B.F) */
+                    left: 0;
+                    position: relative;
+                }
+            }
+
+            .Middle {
+                height: 625px;
+                background-color: #bbbf90;
+                transition: transform .3s;
+                font-size: .9rem;
+            }
+
+            @media (min-width: 40rem) {
+                .Middle {
+                    display: inline-block;
+                    width: 68.75%;
+                }
+            }
+
+            .Right {
+                height: 625px;
+                width: 100%;
+                background-color: #03A66A;
+                font-size: .9rem;
+            }
+
+            @media (min-width: 40rem) {
+                .Right {
+                    width: 10.4166667%;
+                    display: inline-block;
+                }
+            }
+
+            .Footer {
+                height: 200px;
+                width: 100%;
+                background-color: #025059;
+            }
+            div {
+	      outline: 1px solid black;
+	      text-shadow:1px 1px black;
+            }
+        </style>
+</head>
+<body>
+	<div class="Wrap">
+		<div class="Header">Header</div>
+		<div class="WrapMiddle">
+			<div class="Left">Left</div>
+			<div class="Middle">Middle</div>
+			<div class="Right">Right</div>
+		</div>
+		<div class="Footer">Footer</div>
+	</div>
+    <script type="application/javascript" src="JS/forheader.js"></script>                    <!-- `` in a real project we should be making some provision for if JavaScript isn't available and we need to view the content of the menu. ``(B.F) -->
+</body>
+</html>
