@@ -38,13 +38,13 @@
     
     var ttip = document.getElementById("tinfo"), elements = document.body.querySelectorAll("*");
     for (var j = 0; j < elements.length; j++) {
-      elements[j].addEventListener("mouseover",shwtitle);
       function shwtitle(e){
       var elevents = e.target;
       if (elevents.title.indexOf("/") == -1) {								// (( mabghinach elliyanat ! ))
       ttip.innerHTML = elevents.title;
       }
       }
+      elements[j].addEventListener("mouseover",shwtitle);
       if ("ontouchstart" in window) {
       elements[j].removeEventListener("mouseover",shwtitle);
       }
@@ -57,13 +57,14 @@
 
     if ("animation" in document.body.style) {
     var bdy = [];
-    for (var l = 0; l < 30; l++) {
+    for (var l = 0; l < 50; l++) {
       var randomX = Math.round(Math.random() * (100 - 1) + 1);
       var randomY = Math.round(Math.random() * (1200 - 1) + 1);
-      var randomZ = Math.round(Math.random() * 40);
+      var randomZ = Math.round(((Math.random() * 100) + 64));
+      var randomT = Math.round(Math.random() * 40);
       var srcs = ['ext/CSS3.png','ext/HTML5.png','ext/javascript.png'];
       var rsrcs = srcs[Math.round(Math.random() * 2)];
-      var nbdy = bdy.push('<img src='+rsrcs+' style="left:'+randomX+'%;top:'+randomY+'px;width:'+randomX+'px;animation-delay:'+randomZ+'s"/>');
+      var nbdy = bdy.push('<img src='+rsrcs+' style="left:'+randomX+'%;top:'+randomY+'px;width:'+randomZ+'px;animation-delay:'+randomT+'s"/>');
       }
       // using jquery ...
       $("body").append( bdy.join('') );

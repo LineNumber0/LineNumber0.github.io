@@ -29,3 +29,6 @@ noscript {
 ul:hover ~ noscript {
   right:32px;
 }
+ul {
+  filter:none;
+}

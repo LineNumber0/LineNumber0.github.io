@@ -4,15 +4,19 @@
     src:url(../ext/song.ttf) format('truetype');
   }
   body {
-    background-image:url(../img/bg_tile.jpg);
+    background-image:url(../img/stripe.png);
     background-image:repeating-linear-gradient(-45deg, aliceblue, ghostwhite 10px);
     background-attachment:fixed;
   }
   h1 {
     text-align:center;
-    margin-top: 2em;
-    margin-bottom: 4em;
     text-shadow: 1px 3px 6px dimgray;
+    background-image: url(../img/bg_tile.jpg);
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 1px 3px 6px dimgray;
+    max-width: 30em;
+    margin: 2em auto;
   }
   a {
     text-decoration:none;
@@ -46,11 +50,12 @@
     margin: auto;
     padding: 100px;
     padding-left:150px;
-    width: 60em;
+    max-width: 60em;
     background-image:url(../ext/paper.svg);
     background-size: 170%;
     background-position: -156px -40px;
     background-repeat: repeat-y;
+    filter: drop-shadow(8px 8px 8px rgba(0,0,0,0.3));
   }
   #tinfo:not(:empty) {
   padding:1em;
@@ -59,6 +64,7 @@
   border-radius:16px;
   background-color:lightyellow;
   position:fixed;
+  z-index: 1;				/* the filter property makes this element of z-index -1 ???  */
   top:5%;
   right:32px;
   font-weight:bold;
@@ -79,11 +85,31 @@
    z-index:-1;
    animation: snowflake 40s linear infinite;  
  }
+ ul:hover ~ img {
+   animation-play-state:paused;
+ }
+ h1::after, h1::before {
+   content: url(../ext/libra.png);
+   position:relative;
+ }
+ h1::after {
+  left: 0;
+}
+h1::before {
+  right: 0;
+}
 /*_______________________________________________________________________
  */
  @media (min-width:80em) {
    ul {
      padding-left:300px;
+   }
+   h1 {
+    font-size: 4em;
+   }
+   #tinfo:not(:empty) {
+    font-size:3em;
+    max-width:20em;
    }
  }
  @media (max-width:40em) {
