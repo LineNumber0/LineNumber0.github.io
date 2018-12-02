@@ -6,7 +6,7 @@
     <meta name="Web-Developer" content="LineNumber0"/>						<!-- linenumber0 at gee mail dot com -->
     <meta name="Date" content="Monday 26-November-2018 00:12 +01"/>
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
-      <link rel="stylesheet" href="styles/myindex.css">
+      <link rel="stylesheet" href="styles/ln0index.css">
   </head>
   <body>
   <h1>LineNumber0 <abbr title="Front-end Web Developement" >WebDev</abbr> practices</h1>
@@ -29,6 +29,16 @@
 <li><a href="steps.html" ><code>steps()</code> Function of <code>transition-timing-function</code> CSS3 property</a></li>
 <li><a href="ttf.html" ><code>cubic-bezier()</code> values of <code>transition-timing-function</code></a></li>
 </ul>
+<audio id="audplayer" controls="yes" loop="yes" title="The soundtrack in the backgound is from The SlowMo guys Youtube channel ! &lt;img src='img/smiley.png'&gt;" >
+  <source src="aud/slowmo.mp3" type="audio/mp3" />
+</audio>
+<audio id="gobg" controls="yes" >
+  <source src="aud/continue.mp3" type="audio/mp3" />
+</audio>
+<audio id="stpbg" controls="yes">
+  <source src="aud/stop.mp3" type="audio/mp3" />
+</audio>
+<button id="btn" title="Start a funny animation effect with the falling background images !" >play</button>
 <script src="JS/jquery-2.1.3.min.js" ></script>
   <script type="text/javascript">
     for (var i = 0; i < document.links.length; i++) {
@@ -40,7 +50,7 @@
     for (var j = 0; j < elements.length; j++) {
       function shwtitle(e){
       var elevents = e.target;
-      if (elevents.title.indexOf("/") == -1) {								// (( mabghinach elliyanat ! ))
+      if (elevents.title.indexOf("html") == -1) {								// (( mabghinach elliyanat ! ))
       ttip.innerHTML = elevents.title;
       }
       }
@@ -68,6 +78,69 @@
       }
       // using jquery ...
       $("body").append( bdy.join('') );
+      
+      // a "game" for 5 minutes ! ...
+      var bgaudio = document.getElementById("audplayer"),
+      bgaudGo = document.getElementById("gobg"),
+      bgaudStop = document.getElementById("stpbg"),
+      images = document.images,
+      list = document.querySelector("ul"),
+      plbtn = document.getElementById("btn");
+      if (bgaudio.canPlayType('audio/mp3') != "") {
+      plbtn.style.display = "block";
+      btn.onclick = function(){
+      bgaudio.volume = 0.5;
+      bgaudGo.volume = 0.5;
+      bgaudStop.volume = 0.5;
+      bgaudio.style.display = "block";
+      bgaudio.style.opacity = "0";
+      function speedimg() {
+      for (var k = 0; k < images.length; k++) {
+      if (images[k].style.animationDuration == "1s") {
+      images[k].style.animationDuration = "40s";
+      } else {images[k].style.animationDuration = "1s";}
+      }
+      }
+      function restdur() {
+      for (var m = 0; m < images.length; m++) {
+      images[m].style.animationDuration = "40s";
+      }
+      }
+      bgaudio.addEventListener("play",restdur);
+      function plstop() {
+      bgaudio.load();
+      speedimg();
+      }
+      function playbg() {
+      bgaudGo.play();
+      bgaudStop.load();
+      speedimg();
+      setTimeout(function(){
+      bgaudio.play();},1253);
+      }
+      function stopbg() {
+      bgaudStop.play();
+      bgaudGo.load();
+      setTimeout(plstop,1253);
+      }
+      list.addEventListener("mouseover",stopbg);
+      list.addEventListener("mouseout",playbg);
+      window.addEventListener("blur",plstop);
+      window.addEventListener("mouseout",plstop);
+      
+      setTimeout(function(){
+      list.removeEventListener("mouseover",stopbg);
+      list.removeEventListener("mouseout",playbg);
+      window.removeEventListener("blur",plstop);
+      window.removeEventListener("mouseout",plstop);
+      bgaudio.style.display = "none";
+      restdur();
+      alert("GAME OVER !");
+      console.clear();
+      bgaudio.load();
+      },300000);
+      }
+      }
       }
   </script>
   <noscript>

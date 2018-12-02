@@ -18,6 +18,16 @@
     max-width: 30em;
     margin: 2em auto;
   }
+  h1::after, h1::before {
+    content: url(../ext/libra.png);
+    position:relative;
+  }
+  h1::after {
+    left: 0;
+  }
+  h1::before {
+    right: 0;
+  }
   a {
     text-decoration:none;
     outline:none;
@@ -69,11 +79,30 @@
   right:32px;
   font-weight:bold;
   font-size:x-large;
+  line-height: 1.5;
   transition:right 1s;
   }
   #tinfo:empty {
   right:-999px;
   transition:right 1s;
+  }
+  audio {
+    display:none;
+  }
+  img[src="img/smiley.png"] {
+    animation:none;
+    width:64px;
+    margin:0 0 0 10px;
+    opacity: 1;
+  }
+  button {
+    display:none;
+    opacity:0;
+    transition:1s;
+  }
+  button:hover {
+    opacity:1;
+    transition:1s;
   }
  /* for logo animation */
  @keyframes snowflake {
@@ -88,16 +117,6 @@
  ul:hover ~ img {
    animation-play-state:paused;
  }
- h1::after, h1::before {
-   content: url(../ext/libra.png);
-   position:relative;
- }
- h1::after {
-  left: 0;
-}
-h1::before {
-  right: 0;
-}
 /*_______________________________________________________________________
  */
  @media (min-width:80em) {
