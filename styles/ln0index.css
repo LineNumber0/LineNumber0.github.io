@@ -1,4 +1,7 @@
 ﻿  @charset "UTF-8";
+  @viewport {
+    width: device-width;
+  }
   @font-face {
     font-family:'song';
     src:url(../ext/song.ttf) format('truetype');
