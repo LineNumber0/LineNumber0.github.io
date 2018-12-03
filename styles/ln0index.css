@@ -138,7 +138,11 @@
   body,ul {
     max-width:100%;
     padding:0;
+    font-size:90%;
   }
+  h1 {
+padding:3px;
+}
   #tinfo:not(:empty) {
   max-width:20em;
   }

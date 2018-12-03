@@ -10,7 +10,7 @@
     <meta name="Category" content="Japanese Anime Music"/>
     <style type="text/css">
       html {
-      scroll-behavior: smooth;
+      scroll-behavior: smooth;										/* without "heavy" libraries make the scrolling smooth with CSS */
       }
       body {
 	color:white;
@@ -71,7 +71,7 @@
    <a href="htm/Rem.html" target="_blank" title="Who is in the background ?"><center><img src="img/alpha.png" alt="PNG alpha channel frame" border="0" width="10"/></center></a>
    <br/>
  <audio controls="yes" loop="yes" name="media" id="player" >
-  <source src="aud/ReZero-Ending-FULL-STYX-HELIX.mp3" type="audio/mp3"/>	<!-- two format inside <audio> (Closed and Open) if the MP3 is not played the Browser will certainly play OGG --> 
+  <source src="aud/ReZero-Ending-FULL-STYX-HELIX.mp3" type="audio/mp3"/>	<!-- two format inside audio (Closed and Open) if the MP3 is not played the Browser will certainly play OGG --> 
   <source src="aud/ReZero-Ending-FULL-STYX-HELIX.oga" type="audio/ogg"/>
 </audio>
 <br/>
@@ -305,14 +305,11 @@ aha... ah.. ah... hahaha... hu... ha... ha..huhaha...
       <img src="img/alpha.png" alt="PNG alpha channel frame" class="voidimg" />
 <script type="text/javascript" >
 // DONE this script will make the lyrics follow the song.
-
   var aplayer = document.getElementById("player");
   aplayer.volume = 0.5;
- 
-   function getStime() {
+  function getStime() {
   return parseInt(aplayer.currentTime);
   }
-
   function followLyrics() {
     switch(getStime()) {
       case 19: document.location.href = "#lp0";
@@ -330,9 +327,7 @@ aha... ah.. ah... hahaha... hu... ha... ha..huhaha...
       case 235: document.location.href = "#lp6";
     }
   }
-
   aplayer.addEventListener("timeupdate",followLyrics);
-
 </script>
 </body>
 </html>
