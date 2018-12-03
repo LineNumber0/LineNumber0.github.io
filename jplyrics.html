@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0" encoding="ISO-2022-JP"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">	<!-- XHTML version 1.1 -->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" >
   <head>
     <title>ReZero Anime Ending song and lyrics</title>
     <meta http-equiv="Content-Type" content="text/html;charset=ISO-2022-JP"/>
-    <meta name="Copyright" content="WhiteFox Studio"/>                           			<!-- Anime and OST creator Studio.
-(( hado homa li daro l anime o dwisk (machi la page) )) -->
+    <meta name="Copyright" content="WhiteFox Studio"/>                           			<!-- Anime and OST creator Studio. (( hado homa li daro l anime o dwisk (machi la page) )) -->
     <meta name="Web-Developer" content="LineNumber0"/>
     <meta name="Category" content="Japanese Anime Music"/>
     <style type="text/css">
+      html {
+      scroll-behavior: smooth;
+      }
       body {
 	color:white;
-	font-size:25px;
+	font-size:30px;
 	font-weight:bold;
 	background-image:url(img/rbmr.jpg);
 	background-attachment:fixed;
@@ -31,43 +33,45 @@
       zoom:220%;
       position:fixed;
       bottom:5px;
-      left:5px;											/* Take your magnifier and see if
-it is really five pixels : SCIENCE FOLKS ! ENNAS D L 3ILM ! */
+      left:5px;												/* Take your magnifier and see if it is really five pixels : SCIENCE FOLKS ! ENNAS D L 3ILM ! */
       opacity:0.5;
       height:50px;
-      -moz-transform:scaleY(2) translateY(-15px);							/* transformation for the Mozilla
-player */
+      -moz-transform:scaleY(2) translateY(-15px);							/* transformation for the Mozilla player */
       }
-      .voidimg {											/* This alpha channel image at the
-end of the page, styled with 100% values is an empty page to scroll up the whole lyrics */
+      audio:focus {
+      outline:none;
+      }
+      .voidimg {											/* This alpha channel image at the end of the page, styled with 100% values is an empty page to scroll up the whole lyrics */
       width:100%;
-      margin-top:100%;											/* the margin between the top of
-the image and the text */
+      margin-top:100%;											/* the margin between the top of the image and the text */
       }
       a:active {outline:none}
+      
+      @keyframes fadeout {
+      from {opacity: 0}
+      50% {opacity: 1}
+      to {opacity: 0}
+      }
       a:empty::before {
       content: url(img/up-alpha.png);
       position: relative;
-      left: -280px;
-      top:180px;
+      left: -300px;
+      top:185px;
       display: inline-block;
       transform: rotate(90deg) scale(0.5);
       opacity: 0;
-      transition: opacity 1s;
       } 
       a:empty:target::before {
-      opacity: 1;
-      transition: 1s;
+      animation: fadeout 10s;
       }
       </style>
   </head>
-  <body><!-- TODO if possible use JavaScript to make Lyrics follows the Song and go to top automatically when the song starts -->  
+  <body><!-- TODO if possible, use JavaScript to make the Lyrics follow the Song and go to the top automatically when the song starts -->  
   <center><h1>ReZero Anime Ending<br/>Song and Lyrics</h1></center>
    <a href="htm/Rem.html" target="_blank" title="Who is in the background ?"><center><img src="img/alpha.png" alt="PNG alpha channel frame" border="0" width="10"/></center></a>
    <br/>
  <audio controls="yes" loop="yes" name="media" id="player" >
-  <source src="aud/ReZero-Ending-FULL-STYX-HELIX.mp3" type="audio/mp3"/>	<!-- two format inside <audio> (Closed and Open) if the
-MP3 is not played the Browser will certainly play OGG --> 
+  <source src="aud/ReZero-Ending-FULL-STYX-HELIX.mp3" type="audio/mp3"/>	<!-- two format inside <audio> (Closed and Open) if the MP3 is not played the Browser will certainly play OGG --> 
   <source src="aud/ReZero-Ending-FULL-STYX-HELIX.oga" type="audio/ogg"/>
 </audio>
 <br/>
@@ -300,30 +304,33 @@ aha... ah.. ah... hahaha... hu... ha... ha..huhaha...
       <br/>
       <img src="img/alpha.png" alt="PNG alpha channel frame" class="voidimg" />
 <script type="text/javascript" >
+// DONE this script will make the lyrics follow the song.
+
   var aplayer = document.getElementById("player");
-  aplayer.volume = 0.5;											// set the audio volume to 50%
-  
-  function getStime() {
+  aplayer.volume = 0.5;
+ 
+   function getStime() {
   return parseInt(aplayer.currentTime);
   }
 
   function followLyrics() {
-  getStime();
-  if (getStime() == 62) {
-  document.location.href = "#lp1";
-  } else if (getStime() == 96) {
-  document.location.href = "#lp2";
-  } else if (getStime() == 139) {
-  document.location.href = "#lp3";
-  } else if (getStime() == 172) {
-  document.location.href = "#lp4";
-  } else if (getStime() == 200) {
-  document.location.href = "#lp5";
-  } else if (getStime() == 235) {
-  document.location.href = "#lp6";
+    switch(getStime()) {
+      case 19: document.location.href = "#lp0";
+      break;
+      case 62: document.location.href = "#lp1";
+      break;
+      case 96: document.location.href = "#lp2";
+      break;
+      case 139: document.location.href = "#lp3";
+      break;
+      case 172: document.location.href = "#lp4";
+      break;
+      case 200: document.location.href = "#lp5";
+      break;
+      case 235: document.location.href = "#lp6";
+    }
   }
-  }
-  aplayer.addEventListener("play",function(){scroll(0,lp0.offsetTop);});
+
   aplayer.addEventListener("timeupdate",followLyrics);
 
 </script>
