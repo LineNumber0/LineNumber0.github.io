@@ -143,7 +143,4 @@
   h1 {
 padding:3px;
 }
-  #tinfo:not(:empty) {
-  max-width:20em;
-  }
  }

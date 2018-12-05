@@ -32,3 +32,15 @@ ul:hover ~ noscript {
 ul {
   filter:none;
 }
+#cv, ul li:first-child {
+  display:none;
+}
+@media (max-width:40em) {
+  body *[title]:not(a)::after {
+  display:none;
+  }
+  noscript {
+    max-width:360px;
+    top:10px
+  }
+}
