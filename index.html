@@ -41,7 +41,7 @@
 <audio id="stpbg" controls="yes">
   <source src="aud/stop.mp3" type="audio/mp3" />
 </audio>
-<button id="btn" title="Start a funny animation effect with the falling background images !" >play</button>
+<button id="btn" title="Start a funny animation effect with the falling background images !" >Start</button>
 <script src="JS/jquery-2.1.3.min.js" ></script>
   <script type="text/javascript">
     for (var i = 0; i < document.links.length; i++) {
@@ -53,7 +53,7 @@
     for (var j = 0; j < elements.length; j++) {
       function shwtitle(e){
       var elevents = e.target;
-      if (elevents.title.indexOf("html") == -1) {								// (( mabghinach elliyanat ! ))
+      if (elevents.title.indexOf("://") == -1) {								// (( mabghinach elliyanat ! ))
       ttip.innerHTML = elevents.title;
       }
       }
@@ -117,7 +117,7 @@
       plbtn = document.getElementById("btn");
       if (bgaudio.canPlayType('audio/mp3') != "") {
       plbtn.style.display = "block";
-      btn.onclick = function(){
+      btn.onclick = function() {
       bgaudio.volume = 0.5;
       bgaudGo.volume = 0.5;
       bgaudStop.volume = 0.5;
@@ -128,12 +128,12 @@
       if (images[k].style.animationDuration == "1s") {
       images[k].style.animationDuration = "40s";
       } else {images[k].style.animationDuration = "1s";}
-      }
+	}
       }
       function restdur() {
       for (var m = 0; m < images.length; m++) {
       images[m].style.animationDuration = "40s";
-      }
+	}
       }
       bgaudio.addEventListener("play",restdur);
       function plstop() {
@@ -168,8 +168,8 @@
       console.clear();
       bgaudio.load();
       },300000);
-      }
-      }
+	  }
+	}
       }
   </script>
   <noscript>
