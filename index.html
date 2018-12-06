@@ -10,7 +10,7 @@
       <link rel="stylesheet" href="styles/ln0index.css">
   </head>
   <body>
-  <h1>LineNumber0's <abbr title="Front-end Web Development" >WebDev</abbr> practices</h1>
+  <h1><span id="uname" title="" >LineNumber0</span>'s <abbr title="Front-end Web Development" >WebDev</abbr> practices</h1>
   <span id="tinfo" ></span>
 <ul>
   <li><a href="#cv" id="cv" >My <span title="Curriculum Vitae" >resume</span> in HTML</a></li>
@@ -93,6 +93,13 @@
      } 
     }
     CV.addEventListener("click",resumeCtl);
+    
+    var vname = document.getElementById("uname");
+    if (navigator.language.indexOf("fr") != -1) {
+    vname.title = "\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74 dit &quot;C'est Mon nom d'utilisateur sur Github&quot;";
+    } else {
+    vname.title = "\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74 says &quot;That is my Github username&quot;"
+    }
 
     if ("animation" in document.body.style) {
     var bdy = [];
@@ -128,7 +135,7 @@
       if (images[k].style.animationDuration == "1s") {
       images[k].style.animationDuration = "40s";
       } else {images[k].style.animationDuration = "1s";}
-	}
+       }
       }
       function restdur() {
       for (var m = 0; m < images.length; m++) {
@@ -168,8 +175,8 @@
       console.clear();
       bgaudio.load();
       },300000);
-	  }
-	}
+        }
+       }
       }
   </script>
   <noscript>
