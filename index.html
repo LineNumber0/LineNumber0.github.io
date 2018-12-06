@@ -15,12 +15,13 @@
 <ul>
   <li><a href="#cv" id="cv" >My <span title="Curriculum Vitae" >resume</span> in HTML</a></li>
   <li><a href="HTML5.html" >Some <acronym title="HyperText Markup Language version 5" >HTML5</acronym> features</a></li>
-  <li><a href="mevents.html" >HTML5 JavaScript Media events</a></li>
   <li><a href="soc.html" >Responsive Web Design Page</a></li>
   <li><a href="RWD-FORM.html" >Responsive Web Design Form</a></li>
+  <li><a href="mevents.html" >HTML5 JavaScript Media events</a></li>
   <li><a href="RWD-Breakpoints.html" ><acronym title="Responsive Web Design" >RWD</acronym> CSS <span title="&ldquo;Breakpoint&rdquo; is the term used to define the point in which a responsive design should change significantly.&#x0A;(from &quot;Responsive Web Design with HTML5 and CSS3&quot; by Ben Frain)" >Breakpoints</span></a></li>
   <li><a href="RWD-JS.html" >Linking RWD CSS Breakpoints to JavaScript</a></li>
   <li><a href="browser-detect.html" >JavaScript Browser detection</a></li>
+  <li><a href="screeninfo.html" >Screen information with JavaScript</a></li>
   <li><a href="jplyrics.html" >A song that follows its lyrics using HTML5 JavaScript <acronym title="Application Programming Interface" >API</acronym></a></li>
   <li><a href="tooltips.html" >CSS tooltips</a></li>
   <li><a href="clapperboard.html" >Clapperboard Image Caption</a></li>
@@ -30,6 +31,8 @@
   <li><a href="rotate.html" >Rotation functions of <tt>transform</tt> CSS3 property</a></li>
 <li><a href="neg-scale.html">Flipping images with <code>scale()</code> function of <code>transform</code> CSS3 property</a></li>
 <li><a href="steps.html" ><code>steps()</code> Function of <code>transition-timing-function</code> CSS3 property</a></li>
+<li><a href="Date.html" >The Date Object in JavaScript</a></li>
+<li><a href="extcolors.html" >Extended color keywords in CSS3</a></li>
 <li><a href="ttf.html" ><code>cubic-bezier()</code> values of <code>transition-timing-function</code></a></li>
 </ul>
 <audio id="audplayer" controls="yes" loop="yes" title="The soundtrack in the backgound is from The SlowMo guys Youtube channel ! &lt;img src='img/smiley.png'&gt;" >
@@ -68,23 +71,24 @@
     hline.innerHTML = hline.innerHTML.replace("LineNumber0","\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74");
     }
     
-    var CV = document.getElementById("cv");
+    var CV = document.getElementById("cv"),
+    browserLanguage = navigator.language;
     function resumeCtl(e) {
     var askpc;
-    if (navigator.language.indexOf("fr") != -1) {
+    if (browserLanguage.indexOf("fr") != -1) {
     askpc = prompt("Quel est le numéro de code postal sur mon CV en PDF ?");
     } else {
     askpc = prompt("What is the postal code number in my PDF resume ?");
       }
     if (askpc === "\x35\x30\x30\x35\x30") {
-    if (navigator.language.indexOf("fr") != -1) {
+    if (browserLanguage.indexOf("fr") != -1) {
     CV.href = "\x42\x65\x6E\x41\x62\x64\x65\x6C\x2D\x43\x56\x2E\x68\x74\x6D\x6C";
      } else {
      CV.href = "\x45\x4E\x47\x2D\x43\x56\x2E\x68\x74\x6D\x6C";
      }
     } else {
     e.preventDefault();
-    if (navigator.language.indexOf("fr") != -1) {
+    if (browserLanguage.indexOf("fr") != -1) {
     alert("ACCÈS REFUSÉ !");
       } else {
       alert("ACCESS DENIED !");
@@ -95,7 +99,7 @@
     CV.addEventListener("click",resumeCtl);
     
     var vname = document.getElementById("uname");
-    if (navigator.language.indexOf("fr") != -1) {
+    if (browserLanguage.indexOf("fr") != -1) {
     vname.title = "\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74 dit &quot;C'est Mon nom d'utilisateur sur Github&quot;";
     } else {
     vname.title = "\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74 says &quot;That is my Github username&quot;"
@@ -121,8 +125,9 @@
       bgaudStop = document.getElementById("stpbg"),
       images = document.images,
       list = document.querySelector("ul"),
-      plbtn = document.getElementById("btn");
-      if (bgaudio.canPlayType('audio/mp3') != "") {
+      plbtn = document.getElementById("btn"),
+      viewPortWidth = document.documentElement.offsetWidth;
+      if (bgaudio.canPlayType('audio/mp3') != "" && viewPortWidth > 2024) {
       plbtn.style.display = "block";
       btn.onclick = function() {
       bgaudio.volume = 0.5;

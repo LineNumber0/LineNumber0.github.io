@@ -138,9 +138,22 @@
   body,ul {
     max-width:100%;
     padding:0;
-    font-size:90%;
+    margin:0;
+    font-size:75%;
+    background-position:100%;
   }
   h1 {
-padding:3px;
-}
+    padding:10px;
+    line-height:1.5;
+  }
+h1::after,h1::before {
+    display:none;
+  }
+  li {
+    margin:8px;
+  }
+  img {
+    max-width:32px;
+    height:auto;
+  }
  }

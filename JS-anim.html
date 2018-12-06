@@ -101,6 +101,11 @@
 	 clearInterval(sndTimerID);
 	 }
 	}
+	
+	function UpdateViewPortWidth(){
+	setTimeout(function() {document.location.reload()},500);
+	}
+	window.addEventListener("resize",UpdateViewPortWidth);
     </script>
 
 </body>

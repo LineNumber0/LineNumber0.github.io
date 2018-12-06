@@ -812,18 +812,17 @@
 <script type="text/javascript">
     var tswira = document.getElementById("pht");
     var tts = document.getElementById("tts");
-    tswira.addEventListener("mouseover",hdri);
     function hdri() {
     tts.play();
     }
-    tswira.addEventListener("mouseout",skti);
+    tswira.addEventListener("mouseover",hdri);
     function skti() {
     tts.load();
     }
+    tswira.addEventListener("mouseout",skti);
     
     var memail = document.getElementById('email');
     var emailHref = ["mailto:", "abdelmourhit01", "@", "gmail", ".com", "?subject=From%20Benlamine%20Abdelmourhit%20HTML%20CV&amp;body=Salam%20alikom%20!%0D%0ABonjour%20!%0D%0AHi%20!%0D%0A"];
-    memail.onclick = sift;
     function sift() {
     var swl = confirm("Voulez-vous envoyer un message à Benlamine Abdelmourhit ?");
     if (swl == true) {
@@ -831,6 +830,7 @@
     } else {memail.href = '#tbcvl'}
     return;
     }
+    memail.onclick = sift;
     
     function printopt() {
     var bprint = confirm("Voulez-vous utiliser la version d'impression du CV ?");
@@ -846,10 +846,10 @@
     var viewPortWidth = document.documentElement.offsetWidth;
     var biominfo = document.getElementById("bioinfodiv");
     if ("transform" in document.body.style) {
-    window.addEventListener("resize",UpdateViewPortWidth);
     function UpdateViewPortWidth(){
     setTimeout(function() {document.location.reload()},500);
      }
+    window.addEventListener("resize",UpdateViewPortWidth);
     if (viewPortWidth >= 960) {
     tswira.addEventListener("mouseup",bioinfo);
     }

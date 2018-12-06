@@ -9,15 +9,11 @@
     <meta name="Date" content="Sunday 01-April-2018 01:07 WEST"/>
     <style type="text/css">
       @font-face {
-      font-family:'Digital dream';
-      src:url('../CV_files/Digital dream.ttf') format('truetype');
-      }
-      @font-face {
       font-family:'Digital';
-      src:url(ext/Digital.ttf) format('truetype');				/* Mozilla browsers won't use the font, unless it is on the same folder. =>GTR */
+      src:url(ext/Digital.ttf) format('truetype');
       }
       #output {
-      font-family:'Digital dream','Digital',monospace;
+      font-family:'Digital',monospace;
       font-weight:bold;
       }
     </style>
@@ -32,16 +28,16 @@
       var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];					// ``declare an array and populate it with the months of a year. Why do this? Well, there is no method of the Date object that’ll give you the month by name instead of as a number. However, this poses no problem; you just declare an array of months and use the month number as the array index to select the correct month name``(J.M)
       var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-      var TimeNow = new Date();					// ``Next you create a new Date object, and by not initializing it with your own value, you allow it to initialize itself to the current date and time``(J.M)
-      var yearNow = TimeNow.getFullYear();			// ``Following this you set the yearNow variable to the current year, as returned by the getFullYear() method``(J.M)
-      var monthNow = months[TimeNow.getMonth()];		// ``You then populate your monthNow variable with the value contained in the array element with an index of the number returned by getMonth(). Remember that getMonth() returns the month as an integer value, starting with 0 for January this is a bonus because arrays also start at 0, so no adjustment is needed to find the correct array element``(J.M)
-      var dayNow = TimeNow.getDate();				// ``Finally, you put the current day of the month into the variable dayNow      ``(J.M)
+      var TimeNow = new Date();										// ``Next you create a new Date object, and by not initializing it with your own value, you allow it to initialize itself to the current date and time``(J.M)
+      var yearNow = TimeNow.getFullYear();								// ``Following this you set the yearNow variable to the current year, as returned by the getFullYear() method``(J.M)
+      var monthNow = months[TimeNow.getMonth()];							// ``You then populate your monthNow variable with the value contained in the array element with an index of the number returned by getMonth(). Remember that getMonth() returns the month as an integer value, starting with 0 for January this is a bonus because arrays also start at 0, so no adjustment is needed to find the correct array element``(J.M)
+      var dayNow = TimeNow.getDate();									// ``Finally, you put the current day of the month into the variable dayNow      ``(J.M)
       var dayName = days[TimeNow.getDay()];
       var HourNow = TimeNow.getHours();
       var MinuteNow = TimeNow.getMinutes();
       var daySuffix;
 
-      switch (dayNow) {						// ``Next you use a switch statement, (..) This is a useful technique for adding the correct suffix to the date that you already have``(J.M)
+      switch (dayNow) {											// ``Next you use a switch statement, (..) This is a useful technique for adding the correct suffix to the date that you already have``(J.M)
             case 1:
             case 21:
             case 31:
@@ -55,7 +51,7 @@
             case 23:
                 daySuffix = "rd";
                 break;
-		default:					// ``you need the default case for everything else.``(J.M)
+		default:										// ``you need the default case for everything else.``(J.M)
                 daySuffix = "th";
                 break;
         }
@@ -101,7 +97,7 @@
 		
 		
 	    var localTime = new Date();
-	    var html = "<p>UTC Time is &emsp;" + localTime.toUTCString() + "</p>";						// those methods are based on Universal Time Clock (UTC) and the time in the user's computer.
+	    var html = "<p>UTC Time is &emsp;" + localTime.toUTCString() + "</p>";			// those methods are based on Universal Time Clock (UTC) and the time in the user's computer.
 	    html += "Local Time is &emsp;" + localTime.toLocaleString() + "</p>";
 	    html += "<p>Time Zone Offset is &emsp;" + localTime.getTimezoneOffset() + "</p>";
 	    html += "<p>Using <code>toLocalTimeString()</code> gives : &emsp;" + localTime.toLocaleTimeString() + "</p>";
@@ -126,22 +122,22 @@
 	    alert("It's late, go to sleep !");
 	     }
 	    }
-	    setTimeout(doThisLater, 5000);					// ``The setTimeout() method takes two parameters. The first is a function you want executed, and the second is the delay, in milliseconds (thousandths of a second), until the code is executed. Take note how doThisLater() is passed to setTimeout() the parentheses are omitted. You do not want to call doThisLater() here; you simply want to refer to the function object.``(J.M)
+	    setTimeout(doThisLater, 5000);								// ``The setTimeout() method takes two parameters. The first is a function you want executed, and the second is the delay, in milliseconds (thousandths of a second), until the code is executed. Take note how doThisLater() is passed to setTimeout() the parentheses are omitted. You do not want to call doThisLater() here; you simply want to refer to the function object.``(J.M)
 	    
 	    function stopdoThisLater() {
 	    alert("Time's up!");
 	    }
-	    var timerId = setTimeout(stopdoThisLater, 3000);			// ``The method returns a value (an integer), which is the timer’s unique ID. If you decide later that you want to stop the timer firing, you use this ID to tell JavaScript which timer you are referring to.``(J.M)
-	    clearTimeout(timerId);						// ``To clear a timer you use the clearTimeout() function. This takes just one parameter: the unique timer ID returned by the setTimeout() function.``(J.M)
+	    var timerId = setTimeout(stopdoThisLater, 3000);						// ``The method returns a value (an integer), which is the timer’s unique ID. If you decide later that you want to stop the timer firing, you use this ID to tell JavaScript which timer you are referring to.``(J.M)
+	    clearTimeout(timerId);									// ``To clear a timer you use the clearTimeout() function. This takes just one parameter: the unique timer ID returned by the setTimeout() function.``(J.M)
 	    
-	    var reloadPageTimerID = setInterval(update, 1000);			// ``The setInterval() function takes the same parameters as setTimeout() , except that the second parameter now specifies the interval, in milliseconds, between each firing of the timer, rather than just the length of time before the timer fires.``(J.M)
+	    var reloadPageTimerID = setInterval(update, 1000);						// ``The setInterval() function takes the same parameters as setTimeout() , except that the second parameter now specifies the interval, in milliseconds, between each firing of the timer, rather than just the length of time before the timer fires.``(J.M)
 	    function update() {
-	    document.location.reload(this);					// reload the page with the "document" object, "location" property and "reload()" method.
+	    document.location.reload(this);								// reload the page with the "document" object, "location" property and "reload()" method.
 	    }
 	    reloadPageTimerID;
 	    
 	    function StopReloadPageTimerID() {
-	    clearInterval(reloadPageTimerID);					// the clear function of setInterval()
+	    clearInterval(reloadPageTimerID);								// the clear function of setInterval()
 	    }
 	    
 	    function updateTime() {
@@ -154,8 +150,8 @@
 	    var year = prompt("Enter the four digit year you were born.");
 	    var month = prompt("Enter your birth month (1 - 12).");
 	    var date = prompt("Enter the two digit day of the month you were born.");
-	    var birthDate = new Date(year, month - 1, date);					// ``You create a new Date object based on the year, month, and day entered by the user.``(J.M)
-	    alert("The day you were born is " + days[birthDate.getDay()]);			// `` Then you get the day of the week using the Date object’s getDay() method. This returns a number, but by defining an array of days of the week to match this number, you can use the value of getDay() as the index to your days array.``(J.M)
+	    var birthDate = new Date(year, month - 1, date);						// ``You create a new Date object based on the year, month, and day entered by the user.``(J.M)
+	    alert("The day you were born is " + days[birthDate.getDay()]);				// `` Then you get the day of the week using the Date object’s getDay() method. This returns a number, but by defining an array of days of the week to match this number, you can use the value of getDay() as the index to your days array.``(J.M)
 	    }
 	    document.write("<button onclick=TellBirthDay()>Birth Day</button>")
     </script>
