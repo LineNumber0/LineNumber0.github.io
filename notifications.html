@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="la">
+  <head>
+    <title>CSS3 notification</title>
+    <meta charset="utf-8"/>
+    <meta name="Description" content="From &quot;Pro CSS3 Animation&quot; book"/>
+    <meta name="Author" content="Dudley Storey"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="Date" content="Saturday 05-May-2018 01:35 WEST"/>
+    <style type="text/css">
+      div#breaking-news { 
+      position: fixed;
+      bottom: 2px;
+      right: 15%; 
+      } 
+      div.notification { 
+      position: relative; 
+      width: 275px; 
+      border-radius: 10px; 
+      background: linear-gradient(rgb(215,215,215), rgb(165,164,169)); 
+      padding: 60px 20px 40px; 
+      border: 2px solid #999; 
+      margin-top: 10px; 
+      box-shadow: 3px 3px 6px rgba(0,0,0,0.1) inset, 0 0 6px 2px rgba(0,0,0,0.1); 
+      opacity: 0.9; 
+      } 
+      div.notification a { 
+      color: white; 
+      text-decoration: none; 
+      font-family: Futura, sans-serif;
+      font-size: 20px; 
+      white-space: nowrap;
+      } 
+      div.notification a span { 
+      font-size: 60px;
+      padding-right: 20px; 
+      vertical-align: middle; 
+      } 
+      div.progress { 
+      height: 5px;
+      border-radius: 2px;
+      border: 1px solid #999; 
+      margin-top: 32px; 
+      background: rgb(215,215,215); 
+      } 
+      div.progress span { 
+      background: #000; 
+      display: block;
+      width: 0; 
+      height: 3px; 
+      animation: progress 12s 4s forwards linear; 
+      } 
+      @keyframes popup { 
+      0%, 30% { 
+      height: 0; 
+      padding: 0 20px; 
+      display: none; 
+	} 
+      } 
+      @keyframes fade { 
+      100% { opacity: 0; } 
+      } 
+      @keyframes progress { 
+      100% { width: 100%; } 
+      } 
+      div.notification { 
+      animation-name: popup, fade; 
+      animation-duration: 2s, 1s; 
+      animation-timing-function: cubic-bezier(0.325, 0.730, 0.695, 1.650); 
+      animation-fill-mode: backwards, forwards; 
+      animation-delay: 2s, 14s; 
+      } 
+      div.notification:nth-child(2) { 
+      animation-delay: 6s, 18s; 
+      } 
+      div.notification:nth-child(3) { 
+      animation-delay: 12s, 24s; 
+      }
+      div.notification:nth-child(2) div.progress span { animation-delay: 6s; } 
+      div.notification:nth-child(3) div.progress span { animation-delay: 12s; }
+      p {
+      line-height:3;
+      font-weight:bold;
+      }
+      </style>
+  </head>
+  <body>
+  <div id=breaking-news> 
+    <div class=notification><a href=#><span>☂</span>Rain expected</a> 
+      <div class=progress><span></span></div> 
+    </div> 
+    <div class=notification><a href=#><span>✈</span>Travel plans changed</a> 
+      <div class=progress><span></span></div> 
+    </div> 
+    <div class=notification><a href=#><span>❄</span>Light snow</a> 
+      <div class=progress><span></span></div> 
+    </div> 
+  </div> 
+  <p>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    	<title>CSS Transforms, an example from http://rwd.education</title>
+	<meta charset="utf-8"/>
+	<meta name="description" content="An example from the book, 'Responsive Web Design with HTML5 and CSS3' by Ben Frain"/>
+	<meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="date" content="Friday 26-January-2018 00:06 WET"/>
+	<meta name="viewport" content="width=device-width"/>
+	<meta name="theme-color" content="#ff9900"/>
+    <style type="text/css">
+body {
+	padding: 0;
+	margin: 0;
+}
+
+nav {
+	padding: 30px;
+}
+
+a {
+	display: inline-flex;
+	background-color: #CC3232;
+	flex: 1 0 auto;
+	min-height: 88px;
+	text-decoration: none;
+	font-size: 22px;
+	border: 1px solid #333;
+	padding: 0 10px;
+	color: #fff;
+	font-family: sans-serif;
+	align-items: center;
+	transition: transform 1s;
+	margin:1%;
+}
+
+.scale:hover {
+	transform: scale(1.4);
+}
+
+.translate:hover {
+	transform: translate(-20px, -20px);
+}
+
+.rotate:hover {
+	transform: rotate(30deg);
+}
+
+.skew:hover {
+	transform: skew(40deg, 12deg);
+}
+
+.matrix:hover {
+	transform: matrix(1.178, -0.256, 1.122, 1.333, -41.533, -1.989);
+}
+.spin:hover {
+	transform: rotate(360deg);
+}
+.spin3:hover {
+	transform: rotate(3600deg);                                                  			/* `` The value in parentheses should always be in degrees (for example, 90deg). While positive values always apply clockwise, using negative values will rotate the element counter-clockwise. You can also go crazy and make elements spin by specifying a value like the following: transform: rotate(3600deg); This will rotate the element 10 times in a complete circle. Practical uses for this particular value are few and far between but you know, if you ever find yourself designing websites for a windmill company, it may come in handy. ``(B.F)  */
+}
+    </style>
+</head>
+<body>
+<center><h1>Demonstration of CSS transforms</h1></center>
+	<nav>
+		<a href="#" class="scale">scale(1.4)</a>
+		<a href="#" class="translate">translate(-20px, -20px)</a>
+		<a href="#" class="rotate">rotate(30deg)</a>
+		<a href="#" class="skew">skew(40deg, 12deg)</a>
+		<a href="#" class="matrix">matrix(1.178, -0.256, 1.122, 1.333, -41.533, -1.989)</a>
+        <a href="#" class="spin">rotate(360deg)</a>
+        <a href="#" class="spin3">rotate(3600deg)</a>
+	</nav>
+</body>
+</html>

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <title>CSS3 filter, An example from http://rwd.education</title>
+	<meta charset="utf-8">
+	<meta name="description" content="An example from the book, 'Responsive Web Design with HTML5 and CSS3' by Ben Frain">
+	  <meta name="Web-Developer" content="LineNumber0"/>
+	<meta name="Date" content="Thursday 24-May-2018 01:31 WET"/>
+	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#ff9900">
+	    <style type="text/css">
+		.tri-right {
+		width: 0;
+		height: 0;
+		border-top: 3.125rem solid transparent;
+		border-left: 6.25rem solid red;
+		border-bottom: 3.125rem solid transparent;
+		margin-bottom: 5rem;
+		/*box-shadow: 8px 8px 6px #333;*/
+		-webkit-filter: drop-shadow(8px 8px 6px #333);
+		filter: drop-shadow(8px 8px 6px #333);							/* the filter property of CSS3 Filter Effects Module Level 1. ``The drop-shadow follows a similar syntax to box-shadow so this one is easy; x and y offset, blur, then spread radius (both optional), and finally color (also optional, although I recommend specifying a color for consistency).``(B.F) */
+		
+		}
+		
+		[class^="filter"] {
+		background-image: url('ext/el-cap-1x.jpg');
+		-webkit-background-size: cover;
+		background-size: cover;
+		width: 750px;
+		height: 500px;
+		margin-bottom: 5rem;
+		padding-top: 10px;
+		}
+		
+		@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {		/* ``(device pixels per CSS pixel) We could also use dpi (dots per inch) or dpcm (dots per centimeter) units if preferable. However, despite the poorer support, I find dppx the easiest unit to think about; as 2dppx is twice the resolution, 3dppx would be three times the resolution.``(B.F) */
+		[class^="filter"] {
+		background-image: url('ext/el-cap-2x.jpg');
+		}
+		}
+		
+		.filter-blur {
+		-webkit-filter: blur(2px);
+		filter: blur(2px);									/* ``Use a single length value (but not as a percentage).``(B.F) */
+		}
+		
+		.filter-brightness {
+		-webkit-filter: brightness(2);
+		filter: brightness(2);									/* ``Use a value from 0 to 1 or 0% to 100%. 0/0% is black, 1/100% is 'normal,' and anything beyond brightens the element further.``(B.F) */
+		}
+		
+		.filter-contrast {
+		-webkit-filter: contrast(2);
+		filter: contrast(2);									/* ``Use a value from 0 to 1 or 0% to 100%. 0/0% is black, 1/100% is 'normal,' and anything beyond raises the color contrast.``(B.F) */
+		}
+		
+		.filter-grayscale {
+		-webkit-filter: grayscale(.8);
+		filter: grayscale(.8);									/* ``Use a value from 0 to 1, or 0% to 100% to apply varying amounts of grayscale to the element. A value of 0 would be no grayscale while a value of 1 would be fully grayscale.``(B.F) */
+		}
+		
+		.filter-hue-rotate {
+		-webkit-filter: hue-rotate(25deg);
+		filter: hue-rotate(25deg);								/* ``Use a value between 0 and 360 degrees to adjust the colors around the color wheel.``(B.F) */
+		}
+		
+		.filter-invert {
+		-webkit-filter: invert(75%);
+		filter: invert(75%);									/* ``Use a value from 0 to 1, or 0% to 100% to define the amount the element has its colors inverted.``(B.F) */
+		}
+		
+		.filter-opacity {
+		-webkit-filter: opacity(50%);
+		filter: opacity(50%);									/* ``Use a value from 0 to 1, or 0% to 100% to alter the opacity of the element. This is similar to the opacity property you will already be familiar with. However, filters,(..) can be combined and this allows opacity to be combined with other filters in one go.``(B.F) */
+		}
+		
+		.filter-saturate {
+		-webkit-filter: saturate(15%);
+		filter: saturate(15%);									/* ``Use a value from 0 to 1, or 0% to 100% to desaturate an image and anything above 1/100% to add extra saturation.``(B.F) */
+		}
+		
+		.filter-sepia {
+		-webkit-filter: sepia(.75);
+		filter: sepia(.75);									/* ``Use a value from 0 to 1, or 0% to 100% to make the element appear with a more sepia color. 0/0% leaves the element 'as is' while anything above that applies greater amounts of sepia up to a maximum of 1/100%.``(B.F) */
+		}
+		div {
+		font-family:monospace;
+		font-size:2em;
+		text-align: center;
+		font-weight: bold;
+		}
+	    </style>
+</head>
+<body>
+<center><h1>CSS3 <code>filter</code> property</h1></center>
+<div class="tri-right" title="drop-shadow(8px 8px 6px #333)" ></div>
+	<div class="filter-blur" title="blur(2px)">blur(2px)</div>
+	<div class="filter-brightness">brightness(2)</div>
+	<div class="filter-contrast">contrast(2)</div>
+	<div class="filter-grayscale">grayscale(0.8)</div>
+	<div class="filter-hue-rotate">hue-rotate(25deg)</div>
+	<div class="filter-invert">invert(75%)</div>
+	<div class="filter-opacity">opacity(50%)</div>
+	<div class="filter-saturate">saturate(15%)</div>
+	<div class="filter-sepia">sepia(0.75)</div>
+</body>
+</html>

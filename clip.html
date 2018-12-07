@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Masking with clip</title>
+<meta charset="utf-8"/>
+  <meta name="Description" content="From &quot;Beginning CSS3&quot; book"/>
+  <meta name="Author" content="David Powers"/>
+  <meta name="Web-Developer" content="LineNumber0"/>
+<style type="text/css">
+body {
+    background-color: #FFF;
+    color: #000;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+p {
+    width: 550px;
+}
+#clipped {
+    height: 375px;
+    width: 500px;
+    position: absolute;
+    left: 50px;
+    top: 140px;
+    clip: rect(60px 290px 135px 210px);                     						/* ``The "clip" property creates a mask through which part of an element is displayed. It works only with absolutely positioned elements, and the only shape you can use is a rectangle. You define the area you want to display by supplying four offsets in clockwise order from the top. All the offsets are calculated from the top left of the element you want to mask, and each must be defined as a length. You can’t use percentages.``(D.P) */
+    cursor: pointer;
+    -moz-transition: ease-out 1s;
+    -ms-transition: ease-out 1s;
+    -o-transition: ease-out 1s;
+    -webkit-transition: ease-out 1s;
+    transition: ease-out 1s;                    							/* "animate the clip property using a CSS transition"(D.P) */
+    margin-top: 50px;
+}
+#clipped:active {
+    clip: rect(0 500px 375px 0);            								/* ``To reveal the rest of the image, (..) use the :active pseudo-class to reset the value of clip to the full size of the image. The right and bottom values are the same as the image’s width and height respectively. The top and left values are both 0 because nothing is to be clipped from the top or left.``(D.P) */
+}
+</style>
+</head>
+
+<body>
+<center><h1>The <code>clip</code> property</h1></center>
+<div id="clipped"><img src="img/alcatraz.jpg" width="500" height="375" alt="Mystery image"></div>
+<h1>Guess Where</h1>
+<p>This is part of a famous landmark in North America. To reveal where it is, click the image, and hold down the mouse button.</p>
+</body>
+</html>
