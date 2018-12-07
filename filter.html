@@ -104,8 +104,8 @@
 	<div class="filter-saturate">saturate(15%)</div>
 	<div class="filter-sepia">sepia(0.75)</div>
 	<script type="text/javascript">
-	  if (!"filter" in document.body.style || !"-webkit-filter" in document.body.style) {
-	  document.querySelector("h2").innerHTML = "Your Browser doesn't support the CSS3 filter property ! All images are displayed normally !";
+	  if (!("filter" in document.body.style) || !("-webkit-filter" in document.body.style)) {
+	  document.querySelector("h2").innerHTML = "Your Browser doesn't support the CSS3 filter property !<br/> All images are displayed normally !";
 	  }
 	</script>
 </body>

@@ -54,7 +54,7 @@
     display: block; 
     } 
     #pattfrm label:first-letter { 
-    border-bottom: 2px solid #bbb;  			/* ``underlines the first letter of each form label to show the appropriate accesskey for the associated field``(D.S) */
+    border-bottom: 2px solid #bbb;  									/* ``underlines the first letter of each form label to show the appropriate accesskey for the associated field``(D.S) */
     } 
     #pattfrm input { 
     border: 1px solid #bbb;
@@ -62,7 +62,7 @@
     border-radius: .2rem; 
     margin: .5rem 0; 
     } 
-    #pattfrm input:valid,#pattfrm input:invalid {box-shadow: none; } 		/* ``the first CSS declaration, turns off the current default Firefox User Agent styles for valid and invalid inputs``(D.S) */
+    #pattfrm input:valid,#pattfrm input:invalid {box-shadow: none; } 					/* ``the first CSS declaration, turns off the current default Firefox User Agent styles for valid and invalid inputs``(D.S) */
     #pattfrm input:valid  { border: 2px solid lightgreen; } 
     #pattfrm input:invalid:focus { border: 2px solid orangered; } 
     #pattfrm input[type="submit"] { 
@@ -79,9 +79,9 @@
     opacity: 0; 
     transition-property: opacity;
     transition-duration: 1s; 
-    transition-delay: 1s;						/* ``Note that I’ve added a delay to the transition: without this, the error message would show immediately on entering the first character in a field. You want a reasonable amount of time to pass before you start telling the user that their information is wrong.``(D.S) */
+    transition-delay: 1s;										/* ``Note that I’ve added a delay to the transition: without this, the error message would show immediately on entering the first character in a field. You want a reasonable amount of time to pass before you start telling the user that their information is wrong.``(D.S) */
     } 
-    #pattfrm input:focus + span:after { opacity: 1; }			/* ``There’s an immediate problem: the browser continues to show the inputs as wrong by making the span title attribute visible the moment the page loads. The reason? : An input with a required attribute is evaluated by its pattern or input type before the user focuses or enters any information into the field.``(D.S) */
+    #pattfrm input:focus + span:after { opacity: 1; }							/* ``There’s an immediate problem: the browser continues to show the inputs as wrong by making the span title attribute visible the moment the page loads. The reason? : An input with a required attribute is evaluated by its pattern or input type before the user focuses or enters any information into the field.``(D.S) */
     /* {LN_0} */
     #pattfrm input:valid + span:after {
     content:"√";
@@ -89,7 +89,7 @@
     font-size:1.5rem;
     color:lightgreen;
     transition-duration: 3s;
-    }									/* my solution is to restore the "required" attribute and assigning the "focus" pseudo-class to the invalid inputs : on page load the form will be displayed with "normal style", and the "invalid style" when only the input gains focus. */
+    }													/* my solution is to restore the "required" attribute and assigning the "focus" pseudo-class to the invalid inputs : on page load the form will be displayed with "normal style", and the "invalid style" when only the input gains focus. */
     /*
     -------------------------------------------------- 
     */
@@ -98,13 +98,13 @@
     height: 10px;
     border-radius: 5px;
     }
-    #prog3,#prog4 {						/* before styling the "progress" element remove the default style with "appearance" property */
+    #prog3,#prog4 {											/* before styling the "progress" element remove the default style with "appearance" property */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     }
     /* Chrome and Safari */
-    #prog4::-webkit-progress-bar {				/* ``Different browsers style the progress bar in different ways. And even if you like the thin, rounded, blue bars that most browsers use, it might clash with your design. So, it is possible to adjust how the progress bar looks using "progress-bar" pseudo-class.``(L.L,R.C,J.K) */
+    #prog4::-webkit-progress-bar {									/* ``Different browsers style the progress bar in different ways. And even if you like the thin, rounded, blue bars that most browsers use, it might clash with your design. So, it is possible to adjust how the progress bar looks using "progress-bar" pseudo-class.``(L.L,R.C,J.K) */
     height: 10px;
     background-color: lightblue;
     box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
@@ -183,7 +183,7 @@
     display:inline-block;
     margin-left:10px;
     }
-    .aboveMax::-moz-meter-bar {							/* changing the meter bar color with the Mozilla pseudo-element -moz-meter-bar  */
+    .aboveMax::-moz-meter-bar {										/* changing the meter bar color with the Mozilla pseudo-element -moz-meter-bar  */
     background-image:linear-gradient(#f77, #f77, #fcc 20%, #d44 45%, #d44 55%);
     }
   </style>
@@ -472,11 +472,11 @@ The "<code>date</code>" value of the <code>type</code> attribute : </h4>
     ev.preventDefault();
     }
     function drag(ev) {
-    ev.dataTransfer.setData("Text",ev.target.id);            // ``The value and type of the data to be dragged is set by the dataTransfer.setData method.`` (A.S & G.G)
+    ev.dataTransfer.setData("Text",ev.target.id);            						// ``The value and type of the data to be dragged is set by the dataTransfer.setData method.`` (A.S & G.G)
     }
     function drop(ev) {
-    ev.preventDefault();                                    // ``By default, the dragged item cannot be dropped elsewhere. Hence, we use the event.preventDefault() feature, as it allows the item to be dropped into another element.`` (A.S & G.G)
-    var abc = ev.dataTransfer.getData("Text");              // ``The dataTransfer.getData method will enable us to return any data that was defined in the dataTransfer.setData method. Then, we append the dragged item to its destination.`` (A.S & G.G)
+    ev.preventDefault();                                    						// ``By default, the dragged item cannot be dropped elsewhere. Hence, we use the event.preventDefault() feature, as it allows the item to be dropped into another element.`` (A.S & G.G)
+    var abc = ev.dataTransfer.getData("Text");              						// ``The dataTransfer.getData method will enable us to return any data that was defined in the dataTransfer.setData method. Then, we append the dragged item to its destination.`` (A.S & G.G)
     ev.target.appendChild(document.getElementById(abc));
     }
 </script>
@@ -498,15 +498,15 @@ The "<code>date</code>" value of the <code>type</code> attribute : </h4>
   setTimeout(removeMsg,3000);
   }
   
-  function removeMsg() {									// removing the message with removeMsg() function
+  function removeMsg() {										// removing the message with removeMsg() function
   if (dropStatus.innerHTML != "") {
   dropStatus.innerHTML = "";
    }
   }
   
   function dragDropHandler(e) {
-  e.preventDefault();										// ``This is crucial for two reasons. First, the dragover’s default behavior must be prevented in order for the drop event to fire. Second, the browser will do something when you drop an object. In other words, the drop event has a default behavior, but the exact behavior depends on the browser and the object that you drop. Some examples are: For a file or image, most browsers will attempt to open it. Dropping a URL may cause the browser to navigate to the URL. In Firefox, dropping an element will cause the browser to navigate to the value in the element’s id attribute. Therefore, you want to prevent the drop event’s default behavior in most cases.``(J.M)
-  if (e.type == "dragover") {									// ``changes the content of the dropStatus element based on the type of event``(J.M)
+  e.preventDefault();											// ``This is crucial for two reasons. First, the dragover’s default behavior must be prevented in order for the drop event to fire. Second, the browser will do something when you drop an object. In other words, the drop event has a default behavior, but the exact behavior depends on the browser and the object that you drop. Some examples are: For a file or image, most browsers will attempt to open it. Dropping a URL may cause the browser to navigate to the URL. In Firefox, dropping an element will cause the browser to navigate to the value in the element’s id attribute. Therefore, you want to prevent the drop event’s default behavior in most cases.``(J.M)
+  if (e.type == "dragover") {										// ``changes the content of the dropStatus element based on the type of event``(J.M)
   dropStatus.innerHTML = "You're dragging over the drop zone !";
   } else {
   dropStatus.innerHTML = "You dropped something !";
@@ -515,13 +515,13 @@ The "<code>date</code>" value of the <code>type</code> attribute : </h4>
   }
   
   function dragStartHandler(e) {
-  e.dataTransfer.setData("text",e.target.id);							// ``drag-and-drop operation is the transference of data (..) When starting a drag, you need to tell the browser what you plan to transfer, and when you drop the object, you need to specify how that data transfers from the source to the target. The drag-and-drop specification defines a DataTransfer object that is used to hold the data that is being dragged during a drag-and-drop operation. You access this object with the Event object’s dataTransfer property. You set data with the DataTransfer object’s setData() method in the dragstart event handler, and you read that data in the drop event handler with the getData() method. (..) The setData() function accepts two arguments: the type of data to store and the actual data. The only data types supported by all browsers are "text" and "url"; therefore, this function stores the textual data of Drag and Drop! ``(J.M)
+  e.dataTransfer.setData("text",e.target.id);								// ``drag-and-drop operation is the transference of data (..) When starting a drag, you need to tell the browser what you plan to transfer, and when you drop the object, you need to specify how that data transfers from the source to the target. The drag-and-drop specification defines a DataTransfer object that is used to hold the data that is being dragged during a drag-and-drop operation. You access this object with the Event object’s dataTransfer property. You set data with the DataTransfer object’s setData() method in the dragstart event handler, and you read that data in the drop event handler with the getData() method. (..) The setData() function accepts two arguments: the type of data to store and the actual data. The only data types supported by all browsers are "text" and "url"; therefore, this function stores the textual data of Drag and Drop! ``(J.M)
   }
   
   function handleDrop(e) {
   e.preventDefault();
-  var dragData = e.dataTransfer.getData("text");						// ``The getData() method accepts only one argument: the data type you used when calling setData(). Therefore, this code retrieves the value``(J.M)
-  dragBox.style.float = "none";									// remove float and margin from the dragged element when dropped.
+  var dragData = e.dataTransfer.getData("text");							// ``The getData() method accepts only one argument: the data type you used when calling setData(). Therefore, this code retrieves the value``(J.M)
+  dragBox.style.float = "none";										// remove float and margin from the dragged element when dropped.
   dragBox.style.margin = "0";
   e.target.appendChild(document.getElementById(dragData));
   }
@@ -539,25 +539,25 @@ The "<code>date</code>" value of the <code>type</code> attribute : </h4>
 <script type="application/javascript">
     var tt = document.getElementById("geoinfo");
     function getLocation() {
-    if (navigator.geolocation)								// ``The navigator.geolocation function will help us determine whether the browser supports this feature.`` (A.S & G.G)
+    if (navigator.geolocation)										// ``The navigator.geolocation function will help us determine whether the browser supports this feature.`` (A.S & G.G)
     {
-    navigator.geolocation.getCurrentPosition(showLocation,displayError);		// ``When you call getCurrentPosition() method (on the geolocation property of the navigator object), you must pass it a callback function , which is a function that executes when getCurrentPosition() successfully completes its work. and a second parameter, another callback function that executes when an error occurs``(from "Beginning JavaScript" by Jeremy McPeak)
+    navigator.geolocation.getCurrentPosition(showLocation,displayError);				// ``When you call getCurrentPosition() method (on the geolocation property of the navigator object), you must pass it a callback function , which is a function that executes when getCurrentPosition() successfully completes its work. and a second parameter, another callback function that executes when an error occurs``(from "Beginning JavaScript" by Jeremy McPeak)
     }
     else {tt.innerHTML = "Your browser does not support the Geolocation feature";}
     }
     function showLocation(position) {
-    var timeStamp = new Date(position.timestamp);					// get the Timestamp in a readable format
+    var timeStamp = new Date(position.timestamp);							// get the Timestamp in a readable format
     tt.innerHTML = "Latitude: " + position.coords.latitude + "; Longitude: " + position.coords.longitude + "; Altitude : " + position.coords.altitude + "; Accuracy : " + position.coords.accuracy + "; Altitude accuracy : " + position.coords.altitudeAccuracy + "; Velocity : " + position.coords.speed + "; Timestamp : " + timeStamp;				// the position.coords.latitude and the position.coords.longitude help us in retrieving information about the coordinates of our physical location with respect to the latitude and longitude of that place. (A.S & G.G) | ``The speed property retrieves the speed, or rather the velocity, of the device/computer in meters per second.``(from Beginning JavaScript by Jeremy McPeak)
     }
-    function displayError(error) {							// ``The error callback function has a single parameter that represents the reason for getCurrentPosition()’s failure. It is an object containing two properties. The first, code, is a numeric value indicating the reason of failure``(J.M)
-    switch(error.code) {								// ``The second property is called message; it’s a human-readable message that describes the error.``(J.M)
-    case error.PERMISSION_DENIED:							// error code number 1
+    function displayError(error) {									// ``The error callback function has a single parameter that represents the reason for getCurrentPosition()’s failure. It is an object containing two properties. The first, code, is a numeric value indicating the reason of failure``(J.M)
+    switch(error.code) {										// ``The second property is called message; it’s a human-readable message that describes the error.``(J.M)
+    case error.PERMISSION_DENIED:									// error code number 1
     tt.innerHTML = "Permission issues, Access Denied."
     break;
-    case error.POSITION_UNAVAILABLE:							// error code number 2
+    case error.POSITION_UNAVAILABLE:									// error code number 2
     tt.innerHTML = "As of now, Location info is not available."
     break;
-    case error.TIMEOUT:									// error code number 3
+    case error.TIMEOUT:											// error code number 3
     tt.innerHTML = "There seems to be a timeout issue, Please try later."
     break;
     case error.UNKNOWN_ERROR:
@@ -567,12 +567,12 @@ The "<code>date</code>" value of the <code>type</code> attribute : </h4>
     }
     
     function GeoInfo() {
-    if (typeof navigator.geolocation != "undefined") {					// this if statement uses "feature detection" with a syntax more clear than the first geolocation function : if the JavaScript keyword "typeof" returns another value than "undefined" the geolocation function will be executed. if the geolocation feature is present "typeof" will return "object".
+    if (typeof navigator.geolocation != "undefined") {							// this if statement uses "feature detection" with a syntax more clear than the first geolocation function : if the JavaScript keyword "typeof" returns another value than "undefined" the geolocation function will be executed. if the geolocation feature is present "typeof" will return "object".
     navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
     } else {
     tt.innerHTML = "This page uses geolocation, and your browser doesn't support it.";
     }
-    function geoSuccess(position) {							// (from Beginning JavaScript by Jeremy McPeak)
+    function geoSuccess(position) {									// (from Beginning JavaScript by Jeremy McPeak)
     var coords = position.coords;
     var latitude = coords.latitude;
     var longitude = coords.longitude;
@@ -630,9 +630,9 @@ The "<code>date</code>" value of the <code>type</code> attribute : </h4>
     function drawArc() {
     var canvas = document.getElementById('idcanvas');
     var context = canvas.getContext('2d');
-    context.arc(150, 150, 50, 0, Math.PI*2, true);        // The arc() method is used to draw an arc on the canvas, and there are five parameters defined in the arc() method : arc(x, y, radius, startAngle, endAngle, anticlockwise). (A.S)
-    context.arc(150, 150, 35, 0, Math.PI*2, false);       // The Math function in the code is a part of the JavaScript library. (A.S)
-    context.fill();                                     // We have not used the closePath function here, as we have used the fill function at the end of the JavaScript code. (A.S)
+    context.arc(150, 150, 50, 0, Math.PI*2, true);        						// The arc() method is used to draw an arc on the canvas, and there are five parameters defined in the arc() method : arc(x, y, radius, startAngle, endAngle, anticlockwise). (A.S)
+    context.arc(150, 150, 35, 0, Math.PI*2, false);       						// The Math function in the code is a part of the JavaScript library. (A.S)
+    context.fill();                                     						// We have not used the closePath function here, as we have used the fill function at the end of the JavaScript code. (A.S)
     }
 </script>
 <canvas id="idcanvas" width="300" height="300">Your browser doesn't support HTML5 canvas or JavaScript is disabled.</canvas>
@@ -640,7 +640,7 @@ The "<code>date</code>" value of the <code>type</code> attribute : </h4>
     function drawShape() {
     var canvas = document.getElementById('mycanvas');
     var context = canvas.getContext('2d');
-        context.beginPath();                                // We start the path using the beginPath() method. If we call this method, the list of items that form a shape is reset, and as a result of that we can draw new shapes.(A.S)
+        context.beginPath();                                						// We start the path using the beginPath() method. If we call this method, the list of items that form a shape is reset, and as a result of that we can draw new shapes.(A.S)
         context.strokeStyle = "#000";
         context.fillStyle='#ccc';
         context.strokeRect(95,60,50,0);
@@ -655,10 +655,10 @@ The "<code>date</code>" value of the <code>type</code> attribute : </h4>
         context.strokeRect(100,210,50,0);
         context.strokeRect(150,160,0,50);
         context.fillRect(95,110,50,50);
-        context.arc(200,160,50,0,Math.PI,true);             // the X and Y coordinates is for the center of the circle.{LN_0}
-        context.closePath();                                // Using the closePath() method, we can close the shape. For example, if the pointer is at a point distant from the starting point, this method will close the shape by drawing a straight line to the start point.(A.S)
-        context.moveTo(145,60);                             // We know that the x axis and y axis coordinates originate at the top-left corner of the canvas at (0,0) by default. If we want the coordinates to start from a different point on the screen, we will move the virtual pointer to that specific path using the moveTo() method. This method will take two coordinates (x, y), which will define the new starting point on the screen.(A.S)
-        context.lineTo(250,160);                            // The lineTo() method will draw a line from the starting point of the virtual pointer to the parameters defined in the function. For example, suppose we have moveTo(10,20) and lineTo(50,70) defined in the code, a line will be drawn from (10,20) to (50,70).(A.S)
+        context.arc(200,160,50,0,Math.PI,true);             						// the X and Y coordinates is for the center of the circle.{LN_0}
+        context.closePath();                                						// Using the closePath() method, we can close the shape. For example, if the pointer is at a point distant from the starting point, this method will close the shape by drawing a straight line to the start point.(A.S)
+        context.moveTo(145,60);                             						// We know that the x axis and y axis coordinates originate at the top-left corner of the canvas at (0,0) by default. If we want the coordinates to start from a different point on the screen, we will move the virtual pointer to that specific path using the moveTo() method. This method will take two coordinates (x, y), which will define the new starting point on the screen.(A.S)
+        context.lineTo(250,160);                            						// The lineTo() method will draw a line from the starting point of the virtual pointer to the parameters defined in the function. For example, suppose we have moveTo(10,20) and lineTo(50,70) defined in the code, a line will be drawn from (10,20) to (50,70).(A.S)
         context.stroke();
         context.fillStyle='#eee';
         context.fill();
@@ -669,11 +669,11 @@ The "<code>date</code>" value of the <code>type</code> attribute : </h4>
     function drawGrad () {
     var canvas = document.getElementById("gradcanvas");
     var context = canvas.getContext("2d");
-    var linGrad = context.createLinearGradient(50, 50, 150, 50);                // declare a linGrad variable and assign it a gradient. To start with, we have createLinearGradient(x1, y1, x2, y2) . The gradient starts from the point (x1, y1) and extends to (x2, y2). We can create a horizontal or vertical gradient by changing the x axis and y axis parameters.(A.S)
-    linGrad.addColorStop(0, "green");                                            // In order to define a color to the gradient, we will use the addColorStop.there are two parameters in the addColorStop property. The first parameter is to be defined from 0 to 1 to indicate the extent to which the gradient color has to be applied. The second parameter is the color which is to be used.(A.S)
+    var linGrad = context.createLinearGradient(50, 50, 150, 50);                			// declare a linGrad variable and assign it a gradient. To start with, we have createLinearGradient(x1, y1, x2, y2) . The gradient starts from the point (x1, y1) and extends to (x2, y2). We can create a horizontal or vertical gradient by changing the x axis and y axis parameters.(A.S)
+    linGrad.addColorStop(0, "green");                                            			// In order to define a color to the gradient, we will use the addColorStop.there are two parameters in the addColorStop property. The first parameter is to be defined from 0 to 1 to indicate the extent to which the gradient color has to be applied. The second parameter is the color which is to be used.(A.S)
     linGrad.addColorStop(0.5, "navy");
     linGrad.addColorStop(1, "purple");
-    context.fillStyle = linGrad;                                                // We have defined a fillStyle property and assigned it to the linGrad variable.(A.S)
+    context.fillStyle = linGrad;                                                			// We have defined a fillStyle property and assigned it to the linGrad variable.(A.S)
     context.fillRect(60, 60, 160, 200);
 }
 </script>
@@ -682,7 +682,7 @@ The "<code>date</code>" value of the <code>type</code> attribute : </h4>
       function drawGradColors () {
       var canvas = document.getElementById("canvasgrad");
       var context = canvas.getContext("2d");
-      var GradColors = context.createLinearGradient(50, 50, 50, 210);              /* moving in the Y axis to get an horizontal gradient */
+      var GradColors = context.createLinearGradient(50, 50, 50, 210);              			// moving in the Y axis to get an horizontal gradient
       GradColors.addColorStop(0.1, "#f00");
       GradColors.addColorStop(0.5, "#0f0");
       GradColors.addColorStop(0.9, "#00f");
@@ -698,7 +698,7 @@ The "<code>date</code>" value of the <code>type</code> attribute : </h4>
     var context = canvas.getContext('2d');
     context.fillStyle = "blue";
     context.fillRect(30, 60, 150, 100);
-    context.translate(50, 25);                                  // By using the translate property, we can relocate the drawn shape to a different location. We have used the translate function after we defined the (blue) rectangle.(A.S)
+    context.translate(50, 25);                                  					// By using the translate property, we can relocate the drawn shape to a different location. We have used the translate function after we defined the (blue) rectangle.(A.S)
     context.fillStyle = "navy";
     context.fillRect(30, 60, 200, 100);
     }
