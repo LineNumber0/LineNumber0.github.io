@@ -78,10 +78,9 @@ transition-timing-function: steps(5, end);      			/* `` In the next <div>, the 
   font-family:'Digital', monospace;
   font-size:4em;
   background-color: #A9CD32;
-  color: black;
   padding: 16px;
   border: 15px inset #000;
-  min-width: 8.5em;
+  min-width: 9em;
   display: inline-block;
   text-align: right;
   text-shadow: 5px 5px rgba(128, 128, 128, 0.33);
@@ -112,6 +111,14 @@ input[value="Reset!"] {
 }
 input[value="Resume!"] {background-color:yellowgreen}
 input:active {box-shadow:inset 3px 3px 3px dimgray}                     				/* increasing the button effect by using the same "box-shadow" definition, starting with the keyword "inset" */
+.lowbattery {
+color: rgba(0,0,0,0.33);
+transition:3600s;											/* 1h */
+}
+.recvolt {
+color:black;
+transition:5s;
+}
 </style>
 <script language="JavaScript" type="application/javascript">                          			// JavaScript Chronometer from proglogic.com
     var startTime = 0
@@ -152,8 +159,7 @@ input:active {box-shadow:inset 3px 3px 3px dimgray}                     				/* i
         document.chronoForm.reset.onclick = chronoReset
         start = new Date()
         chrono()
-	chronotime.style.color = "rgba(0,0,0,0.3)";							// {LN0} low battery effect !
-	chronotime.style.transition = "3600s";
+	lowbattery()
     }
     function chronoContinue(){
         document.chronoForm.startstop.value = "Stop!"
@@ -162,19 +168,17 @@ input:active {box-shadow:inset 3px 3px 3px dimgray}                     				/* i
         start = new Date()-diff
         start = new Date(start)
         chrono()
-	chronotime.style.color = "rgba(0,0,0,0.3)";
-	chronotime.style.transition = "3600s";
+	lowbattery()
     }
     function chronoReset(){
-        document.getElementById("chronotime").innerHTML = "0:00:00:000"
+        document.getElementById("chronotime").innerHTML = "00:00:00:000"
         start = new Date()
     }
     function chronoStopReset(){
-        document.getElementById("chronotime").innerHTML = "0:00:00:000"
+        document.getElementById("chronotime").innerHTML = "00:00:00:000"
         document.chronoForm.startstop.onclick = chronoStart
 	document.chronoForm.startstop.value = "Start!";							// {LN0}
-	chronotime.style.color = "black";
-	chronotime.style.transition = "5s";
+	chronotime.className = "recvolt";
     }
     function chronoStop(){
         document.chronoForm.startstop.value = "Start!"
@@ -183,9 +187,14 @@ input:active {box-shadow:inset 3px 3px 3px dimgray}                     				/* i
         clearTimeout(timerID)
 	if (parseInt(chronotime.innerHTML.substring(chronotime.innerHTML.length - 3)) > 0 ) {		// {LN0}
 	document.chronoForm.startstop.value = "Resume!";
-	chronotime.style.color = "black";
-	chronotime.style.transition = "5s";
+	chronotime.className = "recvolt";
 	}
+    }
+    
+    function lowbattery() {										// {LN0}
+    if ("transition" in document.body.style) {
+    chronotime.className = "lowbattery";
+      }
     }
 </script>
 </head>
@@ -193,7 +202,7 @@ input:active {box-shadow:inset 3px 3px 3px dimgray}                     				/* i
 <body>
 <center><h1>Stepping Function of <code>transition-timing-function</code> CSS property</h1></center>
 <div id="wrpchrn">
-    <span id="chronotime">0:00:00:000</span>
+    <span id="chronotime">00:00:00:000</span>
 <form name="chronoForm">
     <input type="button" name="startstop" value="Start!" onClick="chronoStart()" />
     <input type="button" name="reset" value="Reset!" onClick="chronoReset()" />
