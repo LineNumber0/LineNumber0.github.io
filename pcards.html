@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Image Card Stack</title>
+    <meta charset="utf-8"/>
+    <meta name="Description" content="From &quot;Pro CSS3 Animation&quot; book"/>
+    <meta name="Author" content="Dudley Storey"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="Date" content="Sunday 25-March-2018 01:09 WET"/>
+    <style type="text/css">
+        #cardfan, #cardfan img { 
+        width: 640px; 
+        height: 480px; 
+        -o-transition: .6s -o-transform ease-out;
+        -moz-transition: .6s -moz-transform ease-out;
+        -webkit-transition: .6s -webkit-transform ease-out;
+        -ms-transition: .6s -ms-transform ease-out;
+        transition: .6s transform ease-out;                          					/* ``Now you can truly fan the cards out, applying a transition at the same time``(D.S) */
+        } 
+        #cardfan { margin: 5% auto; }                                					/* ``center-align the container to the page while styling and stacking the images inside``(D.S) */
+        #cardfan img {
+        border: 32px solid #ffe; 
+        box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.2); 
+        position: absolute;
+        -o-transform-origin: center 1200px; 
+        -moz-transform-origin: center 1200px; 
+        -webkit-transform-origin: center 1200px; 
+        -ms-transform-origin: center 1200px; 
+        transform-origin: center 1200px;                             					/* ``the image rotates around its center. In this case, you want the images to be slightly fanned, so you’ll need to move the axis of transformation below the images``(D.S) */
+        } 
+        #cardfan:hover img:first-child {                             					/* ``You want to have the images fan out when the user hovers over them; you can achieve this by rotating the first and last images in the stack by 12 degrees through the use of the :first-child and :last-child pseudo-classes,``(D.S) */
+        -o-transform: rotate(24deg);
+        -moz-transform: rotate(24deg);
+        -webkit-transform: rotate(24deg);
+        -ms-transform: rotate(24deg);
+        transform: rotate(24deg); 
+        } 
+        #cardfan:hover img:last-child { 
+        -o-transform: rotate(-24deg);
+        -moz-transform: rotate(-24deg);
+        -webkit-transform: rotate(-24deg);
+        -ms-transform: rotate(-24deg);
+        transform: rotate(-24deg);
+        }
+        #cardfan img:first-child {                                   					/* ``allow the user some understanding of what is to come``(D.S) */
+        -o-transform: translateX(16px);
+        -moz-transform: translateX(16px);
+        -webkit-transform: translateX(16px);
+        -ms-transform: translateX(16px);
+        transform: translateX(16px);                                 					/* a positive number translate the element to the right */
+        }
+        #cardfan img:last-child {
+        -o-transform: translateX(-16px);
+        -moz-transform: translateX(-16px);
+        -webkit-transform: translateX(-16px);
+        -ms-transform: translateX(-16px);
+        transform: translateX(-16px);                                					/* a negative number translate the element to the left */
+        }
+      </style>
+  </head>
+  <body>
+    <div id=cardfan> 
+         <img src=img/card1.jpg /> 
+         <img src=img/card2.jpg /> 
+         <img src=img/card3.jpg /> 
+    </div> 
+  </body>
+</html>

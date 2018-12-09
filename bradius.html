@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Border Radius</title>
+<meta charset="utf-8"/>
+  <meta name="Description" content="From &quot;Beginning CSS3&quot; book"/>
+  <meta name="Author" content="David Powers"/>
+  <meta name="Web-Developer" content="LineNumber0"/>
+<style type="text/css">
+#box1, #box2, #square, #circle, #brdiff, #brdiff2, #brdiff3, #brdiff4 {
+    margin: 20px;
+    /* float: left; */
+    width: 200px;
+    height: 200px;
+    color:white;
+    text-align:center;
+    display:table-cell;
+    vertical-align:middle;
+    font-weight:bold;
+    font-size: 0.9em;
+}
+#box1,#box2 {background-color: #006;}
+#brdiff, #brdiff2, #brdiff3, #brdiff4 {border-style:solid;border-radius:30px}
+#box1 {
+    border-radius: 20% 10% 40% / 15% 30%;               						/* Three horizontal radii, the first for the top-left corner, the second the top-right and bottom-left corners, the third for bottom-right corner THEN forward slash, Two vertical radii The first for the top-left and bottom-right corners. The second for the top-right and bottom-left corners. */
+    }
+#box2 {
+    border-top-left-radius: 20% 15%;                    						/* individual properties */
+    border-top-right-radius: 10% 30%;
+    border-bottom-left-radius: 10% 30%;
+    border-bottom-right-radius: 40% 15%;
+}
+#square {
+    background-color: blue;
+    border-radius: 25px;                                						/* one pixel value */
+}
+#circle {
+    background-color: #900;
+    border-radius: 50%;                                 						/* one percentage value */
+}
+#brdiff {
+    border-color:#006;
+    border-width: 20px 5px;         									/* two values in "border-width" and "border-color" : the first is for Top and Bottom, the second for Left and Right. */
+}
+#brdiff2 {
+    border-color: #900 #006;
+    border-width: 20px 10px;
+}
+#brdiff3 {
+    border-color: #900 #006;
+    border-width: 10px 20px;
+}
+#brdiff4 {
+    border-color:skyblue green orange red;
+    border-width: 10px 10px;
+}
+h1 {
+text-align:center;
+}
+#tb {
+display:table;
+border-spacing:40px;
+margin:auto;
+width:1010px;                           								/* fixing the shape of every box inside the CSS table even when the Browser window is resized */
+}
+#tbrw {
+display:table-row;
+}
+p {
+margin-left:5%;
+margin-right:5%;
+}
+p,ul {font-weight:bold}
+ul {
+list-style-type:none;
+margin-left:10%;
+margin-right:10%;
+}
+#bgborad {
+margin:2% auto;
+padding:150px 100px 150px 50px;
+background-color:lightgray;
+background-image:url(img/patt.png);
+background-size:cover;
+background-position:center;
+min-width:800px;
+max-width:1000px;
+}
+img {
+float:right;
+margin-left:50px;
+height:300px;
+margin-top:-100px;
+border-radius:50%;
+cursor:pointer;                          								/* add the "pointer" cursor (links cursor) to the image to indicate that there is a content in the "title" attribute value */
+-moz-transition: ease-out 1s;
+-ms-transition: ease-out 1s;										/* the "transition" property with browser specific prefix, ensures that it will work on browsers that implement the property on earlier stage */
+-o-transition: ease-out 1s;
+-webkit-transition: ease-out 1s;
+transition:ease-out 1s;               									/* the "transition" property in the normal state of the image will reverse the animation of the "active" state. | Take your chronometer and see if it's really one second : SCIENCE FOLKS ! ENNAS D L 3ILM !  */
+}
+img:active {                             								/* add the "active" state to the image to apply the following style when the image is clicked  */
+border-radius:0;                    									/* reset the "border-radius" to 0 on the image, no need for units 0 is zero ! */
+-moz-transition: ease-out 0.5s;
+-ms-transition: ease-out 0.5s;
+-o-transition: ease-out 0.5s;
+-webkit-transition: ease-out 0.5s;
+transition:ease-out 0.5s;           									/* the "transition" property will animate the transition between the oval shape to the original shape, the value is the "ease-out" keyword and the duration of the transition in seconds, here 0.5 is half of a second */
+cursor:none;                    									/* hide the cursor when the image is clicked */
+}
+</style>
+</head>
+
+<body>
+<h1><code>border-radius</code> property</h1>
+<div id="tb">
+<div id="box1">CSS3 shorthand value</div>
+<div id="box2">Individual properties</div>
+<div id="square">One px value</div>
+<div id="circle">One % value</div>
+<div id=tbrw>
+<div id="brdiff"></div>
+<div id="brdiff2"></div>
+<div id="brdiff3"></div>
+<div id="brdiff4"></div>
+</div>
+    </div>
+    <p>&ldquo; Using <code>border-radius</code> with more than one value is less straightforward. First let’s deal with using the same value for the horizontal and vertical radii of each curve.</p>
+    <ul>
+        <li><i>Two values :</i> The first applies to the top-left and bottom-right corners. The second applies to the top-right and bottom-left corners.</li><br/>
+        <li><i>Three values :</i> The first applies to the top-left corner. The second applies to the top-right and bottom-left corners. The third applies to bottom-right corner.</li><br/>
+        <li><i>Four values :</i> The values are applied to each corner in a clockwise direction starting from the top left.</li>
+        </ul>
+        <p>It’s when you want to use different values for horizontal and vertical radii that the <code>border-radius</code> shorthand becomes mind-numbingly complex, taking 2–8 values. Unless you want to apply the same values to each corner, it’s probably much easier to use the individual properties for each corner. Still, I’ll explain how it works and let you make up your own mind.<br/> The values for the horizontal and vertical radii are separated by a forward slash. However, you don’t specify each pair separately. All horizontal values come before the slash, and all vertical values come after. And this is where the syntax becomes really complex—you don’t need to use the same number of values before and after the slash. So, for example, you could have three horizontal values before the slash and two vertical ones after the slash. The rules regarding which corners the values apply to are the same as just described for two, three, and four values.<br/>...When borders of different widths meet, the inner and outer curves are smoothed automatically. However, the specification doesn’t lay down any rules about smooth transitions between colors. It simply specifies the region in which the transition takes place. (...) there’s a straight line where one color ends and the next begins. &rdquo;</p>
+    <footer>From "<u><i>Beginning CSS3</i></u>" by David Powers </footer>
+    <div id="bgborad">
+        <img src="img/A.E.jpg" alt="Albert Einstein JPEG image" title="Click and hold to reveal the original shape of the image"/>    <!-- the "border-radius" with "50%" can be applied to this image as a background for an element -->
+	<p>&ldquo; If you can't explain it simply, you don't understand it well enough. &rdquo;</p><footer>Albert Einstein</footer><br/>
+        <p>&ldquo; When you apply <code>border-radius</code> to an element that has a background image, the image is clipped by the curve, and the parent element’s background shows through.<br/>..Setting <code>border-radius</code> to <code>50%</code> on an element that has one dimension greater than the other produces an oval shape. &rdquo;</p>
+        <footer>From "<u><i>Beginning CSS3</i></u>" by David Powers </footer>
+        </div>
+	<script type="text/javascript">
+	  if ("ontouchstart" in window) {
+	  document.images[0].onkeydown = function(e) {
+	  e.preventDefault();
+	   }
+	  }
+	</script>
+</body>
+</html>

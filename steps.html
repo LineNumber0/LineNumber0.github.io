@@ -199,5 +199,12 @@ input:active {box-shadow:inset 3px 3px 3px dimgray}                     				/* i
 <div class="steps3 hw"></div>
 <div class="steps4 hw" onmouseover="chronoStart()" onmouseout="chronoStop()" ontransitionend="chronoStop()" onwebkittransitionend="chronoStop()" ></div>
     </div>
+    <script type="text/javascript">
+      document.onafterscriptexecute = function() {
+      if (typeof(ontransitionend) == "undefined" || typeof(onwebkittransitionend) == "undefined") {
+	alert("The transitionend event is not supported in this Browser ! ");
+	}
+	}
+      </script>
 </body>
 </html>

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Simple Popup Image Captions</title>
+    <meta charset="utf-8"/>
+    <meta name="Description" content="From &quot;Pro CSS3 Animation&quot; book"/>
+    <meta name="Author" content="Dudley Storey"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="Date" content="Wed Mar 21 2018 02:08 GMT+0 (WET)"/>
+    <style type="text/css">
+        figure { float: left; } 
+        figure, figure img { 
+	width: 500px; 
+	height: 333px; 
+	overflow: hidden; 
+	} 
+        figcaption { 
+        font-family: Baskerville, Garamond, "Times New Roman", serif; 
+        font-style: italic; 
+	background: rgba(0,0,0,0.4); 
+	font-size: 1.8rem; 
+	text-align:center;
+        padding: 0.8rem; 
+	color: #fff;  
+	position: relative;  
+	bottom: 400px;              									/* ``relative positioning and a value for bottom that is slightly greater than the height of the image plus the height of the caption``(D.S) */
+        -o-transition: 1s all;
+        -moz-transition: 1s all;
+        -webkit-transition: 1s all;
+        -ms-transition: 1s all;
+        transition: 1s all;
+        } 
+        figure:hover figcaption { 
+        bottom: 340px;
+        -o-transition: 1s all;
+        -moz-transition: 1s all;
+        -webkit-transition: 1s all;
+        -ms-transition: 1s all;
+        transition: 1s all;                   								/* one second is better than two */
+        }
+      </style>
+  </head>
+  <body>
+  <figure> 
+         <img src=ext/devils-tower.png alt="A photo of Devil's Tower, in Wyoming, USA"/> 
+         <figcaption> Devil's Tower, Wyoming, USA</figcaption> 
+</figure> 
+<figure> 
+         <img src=ext/sunrise-point.png alt="A photo of Sunrise Point, Bryce National Park, Utah, USA"/> 
+         <figcaption> Bryce National Park, Utah, USA</figcaption> 
+</figure>
+  </body>
+</html>

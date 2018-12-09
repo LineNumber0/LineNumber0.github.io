@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ribbon Effect</title>
+<meta charset="utf-8"/>
+  <meta name="Description" content="From &quot;Beginning CSS3&quot; book"/>
+  <meta name="Author" content="David Powers"/>
+  <meta name="Web-Developer" content="LineNumber0"/>
+<style type="text/css">
+body {
+    background-color: #BDA895;
+    color: #000;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+#wrapper {
+    width: 600px;
+    margin: 30px auto;
+    background-color: #FFF;
+    padding: 20px;
+    border-radius: 15px;
+    -webkit-box-shadow: 3px 3px 3px rgba(51,51,51,0.3);
+    box-shadow: 3px 3px 3px rgba(51,51,51,0.3);
+}
+h1 {
+    background-color: #5C4837;
+    color: #FFF;
+    padding: 5px 40px;
+    -webkit-box-shadow: 3px 3px 3px rgba(51,51,51,0.3);
+    box-shadow: 3px 3px 3px rgba(51,51,51,0.3);
+    margin:0 -40px;                                         						/* " To create the ribbon effect, the heading’s background needs to extend through the padding and into the margins of the wrapper <div> . The padding is 20px wide, so to extend the background a further 20px into the margin, you need to add negative left and right margins of 40px to the heading."(D.P) */
+    position:relative;                                      						/* "It also needs to be relatively positioned so that it becomes the containing block for the absolutely positioned ::before and ::after pseudo-elements"(D.P) */
+    border-radius:8px 8px 0 0;              								/* this is equivalent to {border-top-left-radius:8px;border-top-right-radius:8px;} */
+}
+h1::before, h1::after {
+    content: '';                        								/* "The triangles are made by setting the content property to an empty string (a pair of quotes with nothing between them)"(D.P) */
+    height: 0;
+    width: 0;
+    border-top: 20px solid #453629;     								/* "setting the width and height to 0, and adding a 20px solid top border. The ::before and ::after pseudo-elements both need display triangles of a slightly darker color than the background."(D.P) */
+    position: absolute;
+    bottom: -20px;                 									/* "The triangles need to be absolutely positioned directly beneath the heading."(D.P) */
+}
+h1::before {
+    border-left: 20px solid transparent;                						/* "To complete the triangles and position them horizontally, the one in the ::before pseudo-element needs a transparent left border the same size as the top border, and it needs to be flush with the left side of the heading."(D.P) */
+    left: 0;
+}
+h1::after {
+    border-right: 20px solid transparent;               						/* "The triangle in the ::after pseudo-element needs a transparent right border, and should be flush with the right side of the heading."(D.P) */
+    right: 0;
+    }
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+    <h1>Ribbon Effect</h1>
+    <p>The <code>::before</code> and <code>::after</code> pseudo-elements can be used for ribbons and other visual effects without images.</p>
+</div>
+<blockquote><b>&ldquo; basic technique of adding visual effects with the <code>::before</code> and <code>::after</code> pseudo-elements. The <code>content</code> property is set to an empty string, creating an empty element that can be styled as a shape and then moved into position using absolute positioning. In this example, the shapes are <code>20px</code> high, so they are accurately positioned below the heading by setting a negative bottom offset of the same amount. &rdquo;</b></blockquote>
+<footer>From "<u><i>Beginning CSS3</i></u>" by David Powers </footer>
+<p>The same technique used <a href="triangle.html" target="_blank">here</a> by the top-left and the bottom-right of the four last boxes, and one of the two triangles is transparent.</p>
+</body>
+</html>

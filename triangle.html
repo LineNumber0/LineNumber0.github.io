@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Triangles</title>
+<meta charset="utf-8"/>
+  <meta name="Description" content="From &quot;Beginning CSS3&quot; book"/>
+  <meta name="Author" content="David Powers"/>
+  <meta name="Web-Developer" content="RebMunEnil_0"/>
+<style type="text/css">
+#sndbody {
+margin:0 auto;
+width:960px;
+display:table;
+}
+#tbrw {
+display:table-row;
+}
+div[id$="borders"], div[id$="right"] {
+    margin: 20px;
+    float: left;
+    border-style: solid;
+    border-color:  green orange blue red;
+}
+#borders, #right {
+    border-width: 50px;
+    height: 0;                                  /* because of the absence of any height and width for a content to fit in, the Browser will render a box with borders, which transformed to triangles */
+    width: 0;
+}
+#toborders, #toright {
+    border-width: 40px;
+    height: 60px;
+    width: 60px;
+}
+#lsborders, #lsright {
+    border-width: 30px;
+    height: 70px;
+    width: 70px;
+}
+#ltborders, #ltright {
+    border-width: 20px;
+    height: 80px;
+    width: 80px;
+}
+#nrborders, #nrright {
+    border-width: 10px;
+    height: 90px;
+    width: 90px;
+}
+#bxborders, #bxright {
+    border-width: 5px;
+    height: 100px;
+    width: 100px;
+}
+div[id$="right"] {
+    border-color: transparent transparent transparent red;                  /* make all borders transparent with the keyword "transparent", except the left one with red color */
+}
+#twborders {
+    border-width:50px;
+    border-right-color:transparent;
+    border-top-color:transparent;
+}
+#lbborders {
+    border-width:50px;
+    border-left-color:transparent;
+    border-bottom-color:transparent;
+}
+#btborders {
+    border-width:50px;
+    border-color: transparent transparent blue blue;
+}
+#tbborders {
+    border-width:50px;
+    border-color: green green transparent transparent;
+}
+#rbborders {
+    border-top:50px solid orange;
+    border-right:50px solid blue;
+    border-left:transparent;
+    border-bottom:transparent;
+}
+#brborders {
+    border-bottom:50px solid green;
+    border-left:50px solid red;
+    border-right:transparent;
+    border-top:transparent;
+}
+#plborders {
+    border-top:transparent;
+    border-right:50px solid orange;
+    border-left:transparent;
+    border-bottom:50px solid blue;
+}
+#lpborders {
+    border-bottom:transparent;
+    border-left:50px solid green;
+    border-right:transparent;
+    border-top:50px solid red;
+}
+#borders:last-child {
+    margin-bottom:15%;
+    border-width:150px;
+    -moz-transition: ease-out 1s;
+    -ms-transition: ease-out 1s;
+    -o-transition: ease-out 1s;
+    -webkit-transition: ease-out 1s;
+    transition: ease-out 1s;                        /* the "transition" property here will animate "the return to the initial state" */
+}
+#borders:last-child:active {
+    width:250px;
+    height:250px;
+    border-width:8px;
+    padding:10px;
+    -moz-transition: ease-out 1s;
+    -ms-transition: ease-out 1s;
+    -o-transition: ease-out 1s;
+    -webkit-transition: ease-out 1s;
+    transition: ease-out 1s;
+}
+#borders:last-child span {
+    opacity:0.0;
+    margin:0;
+    font-weight:bold;
+    position:relative;
+    left:-2px;
+    top:-2px;
+}
+#borders:last-child span:active {
+    opacity:1.0;
+}
+</style>
+</head>
+<body>
+
+<div id="sndbody">
+    <h1>Generating triangles by setting <code>height</code> and <code>width</code> to <code>0</code></h1>
+<div id="tbrw">
+    <div id="borders"></div>
+    <div id="right"></div>
+</div>
+
+<div id="tbrw">
+<div id="toborders"></div>
+<div id="toright"></div>
+</div>
+
+<div id="tbrw">
+<div id="lsborders"></div>
+<div id="lsright"></div>
+</div>
+
+<div id="tbrw">
+<div id="ltborders"></div>
+<div id="ltright"></div>
+</div>
+
+<div id="tbrw">
+<div id="nrborders"></div>
+<div id="nrright"></div>
+</div>
+
+<div id="tbrw">
+<div id="nrborders"></div>
+<div id="nrright"></div>
+</div>
+
+<div id="tbrw">
+<div id="twborders"></div>
+
+<div id="lbborders"></div>
+</div>
+
+<div id="tbrw">
+<div id="btborders"></div>
+
+<div id="tbborders"></div>
+</div>
+
+<div id="tbrw">
+<div id="rbborders"></div>
+
+<div id="brborders"></div>
+</div>
+
+<div id="tbrw">
+<div id="plborders"></div>
+
+<div id="lpborders"></div>
+</div>
+
+<div id="tbrw">
+    <div id="borders" title="Click and hold on the center of this box to show what happen slowly, if its width and height are increased while decreasing the borders width"><span>Content :<br/><br/>" Now i have my room ! "</span></div>
+</div>
+    </div>
+
+</body>
+</html>
