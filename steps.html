@@ -77,13 +77,16 @@ transition-timing-function: steps(5, end);      			/* `` In the next <div>, the 
 #chronotime {
   font-family:'Digital', monospace;
   font-size:4em;
-  background-color: black;
-  color: lime;
-  padding: 10px;
-  border: 10px outset lightslategray;
-  min-width: 8em;
+  background-color: #A9CD32;
+  color: black;
+  padding: 16px;
+  border: 15px inset #000;
+  min-width: 8.5em;
   display: inline-block;
   text-align: right;
+  text-shadow: 5px 5px rgba(128, 128, 128, 0.33);
+  border-radius: 20px;
+  letter-spacing: 5px;
 }
 input {
   font-weight:bold;
@@ -149,6 +152,8 @@ input:active {box-shadow:inset 3px 3px 3px dimgray}                     				/* i
         document.chronoForm.reset.onclick = chronoReset
         start = new Date()
         chrono()
+	chronotime.style.color = "rgba(0,0,0,0.3)";							// {LN0} low battery effect !
+	chronotime.style.transition = "3600s";
     }
     function chronoContinue(){
         document.chronoForm.startstop.value = "Stop!"
@@ -157,6 +162,8 @@ input:active {box-shadow:inset 3px 3px 3px dimgray}                     				/* i
         start = new Date()-diff
         start = new Date(start)
         chrono()
+	chronotime.style.color = "rgba(0,0,0,0.3)";
+	chronotime.style.transition = "3600s";
     }
     function chronoReset(){
         document.getElementById("chronotime").innerHTML = "0:00:00:000"
@@ -166,6 +173,8 @@ input:active {box-shadow:inset 3px 3px 3px dimgray}                     				/* i
         document.getElementById("chronotime").innerHTML = "0:00:00:000"
         document.chronoForm.startstop.onclick = chronoStart
 	document.chronoForm.startstop.value = "Start!";							// {LN0}
+	chronotime.style.color = "black";
+	chronotime.style.transition = "5s";
     }
     function chronoStop(){
         document.chronoForm.startstop.value = "Start!"
@@ -174,6 +183,8 @@ input:active {box-shadow:inset 3px 3px 3px dimgray}                     				/* i
         clearTimeout(timerID)
 	if (parseInt(chronotime.innerHTML.substring(chronotime.innerHTML.length - 3)) > 0 ) {		// {LN0}
 	document.chronoForm.startstop.value = "Resume!";
+	chronotime.style.color = "black";
+	chronotime.style.transition = "5s";
 	}
     }
 </script>
