@@ -120,6 +120,7 @@
 
     if ("animation" in document.body.style) {
     var bdy = [];
+    var viewportHeight = document.documentElement.offsetHeight;
     for (var l = 0; l < 50; l++) {
       var randomX = Math.round(Math.random() * (100 - 1) + 1);
       var randomY = Math.round(Math.random() * (1200 - 1) + 1);
@@ -127,7 +128,7 @@
       var randomT = Math.round(Math.random() * 40);
       var srcs = ['ext/CSS3.png','ext/HTML5.png','ext/javascript.png'];
       var rsrcs = srcs[Math.round(Math.random() * 2)];
-      var nbdy = bdy.push('<img src='+rsrcs+' style="left:'+randomX+'%;top:'+randomY+'px;width:'+randomZ+'px;animation-delay:'+randomT+'s"/>');
+      var nbdy = bdy.push('<img src='+rsrcs+' style="left:'+randomX+'%;top:'+randomY+'px;width:'+randomZ+'px;animation-delay:'+randomT+'s;"/>');
       }
       // using jquery ...
       $("body").append( bdy.join('') );
