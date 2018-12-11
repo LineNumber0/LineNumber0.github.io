@@ -107,7 +107,8 @@
     opacity:1;
     transition:1s;
   }
- /*_____________ for logo animation ___________________________________*/
+ /*_____________ for logo animation _____________________________________
+  */
  @keyframes snowflake {
    100% { transform: translateY(1800px) rotate(1200deg);  }
  }
