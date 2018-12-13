@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Logo Animation on Page Load</title>
+    <meta charset="utf-8"/>
+    <meta name="Description" content="From &quot;Pro CSS3 Animation&quot; book"/>
+    <meta name="Author" content="Dudley Storey"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="Date" content="Monday 14-May-2018 01:39 WET"/>
+    <style type="text/css">
+      div#container span { 
+      display: block; 
+      width: 100px; 
+      border: 7px solid white; 
+      height: 32px; 
+      position: absolute; 
+      top: 90px; 
+      left: 90px; 
+      background-color: #333; 
+      transform-origin: top right; 
+      z-index: -4; 
+      border-bottom-right-radius: 150%;
+      } 
+      div#iris { 
+      /* border-radius: 50%;  */
+      border: 30px solid #fff; 
+      width: 200px; 
+      height: 200px; 
+      position: relative;
+      top: 22px;
+      } 
+      div#container span#iris1 { transform: translate(-35px, 55px) rotate(0deg);  } 
+      div#container span#iris2 { transform: translate(-70px, 90px) rotate(45deg); } 
+      div#container span#iris3 { transform: translate(-130px, 70px) rotate(90deg); } 
+      div#container span#iris4 { transform: translate(-160px, 20px) rotate(135deg); } 
+      div#container span#iris5 { transform: translate(-145px, -35px) rotate(180deg); } 
+      div#container span#iris6 { transform: translate(-95px, -60px) rotate(225deg); } 
+      div#container span#iris7 { transform: translate(-45px, -45px) rotate(270deg); } 
+      div#container span#iris8 { transform: translate( -20px, 5px) rotate(315deg); } 
+      h1 { 
+      font-family: "Univers LT 55"; 
+      text-transform: uppercase; 
+      font-size: 80px; 
+      letter-spacing: 10px; 
+      position: absolute; 
+      top: 30px; 
+      left: 160px; 
+      text-align: left; 
+      line-height: 50px; 
+      text-shadow: -5px -3px rgba(128,128,128,0.4);;
+      }
+      h1 span { 
+      font-family: "Univers CE 45 Light"; 
+      font-size: 25px; 
+      display: block; 
+      letter-spacing: 20px; 
+      text-indent: 30px; 
+      }
+      @keyframes spinner { 
+      0%   { 
+      transform: translate(800px,-25px) rotate(378deg); opacity: 0; } 
+      100% { transform: translate(2px,-25px) rotate(-56deg); opacity: 1; } 
+      }
+      @keyframes signal {
+      from {color:black}
+      50% {color: transparent;text-shadow: none;}
+      to {color:black}
+      }
+      div#container { 
+      position: relative; 
+      width: 200px; 
+      height: 200px; 
+      top:30px;
+      left: -2px;
+      animation-name: spinner; 
+      animation-duration: 2s; 
+      transform: rotate(-18deg); 
+      animation: spinner 1.5s 2s linear both; 
+      } 
+      h1 span::first-letter, summary::first-letter {
+      background-color: rgba(255,255,255,0.8);
+      border-radius: 50%;
+      padding-left: 10px;
+      }
+      summary {
+      outline:none;
+      cursor:pointer;
+      animation: signal 2s 4s;
+      }
+      details span {
+      overflow: hidden;
+      white-space: nowrap;
+      }
+      details[open] span {
+      animation: write 3s linear;
+      }
+      @keyframes write {
+      from {width: 0px;}
+      to {width: 1200px;}
+      }
+      </style>
+  </head>
+  <body>
+  <div id=container> 
+    <div id=iris> 
+    <span id=iris1></span> 
+    <span id=iris2></span> 
+    <span id=iris3></span> 
+    <span id=iris4></span> 
+    <span id=iris5></span> 
+    <span id=iris6></span> 
+    <span id=iris7></span> 
+    <span id=iris8></span> 
+    </div> 
+  </div> 
+  <h1>
+    <details>
+      <summary>ACME</summary>
+      <span>A Company that Makes Everything</span>
+      </details>
+      <span>Laboratories</span>
+      </h1>
+      <script type="text/javascript">
+	setTimeout(function(){
+	document.querySelector("details").setAttribute("open","yes");
+	},6500);
+      </script>
+  </body>
+</html>

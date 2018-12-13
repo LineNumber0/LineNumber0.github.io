@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+    <meta name="Description" content="From &quot;Pro CSS3 Animation&quot; book"/>
+    <meta name="Author" content="Dudley Storey"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="Date" content="Wednesday 11-April-2018 02:25 WEST"/>
+    <link rel="stylesheet" type="text/css" href="styles/nav.css" />
+    <style type="text/css">
+      body { font-family: Futura, Arial, sans-serif; } 
+      nav[aria-label] { 
+      height: 41px; 
+      background: #35f;
+      background: linear-gradient(to bottom, rgb(93,146,207) 0%, rgb(79,79,181) 100%); 
+      } 
+      nav[aria-label] ul { margin: 0; } 
+      nav[aria-label],nav[aria-label] ul.submenu { 
+      border-radius: 5px;  
+      padding: 0;  
+      } 
+      nav[aria-label] ul li { 
+      display: block; 
+      width: 150px; 
+      text-align: center; 
+      float: left; 
+      margin: 0; 
+      padding: 0; 
+      } 
+      nav[aria-label] li:hover { background: rgba(0,0,0,0.4); } 
+      nav[aria-label] a { 
+      color: #fff; 
+      text-decoration: none; 
+      display: block; 
+      padding: 10px; 
+      } 
+      nav[aria-label] ul.submenu { 
+      background: rgba(0,0,0,0.8); 
+      position: relative; 
+      border-radius: 0 0 5px 5px; 
+      height: 0px; 											/* ``the main list items are floated side by side, with the submenu placed below and, in this case, hidden, by setting its height to 0.``(D.S) */
+      overflow: hidden; 
+      } 
+      nav[aria-label] ul.submenu li { 
+      float: none; 
+      text-align: left; 
+      border-bottom: 1px solid rgba(0,0,0,0.3);
+      } 
+      nav[aria-label] ul li:hover ul.submenu { 
+      height: 126px; 
+      outline:1px solid black;
+      outline-offset: -1px;
+      } 												/* ``The implementation of CSS3 in most current browsers requires you to set explicit measurements when transitioning an element’s dimensions; neither height: 100% nor height: auto will work in this case.``(D.S) */
+      a:focus {
+      outline: none;
+      border: none;
+      }
+      li[role="menuitem"] {font-weight:bold;}
+      li[role="menuitem"] ul li {font-weight:normal;}
+      li[role="menuitem"] ul li a:hover {
+      background:white; 
+      color:black;
+      }
+      nav[aria-label] * {transition: .3s all linear;}							/* ``you want the same transition effect to be added to multiple elements; rather than repeating yourself``(D.S) */
+      nav[aria-label] *:hover {transition: .3s all linear;}
+    </style>
+  </head>
+  <body id=home> 
+  <h1>Highlighting the Current Page in Navigation</h1>
+  <nav> 
+    <ul role=navigation>
+      <li><a href=index.html target="_blank" class=home>Home</a> </li>
+      <li><a href=about.html target="_blank" class=about>About Us</a> </li>
+      <li><a href=products.html target="_blank" class=products>Products</a> </li>
+  </ul>
+  </nav>
+  <h1>Drop-down Menu</h1>
+  <nav role=Navigation aria-label="Main menu"> 								<!-- the "role" attribute is the assistive equivalent of a title tooltip -->
+    <ul role=menubar> 
+      <li role=menuitem tabindex=0><a href=#>Home</a>      
+	<ul class=submenu role=menu aria-hidden=true> 
+	  <li role=menuitem tabindex=-1><a href=#>Section 1</a> </li>
+	  <li role=menuitem tabindex=-1><a href=#>Section 2</a> </li>
+	  <li role=menuitem tabindex=-1><a href=#>Section 3</a> </li>
+	  </ul> 
+	  </li>
+      <li role=menuitem aria-haspopup=true tabindex=0><a href=#>Services</a> 				<!-- ``the list item containing the submenu has an aria-haspopup attribute and the submenu itself has an aria-hidden attribute to indicate that it is not visible by default.``(D.S) -->
+      <ul class=submenu role=menu aria-hidden=true> 
+	<li role=menuitem tabindex=-1><a href=#>Abrasion</a> </li>
+	<li role=menuitem tabindex=-1><a href=#>Peel</a> </li>
+	<li role=menuitem tabindex=-1><a href=#>Wax</a> </li>
+    </ul> 
+  </li>
+    <li role=menuitem tabindex=0><a href=#>Contact</a>
+      <ul class=submenu role=menu aria-hidden=true> 
+	<li role=menuitem tabindex=-1><a href=#>Contact us</a> </li>
+	<li role=menuitem tabindex=-1><a href=#>Our Team</a> </li>
+	<li role=menuitem tabindex=-1><a href=#>About us</a> </li>
+      </ul> 
+      </li>
+    </ul> 
+  </nav> 
+</body>
+</html>
