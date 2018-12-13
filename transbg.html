@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="la">
+  <head>
+    <title>Background Image Transitions and Animation on Page Load</title>
+    <meta charset="utf-8"/>
+    <meta name="Description" content="From &quot;Pro CSS3 Animation&quot; book"/>
+    <meta name="Author" content="Dudley Storey"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="Date" content="Wed Mar 28 2018 00:21 GMT+00 (WEST)"/>
+    <style type="text/css">
+        body { 
+        font-family: Futura; 
+        font-weight:bold;
+        margin: 0; 
+        line-height: 2; 
+        background: url(img/card1.jpg) -1300px 200px no-repeat, url(img/card2.jpg) -2000px 600px no-repeat, url(img/card3.jpg) -3900px 1000px no-repeat, url(img/monaco.jpg) -1300px 1300px no-repeat;                      /* four background images, their position outside the browser viewport, and no-repeat, in the shorthand property "background" */
+        transition:background 10s linear; 
+        } 
+        body:hover { 
+        background: url(img/card1.jpg) calc(100% + 1300px) 200px no-repeat, url(img/card2.jpg) calc(100% + 2400px) 600px no-repeat, url(img/card3.jpg) calc(100% + 2400px) 1000px no-repeat, url(img/monaco.jpg) calc(100% + 2400px) 1300px no-repeat;           /* the "calc()" function add the 100% of the browser viewport to the maximum width of the background image, to make them offscreen */
+        transition:background 10s linear; 
+	background-blend-mode: screen;
+        } 
+        #wrapper { 
+        width: 600px; 
+        margin: 5em auto; 
+        padding: 3em; 
+        background-color:rgba(255, 255, 255, 0.8);                   					/* ``to retain the legibility of the text as the images pass underneath it. add a partially transparent background-color to the div``(D.S) */
+        } 
+      </style>
+  </head>
+  <body>
+<center><h1>Transitional background</h1></center>
+  <div id= wrapper> 
+      <p>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+  </body>
+</html>
