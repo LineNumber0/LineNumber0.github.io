@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="la">
+<head>
+    <title>off-canvas menu, an example from http://rwd.education</title>
+	<meta charset="utf-8">
+	<meta name="description" content="An example from the book, 'Responsive Web Design with HTML5 and CSS3' by Ben Frain">
+	<meta name="Web-Developer" content="LineNumber0"/>
+	<meta name="Date" content="Wednesday 28-February-2018 20:56 WET"/>
+	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#ff9900">
+<style type="text/css">
+/*Make everything use border-box sizing for simplicity (B.F)*/
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+main {
+	display:block;
+}
+
+.main-content {
+	font-size: 18px;
+	font-family: sans-serif;
+	padding: 2em;
+}
+
+/*remove default button styling (B.F)*/
+.off-canvas-launcher {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance:none;
+	border: 1px solid #297D94;
+	border-radius: 4px;
+	background: none;
+	padding: 4px 8px;
+	position: relative;
+}
+
+/*if we don't have JavaScript available, no point showing the button (B.F)*/
+.no-js .off-canvas-launcher {
+	display: none;
+}
+
+/*add some interactivity when the button is clicked (B.F)*/
+.off-canvas-launcher:active {
+	top: 1px;
+}
+
+.nav-link {
+	display: list-item;
+	display: flex;
+	align-items: center;
+	padding: 5px;
+	color: #ddd;
+	min-height: 44px;
+	text-decoration: none;
+	transition: background-color .35s;
+}
+
+/*when a link follows another, give it a border-top (B.F)*/
+.nav-link + .nav-link {
+	border-top: 1px solid #aaa;
+}
+
+.nav-link:hover {
+	background-color: #236B7F;
+	color: #fff;
+}
+
+/*add a transition for the left and transform properties and a duration for transitions (B.F)*/
+.navigation-menu {
+	background-color: #297D94;
+	transition: left 0.5s, transform .4s;
+}
+
+/*for smaller screens that support JavaScript by default hide the nav off screen (B.F)*/
+@media (min-width: 200px) {
+	.js .navigation-menu {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		width: 200px;
+		left: -200px;
+	}
+	/*when the menu button is clicked move the nav back on screen (B.F)*/
+	.js .OffCanvas-Active .navigation-menu {
+		left: 0;
+	}
+	/*if the browser supports transforms, reset the left property and pull it off screen with a translate (B.F) */
+	.js .csstransforms .navigation-menu {
+		left: auto;
+		transform: translateX(-200px);
+	}
+	/*when transforms are supported and the menu button is clicked, reset the nav to default position (B.F)*/
+	.js .csstransforms .OffCanvas-Active .navigation-menu {
+		transform: translateX(0);
+	}
+	/*where transform3d is supported reset left and pull off screen with a translate3d instead (B.F)*/
+	.js .csstransforms3d .navigation-menu {
+		left: auto;
+		transform: translate3d(-200px, 0, 0);
+	}
+	/*when transform3d is supported and the menu button is clicked, reset the nav to default position (B.F)*/
+	.js .csstransforms3d .OffCanvas-Active .navigation-menu {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+/*for larger screens set the nav to the left and give the main content extra margin to compensate for it (B.F)*/
+@media (min-width: 800px) {
+	.navigation-menu {
+		left: 0!important;
+		transform: none!important;
+	}
+	.off-canvas-launcher {
+		display: none;
+	}
+	.main-content {
+		position: relative;
+		margin-left: 200px;
+	}
+	.no-js .main-content {
+		margin-left: 0;
+	}
+}
+</style>
+	<script src="JS/modernizr.custom.js"></script>
+</head>
+<body>
+	<main class="main-content">
+	<button class="off-canvas-launcher">Menu</button>
+		<h1>A basic off-canvas menu</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</main>
+	<nav class="navigation-menu">
+		<a href="#" class="nav-link">Link 1</a>
+		<a href="#" class="nav-link">Link 2</a>
+		<a href="#" class="nav-link">Link 3</a>
+		<a href="#" class="nav-link">Link 4</a>
+		<a href="#" class="nav-link">Link 5</a>
+	</nav>
+    <script type="text/javascript">
+        // First wait for the DOM to be ready
+document.addEventListener('DOMContentLoaded', function(){
+	// This function merely toggles the class
+	function a(event) {
+		event.stopPropagation();
+		document.querySelector('body').classList.toggle('OffCanvas-Active');                  	// ``If JavaScript is available, for smaller screens we 'pull' the menu off to the left. When the menu button is clicked, we add a class onto the body tag (with JavaScript) and use this class as a hook to move the navigation back into view with CSS.``(B.F)
+	}
+	function b() {
+		document.querySelector('body').classList.remove('OffCanvas-Active');
+	}
+	// When the header is clicked we fire the function to toggle the class
+	document.querySelector('.off-canvas-launcher').addEventListener('click', a );
+	document.querySelector('.main-content').addEventListener('click', b );
+
+
+	// This debounce function (via: https://remysharp.com/2010/07/21/throttling-function-calls) merely stops functioned firing too often on repetitive events (such as resize/scroll)
+	function debounce(fn, delay) {
+		var timer = null;
+		return function () {
+			var context = this, args = arguments;
+			clearTimeout(timer);
+			timer = setTimeout(function () {
+				fn.apply(context, args);
+			}, delay);
+		};
+	}
+
+	// removing the class from the body inside a debounce
+	var debouncedA = debounce(function() {
+		document.querySelector('body').classList.remove('OffCanvas-Active');
+	}, 250);
+
+	// When the window is resized, we want to fire the debouncedA function
+	window.onresize = debouncedA;
+});
+    </script>
+</body>
+</html>

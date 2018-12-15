@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    	<title>target / context = result (Layout example)</title>
-	<meta charset="utf-8">
+    <title>target / context = result (Layout example)</title>
+    <meta charset="utf-8">
     <meta name="Description" content="From &quot;Responsive Web Design with HTML5 and CSS3&quot;, Second Edition"/>
     <meta name="Author" content="Ben Frain"/>
     <meta name="Web-Developer" content="LineNumber0"/>
@@ -15,6 +15,7 @@
             }
 
             body {
+		overflow: hidden;
                 overflow-x: hidden;
                 overflow-y: scroll;
                 color:white;
@@ -34,10 +35,10 @@
 
             .WrapMiddle {
                 width: 100%;
-                font-size: 0;                                       /* this 0 in the font-size property is used to eliminate white-spaces between inline-block elements */
+                font-size: 0;                                       					/* this 0 in the font-size property is used to eliminate white-spaces between inline-block elements */
                 position: relative;
             }
-            @media (max-width: 40rem) {                            /* using media query to disable this CSS block applied with JavaScript on wide resolution {LN0}. | `` unless you want to target styles to particular media types, just leave the screen and part out. ``(B.F). If "@media" rule is already used for a media type, example "print" another "@media" rule in the same source document must include "only screen and" (example: @media only screen and (max-width:60rem) */
+            @media (max-width: 40rem) {                            					/* using media query to disable this CSS block applied with JavaScript on wide resolution {LN0}. | `` unless you want to target styles to particular media types, just leave the screen and part out. ``(B.F). If "@media" rule is already used for a media type, example "print" another "@media" rule in the same source document must include "only screen and" (example: @media only screen and (max-width:60rem) */
             .OffCanvas-Active .Left,
             .OffCanvas-Active .Middle {
                 transform: translate(200px,0);
@@ -57,7 +58,7 @@
 
             @media (min-width: 40rem) {
                 .Left {
-                    width: 20.8333333%;                             /* `` While the widths themselves will ultimately be converted to pixels by the browser, their values are retained for future calculations (for example, more accurately computing the width of nested elements). Subsequently, I always recommend leaving the numbers after the decimals in. ``(B.F) */
+                    width: 20.8333333%;                             					/* `` While the widths themselves will ultimately be converted to pixels by the browser, their values are retained for future calculations (for example, more accurately computing the width of nested elements). Subsequently, I always recommend leaving the numbers after the decimals in. ``(B.F) */
                     left: 0;
                     position: relative;
                 }
@@ -112,6 +113,6 @@
 		</div>
 		<div class="Footer">Footer</div>
 	</div>
-    <script type="application/javascript" src="JS/forheader.js"></script>                    <!-- `` in a real project we should be making some provision for if JavaScript isn't available and we need to view the content of the menu. ``(B.F) -->
+    <script type="application/javascript" src="JS/forheader.js"></script>                    		<!-- `` in a real project we should be making some provision for if JavaScript isn't available and we need to view the content of the menu. ``(B.F) -->
 </body>
 </html>
