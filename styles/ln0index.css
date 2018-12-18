@@ -10,6 +10,7 @@
     background-image:url(../img/stripe.png);
     background-image:repeating-linear-gradient(-45deg, aliceblue, ghostwhite 10px);
     background-attachment:fixed;
+    background-color: aliceblue;
   }
   h1 {
     text-align:center;
@@ -20,6 +21,7 @@
     box-shadow: 1px 3px 6px dimgray;
     max-width: 30em;
     margin: 2em auto;
+    background-color: #D6E3E9;
   }
   h1::after, h1::before {
     content: url(../ext/libra.png);

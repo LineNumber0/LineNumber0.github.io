@@ -46,7 +46,6 @@
     #distance {
     width:1024px;
     margin:auto;
-    /* margin-top:8em; */
     background:	radial-gradient(dimgray 15%, transparent 16%) 0 0,
     radial-gradient(dimgray 15%, transparent 16%) 8px 8px,
     radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
@@ -256,7 +255,6 @@
     fimages[i].addEventListener("mouseover",function(e){
     e.target.addEventListener("transitionstart",chronoStart);
     });
-    //fimages[i].addEventListener("transitionend",chronoStop);
     fimages[i].addEventListener("transitionend",function(e){
     chronoStop();
     e.target.removeEventListener("transitionstart",chronoStart);
