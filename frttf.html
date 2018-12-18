@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>transition-timing-function</title>
+  <meta charset="UTF-8"/>
+  <meta name="Web-Developer" content="LineNumber0"/>
+  <meta name="Date" content="Tuesday 18-December-2018 00:55 +01"/>
+  <link rel="stylesheet" type="text/css" href="styles/browser-specific(t-t-f).css" />
+  <link rel="stylesheet" href="styles/chronometer.css">
+  <style type="text/css">
+    body {
+    background-color:lightgray;
+    }
+    img {
+    width:155px;
+    height:111px;
+    margin-bottom:10%;
+    margin-left:1px;
+    background-color: white;
+    outline: 1px solid black;
+    }
+    img[id^="trn"] {
+    box-shadow: 1px 10px 50px 1px black;
+    border-right: 1px solid rgba(0,0,0,0.85);
+    transition-property:box-shadow,border-right;
+    transition-duration:2.5s;
+    }
+    .cntrease {
+    float:right;
+    }
+    img[id^="trn"]:hover {
+    cursor:none;
+    box-shadow: 20px 20px 500px 20px black;
+    border-right: 44.8em solid rgba(0,0,0,0.85);
+    transition-property:box-shadow,border-right;
+    transition-duration:6.5s;
+    transition-delay:1.6s;
+    }
+    #wrp {
+    margin:1em auto;
+    background-color:silver;
+    height: 350em;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    }
+    #distance {
+    width:1024px;
+    margin:auto;
+    /* margin-top:8em; */
+    background:	radial-gradient(dimgray 15%, transparent 16%) 0 0,
+    radial-gradient(dimgray 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background-size:16px 16px;
+    background-color:gray;
+    }
+    br,h2 {clear:left}
+    #trnsease,#ease {
+    transition-timing-function:ease;
+    }
+    #trnsease-in,#easein {
+    transition-timing-function:ease-in;
+    }
+    #trnsease-out,#easeout {
+    transition-timing-function:ease-out;
+    }
+    #trnsease-in-out,#easeinout {
+    transition-timing-function:ease-in-out;
+    }
+    #trnslinear,#linear {
+    transition-timing-function:linear;
+    }
+    #trnsine,#sine {
+    transition-timing-function:cubic-bezier(.45,.05,.55,.95);
+    }
+    #trnsquad,#quadratic {
+    transition-timing-function:cubic-bezier(.46,.03,.52,.96);
+    }
+    #trnscub,#cubic {
+    transition-timing-function:cubic-bezier(.65,.05,.36,1);
+    }
+    #trnsquar,#quartic {
+    transition-timing-function:cubic-bezier(.77,0,.18,1);
+    }
+    #trnsquin,#quintic {
+    transition-timing-function:cubic-bezier(.86,0,.07,1);
+    }
+    #trnsexp,#exponential {
+    transition-timing-function:cubic-bezier(1,0,0,1);
+    }
+    #trnscir,#circular {
+    transition-timing-function:cubic-bezier(.79,.14,.15,.86);
+    }
+    #trnsback,#backward {
+    transition-timing-function:cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    #trnsfst,#notpreset {
+    transition-timing-function:cubic-bezier(.12,-0.07,1,-0.3);
+    }
+    #trnsreg,#nopreg {
+    transition-timing-function:cubic-bezier(.98,.99,1,-0.66);
+    }
+    #trnsmid,#nopmid {
+    transition-timing-function:cubic-bezier(0,.98,.99,.03);
+    }
+    audio {display:none}
+    p {font-weight:bold}
+    .frontimg {
+    position:absolute;
+    opacity:0;
+    box-shadow: 1px 10px 50px 1px black;
+    border-right: 1px solid rgba(0,0,0,0.85);
+    transition-property:box-shadow,border-right,opacity;
+    transition-duration:2.5s;
+    }
+    .frontimg:hover {
+    opacity:1;
+    cursor:none;
+    box-shadow: 20px 20px 500px 20px black;
+    border-right: 44.8em solid rgba(0,0,0,0.85);
+    transition-property:box-shadow,border-right,opacity;
+    transition-duration:6.5s,6.5s,0.5s;
+    transition-delay:0s,1.6s; 
+    }
+    #wrpchrn {
+    display:none;
+    }
+  </style>
+  <script src="JS/chronometer.js"></script>
+</head>
+<body>
+<center><h1><code>transition-timing-function</code> property</h1></center>
+<div id="wrpchrn">
+  <span id="chronotime">00:00:00:000</span>
+  <form name="chronoForm">
+    <input type="button" name="startstop" value="Start!" onClick="chronoStart()" />
+    <input type="button" name="reset" value="Reset!" onClick="chronoReset()" />
+  </form>
+</div>
+<div id="wrp">
+  <div id="distance">
+    <h2><code>transition-timing-function:ease</code></h2>
+    <p>Starts slow, speeds up, and slows toward the end.</p>
+    <br/>
+    <img id="ease" class="frontimg" src="" />
+    <img id="trnsease" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:ease-in</code></h2>
+    <p>Starts slow and speeds up.</p>
+    <br/>
+    <img id="easein" class="frontimg" src="" /> 
+    <img id="trnsease-in" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:ease-out</code></h2>
+    <p>Starts fast and slows toward the end.</p>
+    <br/>
+    <img id="easeout" class="frontimg" src="" /> 
+    <img id="trnsease-out" src="ext/flagstart.png"    />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:ease-in-out</code></h2>
+    <p>Similar to ease, but slower at each end.</p>
+    <br/>
+    <img id="easeinout" class="frontimg" src="" /> 
+    <img id="trnsease-in-out" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:linear</code></h2>
+    <p>Transitions at an even pace throughout.</p>
+    <br/>
+    <img id="linear" class="frontimg" src="" /> 
+    <img id="trnslinear" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:cubic-bezier(.45,.05,.55,.95)</code></h2>
+    <p>(ease-in-out Sine)</p>
+    <br/>
+    <img id="sine" class="frontimg" src="" /> 
+    <img id="trnsine" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:cubic-bezier(.46,.03,.52,.96)</code></h2>
+    <p>(ease-in-out Quadratic)</p>
+    <br/>
+    <img id="quadratic" class="frontimg" src="" /> 
+    <img id="trnsquad" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:cubic-bezier(.65,.05,.36,1)</code></h2>
+    <p>(ease-in-out Cubic)</p>
+    <br/>
+    <img id="cubic" class="frontimg" src="" /> 
+    <img id="trnscub" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:cubic-bezier(.77,0,.18,1)</code></h2>
+    <p>(ease-in-out Quartic)</p>
+    <br/>
+    <img id="quartic" class="frontimg" src="" /> 
+    <img id="trnsquar" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:cubic-bezier(.86,0,.07,1)</code></h2>
+    <p>(ease-in-out Quintic)</p>
+    <br/>
+    <img id="quintic" class="frontimg" src="" /> 
+    <img id="trnsquin" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:cubic-bezier(1,0,0,1)</code></h2>
+    <p>(ease-in-out Exponential)</p>
+    <br/>
+    <img id="exponential" class="frontimg" src="" /> 
+    <img id="trnsexp" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:cubic-bezier(.79,.14,.15,.86)</code></h2>
+    <p>(ease-in-out Circular)</p>
+    <br/>
+    <img id="circular" class="frontimg" src="" /> 
+    <img id="trnscir" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:cubic-bezier(.68,-0.55,.27,1.55)</code></h2>
+    <p>(ease-in-out Backward)</p>
+    <br/>
+    <img id="backward" class="frontimg" src="" /> 
+    <img id="trnsback" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:cubic-bezier(.12,-0.07,1,-0.3)</code></h2>
+    <p>(No keywords)</p>
+    <br/>
+    <img id="notpreset" class="frontimg" src="" /> 
+    <img id="trnsfst" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:cubic-bezier(.98,.99,1,-0.66)</code></h2>
+    <p>(No keywords)</p>
+    <br/>
+    <img id="nopreg" class="frontimg" src="" /> 
+    <img id="trnsreg" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+    <h2><code>transition-timing-function:cubic-bezier(0,.98,.99,.03)</code></h2>
+    <p>(No keywords)</p>
+    <br/>
+    <img id="nopmid" class="frontimg" src="" /> 
+    <img id="trnsmid" src="ext/flagstart.png" />
+    <img class="cntrease" src="ext/finish.png" />
+  </div>
+</div>
+<script type="text/javascript">
+  var fimages = document.images;
+  var regexpsrc = /(finish\.png)$/i;
+  var StartLight = document.querySelectorAll(".frontimg");
+  for (var j = 0; j < StartLight.length; j++) {
+    StartLight[j].addEventListener("mouseover",function(e) {
+    e.target.src = "ext/stoplight.gif";
+    });
+    StartLight[j].onmouseout = function(e) {
+    e.target.src = "ext/flagstart.png";
+    }
+  }
+  if (typeof(ontransitionstart) != "undefined") {
+  wrpchrn.style.display = "block";
+  for (var i = 0; i < fimages.length;i++) {
+    if (!regexpsrc.test(fimages[i].src)) {
+    fimages[i].addEventListener("mouseover",function(e){
+    e.target.addEventListener("transitionstart",chronoStart);
+    });
+    //fimages[i].addEventListener("transitionend",chronoStop);
+    fimages[i].addEventListener("transitionend",function(e){
+    chronoStop();
+    e.target.removeEventListener("transitionstart",chronoStart);
+    });
+    }
+    }
+    }
+  </script>
+</body>
+</html>

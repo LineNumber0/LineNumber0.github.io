@@ -19,12 +19,14 @@
   <li><a href="soc.html" >Responsive Web Design Page</a></li>
   <li><a href="RWD-FORM.html" >Responsive Web Design Form</a></li>
   <li><a href="RWD-bg.html" ><acronym title="Responsive Web Design" >RWD</acronym> background</a></li>
-  <li><a href="RWD-Breakpoints.html" >RWD CSS <span title="&ldquo;Breakpoint&rdquo; is the term used to define the point in which a responsive design should change significantly.&#x0A;(from &quot;Responsive Web Design with HTML5 and CSS3&quot; by Ben Frain)" >Breakpoints</span></a></li>
+  <li><a href="RWD-Breakpoints.html" >RWD CSS <span title="&ldquo;Breakpoint&rdquo; is the term used to define the point in which a
+responsive design should change significantly.&#x0A;&lt;br&gt;(from &quot;Responsive Web Design with HTML5 and CSS3&quot; by Ben Frain)"
+>Breakpoints</span></a></li>
   <li><a href="RWD-JS.html" >Linking RWD CSS Breakpoints to JavaScript</a></li>
   <li><a href="mevents.html" >HTML5 JavaScript Media events</a></li>
   <li><a href="browser-detect.html" >JavaScript Browser detection</a></li>
   <li><a href="screeninfo.html" >Screen information with JavaScript</a></li>
-  <li><a href="jplyrics.html" >A song that follows its lyrics using HTML5 JavaScript <acronym title="Application Programming Interface" >API</acronym></a></li>
+  <li><a href="jplyrics.html" id="lysng" >A song that follows its lyrics using HTML5 JavaScript <acronym title="Application Programming Interface" >API</acronym></a></li>
   <li><a href="target.html" >Styling the <code>target</code> <span title="The Selectors defined in CSS, not with the class attribute." >Pseudo-class</span></a></li>
   <li><a href="home.html" >Highlighting the current page in navigation</a></li>
   <li><a href="logo.html" >Logo animation</a></li>
@@ -73,7 +75,7 @@
     for (var j = 0; j < elements.length; j++) {
       function shwtitle(e){
       var elevents = e.target;
-      if (elevents.title.indexOf("://") == -1) {								// (( mabghinach elliyanat ! ))
+      if (elevents.title.indexOf("://") == -1) {							// (( mabghinach elliyanat ! ))
       ttip.innerHTML = elevents.title;
       }
       }
@@ -116,11 +118,17 @@
     }
     CV.addEventListener("click",resumeCtl);
     
-    var vname = document.getElementById("uname");
+    var vname = document.getElementById("uname"),
+    lastItem = document.links[document.links.length - 1],
+    sngItem = document.getElementById("lysng");
     if (browserLanguage.indexOf("fr") != -1) {
     vname.title = "\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74 dit &quot;C'est Mon nom d'utilisateur sur Github&quot;";
+    sngItem.href = "frlyrics.html";
+    lastItem.href = "frttf.html";
     } else {
-    vname.title = "\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74 says &quot;That is my Github username&quot;"
+    vname.title = "\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74 says &quot;That is my Github username&quot;";
+    sngItem.href = sngItem.href;
+    lastItem.href = lastItem.href;
     }
 
     if ("animation" in document.body.style) {

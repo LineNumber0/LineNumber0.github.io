@@ -64,10 +64,12 @@
     padding: 100px;
     padding-left:150px;
     max-width: 60em;
+    background-color:white;
     background-image:url(../ext/paper.svg);
     background-size: 170%;
     background-position: -156px -40px;
     background-repeat: repeat-y;
+    box-shadow:4px 4px 4px rgba(0,0,0,0.2);
     filter: drop-shadow(8px 8px 8px rgba(0,0,0,0.3));
   }
   #tinfo:not(:empty) {
