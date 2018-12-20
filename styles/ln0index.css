@@ -77,15 +77,20 @@
   #tinfo:not(:empty) {
   padding:1em;
   max-width:660px;
-  border:1px solid lightgray;
-  border-radius:16px;
-  background-color:lightyellow;
+  border:5px solid dimgray;
+  border-radius:1em;
+  background-color:black;
+  color: white;
+  box-shadow: 5px 5px 5px gray;
+  filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.5));
   position:fixed;
   z-index: 1;				/* the filter property makes this element of z-index -1 ???  */
   top:5%;
   right:32px;
   font-weight:bold;
   font-size:x-large;
+  font-family:'song';
+  letter-spacing: 3px;
   line-height: 1.5;
   transition:right 1s;
   }
