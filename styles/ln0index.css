@@ -77,14 +77,13 @@
   #tinfo:not(:empty) {
   padding:1em;
   max-width:660px;
-  border:5px solid dimgray;
-  border-radius:1em;
+  border:8px ridge sienna;
   background-color:black;
   color: white;
   box-shadow: 5px 5px 5px gray;
   filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.5));
   position:fixed;
-  z-index: 1;				/* the filter property makes this element of z-index -1 ???  */
+  z-index: 1;												/* the filter property makes this element of z-index -1 ???  */
   top:5%;
   right:32px;
   font-weight:bold;
