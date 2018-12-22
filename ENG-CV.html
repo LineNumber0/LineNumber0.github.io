@@ -395,10 +395,10 @@
       }
       .print a {
       text-decoration:none;
-      color:gray;
+      color:dimgray;
       }
-      .print a:visited {color:dimgray}
-      .print a[tabindex="2"]:after, a[tabindex="3"]:after {
+      .print a:visited {color:gray}
+      .print a[tabindex="2"]:after, a[tabindex="3"]:after, a[tabindex="10"]:after {
       content:" ( " attr(href)" ) ";
       color:black;
       }
@@ -762,6 +762,9 @@
     <tr>
       <td><em>Front-End Web Development </em></td> <td>: HTML, XML, CSS and JavaScript.</td>
     </tr>
+    <tr>
+      <td>My practical work</td><td>: <a href="https://linenumber0.github.io/" target="_blank" tabindex="10" >Github page</a></td>
+      </tr>
 </table>
 
       <dl>
@@ -879,7 +882,7 @@
     }
     
     function getKeyCode(event) {
-    var key = event.which || event.keyCode;
+    var key = event.which || event.keyCode;								// with OR operator, the default value is event.keyCode, event.which dependes on the browser.
     console.log(key);
     return key;
     }
