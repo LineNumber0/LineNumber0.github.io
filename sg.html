@@ -12,9 +12,7 @@
     }
     body {
     text-align:center;
-    color:blue;
     font-size:30px;
-    /* background-image:url(img/SteinsGate.gif); */
     background-attachment:fixed;
     background-position:center;
     background-color:#F4F4FF;										/* the same color as the animated GIF */
@@ -32,12 +30,14 @@
     pre {
     font-weight:bold;
     font-family:inherit;
-    text-shadow:-1.5px 0px #0ff, 0px 1.5px #0ff, 1.5px 0px #0ff, 0px -1.5px #0ff;        		/* adding outline shadow to the text, starting from the top and going clockwise : top, right, bottom, and left, the negative values are for raising the shadow toward top and left and 0px values are for using just one coordinate to make a thin outline for each side : X for top and bottom (0px for Y), Y for right and left (0px for X). | "#0ff" is a shorthand of "#00ffff" */
     padding: 50px;
     margin:0;
+    color:midnightblue ;
+    text-shadow:-1.5px 0px rgba(0,0,0,0.2), 0px 1.5px rgba(0,0,0,0.2), 1.5px 0px rgba(0,0,0,0.2), 0px -1.5px rgba(0,0,0,0.2);
+    transition:colo 3s, text-shadow 3s;
     }
     audio {
-    width:95%;
+    width:99%;
     zoom:220%;                  									/* "zoom" it is said a Microsoft proprietary property */
     position:fixed;
     bottom:5px;
@@ -67,8 +67,21 @@
     a:empty:target::before {
     animation: fadeout 10s;
     }
-    div {
+    #player {
+    outline:none;
+    border:none;
+    }
+    body.setbg {
+    background-image:url(img/SteinsGate.gif);
+    }
+    .setbg div {
     background-color:rgba(255,255,255,0.7);    								/* setting a transparent white background for lyrics readability */
+    transition: 3s;
+    }
+    .setbg pre {
+    text-shadow:-1.5px 0px #0ff, 0px 1.5px #0ff, 1.5px 0px #0ff, 0px -1.5px #0ff;        		/* adding outline shadow to the text, starting from the top and going clockwise : top, right, bottom, and left, the negative values are for raising the shadow toward top and left and 0px values are for using just one coordinate to make a thin outline for each side : X for top and bottom (0px for Y), Y for right and left (0px for X). | "#0ff" is a shorthand of "#00ffff" */
+    color:blue;
+    transition: 3s;
     }
   </style>
 </head>
@@ -233,10 +246,10 @@ I will be swallowed as a lonely observer.
   }
   
   aplayer.onplay = function(){
-  document.body.style.backgroundImage = "url(img/SteinsGate.gif)";
+  document.body.className = "setbg";
   }
   aplayer.onpause = function(){
-  document.body.style.backgroundImage = "none";
+  document.body.className = "";
   }
 </script>
 </body>
