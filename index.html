@@ -52,6 +52,7 @@ responsive design should change significantly.&#x0A;&lt;br&gt;(from &quot;Respon
 <li><a href="Date.html" >The Date Object in JavaScript</a></li>
 <li><a href="extcolors.html" >Extended color keywords in CSS3</a></li>
 <li><a href="cursor.html" >CSS cursors</a></li>
+<li id="sgsng" ><a href="sg.html" >Interactive HTML5 music playing</a></li>
 <li><a href="ttf.html" ><code>cubic-bezier()</code> values of <code>transition-timing-function</code></a></li>
 </ul>
 <audio id="audplayer" controls="yes" loop="yes" title="The soundtrack in the backgound is from The SlowMo guys Youtube channel ! &lt;img src='img/smiley.png'&gt;" >
@@ -120,15 +121,15 @@ responsive design should change significantly.&#x0A;&lt;br&gt;(from &quot;Respon
     
     var vname = document.getElementById("uname"),
     lastItem = document.links[document.links.length - 1],
-    sngItem = document.getElementById("lysng");
+    sngItem = document.getElementById("lysng"),
+    SG = document.getElementById("sgsng");
     if (browserLanguage.indexOf("fr") != -1) {
     vname.title = "\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74 dit &quot;C'est Mon nom d'utilisateur sur Github !&quot;";
     sngItem.href = "frlyrics.html";
     lastItem.href = "frttf.html";
+    SG.style.display = "none";
     } else {
     vname.title = "\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74 says &quot;That is my Github username !&quot;";
-    sngItem.href = sngItem.href;
-    lastItem.href = lastItem.href;
     }
 
     if ("animation" in document.body.style) {

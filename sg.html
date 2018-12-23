@@ -7,16 +7,19 @@
   <meta name="Web-Developer" content="LineNumber0"/>
   <meta name="Category" content="Japanese Anime Music"/>
   <style type="text/css">
+    html {
+    scroll-behavior: smooth;
+    }
     body {
     text-align:center;
     color:blue;
     font-size:30px;
-    background-image:url(img/SteinsGate.gif);	/* This is how an image is used for the background in CSS, with url(path/to/the/image/file.extension) */
-    background-attachment:fixed;          /* fixing the background when scrolling, the other value of this property is "scroll" */
+    /* background-image:url(img/SteinsGate.gif); */
+    background-attachment:fixed;
     background-position:center;
-    background-color:#F4F4FF;		/* the same color as the animated GIF */
+    background-color:#F4F4FF;										/* the same color as the animated GIF */
     background-repeat:no-repeat;
-    background-size:100%;               /* the background image will always occupy 100% of the page size, even when resizing */
+    background-size:100%;
     }
     h1 {
     color:black;
@@ -28,41 +31,68 @@
     }
     pre {
     font-weight:bold;
-    font-family:inherit;                       /* the "pre" element preserves a "monospace" font family (the font type used by text editors in the source code), the "inherit" value makes the content of "pre" element uses the font of the parent element */
-    background-color:rgba(255,255,255,0.7);    /* setting a transparent white background with Red,Green,Blue,Alpha rgba() function for lyrics readability */
-    text-shadow:-1.5px 0px #0ff, 0px 1.5px #0ff, 1.5px 0px #0ff, 0px -1.5px #0ff;        /* adding outline shadow to the text, starting from the top and going clockwise : top, right, bottom, and left, the negative values are for raising the shadow toward top and left and 0px values are for using just one coordinate to make a thin outline for each side : X for top and bottom (0px for Y), Y for right and left (0px for X). | "#0ff" is a shorthand of "#00ffff" */
+    font-family:inherit;
+    text-shadow:-1.5px 0px #0ff, 0px 1.5px #0ff, 1.5px 0px #0ff, 0px -1.5px #0ff;        		/* adding outline shadow to the text, starting from the top and going clockwise : top, right, bottom, and left, the negative values are for raising the shadow toward top and left and 0px values are for using just one coordinate to make a thin outline for each side : X for top and bottom (0px for Y), Y for right and left (0px for X). | "#0ff" is a shorthand of "#00ffff" */
+    padding: 50px;
+    margin:0;
     }
     audio {
     width:95%;
-    zoom:220%;                  /* "zoom" it is said a Microsoft proprietary property */
+    zoom:220%;                  									/* "zoom" it is said a Microsoft proprietary property */
     position:fixed;
     bottom:5px;
     right:5px;
     opacity:0.7;
+    height: 50px;
+    -moz-transform:scaleY(2) translateY(-15px);								/* transformation for the Mozilla player */
     }
-    img {
-    /*height:100%;		/* This alpha channel image at the end of the page, with 100% width and 100% top margin, is an empty page to scroll up the whole lyrics */
-    width:100%;
-    margin-top:100%;
+    pre:last-of-type {
+    margin-bottom:100%;
+    }
+    
+    @keyframes fadeout {
+    from {opacity: 0}
+    50% {opacity: 1}
+    to {opacity: 0}
+    }
+    a:empty::before {
+    content: url(img/up-alpha.png);
+    position: relative;
+    left: -480px;
+    top:208px;
+    display: inline-block;
+    transform: rotate(90deg) scale(0.5);
+    opacity: 0;
+    } 
+    a:empty:target::before {
+    animation: fadeout 10s;
+    }
+    div {
+    background-color:rgba(255,255,255,0.7);    								/* setting a transparent white background for lyrics readability */
     }
   </style>
 </head>
 <body>
 <h1>Steins;Gate Anime Opening<br/>song and lyrics</h1>
 <br/>
-<audio controls="controls" loop="loop" id="player" onloadstart="document.getElementById('player').volume=0.5">          <!-- when the page load set the audio volume to 50% with JavaScript, from the HTML5 JS API -->
-  <source src="aud/Hacking-to-the-Gate.mp3" type="audio/mp3"/>	<!-- 4min:16s -->
-  <source src="aud/SteinsGate_op.ogg" type="audio/ogg" />		<!-- 2min:50s -->
+<audio controls="controls" loop="loop" id="player" >
+  <source src="aud/Hacking-to-the-Gate.mp3" type="audio/mp3"/>						<!-- 4min:16s -->
+  <source src="aud/SteinsGate_op.ogg" type="audio/ogg" />						<!-- 2min:50s -->
   </audio>
 <br/>
   <h3>Original / Romaji Lyrics and English Translation</h3>
+  <div>
 <pre>
 Welcome!! Time line travel on The game. 
 Welcome!! Heroes hacking to The gate.
 
 Welcome!! Time line travel on The game. 
 Welcome!! Heroes hacking to The gate.
-
+</pre>
+<a id="lp0" ></a>
+<pre>
+  
+  
 suujuuoku mono  kodou no kazu sae 
 anata ni wa matataki teido no saji na toukyuu 
 kako ni torawarete  mirai wo nageku mo 
@@ -72,6 +102,10 @@ Even the number of the billions of the heartbeats,
 to you, is a trifle no more than a blink of the eye. 
 Although I'm trapped in the past and lamenting at the future, 
 I must not allow even a dust-sized miscalculation.
+</pre>
+<a id="lp1" ></a>
+<pre>
+
 
 "Mugen" ni hirogaru yume mo  egaku mirai mo 
 bokutachi ni yurusareta  kyoei no genri 
@@ -82,6 +116,10 @@ We have been given the theory of the right to brag vainly about
 both our "infinitely" expanding dream and our sketched future. 
 The two hands of the clock point out the "finite" factor. 
 I head towards a cruel contract and choice, hacking to the gate--
+</pre>
+<a id="lp2" ></a>
+<pre>
+
 
 dakara ima ichibyou goto ni sekaisen wo koete 
 kimi no sono egao  mamoritai no sa 
@@ -92,6 +130,10 @@ That's why, at this very moment, in the interval of a second,
 I wish to cross the world lines and protect your smile. 
 Then, once again into a time loop devoid of misery, 
 I will be swallowed as a lonely observer.
+</pre>
+<a id="lp3" ></a>
+<pre>
+
 
 inochi no shuchou to  muimi no shoumei 
 anata ni wa taikutsu shinogi ni taranu kokkei 
@@ -102,6 +144,10 @@ Even life's viewpoints and meaningless proofs,
 to you, are so laughable that you can't even use them to relieve your boredom. 
 The foolish people of that race, acting as if they were the rulers of all, 
 have presented childish theorems that reek of their conceitedness.
+</pre>
+<a id="lp4" ></a>
+<pre>
+
 
 "Mugen" to shinjita ai mo  sora no kanata mo 
 bokutachi ni shimesareta  kasou no jiyuu 
@@ -112,6 +158,10 @@ We have been shown the freedom to imagine things
 such as "infinite" love and what's beyond the sky. 
 The "finite" is what's mercilessly allowing time to flow on, 
 as I head towards my choice to deny even tomorrow, hacking to the gate--
+</pre>
+<a id="lp5" ></a>
+<pre>
+
 
 ikutsu mono kagayakeru hibi nakama to no yakusoku 
 nakatta koto ni wa  shite wa ikenai 
@@ -122,6 +172,10 @@ I must not pretend that I've never made any promise
 with my friends back in those brilliant days. 
 Therefore, I am a lonely observer with no more doubt 
 in my remaining tricks that I will use to deceive time.
+</pre>
+<a id="lp6" ></a>
+<pre>
+
 
 dakara ima ichibyou goto ni  sekaisen wo koete 
 kimi no sono egao  mamoritai no sa 
@@ -133,7 +187,57 @@ I wish to cross the world lines and protect your smile.
 Then, once again into a time loop devoid of misery, 
 I will be swallowed as a lonely observer.
 </pre>
-<br/>
-<img src="img/alpha.png" alt="PNG alpha channel layer"/>
+</div>
+<script type="text/javascript">
+  var aplayer = document.getElementById("player");
+  aplayer.volume = 0.5;
+  function getStime() {
+  return parseInt(aplayer.currentTime);
+  }
+  function followLyrics() {
+  switch(getStime()) {
+  case 13: document.location.href = "#lp0";
+  break;
+  case 37: document.location.href = "#lp1";
+  break;
+  case 62: document.location.href = "#lp2";
+  break;
+  case 104: document.location.href = "#lp3";
+  break;
+  case 127: document.location.href = "#lp4";
+  break;
+  case 151: document.location.href = "#lp5";
+  break;
+  case 217: document.location.href = "#lp6";
+  }
+  }
+  function followLyricsOgg() {
+  switch(getStime()) {
+  case 13: document.location.href = "#lp0";
+  break;
+  case 37: document.location.href = "#lp1";
+  break;
+  case 63: document.location.href = "#lp2";
+  break;
+  case 129: document.location.href = "#lp2";
+  break;
+  }
+  for (var i = 4; i < 8; i++) {
+    document.querySelectorAll("pre")[i].style.display = "none";
+    }
+  }
+  if (!aplayer.canPlayType('audio/mp3')) {
+  aplayer.addEventListener("timeupdate",followLyricsOgg);
+  } else {
+  aplayer.addEventListener("timeupdate",followLyrics);
+  }
+  
+  aplayer.onplay = function(){
+  document.body.style.backgroundImage = "url(img/SteinsGate.gif)";
+  }
+  aplayer.onpause = function(){
+  document.body.style.backgroundImage = "none";
+  }
+</script>
 </body>
 </html>
