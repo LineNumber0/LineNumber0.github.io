@@ -122,10 +122,12 @@
     sngItem = document.getElementById("lysng"),
     SG = document.getElementById("sgsng");
     if (browserLanguage.indexOf("fr") != -1) {
-    vname.title = "\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74 dit &quot;C'est Mon nom d'utilisateur sur Github !&quot;";
+    //vname.title = "\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74 dit &quot;C'est Mon nom d'utilisateur sur Github !&quot;";
     sngItem.href = "frlyrics.html";
     lastItem.href = "frttf.html";
     SG.style.display = "none";
+    hline.innerHTML = hline.innerHTML.replace("LineNumber0","\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74");
+    uname.removeAttribute("title");
     } else {
     vname.title = "\x42\x65\x6E\x6C\x61\x6D\x69\x6E\x65\x20\x41\x62\x64\x65\x6C\x6D\x6F\x75\x72\x68\x69\x74 says &quot;That is my Github username !&quot;";
     }
