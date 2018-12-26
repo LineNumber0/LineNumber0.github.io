@@ -828,7 +828,7 @@
     memail.onclick = send;
     function send() {
     var ask = confirm("Do you want to send an email to Benlamine Abdelmourhit ?");
-    if (ask == true) {
+    if (ask) {
     memail.href = emailHref.join("");             // antispam
     } else {memail.href = '#tbcvl'}
     return;
@@ -836,7 +836,7 @@
     
     function printopt() {
     var bprint = confirm("Do you want to use the print version of the resume ?");
-    if (bprint == false) {
+    if (!bprint) {
     document.body.className = "";
     window.print();
     } else {
@@ -894,7 +894,7 @@
     }
     }
     
-    if (navigator.userAgent.indexOf("WebKit") != -1) {
+    if (navigator.userAgent.indexOf("WebKit")) {
     window.addEventListener("keydown",stopReloadonPrint);
     }
     

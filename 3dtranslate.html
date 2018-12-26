@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>translate3d, an example from http://rwd.education</title>
+	<meta charset="utf-8">
+	<meta name="description" content="An example from the book, 'Responsive Web Design with HTML5 and CSS3' by Ben Frain"/>
+	<meta name="Web-Developer" content="LineNumber0"/>
+	<meta name="Date" content="Tuesday 25-December-2018 22:22 +01"/>
+	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#ff9900">
+        <style type="text/css">
+    body {
+        padding: 1em;
+    }
+
+    .flipper {
+        perspective: 400px;
+        position: relative;
+        width: 400px;
+        height: 150px;
+        margin:2em auto; 
+        font-weight:bold;
+        font-size:3em;
+    }
+    .flipper-object {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: transform 1s;
+        transform-style: preserve-3d;
+    }
+
+    .panel {
+        display: flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden;
+    }
+
+    .flipper-vertical .back {
+        transform: rotateX(180deg);
+    }
+
+    .flipper-horizontal .back {
+        transform: rotateY(180deg);
+    }
+
+    .back {
+        background-color: #CC3232;
+        color:black;
+        text-shadow:3px 3px white;
+        outline:10px groove black;
+    }
+
+    .front {
+        background-color: #739328;
+        color:white;
+        text-shadow:3px 3px black;
+        outline:10px ridge black;
+    }
+
+    .flipper:hover .flipper-vertical {
+        transform: rotateX(180deg) translate3d(0, 0, -120px);               				/* the "translate3d" function of the "transform" property add the Z axis to the translate() 2D function.  */
+        animation: pulse 1s 1s infinite alternate both;
+    }
+
+    .flipper:hover .flipper-horizontal {
+        transform: rotateY(180deg) translate3d(0, 0, 360px);
+        animation: pulse 1s 1s infinite alternate both;
+    }
+
+    /*The animation keyframe*/
+
+    @keyframes pulse {
+    100% {
+            box-shadow: 0 0 20px 30px gray;
+    }
+     }
+
+        </style>
+	<script src="JS/prefixfree.js" charset="utf-8"></script>
+</head>
+<body>
+<center><h1>3D transformation</h1></center>
+<iframe width="100%" height="600" src="3dtransform.html" frameborder="0" ><a href="3dtransform.html" target="_blank" >3D transformation</a></iframe>
+	<div class="flipper">
+		<span class="flipper-object flipper-vertical">
+			<span class="panel front">The Front</span>
+			<span class="panel back">The Back</span>
+		</span>
+	</div>
+
+	<div class="flipper">
+		<span class="flipper-object flipper-horizontal">
+			<span class="panel front">The Front</span>
+			<span class="panel back">The Back</span>
+		</span>
+	</div>
+</body>
+</html>

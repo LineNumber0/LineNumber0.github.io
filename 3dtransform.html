@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>3D transformation, an example from http://rwd.education</title>
+	<meta charset="utf-8"/>
+	<meta name="description" content="An example from the book, 'Responsive Web Design with HTML5 and CSS3' by Ben Frain"/>
+	<meta name="Web-Developer" content="LineNumber0"/>
+	<meta name="Date" content="Friday 26-January-2018 22:18 WET"/>
+	<meta name="viewport" content="width=device-width"/>
+	<meta name="theme-color" content="#ff9900"/>
+<style type="text/css">
+.flipper {
+	perspective: 400px;                        							/* `` First of all, we need to set some perspective for the .flipper-object to flip within. For that we use the perspective property. This takes a length attempting to simulate the distance from the viewer's screen to the edge of the elements 3D space. If you set a low number like 20px for the perspective value, the 3D space of the element will extend right out to only 20px from your screen; the result being a very pronounced 3D effect. Setting a high number on the other hand, will mean the edge of that imaginary 3D space will be further away, and therefore produce a less pronounced 3D effect. ``(B.F) | ``the only difference between the function "perspective()" and the property "perspective" is that the value supplied to the property applies only to its child elements, not to itself.``(from "THE BOOK OF CSS3" by Peter Gasston) */
+	position: relative;
+	width: 400px;
+	height: 150px;
+	margin:2em auto;                        								/* 1em is more effective than 5% when resizing the Browser window, because percentage is relative to the available space in the Browser window */
+	font-weight:bold;
+	font-size:3em;
+}
+
+
+.flipper-object {
+	position: absolute;                        							/* `` We are positioning the outer element relatively to create a context for the flipper- object to be positioned within ``(B.F) */
+	width: 100%;
+	height: 100%;
+	transition: transform 1s;                  							/* `` Besides positioning the .flipper-object absolutely at the top left of its closest relatively positioned parent (the default position for absolutely positioned elements), we have set a transition for the transform. ``(B.F) */
+	transform-style: preserve-3d;              							/* `` The key thing here, 3D wise, though is the transform-style: preserve-3d. This tells the browser that when we transform this element, we want any children elements to preserve the 3D effect. If we didn't set preserve-3d on the .flipper-object, we would never get to see the back (the red part) of the flipping element. ``(B.F) | ``When elements transformed in 3D are nested, the default behavior is that all descendant elements are flattened to the plane of the parent — that is, any transformation functions applied to child elements are ignored. You can change this behavior with a property called transform-style``(from "THE BOOK OF CSS3" by Peter Gasston) */
+}
+
+.panel {
+	display: flex;
+	min-height: 44px;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	backface-visibility: hidden;               							/* `` Each 'panel' in our flipping element needs positioning at the top of its container but we also want to make sure that if rotated, we don't see the 'rear' of it (otherwise we would never see the green panel as it sits 'behind' the red one). To do that we use the backface-visibility property. We set this to hidden so that the back face of the element is, you guessed it, hidden ``(B.F) | the opposite value is "visibile" */
+	box-shadow:18px 18px 15px gray;
+}
+
+.flipper-vertical .back {
+	transform: rotateX(180deg);                							/* `` Next we want to make our back panel flipped by default (so that when we flip the whole thing it will actually be in the correct position). To do that we apply a rotate transform ``(B.F) */
+}
+
+.flipper-horizontal .back {
+	transform: rotateY(180deg);
+}
+
+.back {
+	background-color: #CC3232;
+	color:black;
+	text-shadow:3px 3px white;
+	outline:10px groove black;
+}
+
+.front {
+	background-color: #739328;
+	color:white;
+	text-shadow:3px 3px black;
+	outline:10px ridge black;                   							/* "border" property affect position, "outline" is better */
+}
+
+.flipper:hover .flipper-vertical {
+	transform: rotateX(180deg);                							/* `` now all we want to do is flip the entire inner element when the outer one is hovered over ``(B.F) */
+}
+
+.flipper:hover .flipper-horizontal {
+	transform: rotateY(180deg);
+}
+</style>
+<script src="JS/prefixfree.js" charset="utf-8"></script>
+</head>
+<body>
+	<div class="flipper">
+		<span class="flipper-object flipper-vertical">
+			<span class="panel front">The Front</span>
+			<span class="panel back">The Back</span>
+		</span>
+	</div>
+
+	<div class="flipper">
+        <span class="flipper-object flipper-horizontal">              					<!-- `` The only difference with the horizontal one, markup wise is the flipper-horizontal class instead of flipper-vertical. ``(B.F) -->
+			<span class="panel front">The Front</span>
+			<span class="panel back">The Back</span>
+		</span>
+	</div>
+</body>
+</html>
