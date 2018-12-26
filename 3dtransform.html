@@ -14,7 +14,7 @@
 	position: relative;
 	width: 400px;
 	height: 150px;
-	margin:2em auto;                        								/* 1em is more effective than 5% when resizing the Browser window, because percentage is relative to the available space in the Browser window */
+	margin:2em auto;                        							/* 1em is more effective than 5% when resizing the Browser window, because percentage is relative to the available space in the Browser window */
 	font-weight:bold;
 	font-size:3em;
 }
@@ -37,7 +37,8 @@
 	height: 100%;
 	position: absolute;
 	backface-visibility: hidden;               							/* `` Each 'panel' in our flipping element needs positioning at the top of its container but we also want to make sure that if rotated, we don't see the 'rear' of it (otherwise we would never see the green panel as it sits 'behind' the red one). To do that we use the backface-visibility property. We set this to hidden so that the back face of the element is, you guessed it, hidden ``(B.F) | the opposite value is "visibile" */
-	box-shadow:18px 18px 15px gray;
+	-webkit-filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.5));
+	filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.5));						/* the filter property didn't get prefixed with prefixfree.js */
 }
 
 .flipper-vertical .back {
@@ -60,6 +61,7 @@
 	color:white;
 	text-shadow:3px 3px black;
 	outline:10px ridge black;                   							/* "border" property affect position, "outline" is better */
+	box-shadow:inset 10px 10px 10px rgba(0,0,0,0.3);
 }
 
 .flipper:hover .flipper-vertical {
@@ -70,7 +72,7 @@
 	transform: rotateY(180deg);
 }
 </style>
-<script src="JS/prefixfree.js" charset="utf-8"></script>
+<script src="JS/prefixfree.min.js" charset="utf-8"></script>
 </head>
 <body>
 	<div class="flipper">
