@@ -14,7 +14,7 @@ body {
   text-align:center;
   text-shadow:3px 3px rgba(0,0,0,0.2);
 }
-audio {
+#audplayer {
   width:99%;
   position:fixed;
   bottom:5px;
@@ -25,7 +25,7 @@ audio {
   zoom:220%;
   -ms-zoom: 100%;
 }
-audio:focus, a:active, a:focus, a:visited {
+#audplayer:focus, a[id^='lp']:empty:focus {
   outline:none;
   border:none;
 }
@@ -35,21 +35,27 @@ audio:focus, a:active, a:focus, a:visited {
   50% {opacity: 1}
   to {opacity: 0}
 }
-a[id^='lp']:empty::before {
-  content: url(../img/up-alpha.png);
-  position: relative;
-  top:63px;
-  display: inline-block;
-  transform: rotate(90deg) scale(0.5);
-  opacity: 0;
-} 
-a[id^='lp']:empty:target::before {
-  animation: fadeout 10s;
+a[id^='lp']:empty:target + pre::before {
+  animation: fadeout 5s;
 }
-pre:last-of-type {
+a[id^='lp']:empty:target + pre {
+  color:darkgreen;
+  background-color:rgba(255,255,255,0.7);
+}
+a[id^='lp']:empty + pre:last-of-type {
   margin-bottom:100%;
 }
+a[id^='lp']:empty + pre:before {
+  content: "➡";
+  font-size: 120px;
+  position: absolute;
+  margin-top: -75px;
+  color: limegreen;
+  margin-left: -120px;
+  text-shadow: 1px 0px black, 0px 1px black, -1px 0px black, 0px -1px black;
+  filter: drop-shadow(3px 3px lightgray);
+  opacity:0;
+}
 a[id^='lp']:empty {
-  position: relative;
-  top: 63px;							/* 33px of the font plus 30px computed style */
+  display: block;
 }
