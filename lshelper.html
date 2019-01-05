@@ -98,7 +98,7 @@
   
   function setSlink(element) {
   if (document.location.href === "https://linenumber0.github.io/lshelper.html") {
-  element.src ? element.src = "https://linenumber0.github.io/" : element.href = "https://linenumber0.github.io/";
+  element.src ? element.src = element.src : element.href = element.href;
   return element.outerHTML;
   } else {
   return element.outerHTML;
@@ -120,7 +120,7 @@
   var FinalTextArea = "<a id='lp0" + "'></a>\n<pre>\n" + NewTextArea + "\n</pre>\n",
   stitle = audsrc.src.substring(audsrc.src.lastIndexOf("/") + 1,audsrc.src.lastIndexOf(".")),
   fileName = stitle.replace(spRX," ");
-  textarea.value = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'/>\n<title>" + fileName + "</title>\n" + document.styleSheets[0].ownerNode.outerHTML + "\n</head>\n<body>\n<h1>" + fileName + "</h1>\n" + FinalTextArea + audplayer.outerHTML + "\n" + document.scripts[1].outerHTML + "\n" + document.scripts[2].outerHTML + "\n</body>\n</html>";
+  textarea.value = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'/>\n<title>" + fileName + "</title>\n" + setSlink(document.styleSheets[0].ownerNode) + "\n</head>\n<body>\n<h1>" + fileName + "</h1>\n" + FinalTextArea + audplayer.outerHTML + "\n" + setSlink(document.scripts[1]) + "\n" + setSlink(document.scripts[2]) + "\n</body>\n</html>";
   textarea.select();
   document.execCommand('copy');
   } else if (htmlRX.test(textarea.value)) {
