@@ -96,6 +96,15 @@
   }
   audplayer.addEventListener("pause",recStimes);
   
+  function setSlink(element) {
+  if (document.location.href === "https://linenumber0.github.io/lshelper.html") {
+  element.src ? element.src = "https://linenumber0.github.io/" : element.href = "https://linenumber0.github.io/";
+  return element.outerHTML;
+  } else {
+  return element.outerHTML;
+  }
+  }
+  
   function Hcode() {
   if (audsrc.src == "") {
   alert("Add an audio file !");
