@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Lyrics synchronizing helper written in HTML, CSS and JavaScript</title>
+    <meta charset="utf-8"/>
+    <meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="Date" content="Tuesday 01-January-2019 20:31 +01"/>
+    <link rel="stylesheet" href="styles/followLyrics.css"/>
+    <style type="text/css">
+      #pcode {
+      position:fixed;
+      bottom:182px;
+      left: 10px;
+      width:98%;
+      height:25%;
+      font-size:initial;
+      font-family:monospace;
+      background-color:black;
+      color:white;
+      margin-bottom:10px;
+      }
+      #hlpcnt {
+      position:fixed;
+      bottom:152px;
+      font-size:initial;
+      }
+      button {
+      margin: 0 32px -8px 8px;
+      padding: 8px;
+      font-weight:bold;
+      }
+      #outerh:hover ~ #hlpcnt, #audplayer:hover ~ #hlpcnt {opacity:0.3;transition:5s} #hlpcnt {opacity:1;transition:0.5s}
+      </style>
+  </head>
+  <body>
+  <div id="outerh">
+  </div>
+  <audio id="audplayer" controls="yes" loop="yes" title="" >
+    <source />
+  </audio>
+  <div id="hlpcnt" class="" >
+    <textarea id="pcode" placeholder="Paste your Lyrics here" spellcheck="false" onpaste="ldisplay()" ></textarea>
+    <button id="addfile" onclick="AddAudioFile()" >Add audio file</button>
+    <button id="gcode" onclick="Hcode()" >Get HTML code</button>
+    <button id="clearc" onclick="confirmReset()" >Clear</button>
+    <button id="svcd" onclick="saveNchk()" >Save to HTML file</button>
+  </div>
+<script type="text/javascript">
+  var textarea = document.getElementById("pcode"),
+  nlineRX = /\n\n+/gm,
+  spRX = /%20/g,
+  htmlRX = /<\/?\w+((\s+\w+(\s*=\s*(?:".*?"|'.*?'|[\^'">\s]+))?)+\s*|\s*)\/?>/gmi,
+  lcont = document.getElementById("outerh"),
+  uicnt = document.getElementById("hlpcnt"),
+  audsrc = audplayer.firstElementChild;
+  
+  function confirmReset() {                                 
+  if (confirm("Are you sure to reset the text field ?")) { 
+  textarea.value = "";                                           
+  } else {
+  return;                                          
+    }
+  }
+  
+  function AddAudioFile() {
+  if (textarea.value == "" || !nlineRX.test(textarea.value)) {
+  alert("Paste your Lyrics first !");
+  } else {
+  var audfile = prompt("Paste the Link or URL of the audio file","");
+  if (audfile == "" || audfile == null) {
+  return;
+  } else {
+  audsrc.src = audfile;
+  audsrc.type = "audio/" + audfile.substring(audfile.lastIndexOf(".") + 1);
+  audplayer.load();
+   }
+  }
+  }
+  function ldisplay() {
+  setTimeout(function() {
+  lcont.innerHTML =  "<pre>" + textarea.value + "</pre>";
+  },500);
+  }
+  
+  function recStimes() {
+  var pStime;
+  do {
+  pStime = prompt("Do you want to save this time ?",getStime());
+  } while (pStime != getStime() && pStime != null);
+  if (pStime == null) {
+  return;
+  } else {
+  LyricTimes.push(pStime);
+  }
+  return document.scripts[2].innerHTML = "LyricTimes = [" + LyricTimes + "];";
+  }
+  audplayer.addEventListener("pause",recStimes);
+  
+  function setSlink(element) {
+  if (document.location.href === "https://linenumber0.github.io/lshelper.html") {
+  element.src ? element.src = "https://linenumber0.github.io/" + element.src : element.href = "https://linenumber0.github.io/" + element.href;
+  return element.outerHTML;
+   } else {
+   return element.outerHTML;
+   }
+  }
+  
+  function Hcode() {
+  if (audsrc.src == "") {
+  alert("Add an audio file !");
+  } else if (LyricTimes.length == 0 && nlineRX.test(textarea.value)) {
+  alert("Now play your audio file and pause to save Lyrics positions !");
+  } else {
+  var NewTextArea,
+  stCount = 1;
+  if (nlineRX.test(textarea.value) && !htmlRX.test(textarea.value)) {
+  NewTextArea = textarea.value.replace(nlineRX, function() {
+  return "\n\n\n</pre>\n<a id='lp" + stCount++ + "'></a>\n<pre>\n";
+  });
+  var FinalTextArea = "<a id='lp0" + "'></a>\n<pre>\n" + NewTextArea + "\n</pre>\n",
+  stitle = audsrc.src.substring(audsrc.src.lastIndexOf("/") + 1,audsrc.src.lastIndexOf(".")),
+  fileName = stitle.replace(spRX," ");
+  textarea.value = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'/>\n<title>" + fileName + "</title>\n" + setSlink(document.styleSheets[0].ownerNode) + "\n</head>\n<body>\n<h1>" + fileName + "</h1>\n" + FinalTextArea + audplayer.outerHTML + "\n" + setSlink(document.scripts[1]) + "\n" + setSlink(document.scripts[2]) + "\n</body>\n</html>";
+  textarea.select();
+  document.execCommand('copy');
+  } else if (htmlRX.test(textarea.value)) {
+  textarea.value = textarea.value.replace(textarea.value.substring(textarea.value.indexOf("[") + 1,textarea.value.indexOf("]")),LyricTimes);
+  } else {
+  alert("Paste your Lyrics in form of : \n\nLorem ipsum dolor sit amet,\nconsectetaur adipisicing elit,\nsed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n\nExcepteur sint occaecat cupidatat non proident,\nsunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet,\nconsectetaur adipisicing elit,\nsed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n\nExcepteur sint occaecat cupidatat non proident,\nsunt in culpa qui officia deserunt mollit anim id est laborum.\n\n");
+  }
+   }
+  }
+  // TODO replace all JavaScript standard alert, confirm, prompt, with styled dialogs.
+</script>
+  <script src="JS/followLyrics.js" charset="utf-8"></script>
+  <script>
+    </script>
+    <script src="JS/FileSaver.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      function saveNchk() {
+      var html = textarea.value;
+      var blobfilename = audsrc.src.substring(audsrc.src.lastIndexOf("/") + 1,audsrc.src.lastIndexOf("."));
+      var blob = new Blob([html], {type: "text/html"});
+      if (!htmlRX.test(html)) {
+      alert("There is no HTML code in the text field !");
+      } else {
+      if (LyricTimes.length != textarea.value.match(nlineRX).length + 1) {
+      confirm("The number of Lyrics positions doesn't match the number of saved times !\nDo you want to continue or restart ?") ? saveAs(blob, blobfilename.replace(spRX,"-") + ".html") : (function() { audplayer.load(); LyricTimes = []; })();
+      } else {
+      saveAs(blob, blobfilename.replace(spRX,"-") + ".html");
+       }
+      }
+      }
+    </script>
+  </body>
+</html>
