@@ -96,7 +96,7 @@
   }
   audplayer.addEventListener("pause",recStimes);
   
-  function setSlink(element) {
+  function setElink(element) {
   if (document.location.href === "https://linenumber0.github.io/lshelper.html") {
   element.src ? element.src = element.src : element.href = element.href;
   return element.outerHTML;
@@ -120,7 +120,7 @@
   var FinalTextArea = "<a id='lp0" + "'></a>\n<pre>\n" + NewTextArea + "\n</pre>\n",
   stitle = audsrc.src.substring(audsrc.src.lastIndexOf("/") + 1,audsrc.src.lastIndexOf(".")),
   fileName = stitle.replace(spRX," ");
-  textarea.value = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'/>\n<title>" + fileName + "</title>\n" + setSlink(document.styleSheets[0].ownerNode) + "\n</head>\n<body>\n<h1>" + fileName + "</h1>\n" + FinalTextArea + audplayer.outerHTML + "\n" + setSlink(document.scripts[1]) + "\n" + setSlink(document.scripts[2]) + "\n</body>\n</html>";
+  textarea.value = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'/>\n<title>" + fileName + "</title>\n" + setElink(document.styleSheets[0].ownerNode) + "\n</head>\n<body>\n<h1>" + fileName + "</h1>\n" + FinalTextArea + audplayer.outerHTML + "\n" + setElink(document.scripts[1]) + "\n" + setElink(document.scripts[2]) + "\n</body>\n</html>";
   textarea.select();
   document.execCommand('copy');
   } else if (htmlRX.test(textarea.value)) {
@@ -145,7 +145,7 @@
       alert("There is no HTML code in the text field !");
       } else {
       if (LyricTimes.length != textarea.value.match(nlineRX).length + 1) {
-      confirm("The number of Lyrics positions doesn't match the number of saved times !\nDo you want to continue or restart ?") ? saveAs(blob, blobfilename.replace(spRX,"-") + ".html") : (function() { audplayer.load(); LyricTimes = []; })();
+      confirm("The number of Lyrics positions doesn't match the number of saved times !\nDo you want to continue (OK) or restart (CANCEL) ?") ? saveAs(blob, blobfilename.replace(spRX,"-") + ".html") : (function() { audplayer.load(); LyricTimes = []; })();
       } else {
       saveAs(blob, blobfilename.replace(spRX,"-") + ".html");
        }
