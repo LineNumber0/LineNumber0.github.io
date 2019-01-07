@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Lyrics synchronizing helper written in HTML, CSS and JavaScript</title>
+    <title>"LN0LSync 1.0" a Lyrics synchronizing helper written in HTML, CSS and JavaScript</title>
     <meta charset="utf-8"/>
     <meta name="Web-Developer" content="LineNumber0"/>							<!-- Benlamine Abdelmourhit -->
     <meta name="Date" content="Tuesday 01-January-2019 20:31 +01"/>
@@ -84,6 +84,9 @@
   swal("ERROR !","This browser cannot play MP3 format !\n\nTry another format !\n\n","error");
   } else {
   swal("","File loaded successfully !","success");
+  setTimeout(function(){
+  swal("Now play your audio file and pause to save Lyrics positions !");
+  },3000);
   }
    }
   }
@@ -154,7 +157,7 @@
     <script src="JS/FileSaver.min.js" charset="utf-8"></script>
     <script type="text/javascript">
       function saveNchk() {
-      var html = textarea.value;
+      var html = textarea.value + "\n<!-- Exported using LN0LSync 1.0 at https://linenumber0.github.io/lshelper.html -->";
       var blobfilename = audsrc.src.substring(audsrc.src.lastIndexOf("/") + 1,audsrc.src.lastIndexOf("."));
       var blob = new Blob([html], {type: "text/html"});
       if (!htmlRX.test(html)) {
