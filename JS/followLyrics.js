@@ -1,4 +1,4 @@
-﻿// {LN_0}
+﻿// By LineNumber0 at GitHub
 var aplayer = document.getElementById("audplayer"), 
 LyricTimes = [],
 LyricTarget = document.querySelectorAll("a[id^='lp']:empty"),

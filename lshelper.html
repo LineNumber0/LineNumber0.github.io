@@ -3,9 +3,9 @@
   <head>
     <title>Lyrics synchronizing helper written in HTML, CSS and JavaScript</title>
     <meta charset="utf-8"/>
-    <meta name="Web-Developer" content="LineNumber0"/>
+    <meta name="Web-Developer" content="LineNumber0"/>							<!-- Benlamine Abdelmourhit -->
     <meta name="Date" content="Tuesday 01-January-2019 20:31 +01"/>
-    <link rel="stylesheet" href="styles/followLyrics.css"/>
+    <link id="lslink" rel="stylesheet" href="styles/followLyrics.css"/>					<!-- the Hcode() function will always get every element with its id, regardless of the source code changes. -->
     <style type="text/css">
       #pcode {
       position:fixed;
@@ -30,16 +30,21 @@
       font-weight:bold;
       }
       #outerh:hover ~ #hlpcnt, #audplayer:hover ~ #hlpcnt {opacity:0.3;transition:5s} #hlpcnt {opacity:1;transition:0.5s}
+      *[class^="swal"] {										/* swal library elements */
+      text-shadow:none;
+      font-weight:bold;
+      }
       </style>
   </head>
   <body>
+  <h1 id="ht">Develop a Lyrics Synchronizer !</h1>
   <div id="outerh">
   </div>
   <audio id="audplayer" controls="yes" loop="yes" title="" >
     <source />
   </audio>
-  <div id="hlpcnt" class="" >
-    <textarea id="pcode" placeholder="Paste your Lyrics here" spellcheck="false" onpaste="ldisplay()" ></textarea>
+  <div id="hlpcnt">
+    <textarea id="pcode" placeholder="Paste your Lyrics here" spellcheck="false" onpaste="ldisplay()" onfocus="ldisplay()" ></textarea>
     <button id="addfile" onclick="AddAudioFile()" >Add audio file</button>
     <button id="gcode" onclick="Hcode()" >Get HTML code</button>
     <button id="clearc" onclick="confirmReset()" >Clear</button>
@@ -50,6 +55,8 @@
   nlineRX = /\n\n+/gm,
   spRX = /%20/g,
   htmlRX = /<\/?\w+((\s+\w+(\s*=\s*(?:".*?"|'.*?'|[\^'">\s]+))?)+\s*|\s*)\/?>/gmi,
+  tmpidRX = /\sid=('|")[a-z0-9]+('|")/i,
+  lsarryRX = /LyricTimes = \[([0-9]{1,}\,?)+\]\;/g,
   lcont = document.getElementById("outerh"),
   uicnt = document.getElementById("hlpcnt"),
   audsrc = audplayer.firstElementChild;
@@ -64,52 +71,60 @@
   
   function AddAudioFile() {
   if (textarea.value == "" || !nlineRX.test(textarea.value)) {
-  alert("Paste your Lyrics first !");
+  swal("","Paste your Lyrics first !","error");
   } else {
-  var audfile = prompt("Paste the Link or URL of the audio file","");
+  var audfile = prompt("\n\nPaste the Link or URL of the audio file\n\nWith extension, (example : https://link/to/myfile.mp3)\n\n","");
   if (audfile == "" || audfile == null) {
   return;
   } else {
   audsrc.src = audfile;
   audsrc.type = "audio/" + audfile.substring(audfile.lastIndexOf(".") + 1);
   audplayer.load();
+  if (audplayer.canPlayType('audio/mp3') == "" && (audsrc.type == "audio/mp3" || audsrc.type == "audio/mpeg")) {
+  swal("ERROR !","This browser cannot play MP3 format !\n\nTry another format !\n\n","error");
+  } else {
+  swal("","File loaded successfully !","success");
+  }
    }
   }
   }
   function ldisplay() {
   setTimeout(function() {
+  if (nlineRX.test(textarea.value) && !htmlRX.test(textarea.value)) {
   lcont.innerHTML =  "<pre>" + textarea.value + "</pre>";
+  ht.style.display = "none";
+  }
   },500);
   }
   
   function recStimes() {
   var pStime;
   do {
-  pStime = prompt("Do you want to save this time ?",getStime());
+  pStime = prompt("Do you want to save this position ?",getStime());
   } while (pStime != getStime() && pStime != null);
   if (pStime == null) {
   return;
   } else {
   LyricTimes.push(pStime);
   }
-  return document.scripts[2].innerHTML = "LyricTimes = [" + LyricTimes + "];";
+  return lsarray.innerHTML = "LyricTimes = [" + LyricTimes + "];";
   }
   audplayer.addEventListener("pause",recStimes);
   
   function setElink(element) {
   if (document.location.href === "https://linenumber0.github.io/lshelper.html") {
   element.src ? element.src = element.src : element.href = element.href;
-  return element.outerHTML;
+  return element.outerHTML.replace(tmpidRX,"");
   } else {
-  return element.outerHTML;
+  return element.outerHTML.replace(tmpidRX,"");
   }
   }
   
   function Hcode() {
   if (audsrc.src == "") {
-  alert("Add an audio file !");
+  swal("","Add an audio file !","error");
   } else if (LyricTimes.length == 0 && nlineRX.test(textarea.value)) {
-  alert("Now play your audio file and pause to save Lyrics positions !");
+  swal("Now play your audio file and pause to save Lyrics positions !");
   } else {
   var NewTextArea,
   stCount = 1;
@@ -120,20 +135,21 @@
   var FinalTextArea = "<a id='lp0" + "'></a>\n<pre>\n" + NewTextArea + "\n</pre>\n",
   stitle = audsrc.src.substring(audsrc.src.lastIndexOf("/") + 1,audsrc.src.lastIndexOf(".")),
   fileName = stitle.replace(spRX," ");
-  textarea.value = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'/>\n<title>" + fileName + "</title>\n" + setElink(document.styleSheets[0].ownerNode) + "\n</head>\n<body>\n<h1>" + fileName + "</h1>\n" + FinalTextArea + audplayer.outerHTML + "\n" + setElink(document.scripts[1]) + "\n" + setElink(document.scripts[2]) + "\n</body>\n</html>";
+  textarea.value = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset='utf-8'/>\n<title>" + fileName + "</title>\n" + setElink(lslink) + "\n</head>\n<body>\n<h1>" + fileName + "</h1>\n" + FinalTextArea + audplayer.outerHTML + "\n" + setElink(lsscript) + "\n" + setElink(lsarray) + "\n</body>\n</html>";
   textarea.select();
   document.execCommand('copy');
+  swal("","The HTML code is pasted into your clipboard !","success");
   } else if (htmlRX.test(textarea.value)) {
-  textarea.value = textarea.value.replace(textarea.value.substring(textarea.value.indexOf("[") + 1,textarea.value.indexOf("]")),LyricTimes);
+  textarea.value = textarea.value.replace(lsarryRX,"LyricTimes = [" + LyricTimes + "];");
   } else {
-  alert("Paste your Lyrics in form of : \n\nLorem ipsum dolor sit amet,\nconsectetaur adipisicing elit,\nsed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n\nExcepteur sint occaecat cupidatat non proident,\nsunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet,\nconsectetaur adipisicing elit,\nsed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n\nExcepteur sint occaecat cupidatat non proident,\nsunt in culpa qui officia deserunt mollit anim id est laborum.\n\n");
+  swal("Paste your Lyrics in form of : ","\n\nLorem ipsum dolor sit amet,\nconsectetaur adipisicing elit,\nsed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n\nExcepteur sint occaecat cupidatat non proident,\nsunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet,\nconsectetaur adipisicing elit,\nsed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n\nExcepteur sint occaecat cupidatat non proident,\nsunt in culpa qui officia deserunt mollit anim id est laborum.\n\n");
   }
    }
   }
-  // TODO replace all JavaScript standard alert, confirm, prompt, with styled dialogs.
+  // TODO replace all JavaScript standard confirm and prompt with swal dialogs.
 </script>
-  <script src="JS/followLyrics.js" charset="utf-8"></script>
-  <script>
+<script id="lsscript" src="JS/followLyrics.js" charset="utf-8"></script>
+  <script id="lsarray">
     </script>
     <script src="JS/FileSaver.min.js" charset="utf-8"></script>
     <script type="text/javascript">
@@ -142,15 +158,24 @@
       var blobfilename = audsrc.src.substring(audsrc.src.lastIndexOf("/") + 1,audsrc.src.lastIndexOf("."));
       var blob = new Blob([html], {type: "text/html"});
       if (!htmlRX.test(html)) {
-      alert("There is no HTML code in the text field !");
+      swal("","There is no HTML code in the text field !","error");
       } else {
       if (LyricTimes.length != textarea.value.match(nlineRX).length + 1) {
-      confirm("The number of Lyrics positions doesn't match the number of saved times !\nDo you want to continue (OK) or restart (CANCEL) ?") ? saveAs(blob, blobfilename.replace(spRX,"-") + ".html") : (function() { audplayer.load(); LyricTimes = []; })();
+      confirm("The number of Lyrics sections doesn't match the number of saved positions !\n\nDo you want to continue (OK) or restart (CANCEL) ?\n\n") ? saveAs(blob, blobfilename.replace(spRX,"-") + ".html") : (function() { audplayer.load(); LyricTimes = []; })();
       } else {
       saveAs(blob, blobfilename.replace(spRX,"-") + ".html");
        }
       }
       }
     </script>
+    <script src="JS/sweetalert.min.js"></script>
+    <noscript>
+      <style type="text/css">
+	body *:not(noscript) {
+	display:none;
+	}
+      </style>
+      Please activate javascript in your browser to use this page !
+      </noscript>
   </body>
 </html>
