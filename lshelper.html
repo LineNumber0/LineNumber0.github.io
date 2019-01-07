@@ -1,12 +1,15 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>"LN0LSync 1.0" a Lyrics synchronizing helper written in HTML, CSS and JavaScript</title>
+    <title>"LN0LSync 1.0" a Lyrics synchronizing tool written in HTML, CSS and JavaScript</title>
     <meta charset="utf-8"/>
     <meta name="Web-Developer" content="LineNumber0"/>							<!-- Benlamine Abdelmourhit -->
     <meta name="Date" content="Tuesday 01-January-2019 20:31 +01"/>
     <link id="lslink" rel="stylesheet" href="styles/followLyrics.css"/>					<!-- the Hcode() function will always get every element with its id, regardless of the source code changes. -->
     <style type="text/css">
+      body {
+      background-image: url(ext/msc.png);
+      }
       #pcode {
       position:fixed;
       bottom:182px;
@@ -29,10 +32,15 @@
       padding: 8px;
       font-weight:bold;
       }
-      #outerh:hover ~ #hlpcnt, #audplayer:hover ~ #hlpcnt {opacity:0.3;transition:5s} #hlpcnt {opacity:1;transition:0.5s}
-      *[class^="swal"] {										/* swal library elements */
+      #outerh:hover ~ #hlpcnt, #audplayer:hover ~ #hlpcnt {opacity:0.1;transition:5s} #hlpcnt {opacity:1;transition:0.5s}
+      *[class^="swal"] {													/* swal library elements */
       text-shadow:none;
       font-weight:bold;
+      }
+      #ht,#outerh {
+      background-color:white;
+      display: inline-block;
+      padding:16px;
       }
       </style>
   </head>
@@ -73,24 +81,31 @@
   if (textarea.value == "" || !nlineRX.test(textarea.value)) {
   swal("","Paste your Lyrics first !","error");
   } else {
-  var audfile = prompt("\n\nPaste the Link or URL of the audio file\n\nWith extension, (example : https://link/to/myfile.mp3)\n\n","");
+  var audfile = prompt("\n\nPaste the Link or URL of the audio file\n\nWith extension, (example : https://foo.bar/link/to/myfile.mp3)\n\n","");
   if (audfile == "" || audfile == null) {
   return;
   } else {
   audsrc.src = audfile;
   audsrc.type = "audio/" + audfile.substring(audfile.lastIndexOf(".") + 1);
   audplayer.load();
+  setTimeout(function(){												// give the audio player some time to load before evaluation !
+  if (!audplayer.duration) {
   if (audplayer.canPlayType('audio/mp3') == "" && (audsrc.type == "audio/mp3" || audsrc.type == "audio/mpeg")) {
   swal("ERROR !","This browser cannot play MP3 format !\n\nTry another format !\n\n","error");
+  } else {
+  swal("File not loaded !","Try again !","error");
+  }
   } else {
   swal("","File loaded successfully !","success");
   setTimeout(function(){
   swal("Now play your audio file and pause to save Lyrics positions !");
   },3000);
-  }
+  } 
+  },500);
    }
   }
   }
+  
   function ldisplay() {
   setTimeout(function() {
   if (nlineRX.test(textarea.value) && !htmlRX.test(textarea.value)) {
