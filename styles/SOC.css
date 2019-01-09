@@ -1,4 +1,5 @@
-﻿* {
+﻿/* By LineNumber0 at GitHub */
+* {
 	box-sizing: border-box;                         /* the "box-sizing" property has only one useful value "border-box", which tell the Browser to include content, padding, and borders in the height and width of the element */
 	transition:all 1s;                               /* << While no one is looking, let's have a bit of fun. I don't recommend this for production, but try adding this to your responsive project. Here, we are using the CSS universal selector * to select everything and then setting a transition on all properties for 1 second (1s). As we have omitted to specify the timing function, ease will be used by default and there will be no delay as again, a default of 0 is assumed if an alternative value is not added. The effect? Well, try resizing your browser window and most things (links, hover states, and the like) behave as you would expect. However, because everything transitions, it also includes any rules within media queries, so as the browser window is resized, elements sort of flow from one state to the next. Is it essential? Absolutely not! Is it fun to watch and play around with? Certainly! Now, remove that rule before your mom sees it! >>(B.F) */
 }

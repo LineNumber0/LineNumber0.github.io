@@ -42,6 +42,7 @@
       display: inline-block;
       padding:16px;
       }
+      #outerh pre {margin-bottom:100%}
       </style>
   </head>
   <body>
@@ -88,7 +89,7 @@
   audsrc.src = audfile;
   audsrc.type = "audio/" + audfile.substring(audfile.lastIndexOf(".") + 1);
   audplayer.load();
-  setTimeout(function(){												// give the audio player some time to load before evaluation !
+  setTimeout(function(){												// give the audio player some time to load before evaluating !
   if (!audplayer.duration) {
   if (audplayer.canPlayType('audio/mp3') == "" && (audsrc.type == "audio/mp3" || audsrc.type == "audio/mpeg")) {
   swal("ERROR !","This browser cannot play MP3 format !\n\nTry another format !\n\n","error");
@@ -125,7 +126,12 @@
   } else {
   LyricTimes.push(pStime);
   }
-  return lsarray.innerHTML = "LyricTimes = [" + LyricTimes + "];";
+  for (var i = 0; i < LyricTimes.length; i++) {
+    if (LyricTimes[i + 1] == LyricTimes[i]) {
+    LyricTimes.pop();
+    }
+    }
+    return lsarray.innerHTML = "LyricTimes = [" + LyricTimes + "];";
   }
   audplayer.addEventListener("pause",recStimes);
   
