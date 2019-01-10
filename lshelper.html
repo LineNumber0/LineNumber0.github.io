@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>"LN0LSync 1.0" a Lyrics synchronizing tool written in HTML, CSS and JavaScript</title>
+    <title>"LN0LSync 1.1" a Lyrics synchronizing tool written in HTML, CSS and JavaScript</title>
     <meta charset="utf-8"/>
     <meta name="Web-Developer" content="LineNumber0"/>							<!-- Benlamine Abdelmourhit -->
     <meta name="Date" content="Tuesday 01-January-2019 20:31 +01"/>
@@ -116,6 +116,20 @@
   },500);
   }
   
+  function removeDuplicate(array) {		// https://www.tutorialspoint.com/How-to-find-duplicate-values-in-a-JavaScript-array   +0.1   
+  var count;        
+  var length = array.length;        
+  var result = [];        
+  var object = {};                
+  for (count = 0; count < length; count++)  {            
+    object[array[count]] = 0;        
+    }  
+    for (count in object) {            
+    result.push(count);        
+    }            
+    return result;      
+    }
+  
   function recStimes() {
   var pStime;
   do {
@@ -126,11 +140,7 @@
   } else {
   LyricTimes.push(pStime);
   }
-  for (var i = 0; i < LyricTimes.length; i++) {
-    if (LyricTimes[i + 1] == LyricTimes[i]) {
-    LyricTimes.pop();
-    }
-    }
+  LyricTimes = removeDuplicate(LyricTimes);								// remove duplicate and sort at the same time !
     return lsarray.innerHTML = "LyricTimes = [" + LyricTimes + "];";
   }
   audplayer.addEventListener("pause",recStimes);
@@ -178,7 +188,7 @@
     <script src="JS/FileSaver.min.js" charset="utf-8"></script>
     <script type="text/javascript">
       function saveNchk() {
-      var html = textarea.value + "\n<!-- Exported using LN0LSync 1.0 at https://linenumber0.github.io/lshelper.html -->";
+      var html = textarea.value + "\n<!-- Exported using LN0LSync 1.1 at https://linenumber0.github.io/lshelper.html -->";
       var blobfilename = audsrc.src.substring(audsrc.src.lastIndexOf("/") + 1,audsrc.src.lastIndexOf("."));
       var blob = new Blob([html], {type: "text/html"});
       if (!htmlRX.test(html)) {
