@@ -66,11 +66,10 @@
   var textarea = document.getElementById("pcode"),
   nlineRX = /\n\n+/gm,
   spRX = /%20/g,
-  htmlRX = /<\/?\w+((\s+\w+(\s*=\s*(?:".*?"|'.*?'|[\^'">\s]+))?)+\s*|\s*)\/?>/gmi,
+  htmlRX = /<\/?\w+((\s+\w+(\s*=\s*(?:".*?"|'.*?'|[\^'">\s]+))?)+\s*|\s*)\/?>/gmi,					// https://haacked.com/archive/2004/10/25/usingregularexpressionstomatchhtml.aspx/
   tmpidRX = /\sid=('|")[a-z0-9]+('|")/i,
   lsarryRX = /LyricTimes = \[([0-9]{1,}\,?)+\]\;/g,
-  lcont = document.getElementById("outerh"),
-  uicnt = document.getElementById("hlpcnt"),
+  lrdiv = document.getElementById("outerh"),
   audsrc = audplayer.firstElementChild;
   
   function confirmReset() {                                 
@@ -113,7 +112,7 @@
   function ldisplay() {
   setTimeout(function() {
   if (nlineRX.test(textarea.value) && !htmlRX.test(textarea.value)) {
-  lcont.innerHTML =  "<pre>" + textarea.value + "</pre>";
+  lrdiv.innerHTML =  "<pre>" + textarea.value + "</pre>";
   ht.style.display = "none";
   }
   },500);
@@ -183,7 +182,7 @@
   }
    }
   }
-  // TODO replace all JavaScript standard confirm and prompt with swal dialogs.
+  // TODO replace all JavaScript standard confirm and prompt with swal dialogs or better with "lighter" dialogs without a dark background. For performance sake i keep it as a TODO !
 </script>
 <script id="lsscript" src="JS/followLyrics.js" charset="utf-8"></script>
   <script id="lsarray">
@@ -198,7 +197,7 @@
       swal("","There is no HTML code in the text field !","error");
       } else {
       if (LyricTimes.length != textarea.value.match(nlineRX).length + 1) {
-      confirm("The number of Lyrics sections doesn't match the number of saved positions !\n\nDo you want to continue (OK) or restart (CANCEL) ?\n\n") ? saveAs(blob, blobfilename.replace(spRX,"-") + ".html") : (function() { audplayer.load(); LyricTimes = []; })();
+      confirm("The number of Lyrics sections doesn't match the number of saved positions !\n\nDo you want to continue (OK) or restart the process from the beginning (CANCEL) ?\n\n") ? saveAs(blob, blobfilename.replace(spRX,"-") + ".html") : (function() { audplayer.load(); LyricTimes = []; })();
       } else {
       saveAs(blob, blobfilename.replace(spRX,"-") + ".html");
        }
