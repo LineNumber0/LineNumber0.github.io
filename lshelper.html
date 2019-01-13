@@ -146,14 +146,14 @@
     }
   
   function recStimes() {
-  var pStime;
+  var lpTime;
   do {
-  pStime = prompt("Do you want to save this position ?",getStime());
-  } while (pStime != getStime() && pStime != null);
-  if (pStime == null) {
+  lpTime = prompt("Do you want to save this position ?",getStime());
+  } while (lpTime != getStime() && lpTime != null);
+  if (lpTime == null) {
   return;
   } else {
-  LyricTimes.push(pStime);
+  LyricTimes.push(lpTime);
   }
   LyricTimes = removeDuplicate(LyricTimes);								// remove duplicate and sort at the same time !
     return lsarray.innerHTML = "LyricTimes = [" + LyricTimes + "];";
@@ -176,10 +176,10 @@
   swal("Now play your audio file and pause to save Lyrics positions !");
   } else {
   var NewTextArea,
-  stCount = 1;
+  lpCount = 1;
   if (nlineRX.test(textarea.value) && !htmlRX.test(textarea.value)) {
   NewTextArea = textarea.value.replace(nlineRX, function() {
-  return "\n\n\n</pre>\n<a id='lp" + stCount++ + "'></a>\n<pre>\n";
+  return "\n\n\n</pre>\n<a id='lp" + lpCount++ + "'></a>\n<pre>\n";
   });
   var FinalTextArea = "<a id='lp0" + "'></a>\n<pre>\n" + NewTextArea + "\n</pre>\n",
   stitle = audsrc.src.substring(audsrc.src.lastIndexOf("/") + 1,audsrc.src.lastIndexOf(".")),
