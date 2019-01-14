@@ -54,6 +54,7 @@
       position: absolute;
       left: 16px;
       }
+      #slwpb {display:none}
       </style>
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <script>
@@ -74,6 +75,7 @@
   <div id="hlpcnt">
     <textarea id="pcode" placeholder="Paste your Lyrics here" spellcheck="false" onpaste="ldisplay()" onfocus="ldisplay()" ></textarea>
     <button id="addfile" onclick="AddAudioFile()" >Add audio file</button>
+    <button id="slwpb" title="Help me synchronize the lyrics with a slower playback rate !" onclick="playbackRate()" >Slower playback rate</button>
     <button id="gcode" onclick="Hcode()" >Get HTML code</button>
     <button id="clearc" onclick="confirmReset()" >Clear</button>
     <button id="svcd" onclick="saveNchk()" >Save to HTML file</button>
@@ -85,6 +87,7 @@
   htmlRX = /<\/?\w+((\s+\w+(\s*=\s*(?:".*?"|'.*?'|[\^'">\s]+))?)+\s*|\s*)\/?>/gmi,					// https://haacked.com/archive/2004/10/25/usingregularexpressionstomatchhtml.aspx/
   tmpidRX = /\sid=('|")[a-z0-9]+('|")/i,
   lsarryRX = /LyricTimes = \[([0-9]{1,}\,?)+\]\;/g,
+  lpidRX = /id=\'lp[0-9]+\'/gm,
   lrdiv = document.getElementById("outerh"),
   audsrc = audplayer.firstElementChild;
   
@@ -118,10 +121,23 @@
   swal("","File loaded successfully !","success");
   setTimeout(function(){
   swal("Now play your audio file and pause to save Lyrics positions !");
+  slwpb.style.display = "inline-block";
   },3000);
   } 
   },1000);
    }
+  }
+  }
+  
+  function playbackRate() {
+  if (audplayer.playbackRate == 1.0) {
+  audplayer.playbackRate = 0.5;
+  slwpb.innerText = slwpb.innerText.replace("Slower","Normal");
+  slwpb.title = "Restore normal playback rate";
+  } else {
+  audplayer.playbackRate = 1.0;
+  slwpb.innerText = slwpb.innerText.replace("Normal","Slower");
+  slwpb.title = "Slower playback rate";
   }
   }
   
@@ -212,7 +228,7 @@
       if (!htmlRX.test(html)) {
       swal("","There is no HTML code in the text field !","error");
       } else {
-      if (LyricTimes.length != textarea.value.match(nlineRX).length + 1) {
+      if (LyricTimes.length != textarea.value.match(lpidRX).length) {
       confirm("The number of Lyrics sections doesn't match the number of saved positions !\n\nDo you want to continue (OK) or restart the process from the beginning (CANCEL) ?\n\n") ? saveAs(blob, blobfilename.replace(spRX,"-") + ".html") : (function() { audplayer.load(); LyricTimes = []; })();
       } else {
       saveAs(blob, blobfilename.replace(spRX,"-") + ".html");
