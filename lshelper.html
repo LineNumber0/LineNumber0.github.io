@@ -65,7 +65,7 @@
       </script>
   </head>
   <body>
-  <a href="cykup.html" target="_blank" title="Click to see a demonstration of a very fast Rap synchronized with its Lyrics, using this Web application !">DEMO</a>
+  <a id="lsdemo" href="cykup.html" target="_blank" title="Click to see a demonstration of a very fast Rap synchronized with its Lyrics, using this Web application !">DEMO</a>
   <h1 id="ht">Develop a Lyrics Synchronizer !</h1>
   <div id="outerh">
   </div>
@@ -146,6 +146,7 @@
   if (nlineRX.test(textarea.value) && !htmlRX.test(textarea.value)) {
   lrdiv.innerHTML =  "<pre>" + textarea.value + "</pre>";
   ht.style.display = "none";
+  lsdemo.style.display = "none";
   }
   },500);
   }
