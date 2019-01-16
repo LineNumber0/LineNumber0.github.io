@@ -181,13 +181,9 @@
   audplayer.addEventListener("pause",recStimes);
   
   function setElink(element) {
-  if (document.location.href === "https://linenumber0.github.io/lshelper.html") {
   element.src ? element.src = element.src : element.href = element.href;
   return element.outerHTML.replace(tmpidRX,"");
-  } else {
-  return element.outerHTML.replace(tmpidRX,"");
-  }
-  }
+  } 
   
   function Hcode() {
   if (audsrc.src == "") {
