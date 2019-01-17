@@ -42,6 +42,7 @@ a[id^='lp']:empty:target + pre::before {
 a[id^='lp']:empty:target + pre {
   color:darkgreen;
   background-color:rgba(255,255,255,0.7);
+  transition:color 0.5s, background-color 0.5s;
 }
 a[id^='lp']:empty + pre:last-of-type {
   margin-bottom:100%;

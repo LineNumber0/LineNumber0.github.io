@@ -65,7 +65,35 @@
       </script>
   </head>
   <body>
-  <a id="lsdemo" href="cykup.html" target="_blank" title="Click to see a demonstration of a very fast Rap synchronized with its Lyrics, using this Web application !">DEMO</a>
+  <a id="lsdemo" href="cykup.html" target="_blank" title="Click to see a demonstration of a very fast Rap synchronized with its Lyrics, using this Web application !" >DEMO</a>
+  <script type="text/javascript">
+    function askBefore(event) {
+    event.preventDefault();
+    swal("Demonstration of a very fast Rap synchronized with its Lyrics !\n\nGo for Rap or something else ?", {
+    buttons: {
+    OK: {
+    text: "Yes !",
+    value: "yes",
+    },
+    Cancel: {
+    text: "Something else !",
+    value: "cancel",
+    },
+  },
+  }).then((value) => {
+  switch (value) {
+    case "yes":
+      lsdemo.href = "cykup.html";
+      break;
+    case "cancel":
+      lsdemo.href = "prawn.html";
+      break;
+      }
+      window.open(lsdemo.href);
+      });
+    }
+    lsdemo.addEventListener("click",askBefore);
+  </script>
   <h1 id="ht">Develop a Lyrics Synchronizer !</h1>
   <div id="outerh">
   </div>
