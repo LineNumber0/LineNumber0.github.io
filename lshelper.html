@@ -112,7 +112,7 @@
   var textarea = document.getElementById("pcode"),
   nlineRX = /\n\n+/gm,
   spRX = /%20/g,
-  htmlRX = /<\/?\w+((\s+\w+(\s*=\s*(?:".*?"|'.*?'|[\^'">\s]+))?)+\s*|\s*)\/?>/gmi,					// https://haacked.com/archive/2004/10/25/usingregularexpressionstomatchhtml.aspx/
+  htmlRX = /<\/?\w+((\s+\w+(\s*=\s*(?:".*?"|'.*?'|[\^'">\s]+))?)+\s*|\s*)\/?>/gmi,			// https://haacked.com/archive/2004/10/25/usingregularexpressionstomatchhtml.aspx/
   tmpidRX = /\sid=('|")[a-z0-9]+('|")/i,
   lsarryRX = /LyricTimes = \[([0-9]{1,}\,?)+\]\;/g,
   lpidRX = /id=\'lp[0-9]+\'/gm,
@@ -121,7 +121,7 @@
   
   function confirmReset() {                                 
   if (confirm("Are you sure to reset the text field ?")) { 
-  textarea.value = "";                                           
+  textarea.value = "";
   } else {
   return;                                          
     }
@@ -179,7 +179,7 @@
   },500);
   }
   
-  function removeDuplicate(array) {		// https://www.tutorialspoint.com/How-to-find-duplicate-values-in-a-JavaScript-array   +0.1   
+  function removeDuplicate(array) {									// https://www.tutorialspoint.com/How-to-find-duplicate-values-in-a-JavaScript-array   +0.1   
   var count;        
   var length = array.length;        
   var result = [];        
@@ -239,7 +239,7 @@
   }
    }
   }
-  // TODO replace all JavaScript standard confirm and prompt with swal dialogs or better with "lighter" dialogs without a dark background. For performance sake i keep it as a TODO !
+  // TODO replace all JavaScript standard confirm and prompt with swal dialogs or better with "lighter" dialogs without a dark background. For performance sake i keep it as a todo !
 </script>
 <script id="lsscript" src="JS/followLyrics.js" charset="utf-8"></script>
   <script id="lsarray">
@@ -254,9 +254,10 @@
       swal("","There is no HTML code in the text field !","error");
       } else {
       if (LyricTimes.length != textarea.value.match(lpidRX).length) {
-      confirm("The number of Lyrics sections doesn't match the number of saved positions !\n\nDo you want to continue (OK) or restart the process from the beginning (CANCEL) ?\n\n") ? saveAs(blob, blobfilename.replace(spRX,"-") + ".html") : (function() { audplayer.load(); LyricTimes = []; })();
+      confirm("The number of Lyrics sections doesn't match the number of saved positions !\n\nDo you want to continue ?\n\n") ? saveAs(blob, blobfilename.replace(spRX,"-") + ".html") : audplayer.load();
       } else {
       saveAs(blob, blobfilename.replace(spRX,"-") + ".html");
+      LyricTimes = [];											// At the end reinitialize the global variable of type array "LyricTimes", for the next time.
        }
       }
       }
