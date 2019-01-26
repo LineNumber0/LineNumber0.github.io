@@ -720,11 +720,15 @@
   
   <table class="cvcnt">
     <tr>
+      <th>&ensp;2015-2018&ensp;:&ensp;</th>
+      <td>Réparation des téléphones portables ( flashage et remplacement des pièces internes ); Dépannage matériel et logiciel des ordinateurs ( Formatage, installation et configuration des systèmes d'exploitation et logiciels, changement des composants internes, etc ); traitement générale des appareils électroniques.</td>
+      </tr>
+<!--     <tr>
       <th>&ensp;2015-2017&ensp;:&ensp;</th><td>Réparation des téléphones portables ( flashage et remplacement des pièces internes )</td>
 </tr>
 <tr>
   <th>&ensp;2010-2013&ensp;:&ensp;</th><td>Dépannage matériel et logiciel des ordinateurs ( Formatage, installation et configuration des systèmes d'exploitation et logiciels, changement des composants internes, etc )</td>
-    </tr>
+    </tr> -->
 </table>
 
 <div class="cvsec">
@@ -853,7 +857,7 @@ href="http://www.ultimatebootcd.com/" target="_blank" tabindex="9">UltimateBootC
     
     var viewPortWidth = document.documentElement.offsetWidth;
     var biominfo = document.getElementById("bioinfodiv");
-    if ("animation" in document.body.style) {
+    if ("animation" in document.body.style && navigator.language.indexOf("fr") == -1 ) {
     function UpdateViewPortWidth(){
     setTimeout(function() {document.location.reload()},500);
      }
