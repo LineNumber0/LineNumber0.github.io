@@ -857,7 +857,7 @@ href="http://www.ultimatebootcd.com/" target="_blank" tabindex="9">UltimateBootC
     
     var viewPortWidth = document.documentElement.offsetWidth;
     var biominfo = document.getElementById("bioinfodiv");
-    if ("animation" in document.body.style && navigator.language.indexOf("fr") == -1 ) {
+    if ("animation" in document.body.style) {
     function UpdateViewPortWidth(){
     setTimeout(function() {document.location.reload()},500);
      }
@@ -891,6 +891,9 @@ href="http://www.ultimatebootcd.com/" target="_blank" tabindex="9">UltimateBootC
        }
       }
       setTimeout(function() {tswira.removeEventListener("mouseup",bioinfo)},30000);
+     }
+     if (navigator.language.indexOf("fr") != -1) {
+     tswira.removeEventListener("mouseup",bioinfo);
      }
     }
     
