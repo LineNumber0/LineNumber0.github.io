@@ -246,8 +246,9 @@
     </script>
     <script src="JS/FileSaver.min.js" charset="utf-8"></script>
     <script type="text/javascript">
+      var date = new Date();
       function saveNchk() {
-      var html = textarea.value + "\n<!-- Exported using LN0LSync 1.1 at https://linenumber0.github.io/lshelper.html -->";
+      var html = textarea.value + "\n<!-- Exported using LN0LSync 1.1 at https://linenumber0.github.io/lshelper.html on " + date.toString() + " -->";
       var blobfilename = audsrc.src.substring(audsrc.src.lastIndexOf("/") + 1,audsrc.src.lastIndexOf("."));
       var blob = new Blob([html], {type: "text/html"});
       if (!htmlRX.test(html)) {
