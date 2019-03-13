@@ -24,10 +24,6 @@
     margin: 2em auto;
     background-color: #D6E3E9;
   }
-  h1::after, h1::before {
-    content: url(../ext/libra.png);
-    position:relative;
-  }
   h1::after {
     left: 0;
   }
@@ -132,12 +128,18 @@
  }
 /*_______________________________________________________________________
  */
- @media (min-width:80em) {
+@media (min-width:80em) {
+  h1::after, h1::before {
+    content: url(../ext/libra.png);
+    position:relative;
+  } 
+}
+ @media (min-width:60em) {
    ul {
-     padding-left:300px;
+     /* padding-left:300px; */
    }
    h1 {
-    font-size: 4em;
+    font-size: 2.5em;
    }
    #tinfo:not(:empty) {
     font-size:3em;
