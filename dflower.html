@@ -359,20 +359,20 @@
     var Hline = document.getElementById("hline");
     
     if (HourNow < 12) {
-      Hline.innerHTML = "Good Morning, Cara !";
+      Hline.innerHTML = "Good Morning, <code>Date()</code> Object !";
       } else if (HourNow < 17) {
-	Hline.innerHTML = "Good Afternoon, Cara !";
+	Hline.innerHTML = "Good Afternoon, <code>Date()</code> Object !";
 	document.body.style.backgroundImage = "linear-gradient(skyblue 80%, bisque)";
 	} else if (HourNow >= 22 ) {
-	Hline.innerHTML = "Good Night, Cara !";
+	Hline.innerHTML = "Good Night, <code>Date()</code> Object !";
 	document.body.style.backgroundImage = "linear-gradient(black 80%, sandybrown)";
 	document.fgColor = "white";
 	} else if ((HourNow < 22) && (HourNow >= 19)) {
-	  Hline.innerHTML = "Good rest from your day, Cara !";
+	  Hline.innerHTML = "Good rest from your day, <code>Date()</code> Object !";
 	  document.body.style.backgroundImage = "linear-gradient(darkblue 80%, rosybrown)";
 	  document.fgColor = "white";
 	  } else if ((HourNow > 17) && (HourNow < 19)) {
-	    Hline.innerHTML = "The sunset is a romantic time, Cara !";
+	    Hline.innerHTML = "The sunset is a romantic time, <code>Date()</code> Object !";
 	    document.body.style.backgroundImage = "linear-gradient(#F98C5E 80%, rosybrown)";
 	  }
 	  
