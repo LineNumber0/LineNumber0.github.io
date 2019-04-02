@@ -359,20 +359,20 @@
     var Hline = document.getElementById("hline");
     
     if (HourNow < 12) {
-      Hline.innerHTML = "Good Morning, <code>Date()</code> Object !";
+      Hline.innerHTML = "Good Morning, Yuko !";
       } else if (HourNow < 17) {
-	Hline.innerHTML = "Good Afternoon, <code>Date()</code> Object !";
+	Hline.innerHTML = "Good Afternoon, Yuko !";
 	document.body.style.backgroundImage = "linear-gradient(skyblue 80%, bisque)";
 	} else if (HourNow >= 22 ) {
-	Hline.innerHTML = "Good Night, <code>Date()</code> Object !";
+	Hline.innerHTML = "Good Night, Yuko !";
 	document.body.style.backgroundImage = "linear-gradient(black 80%, sandybrown)";
 	document.fgColor = "white";
 	} else if ((HourNow < 22) && (HourNow >= 19)) {
-	  Hline.innerHTML = "Good rest from your day, <code>Date()</code> Object !";
+	  Hline.innerHTML = "Good rest from your day, Yuko !";
 	  document.body.style.backgroundImage = "linear-gradient(darkblue 80%, rosybrown)";
 	  document.fgColor = "white";
 	  } else if ((HourNow > 17) && (HourNow < 19)) {
-	    Hline.innerHTML = "The sunset is a romantic time, <code>Date()</code> Object !";
+	    Hline.innerHTML = "The sunset is a romantic time, Yuko !";
 	    document.body.style.backgroundImage = "linear-gradient(#F98C5E 80%, rosybrown)";
 	  }
 	  
