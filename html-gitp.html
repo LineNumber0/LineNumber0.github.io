@@ -5,7 +5,7 @@
   <title></title>		* 2nd OS : Fedora 19									*
     <meta content="">		* Desktop : LXDE 8.7 then XFCE 4.10, 4.12						*
     <style></style>		* IDE : Kwrite 4.11.5, Kate 3.11.5, 16.08.3 and Geany 1.24.1				*
-    </head>			* Browser : QupZilla 1.4.4 (with auto-reload feature when source code change)		*
+    </head>			* Browser : QupZilla 1.4.4 (with auto-reload feature when source code changes)		*
  <body></body>
 </html>
 ******************************************************************************************************************************************
@@ -1912,7 +1912,7 @@ Which ones of the following languages used to develop this page ?<br/>
   </tr>
   <tr frame="hsides" rules="all">
     <td><h5>File select Boxes (file upload Form) :</h5>
-      <form action="about:blank" target="_blank" method="get" name="UploadImgXpartForm" enctype="multipart/form-data">	<!-- for file upload box the "method" must be "post" because uploaded files cannot be passed in the URL as with "get" | if this is a file upload form the "enctype" that required is "multipart/form-data" -->
+      <form action="/phptp/upload.php" target="_blank" method="POST" name="UploadImgXpartForm" enctype="multipart/form-data">	<!-- for file upload box the "method" must be "post" because uploaded files cannot be passed in the URL as with "get" | if this is a file upload form the "enctype" that required is "multipart/form-data" -->
     <input type="file" name="ImgUploadXpart" accept="image/*"/><br/><br/>	<!-- the empty tag <input/> is used again for file upload form but with "file" as a value for "type" attribute | "accept" indicates the MIME type of the file that can be uploaded, in this form it is an image file with any extension (by the wildcard character asterisk '*') -->
     <input type="submit" value="Upload" title="If your image is seleced click here to upload it"/>
     </form>
